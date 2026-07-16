@@ -1,0 +1,82 @@
+name: Build Show Builder (desktop app)
+
+# Builds the shareable, double-click Show Builder app for Windows, macOS and Linux.
+# Download the results from this run's "Artifacts", or (on a v* tag / a release_tag
+# input) from a permanent GitHub Release.
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Publish a permanent Release under this tag (e.g. v1.0.0). Blank = just build artifacts."
+        required: false
+        default: ""
+  push:
+    branches:
+      - main
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            artifact: ShowBuilder-Windows
+          - os: macos-latest
+            artifact: ShowBuilder-macOS
+          - os: ubuntu-latest
+            artifact: ShowBuilder-Linux
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install PyInstaller
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyinstaller
+
+      - name: Build app
+        run: pyinstaller --noconfirm show-builder.spec
+
+      - name: Package (macOS — zip the .app)
+        if: runner.os == 'macOS'
+        run: |
+          cd dist
+          zip -r -y "Show Builder-macOS.zip" "Show Builder.app"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: |
+            dist/Show Builder.exe
+            dist/Show Builder-macOS.zip
+            dist/Show Builder
+          if-no-files-found: warn
+
+      - name: Attach to release
+        if: startsWith(github.ref, 'refs/tags/') || inputs.release_tag != ''
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ inputs.release_tag != '' && inputs.release_tag || github.ref_name }}
+          name: Show Builder ${{ inputs.release_tag != '' && inputs.release_tag || github.ref_name }}
+          target_commitish: ${{ github.sha }}
+          body: |
+            Show Builder — the desktop app that turns one config into a full branded
+            interactive event system. Download for your platform below, then see README.md.
+            First launch (unsigned): Windows → "More info → Run anyway"; macOS → right-click → Open.
+          files: |
+            dist/Show Builder.exe
+            dist/Show Builder-macOS.zip
+            dist/Show Builder
+          fail_on_unmatched_files: false

@@ -1,0 +1,7 @@
+# Generated booth sites — regenerate from a config with make_booth.py
+build/
+
+# PyInstaller / Show Builder desktop builds
+dist/
+__pycache__/
+*.pyc
