@@ -380,7 +380,7 @@
     if(sig===pollSig) return;
     var wasHidden=box.style.display==='none', firstOpen=(pollSig===null||pollSig.indexOf(poll.id)!==0);
     pollSig=sig; box.style.display='block';
-    var html='<div class="plabel"><span class="dot"></span>'+(poll.open?'Live Vote — The Handler':'Result')+'</div>'+
+    var html='<div class="plabel"><span class="dot"></span>'+(poll.open?'Live Vote — Game Master':'Result')+'</div>'+
       '<div class="pq">'+esc(poll.q||'Cast your vote')+'</div><div class="pollopts">';
     poll.options.forEach(function(o){
       var win=(!poll.open && poll.winner===o.id);
