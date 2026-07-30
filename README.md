@@ -131,7 +131,7 @@ crew-card mechanics, the console's teleprompter/mission-picker/QR tooling — st
   "wantedLevels": [ { "stars": 1, "label": "ON THE RADAR" }, … 5 ],
   "crewCard": { "madeHeadline": "YOU'RE MADE", "memberLabel": "MADE MEMBER", … },
   "chapters": [
-    { "n": 1, "codename": "THE RECRUITMENT", "act": "Act I — Assembly the Crew",
+    { "n": 1, "codename": "THE RECRUITMENT", "act": "Act I — Assemble the Crew",
       "job": "The crew gets made…", "endsOn": "…", "transmission": "Listen up…" }
     // …one per night of your season
   ],
