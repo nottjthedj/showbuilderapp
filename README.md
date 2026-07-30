@@ -17,7 +17,7 @@ and get a complete, deployable multi-module site — the same proven formula eve
 |--------|---------|-------------|--------------|
 | **Crew Card** *(player, front door)* | `index.html` / `crew.html` | guests | The **front door** — one scan of the domain lands here: scan-to-get-made card with member number, **tonight's Job** + Handler transmission, live **Wanted Level**, **missions**, live **votes**, and a button into the booth. |
 | **Photo Booth** | `booth.html`, `gallery.html`, `setup.html`, `netlify/` | guests + operator | Branded camera → photo/video with your overlay → save/share/opt-in. Includes the **gallery admin** (approve/delete) and the secure **Backblaze-B2 → NAS** pipeline. |
-| **Handler Console** *(admin)* | `handler.html` | the host | Chapter picker (your whole season), the opening-transmission **teleprompter**, a **mission picker** (pick 3, with props/how-to/VO), Wanted-Level control, and a **QR generator** that hands guests a crew card pre-loaded with tonight's setup. Links to the gallery. |
+| **Handler Console** *(admin)* | `handler.html` | the host | Chapter picker (your whole season), the opening-transmission **teleprompter**, a **mission picker** (pick 3, with props/how-to/VO + the full **scene script** for each), Wanted-Level control, and a **QR generator** that hands guests a crew card pre-loaded with tonight's setup. Links to the gallery. |
 
 The Booth ships for every brand. The **Crew Card + Handler Console** are generated only
 when the config includes a **`show`** (your chapters + missions) — see below.
@@ -66,7 +66,7 @@ then follow the generated `SETUP.md`. No dependencies — just Python 3.10+.
 | File | Controls |
 |------|----------|
 | `brands/<brand>.json` | Branding (name, logo lockup, kicker, hashtag, CTA, **legal line**), the **colour scheme**, socials, web/deploy info, and a pointer to the show file. |
-| `brands/<brand>.show.json` | The **show**: your season of chapters (codename, act, the job, the Handler transmission) and your missions (props, how-it-runs, win, Handler VO, variation) + vocabulary and Wanted-Level labels. |
+| `brands/<brand>.show.json` | The **show**: your season of chapters (codename, act, the job, the Handler transmission) and your missions (props, how-it-runs, win, Handler VO, **scene**, variation) + vocabulary and Wanted-Level labels. |
 | your logo image | White-on-transparent PNG, embedded + burned into captures. Optional (text lockup fallback). |
 
 Everything the formula keeps fixed — the camera flow, the three photo frames, the
@@ -138,7 +138,16 @@ crew-card mechanics, the console's teleprompter/mission-picker/QR tooling — st
   "missions": [
     { "n": 1, "name": "THE LINEUP", "category": "Stage Theatrical", "gtaRef": "Police lineup",
       "props": "…", "howItRuns": "…", "win": "…", "time": "3–4 min",
-      "handlerVO": "Line 'em up…", "variation": "…" }
+      "handlerVO": "Line 'em up…",
+      "scene": {                       // the 4th-wall beat — see "Two voices" below
+        "cue": "…",                    // stage direction, not spoken
+        "fourthWall": "…",             // step out of the fiction, name the real room
+        "driver": { "actI": "…", "actII": "…", "actIII": "…" },
+        "rules": "…", "callUp": "…",
+        "underscore": [ "…", "…" ],    // ad-libs to run under the game
+        "win": "…", "out": "…"
+      },
+      "variation": "…" }
     // …your mission playbook
   ],
   "rotation": { "firstNight": [1,6,4], "returning": [10,7,9], "smallRoom": [8,11,5] }
@@ -147,6 +156,28 @@ crew-card mechanics, the console's teleprompter/mission-picker/QR tooling — st
 
 `brands/gtad.show.json` is the real GTAD bible — **24 chapters** (a full 3-act season)
 and **11 missions** — extracted from the production docs. Copy it to start a new show.
+
+### Two voices
+
+A show has two distinct speaking layers, and the console keeps them apart:
+
+| | Where | What it is |
+|---|---|---|
+| **Transmission** *(cinematic)* | `chapters[].transmission` | The story beat that opens the night. In-fiction, no winking — the host is the character. One per night; each opens on the previous night's `endsOn` so the season reads as one arc. |
+| **Scene** *(4th wall → the game)* | `missions[].scene` | The bridge from story to gameplay. The host steps **out** of the fiction, names the real room, then hands the crowd the rules — which is what gives them permission to commit. |
+
+Scene beats run in order and are read straight off the console:
+
+`cue` (stage direction, not spoken) → `fourthWall` (the step-out) → `driver`
+(why this game, *tonight*) → `rules` → `callUp` (get bodies up) → `underscore`
+(ad-libs while it runs) → `win` → `out` (hand back to the story).
+
+`driver` is keyed by act — `actI` / `actII` / `actIII` — because the same game
+carries different stakes while you're recruiting a crew than it does after the
+score has gone down. The console reads the act off tonight's chapter and shows
+the matching driver automatically, so a mission can be re-run across the season
+without the story going stale. **Copy** lifts the whole scene, act-correct, as a
+plain-text script.
 
 ---
 

@@ -13,7 +13,8 @@
     "job": "the event",
     "theScore": "the night's reward",
     "heat": "escalating energy in the room",
-    "transmission": "TJ's cinematic Handler drop — read on mic / play VO"
+    "transmission": "TJ's cinematic Handler drop — read on mic / play VO",
+    "scene": "the 4th-wall beat that turns the story into the game: TJ steps out of the fiction, names the real room, then hands the crew the rules"
   },
   "wantedLevels": [
     {
@@ -248,6 +249,24 @@
       "win": "Loudest crowd reaction = Most Wanted. Winner gets a drink ticket.",
       "time": "3–4 min",
       "handlerVO": "Line ‘em up. Eyes forward. Don’t smile — you’re looking at a long sentence.",
+      "scene": {
+        "cue": "Music down to a low bed, not off. One spotlight on the height marker. You’re centre stage, mic in hand, clipboard or phone as the ‘file’.",
+        "fourthWall": "Quick honesty break. This is a bar. You came out for a drink and some music, and nobody in this building has stolen anything heavier than a traffic cone.\nAnd yet — for the next four minutes, every person in here has a record. I don’t make the rules. Actually, I do make the rules. That’s the entire point of me.",
+        "driver": {
+          "actI": "Every crew starts with a file. Before I put anybody on a job, I need to know what this city already has on you — so tonight we open the file and read it out loud.",
+          "actII": "There’s a detective building a photo book with our faces in it. If you’re going in it, I’d rather it be a good photo — and I’d rather we find out tonight who they can actually identify.",
+          "actIII": "The whole city’s got our description now. So let’s find out which one of you they’re really looking for — and which one of you they’d never suspect."
+        },
+        "rules": "Here’s how it works. Bodies against that wall — shoulder to shoulder, facing me, like you’ve done this before.\nI read each of you your charges. You do not laugh, you do not smile, you hold the face.\nThen this room decides which one of you is Most Wanted, and the loudest reaction takes it.",
+        "callUp": "I need five. Don’t make me pick — but I will pick.\nYou. You. The one already walking up. And whoever’s friends are pointing at them right now. That’s how it always happens. Come on.",
+        "underscore": [
+          "Suspect number three, chin up. This is the photo they’re going to use on the news.",
+          "Look at this lineup. Not one honest face in the row.",
+          "Somebody’s friend just yelled ‘that’s him.’ Noted. Recorded."
+        ],
+        "win": "There it is. That’s the loudest this room has been all night, and it was for this one right here.\nCongratulations — you are the most wanted person in this building. Enjoy the notoriety. It doesn’t last.",
+        "out": "Get them out of my lineup. File’s open, the crew’s on record, and now we know exactly who this city is looking for.\nMusic back up."
+      },
       "variation": "MOST-WANTED RANKINGS — instead of one winner, the crowd ranks all 5 from “Most Wanted” to “Rookie.” Each rank gets a different mock charge."
     },
     {
@@ -260,6 +279,24 @@
       "win": "Last crew member with their red balloon still in the air at the 60-second buzzer.",
       "time": "3–4 min including cleanup",
       "handlerVO": "Five stars. Choppers up. Keep your car in the air or you’re done.",
+      "scene": {
+        "cue": "Balloons pre-inflated and stashed behind the booth. Red ones out first, blue ones into the crowd on your cue. Tape boundary already down.",
+        "fourthWall": "Time out. What’s about to happen is six adults protecting balloons from a room full of other adults. I want you to know that I know.\nI’ve been doing this twenty-five years, and I’m telling you — this is the loudest three minutes of any night I run. So nobody be too cool for it.",
+        "driver": {
+          "actI": "Before I trust anybody with a getaway, I need to see how you move when something’s coming at you. Nobody’s chasing us yet. That’s what tonight is for.",
+          "actII": "There are cars on this block that weren’t here last week. This is the rehearsal — because when it’s real you get one shot at the road.",
+          "actIII": "This isn’t practice. Five stars, choppers up, a badge on every bridge. Show me you can get out."
+        },
+        "rules": "Red balloon is your car. Keep it in the air. That’s the whole job.\nEverybody else gets a blue one — you are the police, and you have exactly one purpose: put their car on the ground. Bat it, spike it, be a menace about it.\nSixty seconds. Last car still in the air walks.",
+        "callUp": "Six drivers. Hands up — real hands, up high.\nYou six, out in the middle, spread out. Everybody else: blue balloons are coming into the crowd, and I would like you to take this personally.",
+        "underscore": [
+          "One star. Two. Three — dispatch just put out your description.",
+          "Blue team, you’re embarrassing yourselves. That car has been up for thirty seconds.",
+          "Down goes a car. Pour one out. Keep it moving."
+        ],
+        "win": "One car still up. Everybody else is in the back of a van.\nThat’s your wheelman right there — the only one who made it out.",
+        "out": "Balloons on the floor, leave them, we’ll deal with it. Crew got out clean tonight and that’s all I needed to know.\nBack to the music."
+      },
       "variation": "ESCALATION MODE — every 20 seconds you call up the wanted level and add more blue balloons. By 60s the room is chaos."
     },
     {
@@ -272,6 +309,24 @@
       "win": "Most targets knocked down in 30 seconds.",
       "time": "3–4 min",
       "handlerVO": "This is what we trained you for. Don’t miss.",
+      "scene": {
+        "cue": "Targets on the table, blasters loaded and laid out, darts counted to ten per shooter. Keep the firing line pointed away from the bar.",
+        "fourthWall": "Nobody’s getting hurt tonight. That’s foam, those are cardboard, and my insurance is very clear on the subject.\nBut I need you to react like it’s real — because a room that plays along is worth more to me than a room that’s honest.",
+        "driver": {
+          "actI": "Everybody in a crew says they can handle themselves. Tonight I find out who actually can, while it’s still free to find out.",
+          "actII": "The dry run happens in here, where mistakes cost nothing. Miss in this room and we laugh. Miss in that vault and we don’t.",
+          "actIII": "It went loud out there. So here’s what I need answered tonight: when it goes loud, whose hands stay steady?"
+        },
+        "rules": "Ten darts each. Thirty seconds. Every target you put down counts.\nYou do not pick darts up, you do not get a reload. Ten shots is what this crew could afford.\nMost targets down takes it.",
+        "callUp": "Three shooters. I want the ones who look too confident — you, you, and whoever just said ‘I got this’ loud enough for me to hear it.\nUp here.",
+        "underscore": [
+          "Twenty seconds, four darts left. The math is not on your side.",
+          "That’s the worst shot I’ve seen in twenty-five years. Do it again.",
+          "This room counts out loud or it doesn’t count at all."
+        ],
+        "win": "That’s the crew’s best shot right there.\nRemember this face — when it goes sideways, this is who I’m putting at the front.",
+        "out": "Darts stay where they are, we’ll get them. Crew can handle itself — that was the last thing I needed to know.\nMusic up."
+      },
       "variation": "MOVING TARGETS — a staffer walks behind the table holding targets above their head (safely above shoulders), making them moving. Bigger laughs, more skill required."
     },
     {
@@ -284,6 +339,24 @@
       "win": "Be holding it when the music stops. Or don’t. Either way the bit pays off.",
       "time": "2 min on stage (background play happens during 30+ min of the set)",
       "handlerVO": "Drop’s active. Don’t look at the briefcase. Don’t talk about the briefcase. Move it.",
+      "scene": {
+        "cue": "The handoff line goes out 30+ minutes before the payoff, quietly, to one person mid-set. The rest of this scene runs the moment you cut the music.",
+        "fourthWall": "Somewhere in this room, for the last half hour, a black briefcase has been quietly ruining somebody’s night.\nAnd every single one of you who touched it made the same face — the ‘am I actually in trouble’ face. That face is why I do this job.",
+        "driver": {
+          "actI": "A crew that can’t move product can’t move anything. That case went hand to hand all night and nobody dropped it — you passed a test you didn’t know you were taking.",
+          "actII": "Everything we need moves through hands like yours. There are eyes on this room, so the case never stops and never opens. Tonight we find out where it ended up.",
+          "actIII": "The take is still moving through this room. Whoever’s holding it right now is holding the evidence — and the music is about to stop."
+        },
+        "rules": "[Handoff, delivered early and quiet:] Take this. Don’t open it, don’t set it down, don’t ask what’s in it. Keep it moving and keep your mouth shut.\nOne thing, though — if you’re holding it when the music stops, you’re holding the evidence. And I will find you.",
+        "callUp": "Music’s off. Nobody move.\nWhoever has the case — and this room knows exactly who has the case — bring it to me. Take your time. Everybody’s watching.",
+        "underscore": [
+          "Don’t look at the briefcase. Don’t talk about the briefcase. Move the briefcase.",
+          "Somebody just handed that off like it was on fire. Coward. Respect.",
+          "That case has been in this room thirty minutes and nobody’s opened it. Disciplined crew."
+        ],
+        "win": "Two options. Open it — right here, in front of everybody — or take the punishment and let it stay a mystery.\nRoom’s going to help you decide.",
+        "out": "Case is closed. Whatever was in it, we never discussed it.\nEverybody back to what you were doing. Music."
+      },
       "variation": "TIMED DROPS — cut the music 2–3 times across the night instead of once. Each “drop” gets a smaller bit; the final drop is the big stage moment."
     },
     {
@@ -296,6 +369,24 @@
       "win": "Crowd correctly identifies the rat by band color.",
       "time": "3 min on stage",
       "handlerVO": "Somebody in this crew’s wearing a wire. Find them before the score goes down.",
+      "scene": {
+        "cue": "Bands go out at the door, quietly, to five people — four matching, one odd. Note who has the odd one so you can call it if the room can’t.",
+        "fourthWall": "Let me admit something. Nobody in here is a rat. You’re all lovely. Half of you are here for somebody’s birthday.\nBut for the next three minutes this room is going to turn on one person over the colour of a bracelet, and you’re going to enjoy it more than you expect.",
+        "driver": {
+          "actI": "Somebody in this crew is already working two sides. I told you that on night two — I wasn’t guessing.",
+          "actII": "The cops got a name, and names come from people. One of the five standing up here handed it over.",
+          "actIII": "The count came up short and somebody made a phone call. Tonight we find out who’s been talking."
+        },
+        "rules": "Five of you got a band at the door tonight. Four of them match. One doesn’t.\nThe one that doesn’t match is the rat — and this room has to work out which. No confessions, no help from me.\nLook at the wrists. Listen to the room. Make the call.",
+        "callUp": "Crew check. If you got a band at the door, that’s you — to the stage.\nAll five. Yes, you too. Don’t play.",
+        "underscore": [
+          "Somebody in this crew is wearing a wire. Find them before the score goes down.",
+          "Look at the hands. A rat always covers the wrist.",
+          "This room is far too good at this. Genuinely concerning."
+        ],
+        "win": "There’s your rat. Caught by their own bracelet.\nThe four of you are clean, you’re crew, you get looked after. And you — you’ve got some explaining to do.",
+        "out": "Rat’s handled, crew’s clean again. For now.\nNobody in this room says a word about how easy that was. Music up."
+      },
       "variation": "DOUBLE RAT — hand out 6 wristbands (4 matching, 2 odd). Crowd has to find BOTH rats. Higher difficulty, bigger payoff."
     },
     {
@@ -308,6 +399,24 @@
       "win": "Most balls in your team’s bin at the 60-second buzzer.",
       "time": "3–4 min",
       "handlerVO": "Vault’s open. Grab everything you can. Don’t leave a dollar.",
+      "scene": {
+        "cue": "Beach balls into the crowd at the top of the scene, not before — they disappear fast. Bins set well apart so the two teams have to cross the room.",
+        "fourthWall": "I’d like to state plainly that those are beach balls painted gold, and those are laundry baskets.\nAnd in about ten seconds you’re going to care about them more than anything that’s happened to you this week. That’s not me being clever — that’s just what a room does.",
+        "driver": {
+          "actI": "You’ll never touch the big score if you can’t handle a small take. Tonight’s take is small.",
+          "actII": "When that vault opens we get sixty seconds inside it. Sixty. So let’s find out what this crew can carry in sixty seconds.",
+          "actIII": "Vault’s open, the take is real, the clock is running. Grab everything you can and don’t leave a dollar."
+        },
+        "rules": "Two crews of three. That’s your bin. That’s yours.\nThe money’s already out in the crowd, and the crowd is not on your side — they can throw it, hide it, sit on it, send it back.\nSixty seconds. Most money in your bin wins.",
+        "callUp": "Two crews, three each. I want people who don’t mind getting into a crowd.\nYou three on that bin, you three on that one. Everybody else — the money’s coming to you, and you should be a problem about it.",
+        "underscore": [
+          "Vault’s open. Grab everything you can. Don’t leave a dollar.",
+          "Somebody in the crowd is just holding one. Sir. That is not yours.",
+          "Fifteen seconds and that bin is embarrassing."
+        ],
+        "win": "Count it. That’s the take, and this crew carried it.\nWinners get looked after. Losers can explain the shortfall to the people upstairs.",
+        "out": "Money’s in the bin, crowd keeps whatever’s left, we’re gone. Vault’s empty.\nLet’s move. Music."
+      },
       "variation": "GUARD MODE — one player from each team is designated “guard” — they stand at their bin and can deflect incoming balls from the other team. Adds defense to offense."
     },
     {
@@ -320,6 +429,24 @@
       "win": "Fewest lines touched. Fastest time as tiebreaker.",
       "time": "4 min for 3 contestants",
       "handlerVO": "One wrong move and the whole place lights up. Take your time. Don’t. Touch. Anything.",
+      "scene": {
+        "cue": "Grid built before doors if you can — it takes longer than you think. Blacklight on it if you’ve got one. Keep a spare roll of streamer for repairs mid-scene.",
+        "fourthWall": "That is crepe paper. It’s a dollar a roll. There’s no laser, there’s no alarm, and if you touch it the only thing that happens is this room makes a noise.\nSomehow that’s worse. That’s exactly why it works.",
+        "driver": {
+          "actI": "Every door on this job is electric. Before I bring in the tech, I want to see who in here has the patience for it.",
+          "actII": "That system belongs to the biggest boss in this city and it does not care how tough you are. One wrong move and the whole place lights up.",
+          "actIII": "We’re past the alarms and into the part where one twitch ends it for everybody. Slow is smooth. Smooth is out."
+        },
+        "rules": "This is the grid, and every line on it is live.\nYou get through — over, under, through, I don’t care how — without touching a single one. This room counts every touch out loud, and the count follows you for the rest of the night.\nFewest touches takes it. Fastest breaks a tie.",
+        "callUp": "Give me two — and I want one person who’s flexible and one who absolutely is not.\nThat contrast is the whole show. Up here.",
+        "underscore": [
+          "Take your time. Don’t. Touch. Anything.",
+          "That’s one. The whole room heard it. The building heard it.",
+          "Look at this — genuine technique. Somebody’s done this before."
+        ],
+        "win": "Clean run. That’s our way in.\nEverybody else here would have had the whole block surrounded.",
+        "out": "Grid’s down, system’s ours, nobody set off an alarm. That’s how this is supposed to go.\nMusic back."
+      },
       "variation": "BLINDFOLD HACK — same grid, but contestant is blindfolded and their partner from the crowd has to talk them through it using only voice. Doubled comedy."
     },
     {
@@ -332,6 +459,24 @@
       "win": "Most icons correctly recalled.",
       "time": "3 min",
       "handlerVO": "Memorize it. You only get one look. Get this wrong and the whole job’s blown.",
+      "scene": {
+        "cue": "Board covered before anybody’s looking. Have a timer you can actually see — ten seconds by feel is always wrong. Keep the room quiet for this one; it’s the only game that needs it.",
+        "fourthWall": "This is the one nobody volunteers for, because this one’s actually hard.\nNo hiding behind being loud here. It’s just you and whether you’ve been paying attention — which, let’s be honest, most of us have not been tonight.",
+        "driver": {
+          "actI": "Before I hand out roles I need to know who in here can hold a plan in their head.",
+          "actII": "We’re casing the target. You get one look at the layout and you get it tonight — because on the night there is no second look.",
+          "actIII": "Everything from here runs on memory. Nothing written down, nothing on a phone. What you remember is all we’ve got."
+        },
+        "rules": "Ten seconds. That’s your one look at the layout — every icon on that board.\nThen it’s covered, and one at a time you tell me everything you can remember. Thirty seconds each, no help from the room.\nMost correct takes it.",
+        "callUp": "Three of you. I want the one who says they’ve got a great memory — you’re going first, and I want this room to hold you to it.",
+        "underscore": [
+          "Memorize it. You only get one look. Get this wrong and the whole job’s blown.",
+          "Room — not a word. Don’t you dare help them.",
+          "Ten seconds doesn’t sound like much until you’re the one standing here."
+        ],
+        "win": "That’s the best head in the building.\nYou’re on the blueprint. Everybody else is carrying something heavy.",
+        "out": "Layout’s locked. This crew knows the room now — whether they remember it or not.\nMusic up."
+      },
       "variation": "GROUP RECALL — instead of solo, three contestants take turns naming icons round-robin without repeats. First to repeat or blank is out. Last standing wins."
     },
     {
@@ -344,6 +489,24 @@
       "win": "Find the marked key.",
       "time": "2 min on stage (background distribution earlier)",
       "handlerVO": "One of you walked out of here with the keys to the score. Find them. Bring them to me.",
+      "scene": {
+        "cue": "Bucket goes through the room early, one key each, nobody looks. Know who took the marked key so you can name them if nobody comes up.",
+        "fourthWall": "Half of you took a key out of a bucket earlier tonight without asking a single question about why.\nI want you to sit with that. A stranger handed you a bucket and you just took one. This is how it starts.",
+        "driver": {
+          "actI": "A score like ours lives or dies on ninety seconds of road, and we still don’t have a driver. One of you has been carrying the keys all night.",
+          "actII": "Two ways in, one way out — and the way out needs a car. Whoever’s holding the getaway key is holding the whole plan.",
+          "actIII": "Every bridge is watched and there’s one car that can still get us out of this city. One of you has the key to it. Find it. Now."
+        },
+        "rules": "A bucket of keys went through this room and exactly one of them is marked.\nIf you’re holding the getaway key, you’re our wheelman — bring it up.\nSixty seconds. After that I name whoever’s got it, whether they come up or not.",
+        "callUp": "One of you walked out of here with the keys to the score.\nFind them. Bring them to me. Clock’s on.",
+        "underscore": [
+          "Somebody in here is holding it and still hasn’t looked. Classic.",
+          "Check your pocket. Check your friend’s pocket. Check the floor.",
+          "Thirty seconds and no wheelman. This is how crews die."
+        ],
+        "win": "That’s the key. That’s our driver.\nEverybody get a look at the person who’s about to get us out of here.",
+        "out": "We’ve got a car and we’ve got a driver. Keys stay with them.\nEverybody else — yours were always fake. Sorry about that. Music."
+      },
       "variation": "MULTIPLE KEYS — mark 3 keys (gold, silver, bronze) with different rewards. Three winners, three tiers of prize."
     },
     {
@@ -356,6 +519,24 @@
       "win": "Pull the other team across the center line, OR have more team on your side at the 30-second buzzer.",
       "time": "3 min",
       "handlerVO": "Two crews. One city. Only one of you walks out tonight — the other one goes down.",
+      "scene": {
+        "cue": "Centre line taped before doors. Check the rope for grit, clear a body-length behind each team, and make sure nobody’s holding a drink.",
+        "fourthWall": "Two teams, one rope. This is the oldest game there is and I have never once seen a room not lose its mind for it.\nNo story I could write beats what’s about to happen naturally, so I’m getting out of the way after this sentence.",
+        "driver": {
+          "actI": "Another crew’s been sniffing around what’s ours. Tonight we find out whether this room can hold a line.",
+          "actII": "The rival crew wants their hardware back and they’re not asking nicely. Two crews, one city.",
+          "actIII": "Everybody who came at this crew answers tonight. Only one side walks out of this."
+        },
+        "rules": "Three on each end. Feet behind the line — that line, the one on the floor.\nThirty seconds. Pull the other crew across and it’s done. Nobody goes over, whoever’s got more ground when I call it takes it.\nAnd losers don’t walk away quietly. Losers get arrested.",
+        "callUp": "Two crews of three. Pick your own — that’s half the entertainment, and I want to see who nobody picks.\nRope in the middle. Don’t touch it yet.",
+        "underscore": [
+          "Two crews. One city. Only one of you walks out tonight.",
+          "This room is nowhere near loud enough for what’s happening on this rope.",
+          "Ten seconds. Somebody’s about to find out who their friends are."
+        ],
+        "win": "That’s the crew that holds this block.\nThe other three — you’re getting arrested, and this room is taking the photo.",
+        "out": "Turf’s settled, rope’s down, nobody needed stitches. Good night’s work.\nMusic back up."
+      },
       "variation": "BEST OF THREE — instead of one pull, run three quick rounds. Winners switch sides each round. Best record takes it."
     },
     {
@@ -368,6 +549,24 @@
       "win": "First to complete the full sequence (pyramid up, knocked down, re-stacked to single column).",
       "time": "2–3 min",
       "handlerVO": "Set the rig. Sixty seconds. We move when you’re ready.",
+      "scene": {
+        "cue": "Twelve cups per shooter, pre-counted and stacked. Table steady — a wobbly table ruins this one. Room counts down from sixty out loud.",
+        "fourthWall": "Twelve plastic cups. That’s the entire prop budget for this one.\nAnd I promise the last thirty seconds of this will be louder than anything else in this room tonight, because nothing makes people scream like watching somebody almost drop something.",
+        "driver": {
+          "actI": "Before the job comes the prep, and the prep is boring, and boring is where crews fall apart. Let’s see who’s got the hands.",
+          "actII": "We build the rig tonight. Set it, break it down, set it again — because on the night we’re doing this in the dark with somebody watching the door.",
+          "actIII": "One job left, and it starts with the rig. Sixty seconds to build, break, and be gone. Nothing left behind."
+        },
+        "rules": "Twelve cups each. Build the pyramid, knock it flat, stack it back into one column. All three, in that order.\nKnock it early and it doesn’t count. Rush the restack and you’ll be picking cups off the floor.\nFirst one done takes it — and this room counts down from sixty.",
+        "callUp": "Three of you at the table. Steady hands only.\nAnd if you’ve got long nails I want you up here specifically, because I want to watch.",
+        "underscore": [
+          "Set the rig. Sixty seconds. We move when you’re ready.",
+          "That pyramid is a war crime. Fix it.",
+          "Twenty seconds. One of these three is about to panic and I want to be there for it."
+        ],
+        "win": "Rig built, broken down and packed in under a minute.\nThat’s the steadiest set of hands in the building.",
+        "out": "Prep’s done. Everything we need is ready and nothing’s left on the table.\nNow the only thing between us and the score is time. Music."
+      },
       "variation": "TEAM RELAY — two teams of 3, relay-style. First person stacks the pyramid, second knocks it down, third re-stacks. Faster, louder, team energy."
     }
   ],

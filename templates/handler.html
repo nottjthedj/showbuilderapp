@@ -67,6 +67,19 @@
     font-weight:800;font-size:10px;letter-spacing:.08em;text-transform:uppercase;border-radius:8px;
     padding:6px 10px;cursor:pointer;}
 
+  /* mission scene — the 4th-wall story driver / game introduction */
+  .scene{border:1px solid rgba({{colors.secondaryRgb}},.35);border-radius:12px;margin:4px 0 10px;overflow:hidden;}
+  .scene .sbar{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 12px;
+    border-bottom:1px solid rgba({{colors.secondaryRgb}},.22);font-size:9.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--secondary);font-weight:800;}
+  .scene .beat{padding:10px 12px;border-top:1px dashed rgba(255,255,255,.10);}
+  .scene .beat.first{border-top:0;}
+  .scene .bk{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:5px;}
+  .scene .bt{font-size:15px;line-height:1.55;white-space:pre-line;color:var(--ink);overflow-wrap:anywhere;}
+  .scene .bt.dir{color:var(--dim);font-style:italic;font-size:13px;}
+  .scene ul.adlib{margin:0;padding-left:17px;}
+  .scene ul.adlib li{font-size:14px;line-height:1.5;margin-bottom:4px;overflow-wrap:anywhere;}
+
   /* missions */
   .recipes{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
   .recipes button{border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--ink);
@@ -337,7 +350,8 @@
     sel.innerHTML=chapters.map(function(c){
       return '<option value="'+c.n+'">'+(c.n<10?'0':'')+c.n+' — '+c.codename+'</option>';
     }).join('');
-    sel.onchange=function(){ chapterNo=parseInt(this.value,10); renderChapter(); syncCrew(); maybePush(); };
+    // re-render missions too: the scene's story driver follows tonight's act
+    sel.onchange=function(){ chapterNo=parseInt(this.value,10); renderChapter(); renderMissions(); syncCrew(); maybePush(); };
   }
   function renderChapter(){
     var c=chapters.filter(function(x){return x.n===chapterNo;})[0]||{};
@@ -350,6 +364,59 @@
     if(navigator.clipboard) navigator.clipboard.writeText(t);
     this.textContent='Copied'; var b=this; setTimeout(function(){b.textContent='Copy';},1200);
   };
+
+  // ---- mission scenes (4th wall → story driver → the game) ----
+  // The story driver follows tonight's act, so the same game carries different
+  // stakes in Act I than it does after the score has gone down.
+  function actOf(){
+    var c=chapters.filter(function(x){return x.n===chapterNo;})[0]||{}, a=c.act||'';
+    if(a.indexOf('Act III')>-1) return ['actIII','Act III'];
+    if(a.indexOf('Act II')>-1)  return ['actII','Act II'];
+    return ['actI','Act I'];
+  }
+  var SCENE_BEATS=[
+    ['cue',        'Cue — not spoken', 'dir'],
+    ['fourthWall', 'Break the 4th wall'],
+    ['driver',     'Story driver'],
+    ['rules',      'Introduce the game'],
+    ['callUp',     'Call them up'],
+    ['underscore', 'Under the game — ad lib'],
+    ['win',        'Pay off the win'],
+    ['out',        'Out — back to the story']
+  ];
+  function sceneHtml(m){
+    var s=m.scene; if(!s) return '';
+    var act=actOf(), first=true;
+    var h='<div class="scene"><div class="sbar"><span>Scene — 4th wall → the game</span>'+
+          '<button class="copybtn" data-scene="'+m.n+'">Copy</button></div>';
+    SCENE_BEATS.forEach(function(b){
+      var key=b[0], label=b[1], cls=b[2]||'', body='';
+      if(key==='driver'){
+        var dr=(s.driver||{})[act[0]]; if(!dr) return;
+        label+=' — '+act[1]; body='<div class="bt">'+dr+'</div>';
+      } else if(key==='underscore'){
+        if(!(s.underscore||[]).length) return;
+        body='<ul class="adlib">'+s.underscore.map(function(l){return '<li>'+l+'</li>';}).join('')+'</ul>';
+      } else {
+        if(!s[key]) return;
+        body='<div class="bt '+cls+'">'+s[key]+'</div>';
+      }
+      h+='<div class="beat'+(first?' first':'')+'"><div class="bk">'+label+'</div>'+body+'</div>';
+      first=false;
+    });
+    return h+'</div>';
+  }
+  function sceneScript(m){
+    var s=m.scene||{}, act=actOf(), out=[];
+    SCENE_BEATS.forEach(function(b){
+      var key=b[0], label=b[1].toUpperCase(), v;
+      if(key==='driver'){ v=(s.driver||{})[act[0]]; label+=' — '+act[1].toUpperCase(); }
+      else if(key==='underscore'){ v=(s.underscore||[]).map(function(l){return '· '+l;}).join('\n'); }
+      else v=s[key];
+      if(v) out.push('['+label+']\n'+v);
+    });
+    return m.name+' — '+act[1]+'\n\n'+out.join('\n\n');
+  }
 
   // ---- missions ----
   function recipeButtons(){
@@ -377,6 +444,7 @@
           '<div class="k">How it runs</div><div class="t">'+(m.howItRuns||'')+'</div>'+
           '<div class="k">Win</div><div class="t">'+(m.win||'')+'</div>'+
           '<div class="k">Game Master — on the mic</div><div class="t vo">“'+(m.handlerVO||'')+'”</div>'+
+          sceneHtml(m)+
           '<div class="k">Variation</div><div class="t">'+(m.variation||'')+'</div>'+
           '<div class="k">Time</div><div class="t">'+(m.time||'')+'</div>'+
         '</div>';
@@ -384,6 +452,12 @@
       row.querySelector('.no').onclick=function(e){e.stopPropagation();toggle(m.n);};
       row.querySelector('.chk').onclick=function(e){e.stopPropagation();toggle(m.n);};
       row.querySelector('.head').onclick=function(){ detail.classList.toggle('on'); };
+      var cp=row.querySelector('[data-scene]');
+      if(cp) cp.onclick=function(e){
+        e.stopPropagation();
+        if(navigator.clipboard) navigator.clipboard.writeText(sceneScript(m));
+        cp.textContent='Copied'; setTimeout(function(){cp.textContent='Copy';},1200);
+      };
       wrap.appendChild(row);
     });
     $('selCount').textContent=picked.length;
