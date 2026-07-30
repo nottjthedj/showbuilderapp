@@ -163,6 +163,11 @@ crew-card mechanics, the console's run-of-show/teleprompter/QR tooling — stays
 12 app games, 7 characters and 6 stations, extracted from the production bibles.
 Copy it to start a new show.
 
+> **The 24-night season lives on as the campaign.** It used to be the live show; it's
+> now the *prequel* that sells it — 24 social + web-video drops that teach the four
+> gangs, the vault and the myth before anybody walks in. See
+> [`campaign/`](campaign/README.md). Nothing in there is part of the generated site.
+
 ### How a beat works
 
 All 14 beats run the same five-step shape, and the console reads it straight off the
@@ -235,6 +240,9 @@ plain-text script.
 ├─ show-builder.spec           PyInstaller build (Windows/macOS/Linux)
 ├─ make_booth.py               the generator (stdlib only)
 ├─ booth_config.schema.json    machine-readable brand-config schema
+├─ campaign/                   the lore campaign (not part of the generated site)
+│  ├─ gtad-lore-season.json    the 24 written transmissions (the source)
+│  └─ gtad-social-campaign.json  24 social + web-video drops
 ├─ brands/
 │  ├─ gtad.json                the show — reproduces every module
 │  ├─ gtad.show.json           “The Score” — 14 film beats + 12 games (the GTAD bible)
