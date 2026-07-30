@@ -1,6 +1,6 @@
 # 02 — The Score (current)
 
-**Status:** the live show.
+**Status:** the only show in use.
 **Built from:** the five production bibles (Master Production Bible, Sound & Music
 Bible, Character Breakdown, B-Roll Action List, DaVinci creative handoff).
 
@@ -48,6 +48,7 @@ python3 make_booth.py brands/gtad.json     # -> handler console (14 beats · 12 
 
 ## Also in here
 
-`campaign/` — the 24-drop social and web-video prequel that sells this show. It is a
-content plan, not part of the generated site; the live copy is at
+`campaign/` — a copy of the **archived** lore-campaign draft, kept only because it was
+snapshotted alongside this version. It is **not in use** and not part of the show or the
+generated site: this capsule restores fine without it. Its home is
 [`campaign/`](../../campaign/README.md) in the repo root.

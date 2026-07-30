@@ -3,10 +3,10 @@
 GTAD has had two completely different shows. Both are frozen here, and **both still
 generate a working site**. This is the drawer you open when you want the other one back.
 
-| | Version | The show | Games |
-|---|---|---|---|
-| [`01-season-24-nights/`](01-season-24-nights/) | **The season** | 24 nights, one story beat each, a season-long arc | 11 physical prop games run on stage |
-| [`02-the-score/`](02-the-score/) | **The Score** *(current)* | one night, a 14-beat cutaway film | 12 games on the crowd's phones |
+| | Version | Status | The show | Games |
+|---|---|---|---|---|
+| [`01-season-24-nights/`](01-season-24-nights/) | **The season** | archived — not in use | 24 nights, one story beat each, a season-long arc | 11 physical prop games run on stage |
+| [`02-the-score/`](02-the-score/) | **The Score** | **in use** | one night, a 14-beat cutaway film | 12 games on the crowd's phones |
 
 ## Why the templates are in here too
 

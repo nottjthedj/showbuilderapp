@@ -60,9 +60,9 @@ One config (+ optional logo) generates a complete, deployable branded event syst
 - **Netlify functions** — secure Backblaze-B2 upload, live `show-state` (per-event), `vote`,
   `score` (points + leaderboard), `crew` (presence/stats). No paid extras; reuses one B2 bucket.
 - **Show data** — `brands/gtad.show.json`: the GTAD season (24 chapters, 11 missions).
-  *(Superseded — the live show is now “The Score”. The season is preserved runnable at
-  [`capsule/01-season-24-nights/`](capsule/01-season-24-nights/NOTE.md) and its writing
-  lives on as the lore campaign in [`campaign/`](campaign/README.md).)*
+  *(Superseded and no longer in use — the only show in use is “The Score”. The season is
+  preserved runnable at [`capsule/01-season-24-nights/`](capsule/01-season-24-nights/NOTE.md);
+  a draft campaign built from its writing is archived in [`campaign/`](campaign/README.md).)*
 - **Desktop app** — `show_builder.py` + `show-builder.spec` (Tkinter GUI → PyInstaller),
   built for all three OSes by `.github/workflows/build-show-builder.yml`.
 

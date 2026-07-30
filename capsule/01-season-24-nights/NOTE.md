@@ -1,7 +1,7 @@
 # 01 — The season (24 nights)
 
 **Frozen at:** commit `24d59ff` — the last state before GTAD pivoted to The Score.
-**Status:** retired from the live show. Fully restorable.
+**Status:** archived — not in use. Fully restorable.
 
 ## What this version is
 
@@ -42,8 +42,9 @@ python3 make_booth.py brands/gtad.json     # -> handler console (24 chapters · 
 The console must come with the show file — The Score's console cannot render chapters
 or missions, and this console cannot render film beats.
 
-## Also living elsewhere
+## Also on the shelf
 
-The 24 transmissions are **still in active use** as the source for the lore campaign —
-see [`campaign/`](../../campaign/README.md). This capsule is the *runnable show*; the
-campaign is the writing repurposed as 24 social and web-video drops.
+A draft lore campaign was built from these 24 transmissions —
+see [`campaign/`](../../campaign/README.md). It is **not in use either**. This capsule is
+the *runnable show*; that folder is the same writing reworked as social drops. Both are
+archived: the only show in use is The Score.

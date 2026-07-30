@@ -1,11 +1,14 @@
-# The lore campaign
+# The lore campaign — draft, not in use
 
-The 24-night season used to be the live show. It isn't any more — **["The Score"](../brands/gtad.show.json)**
-is, a 14-beat cutaway film cut with 12 phone games in one night.
+> **Status: archived.** The only show in use is **["The Score"](../brands/gtad.show.json)**.
+> This folder is a draft built from the retired 24-night season's writing — an idea on the
+> shelf, not current work, and not part of the generated site. Nothing here needs
+> maintaining unless it gets picked back up.
 
-So the season got a better job. It's the **prequel**: a 24-drop social and web-video
-campaign that runs *before* the show and teaches the audience the world — the four
-gangs, the vault, the myth — so the room already knows who everybody is when it walks in.
+The idea was: the 24-night season stops being the live show, so its writing gets a second
+job as the **prequel** — a 24-drop social and web-video campaign running *before* the show
+that teaches the audience the world (the four gangs, the vault, the myth) so the room
+already knows who everybody is when it walks in.
 
 ## What's here
 

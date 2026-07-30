@@ -163,10 +163,11 @@ crew-card mechanics, the console's run-of-show/teleprompter/QR tooling — stays
 12 app games, 7 characters and 6 stations, extracted from the production bibles.
 Copy it to start a new show.
 
-> **The 24-night season lives on as the campaign.** It used to be the live show; it's
-> now the *prequel* that sells it — 24 social + web-video drops that teach the four
-> gangs, the vault and the myth before anybody walks in. See
-> [`campaign/`](campaign/README.md). Nothing in there is part of the generated site.
+> **`brands/gtad.show.json` — "The Score" — is the only show in use.** Everything else
+> is archived: the 24-night season it replaced is kept restorable in
+> [`capsule/`](capsule/README.md), and a draft lore campaign built from that season's
+> writing sits in [`campaign/`](campaign/README.md). Neither is current work and neither
+> is part of the generated site — they're on the shelf if they're ever wanted back.
 
 ### How a beat works
 
