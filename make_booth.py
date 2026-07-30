@@ -263,9 +263,16 @@ def generate_from_cfg(cfg: dict, out_dir: str, config_dir: str = ".") -> dict:
 
     modules = ["booth"]
     n_ch = n_mi = 0
+    show_shape = "film"
     if has_show:
         show = json.loads(tokens["show_json"])
-        n_ch, n_mi = len(show.get("film", [])), len(show.get("games", []))
+        # "The Score" is film[] + games[]; the older season shape was chapters[] +
+        # missions[]. Both restore from capsule/, so report whichever one is present.
+        if show.get("chapters") and not show.get("film"):
+            show_shape = "season"
+            n_ch, n_mi = len(show["chapters"]), len(show.get("missions", []))
+        else:
+            n_ch, n_mi = len(show.get("film", [])), len(show.get("games", []))
         modules += ["crew card", "handler console"]
 
     return {
@@ -273,7 +280,8 @@ def generate_from_cfg(cfg: dict, out_dir: str, config_dir: str = ".") -> dict:
         "brand_name": tokens["brand.name"], "brand_short": tokens["brand.short"],
         "primary": tokens["colors.primary"], "secondary": tokens["colors.secondary"],
         "logo_embedded": tokens["logo_data_uri"] != "null",
-        "has_show": bool(has_show), "chapters": n_ch, "missions": n_mi, "modules": modules,
+        "has_show": bool(has_show), "chapters": n_ch, "missions": n_mi,
+        "show_shape": show_shape, "modules": modules,
     }
 
 def generate(config_path: str, out_dir: str) -> dict:
@@ -288,7 +296,9 @@ def generate(config_path: str, out_dir: str) -> dict:
     print(f"  logo:    {'embedded' if r['logo_embedded'] else 'text lockup (no logo file)'}")
     mods = "booth (index/gallery/setup + B2 + NAS)"
     if r["has_show"]:
-        mods += f", crew card (player), handler console ({r['chapters']} beats · {r['missions']} games)"
+        units = ("chapters", "missions") if r.get("show_shape") == "season" else ("beats", "games")
+        mods += (f", crew card (player), handler console "
+                 f"({r['chapters']} {units[0]} · {r['missions']} {units[1]})")
     print(f"  modules: {mods}")
     if r["skipped"]:
         print(f"  skipped: {', '.join(r['skipped'])} (no \"show\" in config)")
