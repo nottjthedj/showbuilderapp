@@ -1,8 +1,12 @@
 {
   "meta": {
     "name": "Grand Theft After-Dark",
+    "show": "The Score",
     "tagline": "A cinematic nightlife takeover.",
-    "sub": "Real props. Real stakes. Real chaos.",
+    "sub": "Four gangs. One city. One vault. Everybody plays.",
+    "format": "A cutaway film in 14 beats — Intro + 12 scenes + Finale — cut with 12 games the whole room plays on their phones.",
+    "filmEra": "1977–1983. The film is period: early neon, sodium vapor, halation, anamorphic 40mm. The music is not — the room's radio dial spans four eras. The screen is 1980; the floor is tonight.",
+    "runtime": "~40s per cutaway (range 30–60s); the Intro runs ~75s as the world reveal.",
     "legal": "Independent fan tribute event. Not affiliated with, endorsed by, or sponsored by Rockstar Games, Take-Two Interactive, or any related entity.",
     "operator": "TJ"
   },
@@ -10,11 +14,14 @@
     "crew": "the attendees",
     "madeMember": "a returning fan",
     "handler": "TJ — the star and host of the night: the cinematic Handler on the mic, the game master on the decks",
+    "myth": "the faceless kingpin the four gangs believe runs this city. He does not exist. He is what a room invents when it can't explain a good night.",
     "job": "the event",
-    "theScore": "the night's reward",
+    "theScore": "the night itself — the only thing in this city that ever pays out",
     "heat": "escalating energy in the room",
     "transmission": "TJ's cinematic Handler drop — read on mic / play VO",
-    "scene": "the 4th-wall beat that turns the story into the game: TJ steps out of the fiction, names the real room, then hands the crew the rules"
+    "turn": "the ◆ fourth-wall line: a character stops the scene, looks down the lens and hands the room its game. The frame the live show cannot run without.",
+    "gameCard": "the ▮ card that lands after the turn and opens the game on every phone",
+    "station": "a gang's sound-world on the room's radio dial"
   },
   "wantedLevels": [
     {
@@ -42,549 +49,1285 @@
     "madeHeadline": "YOU'RE MADE",
     "madeSub": "Welcome to the crew. Don't get busted.",
     "memberLabel": "MADE MEMBER",
-    "joinCta": "GET MADE"
+    "joinCta": "GET MADE",
+    "appCta": "PHONE UP",
+    "appNote": "Every game runs on your phone. No props, no lines — when a card lands, you're playing."
   },
-  "chapters": [
+  "stations": [
+    {
+      "id": "gold",
+      "gang": "The Corvettis",
+      "station": "GOLD STANDARD RADIO",
+      "dial": "AM 10.40",
+      "color": "#f5c542",
+      "era": "40s–60s standards · Goodfellas / Godfather needle-drops",
+      "genre": "Rat-Pack swing, Italian-American crooners, doo-wop, opera, oldies",
+      "texture": "warm vinyl crackle, upright bass, brushed drums, strings, a little menace under the velvet",
+      "tempo": "slow-burn 90–120 BPM; the tension is in the restraint",
+      "bumper": "a smooth old-world announcer — “Nothin' but the classics… nothin' but respect.”",
+      "use": "Setup, sit-downs, the slow-menace beats. A classy up-tempo swing floor before it turns."
+    },
+    {
+      "id": "pink",
+      "gang": "Los Halcóns",
+      "station": "LA ONDA 98.6 FM",
+      "dial": "FM 98.6",
+      "color": "#ff2d9b",
+      "era": "80s Miami neon → modern Latin",
+      "genre": "Scarface synth, Miami Vice, freestyle → reggaeton / Latin trap",
+      "texture": "gated drums, arpeggio synths, congas, neon sax, sweat and swagger",
+      "tempo": "punchy 100–128 BPM; escalates hot",
+      "bumper": "a slick bilingual radio voice — “La Onda. The city belongs to whoever's loudest.”",
+      "use": "Cartel scenes, the shootout, peak-hot dance moments. The loudest, sweatiest station."
+    },
+    {
+      "id": "cyan",
+      "gang": "The Street Kings",
+      "station": "RADIO LOS SANTOS 106",
+      "dial": "FM 106.0",
+      "color": "#00e5ff",
+      "era": "90s West Coast → lowrider oldies",
+      "genre": "G-funk, gangsta rap, Chicano soul / oldies, lowrider bounce",
+      "texture": "talkbox, whining synth leads, deep bounce, hydraulics, sunshine",
+      "tempo": "head-nod 90–100 BPM; the coolest groove in the building",
+      "bumper": "a laid-back West-Coast drop — “Radio Los Santos. The block, the beat, and the bounce.”",
+      "use": "The block scenes and the cool-down grooves. The crowd's comfort zone."
+    },
+    {
+      "id": "violet",
+      "gang": "The Firm",
+      "station": "88.8 THE FIRM",
+      "dial": "FM 88.8",
+      "color": "#a06bff",
+      "era": "80s corporate yuppie → cold modern club",
+      "genre": "American Psycho synth-pop and yacht rock, flipped against dark techno / French house",
+      "texture": "glossy, soulless-chic, precise; cold sub, sterile hats, a “disruptor” drop",
+      "tempo": "sleek 118–128 BPM; too clean, on purpose",
+      "bumper": "an over-produced corporate VO — “88.8 The Firm. Crime, as a service. Terms apply.”",
+      "use": "Firm scenes (surveillance, the device, the blueprint) and sleek transitional club moments."
+    },
+    {
+      "id": "law",
+      "gang": "The Law",
+      "station": "SCANNER / SIREN BED",
+      "dial": "—",
+      "color": "#ff5a6e",
+      "era": "red-and-blue interstitial texture",
+      "genre": "cop-show themes, siren stabs, police-scanner chatter",
+      "texture": "static, dispatch chatter, a siren that arrives on the beat",
+      "tempo": "—",
+      "bumper": "dispatch static over a held siren note",
+      "use": "McGraw beats and wanted-level escalation. Not a dance station — a texture that raises the heat."
+    },
+    {
+      "id": "state",
+      "gang": "The State",
+      "station": "STATE BROADCAST",
+      "dial": "—",
+      "color": "#ffd36b",
+      "era": "gaudy patriotic broadcast",
+      "genre": "campaign-ad brass, national fanfare, pomp flipped comic",
+      "texture": "brass that means nothing, applause that isn't there",
+      "tempo": "—",
+      "bumper": "“Paid for by Diamante 2028 — Four More Years, Believe Me.”",
+      "use": "President broadcasts (intro TVs, the S12 gala, the finale arrest). Comic pomp that undercuts itself."
+    }
+  ],
+  "characters": [
+    {
+      "id": "handler",
+      "name": "TJ — The Handler",
+      "station": "—",
+      "color": "#00e5ff",
+      "role": "The star and host of the night. Cinematic Handler on the mic, game master on the decks.",
+      "onCamera": true,
+      "look": "Flawless tailored black three-piece. Seen, lit, front and centre — he is the one face this show is built around.",
+      "casting": "None. TJ plays himself, so the lead role costs nothing to shoot and can be re-shot any night.",
+      "owns": [
+        "intro",
+        "s12",
+        "finale"
+      ],
+      "note": "TJ is NOT the faceless kingpin. That man is a myth the gangs believe in — see vocabulary.myth. The black-gloved-hand and silhouette inserts belong to the myth, not to TJ, and are cut into the gangs' scenes as the thing they fear."
+    },
+    {
+      "id": "don",
+      "name": "Don Salvatore “Sally Cufflinks” Corvetti",
+      "station": "gold",
+      "color": "#f5c542",
+      "role": "Elderly mafia patriarch. Whispers. Believes everything is respect.",
+      "onCamera": true,
+      "look": "Charcoal three-piece, gold silk pocket square, gold pinky ring, red carnation, thin silver hair combed back.",
+      "casting": "Feature scene S4; co-cast with Rico on S6 and S10; Intro montage and Finale are singles.",
+      "sidekick": "Vinnie the Veal — slicked black hair, open collar, gold chain, sweating.",
+      "owns": [
+        "s4",
+        "s6",
+        "s10"
+      ]
+    },
+    {
+      "id": "rico",
+      "name": "Rico “El Halcón” Delgado",
+      "station": "pink",
+      "color": "#ff2d9b",
+      "role": "Cartel kingpin. Manic, paranoid, magnetic. Believes power is volume.",
+      "onCamera": true,
+      "look": "Open-chested white linen suit, gold falcon medallion, gold rings, scar over one eyebrow, cigar.",
+      "casting": "Busiest lead — schedule as the anchor. In all three co-casting scenes (S6, S8, S10).",
+      "sidekick": "Sugar the tiger — generate in AI / VFX and comp. Never budget a live animal.",
+      "owns": [
+        "s3",
+        "s6",
+        "s8",
+        "s10"
+      ]
+    },
+    {
+      "id": "marcus",
+      "name": "Marcus “Big Deal” Wells",
+      "station": "cyan",
+      "color": "#00e5ff",
+      "role": "Street Kings' calm centre. Ice-cool, never raises his voice, always right.",
+      "onCamera": true,
+      "look": "Fresh fade, neat short beard, single gold chain, clean black bomber.",
+      "casting": "The easiest full part to shoot in one block — all single-crew, no other leads needed. S2, S9, S11 back to back.",
+      "sidekick": "Lil' Problem — cyan-and-black tracksuit, gold rope, always eating, always talking.",
+      "owns": [
+        "s2",
+        "s9",
+        "s11"
+      ]
+    },
+    {
+      "id": "preston",
+      "name": "Preston Ashford Sterling III",
+      "station": "violet",
+      "color": "#a06bff",
+      "role": "The Firm. Tech-villain founder energy. Has reinvented theft, allegedly.",
+      "onCamera": true,
+      "look": "Black turtleneck under a charcoal suit, slicked hair, pale, cold; violet server glow, phone in hand.",
+      "casting": "S5 and S7 are single-lead on the same Firm-tower set — shoot together. S8 needs Rico.",
+      "sidekick": "Kayleigh — sleek low bun, wireless headset, tablet, entirely unbothered.",
+      "owns": [
+        "s5",
+        "s7",
+        "s8"
+      ]
+    },
+    {
+      "id": "mcgraw",
+      "name": "Detective “Dutch” McGraw",
+      "station": "law",
+      "color": "#ff5a6e",
+      "role": "Twenty years chasing a man who does not exist. The only honest man in the film.",
+      "onCamera": true,
+      "look": "Rumpled trench coat, cheap tie, gray stubble, toothpick, red/blue siren light.",
+      "casting": "S1 is a full solo scene; the S12 buffet, the Finale burst-in and the post-credit are quick inserts — one costume, one session.",
+      "owns": [
+        "s1",
+        "finale",
+        "postCredit"
+      ]
+    },
+    {
+      "id": "president",
+      "name": "President Maximillian “Max” Diamante",
+      "station": "state",
+      "color": "#ffd36b",
+      "role": "Head of state. Tough on crime. Knows all the criminals personally.",
+      "onCamera": true,
+      "look": "Gold-accented navy suit, overlong red tie, absurd bronzer, big gestures, flag pins.",
+      "casting": "All podium/broadcast — one suit, one podium, one WAR ON CRIME banner. Intro TV clip, S12 gala speech and Finale arrest in one session.",
+      "owns": [
+        "intro",
+        "s12",
+        "finale"
+      ]
+    }
+  ],
+  "film": [
     {
       "n": 1,
-      "codename": "THE RECRUITMENT",
-      "act": "Act I — Assemble the Crew",
-      "job": "The crew gets made. First contact with the Handler.",
-      "endsOn": "The Handler reveals there’s a job worth eight figures.",
-      "transmission": "Listen up. I’m only saying this once.\nYou weren’t supposed to make it this far. Most people get made at the door. You didn’t. That tells me you’ve got something.\nName’s the Handler. I run this crew — and as of tonight, that’s you. There’s a job coming, the kind people spend their whole lives waiting for. Eight figures. One window.\nBut first you prove you can hang. You follow my lead, you make it out. Maybe.\nWelcome to Grand Theft After-Dark. Don’t get wasted. Don’t get busted. And the only voice you trust in this room — is mine.\nNow — decks are hot. Let’s play."
+      "tag": "INTRO",
+      "title": "The Transmission",
+      "owner": "handler",
+      "station": "all",
+      "color": "#9a9ab0",
+      "energy": "Low → SLAM",
+      "dur": "~75s (longest — world reveal)",
+      "satire": "World-reveal / mob-epic cold open",
+      "game": null,
+      "vo": "Every city tells a story about itself. Ours is simple. Four gangs. One city. All of 'em think they're the main character.\nThe old family thinks it's about respect. The cartel thinks it's about power. The kings on the block think it's about loyalty. And the suits downtown think it's a spreadsheet.\nThey're all wrong. It was never about them.\nName's TJ. I run this room — and tonight, this city belongs to whoever's standing in it.",
+      "dialogue": [
+        {
+          "who": "PRESIDENT (on the TVs)",
+          "line": "Tonight, this city is SAFER than it has ever been. Believe me. Nobody's tougher on crime than me — I know all the criminals personally. Great people. Total winners—"
+        },
+        {
+          "action": "The black car slides past the podium without slowing. The President waves at it like an old friend. We never see who's inside — because there's nobody in this city to see."
+        },
+        {
+          "action": "Rapid four-way match-cut: the Don kisses both cheeks of a terrified man / Rico screams silently by a pink pool, tiger beside him / Marcus leans on a bouncing cyan lowrider / Preston straightens a business card in a violet tower."
+        }
+      ],
+      "turn": "And you. Everybody in this room tonight.\nFour gangs are about to go to war over a vault with eight figures in it. One window. Tonight. And every one of 'em is gonna need soldiers.\nThat's you.\nDon't get wasted. Don't get busted. And when this city starts lying to you — and it will — the only voice in this room you can trust is coming out of that booth.\nThat's me. Welcome to After-Dark, [CITY].",
+      "gameCard": "GRAND THEFT AFTER-DARK — “THE SCORE” — title slam. No game; the title card, then the music slams in.",
+      "assembly": [
+        [
+          "OPEN",
+          "city aerial (four-color)"
+        ],
+        [
+          "BUILD",
+          "district beauty shots + the four-boss quartet (match-cut) + the President on the venue TVs"
+        ],
+        [
+          "TURN",
+          "TJ to camera — lit, seen, front and centre"
+        ],
+        [
+          "CARD",
+          "▮ GRAND THEFT AFTER-DARK — “THE SCORE” title"
+        ],
+        [
+          "OUT",
+          "marina → the music slams in"
+        ]
+      ],
+      "music": {
+        "station": "ALL FOUR → Handler",
+        "bed": "the four stations bleed and cross-fade as the four districts flash — a four-colour montage",
+        "duck": "music ducks −10 dB, the President broadcast on the TVs (State bed), then the Handler OPEN transmission over sub-drone",
+        "slam": "on “Welcome to After-Dark” the title hits → the full-energy opener drops",
+        "cuts": "the Handler motif (your signature loop) + one big recognizable opener to launch the floor",
+        "tip": "This is the cold open. Plant the motif here so it pays off all night."
+      },
+      "note": "The one non-negotiable beat. If everything else falls over, the Intro turn and the game slams carry the night."
     },
     {
       "n": 2,
-      "codename": "THE TRYOUT",
-      "act": "Act I — Assemble the Crew",
-      "job": "Prove you belong. The crew is tested on a small score.",
-      "endsOn": "One of the crew is secretly working for someone else.",
-      "transmission": "Eight figures. That number’s been sitting in your chest since last night — I can see it on you.\nHere’s the thing about a number that big: I don’t hand it to strangers. Tonight you earn the rest of it.\nSmall score. Low risk, high noise. All I’m doing tonight is watching — who steps up, who hides at the back, who I’d want next to me when it’s real.\nAnd one more thing before we start. Somebody in this room isn’t only working for me. I don’t know who yet. I will.\nDecks are hot. Let’s play."
+      "tag": "SCENE 1",
+      "title": "The Interrogation",
+      "owner": "mcgraw",
+      "station": "law",
+      "color": "#ff5a6e",
+      "energy": "Mid, tense-funny",
+      "dur": "~40s",
+      "satire": "Every precinct-lineup / interrogation movie",
+      "game": 1,
+      "vo": "Twenty years, McGraw's been lining up the wrong men. He's hunting a man with no face — and it has never once occurred to him that the man might not be a man at all. Might just be a night.",
+      "dialogue": [
+        {
+          "who": "McGRAW (pacing, chewing)",
+          "line": "Somewhere in this city there's a man with no face and a vault with no bottom. And ONE of you knows him."
+        },
+        {
+          "action": "He points. Wrong guy — a busboy."
+        },
+        {
+          "who": "McGRAW",
+          "line": "…And one of you is wearing my ex-wife's cologne. That's also a crime. In my heart."
+        },
+        {
+          "action": "Pan the five: a gold-tied Corvetti, a pink-suited Halcón, a cyan Street King, a violet Firm suit, and one civilian who wandered in off the dance floor. Every one of them holds a booking number upside-down."
+        },
+        {
+          "who": "FIRM SUIT (sliding a card)",
+          "line": "I'd love to connect. My attorney's also an app."
+        }
+      ],
+      "turn": "Twenty years I been askin' the wrong questions to the wrong guys. Not tonight.\nEverybody — phone out, that's your case file. Eight questions, comin' fast. Answer straight, answer quick, and do NOT crack.\nLie to me and the whole city sees it. Let's see who talks.",
+      "gameCard": "THE INTERROGATION — Eight questions. Answer fast, don't crack. Phones out; top score talks first.",
+      "assembly": [
+        [
+          "OPEN",
+          "precinct atmos plate + siren light through blinds"
+        ],
+        [
+          "BUILD",
+          "McGraw working the line of five"
+        ],
+        [
+          "TURN",
+          "McGraw to camera, toothpick at the lens"
+        ],
+        [
+          "CARD",
+          "▮ THE INTERROGATION"
+        ],
+        [
+          "OUT",
+          "hard cut to the booth"
+        ]
+      ],
+      "music": {
+        "station": "The Law (red/blue)",
+        "bed": "cop-show funk under the lineup",
+        "duck": "duck for McGraw's turn; scanner static + a siren stab",
+        "slam": "quiz-show tension stinger into the app round",
+        "cuts": "cop-show funk; a game-show “think” loop under the questions",
+        "tip": "Keep it playful — this is the warm-up. The siren stab is the card hit."
+      }
     },
     {
       "n": 3,
-      "codename": "THE WHEELMAN",
-      "act": "Act I — Assemble the Crew",
-      "job": "Recruiting the getaway driver. A high-speed night.",
-      "endsOn": "The driver knows a route nobody else does — to a vault.",
-      "transmission": "Nobody’s confessed yet. That’s fine — rats get tired before I do.\nTonight we don’t talk about it. Tonight we need a driver.\nA score like ours lives or dies on ninety seconds of road, so I want the fastest thing in this room on my side of the car. Show me you can move.\nAnd if the right one’s in here, they’ll know a road nobody put on a map. That road ends at a vault.\nDecks are hot. Let’s drive."
+      "tag": "SCENE 2",
+      "title": "The Joyride",
+      "owner": "marcus",
+      "station": "cyan",
+      "color": "#00e5ff",
+      "energy": "High, chase",
+      "dur": "~40s",
+      "satire": "GTA five-star chase / block movie",
+      "game": 2,
+      "vo": "The kings only ever wanted three things. The block, the beat, and the bounce. Tonight the whole city's chasin' 'em for a fourth.",
+      "dialogue": [
+        {
+          "who": "LIL' PROBLEM",
+          "line": "So we get the vault money, right, and I open a taco truck. No — a fleet. A taco empire. Big Deal, you listenin' to the vision?"
+        },
+        {
+          "action": "Marcus watches the cops multiply in the mirror. One, then four, then a helicopter."
+        },
+        {
+          "who": "MARCUS",
+          "line": "…Ah, sh— here we go again."
+        }
+      ],
+      "turn": "Every one of you is behind the wheel now. Phone up — that's your getaway car.\nGrab the cash, keep it on the road, dodge everything this city throws at you: cops, people, dogs. Every hit's a wanted star. Rack up too many and you're done.\n…Problem, put the taco down and drive.",
+      "gameCard": "THE JOYRIDE — Phone up, that's your car. Grab cash, dodge everything. Every hit is a star.",
+      "assembly": [
+        [
+          "OPEN",
+          "the block — lowrider on hydraulics"
+        ],
+        [
+          "BUILD",
+          "Problem's taco empire + the cops multiplying in the mirror"
+        ],
+        [
+          "TURN",
+          "Marcus locking eyes with camera through the windshield"
+        ],
+        [
+          "CARD",
+          "▮ THE JOYRIDE"
+        ],
+        [
+          "OUT",
+          "peel out — police lights swallow the frame"
+        ]
+      ],
+      "music": {
+        "station": "Street Kings (cyan)",
+        "bed": "G-funk bounce on the block",
+        "duck": "duck for Marcus's turn; helicopter + siren swell",
+        "slam": "a high-BPM chase cut slams as the game opens — wanted-level SFX climb",
+        "cuts": "West-Coast chase energy; a fast banger for the pursuit",
+        "tip": "Ride the wanted-level SFX up with the app's stars. First big floor moment of the night."
+      }
     },
     {
       "n": 4,
-      "codename": "THE FENCE",
-      "act": "Act I — Assemble the Crew",
-      "job": "Meeting the money launderer. Cleaning the first take.",
-      "endsOn": "The Fence demands a bigger cut — or he talks.",
-      "transmission": "There’s a vault at the end of that road. Sit with that for a second.\nNow the boring truth: money you can’t spend isn’t money, it’s evidence. So tonight we meet the man who makes it clean.\nHe’s not crew and he’s not a friend. He’s a price — and this room is going to help me pay it.\nFair warning. Men like him always come back wanting a bigger number, and they always say the same thing when they don’t get it.\nDecks are hot. Let’s play."
+      "tag": "SCENE 3",
+      "title": "Crossfire",
+      "owner": "rico",
+      "station": "pink",
+      "color": "#ff2d9b",
+      "energy": "High, hot",
+      "dur": "~40s",
+      "satire": "Scarface third act",
+      "game": 3,
+      "vo": "The cartel thinks power is how loud you can be. Nobody ever told Rico that the loudest room in this city is the one you're standing in.",
+      "dialogue": [
+        {
+          "who": "RICO",
+          "line": "They send targets. To my house. To Rico Delgado's house."
+        },
+        {
+          "who": "RICO (to the tiger)",
+          "line": "You believe this, Sugar? After everything I do for this city?"
+        },
+        {
+          "action": "A stray neon tracer round streaks past his cheek. He doesn't blink — quietly, deeply betrayed."
+        },
+        {
+          "who": "RICO",
+          "line": "…Say hello to my little friend."
+        }
+      ],
+      "turn": "You think you can survive in MY world? EH?\nThe whole city's shootin' at you. Phone up — three lives, that's all. Drag, weave, don't get hit.\nLast one standin' in the crossfire owns the night. Say goodnight to the bad guy!",
+      "gameCard": "CROSSFIRE — Three lives. Drag and weave. Last one standing owns the night.",
+      "assembly": [
+        [
+          "OPEN",
+          "mirrored pink mansion, tiger on the couch"
+        ],
+        [
+          "BUILD",
+          "Rico calm inside a storm of incoming tracer fire"
+        ],
+        [
+          "TURN",
+          "Rico leaning into the lens, manic joy, tracers streaking past"
+        ],
+        [
+          "CARD",
+          "▮ CROSSFIRE"
+        ],
+        [
+          "OUT",
+          "mirrors shatter into pink haze"
+        ]
+      ],
+      "music": {
+        "station": "Los Halcóns (pink)",
+        "bed": "Scarface synth swagger in the mansion",
+        "duck": "duck for Rico's turn; tracer-fire SFX zip past",
+        "slam": "peak-80s Miami heat slams into the bullet-dodge game",
+        "cuts": "Scarface montage synth; the hottest cut in the crate",
+        "tip": "Sweatiest station of the night — push the room. Keep the gunfire SFX rhythmic, on-beat."
+      }
     },
     {
       "n": 5,
-      "codename": "THE ARMORER",
-      "act": "Act I — Assemble the Crew",
-      "job": "Gearing up. The crew gets the hardware for what’s coming.",
-      "endsOn": "The hardware came from a rival crew. They want it back.",
-      "transmission": "He asked for more. He’s going to get an answer he doesn’t like. That’s tomorrow’s problem.\nTonight we gear up. Everything this crew needs for the big one comes through that door in a case.\nHold it, get comfortable with it, make it boring — because the night we actually use it, there’s no time left to learn.\nOne thing, though. Hardware this good never comes clean. Somewhere in this city, somebody is about to notice theirs is missing.\nDecks are hot. Let’s play."
+      "tag": "SCENE 4",
+      "title": "The Drop-Off",
+      "owner": "don",
+      "station": "gold",
+      "color": "#f5c542",
+      "energy": "Mid, sly groove",
+      "dur": "~40s",
+      "satire": "Every kitchen-table mob scene ever shot",
+      "game": 4,
+      "vo": "The old man thinks he's moving a fortune across town. Truth is he's moving cannoli and pride — and both of those matter more to him than the money ever did.",
+      "dialogue": [
+        {
+          "who": "DON",
+          "line": "Vincent. You take-a the product. You don't look at the product. You don't talk about the product. You move it. You make the drop."
+        },
+        {
+          "who": "VINNIE",
+          "line": "Pop… what's the drop?"
+        },
+        {
+          "action": "The Don eats a cannoli. A long, patient beat."
+        },
+        {
+          "who": "DON",
+          "line": "…Respect. And also the drop."
+        }
+      ],
+      "turn": "Somebody's gotta move the product tonight — and tonight that's all of you.\nPhone out. Hop the traffic, make the drop, get back, go again, fast as you can without gettin' clipped. Every package counts. When the music stops, we count 'em.\n…Move it like it was never born.",
+      "gameCard": "THE DROP-OFF — Hop the traffic, make the drop, go again. Every package counts.",
+      "assembly": [
+        [
+          "OPEN",
+          "Mama Corvetti's back room, warm gold, checkered cloth"
+        ],
+        [
+          "BUILD",
+          "the Don whispering across the table at his sweating son"
+        ],
+        [
+          "TURN",
+          "the Don turning slowly to camera, kissing his fingertips"
+        ],
+        [
+          "CARD",
+          "▮ THE DROP-OFF"
+        ],
+        [
+          "OUT",
+          "a phone screen lighting up with a drop ping"
+        ]
+      ],
+      "music": {
+        "station": "Corvettis (gold)",
+        "bed": "warm Rat-Pack swing in the back room",
+        "duck": "duck for the Don's turn; a phone drop-ping SFX",
+        "slam": "up-tempo swing / mambo slams for the delivery game",
+        "cuts": "big-band swing bounce; a classy mambo for the drop",
+        "tip": "A palate-cleanser groove between the two hot stations. Keep it classy."
+      }
     },
     {
       "n": 6,
-      "codename": "THE HACKER",
-      "act": "Act I — Assemble the Crew",
-      "job": "Recruiting the tech. Cracking the target’s security.",
-      "endsOn": "The security system belongs to the city’s biggest boss.",
-      "transmission": "A rival crew came asking about our hardware tonight. I told them to get in line.\nMuscle was the easy part. What I need now is a brain — somebody who can talk to a building.\nEvery door on this job is electric, and electric doesn’t care how tough you are. Find me the one in here who can make a system say yes.\nAnd when we crack it open, we’ll see whose name is on it. You’re not going to like whose name is on it.\nDecks are hot. Let’s play."
+      "tag": "SCENE 5",
+      "title": "The Stakeout",
+      "owner": "preston",
+      "station": "violet",
+      "color": "#a06bff",
+      "energy": "Mid, sleek-tense",
+      "dur": "~40s",
+      "satire": "Surveillance thriller, rewritten as a product launch",
+      "game": 5,
+      "vo": "Everybody's huntin' the rat. Nobody ever checks the man watching all the cameras.",
+      "dialogue": [
+        {
+          "who": "PRESTON",
+          "line": "Kayleigh. Someone in this city is leaking. I want a full loyalty audit. Every crew. Cross-reference it, gamify it — can we make the rat a subscription?"
+        },
+        {
+          "who": "KAYLEIGH",
+          "line": "The rat is you, Preston. You post everything."
+        },
+        {
+          "action": "Wounded. A beat. Recovery."
+        },
+        {
+          "who": "PRESTON",
+          "line": "…That's engagement."
+        }
+      ],
+      "turn": "Statistically, someone in your feed is a wire right now.\nPhone up — you're on the cameras. Red faces are perps: tap 'em, fast. Blue ones are guests — touch a guest and YOU'RE the leak.\nClean the block before the score. Trust no one. Especially the person you came with.",
+      "gameCard": "THE STAKEOUT — Tap the red faces fast. Touch a guest and you're the leak.",
+      "assembly": [
+        [
+          "OPEN",
+          "the Firm tower, a wall of glowing monitors"
+        ],
+        [
+          "BUILD",
+          "Preston running his loyalty audit; Kayleigh ending him in one line"
+        ],
+        [
+          "TURN",
+          "Preston leaning too close into a webcam, over-lit"
+        ],
+        [
+          "CARD",
+          "▮ THE STAKEOUT"
+        ],
+        [
+          "OUT",
+          "a red target box snaps onto a face"
+        ]
+      ],
+      "music": {
+        "station": "The Firm (violet)",
+        "bed": "cold Firm synth / surveillance pulse",
+        "duck": "duck for Preston's turn; a synthetic ding on the flagged face",
+        "slam": "a paranoid, ticking club cut for the tap-the-rat game",
+        "cuts": "glossy 80s synth-pop; a tense synth pulse",
+        "tip": "Cooler on purpose — you're resetting before Act Two heats up."
+      }
     },
     {
       "n": 7,
-      "codename": "THE INSIDE MAN",
-      "act": "Act I — Assemble the Crew",
-      "job": "Planting someone inside the target. Trust nobody.",
-      "endsOn": "The inside man goes dark. Flipped — or dead?",
-      "transmission": "The biggest boss in this city owns the doors we’re walking through. Good. Means the take is real.\nYou can’t case a place like that from the street. So tonight we put one of our own on the inside.\nThat’s the hardest thing I will ever ask anybody in this crew to do. Whoever takes it walks in alone, smiles at people who’d bury them, and waits for my call.\nIn there, trust nobody. In here, trust the crew. And trust me.\nDecks are hot. Let’s play."
+      "tag": "SCENE 6",
+      "title": "Smash & Grab",
+      "owner": "don",
+      "station": "gold+pink",
+      "color": "#ff7ac0",
+      "energy": "Rising, chaotic-fun",
+      "dur": "~40s",
+      "satire": "The uneasy-alliance heist scene",
+      "game": 6,
+      "vo": "Two crews, one vault, and not one ounce of trust. My favourite kind of partnership.",
+      "dialogue": [
+        {
+          "who": "RICO",
+          "line": "We split it. Fifty-fifty. Like brothers."
+        },
+        {
+          "who": "DON",
+          "line": "Of course. Like brothers."
+        },
+        {
+          "who": "DON (aside, to Vinnie)",
+          "line": "Cain and Abel were brothers. You remember how that ended."
+        },
+        {
+          "action": "Behind them, unnoticed, Sugar lifts a gold money-bag off the table and pads out of frame with it."
+        }
+      ],
+      "turn": "DON: The vault's open. My crew and his crew—\nRICO: —and every one of YOU—\nDON: —smash every window, grab every dollar before the buzzer.\nRICO: Phone up. Bounce the ball, break the glass, don't leave a dollar, mang.\nBOTH: …Don't leave a dollar.",
+      "gameCard": "SMASH & GRAB — Bounce the ball, break the glass. Don't leave a dollar.",
+      "assembly": [
+        [
+          "OPEN",
+          "a neutral warehouse, half gold and half pink"
+        ],
+        [
+          "BUILD",
+          "the handshake neither man lets go of; the tiger robbing them both"
+        ],
+        [
+          "TURN",
+          "both bosses to camera, trading the line"
+        ],
+        [
+          "CARD",
+          "▮ SMASH & GRAB"
+        ],
+        [
+          "OUT",
+          "a wrecking ball through a neon storefront"
+        ]
+      ],
+      "music": {
+        "station": "Gold + Pink (split)",
+        "bed": "gold on one side of the room, pink on the other — blend them",
+        "duck": "duck for both bosses; glass-smash SFX",
+        "slam": "a swing × Miami-synth mash slams for the grab",
+        "cuts": "a gold×pink mashup moment; big brassy heist energy",
+        "tip": "First alliance scene — literally blend two stations. The crowd feels the turf mixing."
+      },
+      "note": "The only turn in the film with two owners. Shoot it on a day both leads are booked."
     },
     {
       "n": 8,
-      "codename": "THE CREW COMPLETE",
-      "act": "Act I — Assemble the Crew",
-      "job": "The full team assembles. Last night of Act I.",
-      "endsOn": "The Handler names the target: The Diamond Casino.",
-      "transmission": "Our inside man went quiet three days ago. No call, no signal, nothing.\nI’m not going to stand up here and tell you he’s fine. I’m telling you we go anyway.\nLook around this room. Every seat filled, every one of you earned the chair you’re in — this is the crew I ride with all the way.\nAfter tonight there are no more small scores. Only the big one. And it has a name: the Diamond Casino.\nDecks are hot. Let’s play."
+      "tag": "SCENE 7",
+      "title": "The Device",
+      "owner": "preston",
+      "station": "violet",
+      "color": "#a06bff",
+      "energy": "Tense, ticking",
+      "dur": "~40s",
+      "satire": "Founder keynote as a bomb-defusal scene",
+      "game": 7,
+      "vo": "The suit spent a fortune on a vault a nine-year-old could crawl under. Watch.",
+      "dialogue": [
+        {
+          "who": "PRESTON",
+          "line": "I've reinvented theft. No masks. No guns. Just a proprietary infiltration solution. We call it — Breach. Private beta. Watch the founder demo."
+        },
+        {
+          "action": "He fumbles the device. It shrieks. The room flips emergency red. Kayleigh, on the far side, is already holding a defused one, bored."
+        },
+        {
+          "who": "PRESTON",
+          "line": "…That was a soft launch."
+        }
+      ],
+      "turn": "You. You think you can crack it?\nPhone up. Cut the wires in the right order, dial the code, then hold your hand DEAD steady while it counts down.\nOne twitch and the whole thing blows. Take your time. Don't. Drop it.",
+      "gameCard": "THE DEVICE — Cut the wires, dial the code, hold dead steady. One twitch and it blows.",
+      "assembly": [
+        [
+          "OPEN",
+          "a violet vault workroom, a bench, a glowing wired device"
+        ],
+        [
+          "BUILD",
+          "the founder demo going wrong; Kayleigh already finished"
+        ],
+        [
+          "TURN",
+          "Preston craning toward the lens holding the shrieking device"
+        ],
+        [
+          "CARD",
+          "▮ THE DEVICE"
+        ],
+        [
+          "OUT",
+          "the alarm cuts to dead silence"
+        ]
+      ],
+      "music": {
+        "station": "The Firm (violet)",
+        "bed": "sparse Firm techno with a literal ticking clock in the groove",
+        "duck": "duck for Preston's turn; countdown beeps + alarm shriek",
+        "slam": "a build-to-drop that pays off when the device defuses",
+        "cuts": "dark techno with a countdown motif; a big drum fill on the reveal",
+        "tip": "Use silence. A held breath before the alarm is what sells the defuse."
+      }
     },
     {
       "n": 9,
-      "codename": "THE CASING",
-      "act": "Act II — Case the Job",
-      "job": "Scouting the target. Memorizing the layout.",
-      "endsOn": "Cameras catch one of the crew. The clock starts.",
-      "transmission": "The Diamond Casino. Say it once tonight, then never out loud again.\nWe’re going to go look at it. Not touch it — look at it. Every camera, every exit, every guard who checks his watch too often.\nI want that building living in your head so well you could walk it blind. That’s the whole job: see everything, take nothing.\nCareful, though. A room like that looks back.\nDecks are hot — let’s run it."
+      "tag": "SCENE 8",
+      "title": "The Blueprint",
+      "owner": "rico",
+      "station": "violet+pink",
+      "color": "#c07ad0",
+      "energy": "Mid, cerebral",
+      "dur": "~40s",
+      "satire": "The mission-briefing scene, derailed",
+      "game": 8,
+      "vo": "They think if they memorize the vault, they own it. Nobody in this city ever owned anything by remembering it.",
+      "dialogue": [
+        {
+          "who": "PRESTON",
+          "line": "Memorize the layout. You get one look. Photographic memory is a skill, Rico. I did a course. Two courses."
+        },
+        {
+          "who": "RICO",
+          "line": "I don't need the paper, mang. I remember every face that ever crossed me."
+        },
+        {
+          "action": "A beat. The blueprint is gone."
+        },
+        {
+          "who": "RICO",
+          "line": "…What was the first icon?"
+        },
+        {
+          "who": "PRESTON (smug)",
+          "line": "The falcon."
+        },
+        {
+          "who": "RICO",
+          "line": "…It's always the falcon."
+        }
+      ],
+      "turn": "Ten seconds. Phone up.\nTwo blueprints comin' — burn every icon into your head, then they're gone and you call 'em back. Miss one and the whole job's blown.\n…It's always the falcon. Eyes up. Ten… nine…",
+      "gameCard": "THE BLUEPRINT — Ten seconds, two blueprints. Burn the icons in, then call them back.",
+      "assembly": [
+        [
+          "OPEN",
+          "a dark planning room, blueprints projected on frosted glass"
+        ],
+        [
+          "BUILD",
+          "Preston's two courses vs. Rico's memory"
+        ],
+        [
+          "TURN",
+          "Rico to camera, tapping the falcon icon"
+        ],
+        [
+          "CARD",
+          "▮ THE BLUEPRINT"
+        ],
+        [
+          "OUT",
+          "the projection blinks out"
+        ]
+      ],
+      "music": {
+        "station": "Firm + Pink (split)",
+        "bed": "a hypnotic memorize-this loop (violet) with a pink edge",
+        "duck": "duck for Rico's turn; a ten-second ticking motif",
+        "slam": "the loop tightens for the memory game, then releases",
+        "cuts": "a minimal looping “study” groove; sample the falcon sting",
+        "tip": "Keep it loopy and hypnotic — the music mirrors “memorize.”"
+      }
     },
     {
       "n": 10,
-      "codename": "THE BLUEPRINT",
-      "act": "Act II — Case the Job",
-      "job": "The plan comes together. Roles assigned.",
-      "endsOn": "There are two ways in. The crew splits on which.",
-      "transmission": "A camera got one of us last night. So the clock we didn’t have yesterday is running now.\nWhich means tonight it stops being a dream and becomes a plan. Roles, positions, timings — everybody walks out of here knowing exactly what they are.\nNo passengers on this one. If you don’t know your job by last call, you’re not on it.\nThere are two ways into that building. I know which one I like. Tonight I want to hear which one you like.\nDecks are hot — let’s run it."
+      "tag": "SCENE 9",
+      "title": "Chop Shop",
+      "owner": "marcus",
+      "station": "cyan",
+      "color": "#00e5ff",
+      "energy": "Groovy, cool",
+      "dur": "~40s",
+      "satire": "Lowrider / chop-shop montage",
+      "game": 9,
+      "vo": "Half the cars in this city have been stolen twice. The other half are about to be.",
+      "dialogue": [
+        {
+          "who": "LIL' PROBLEM",
+          "line": "Yo — what if I boost the getaway car? What if it's ME? What if this is my origin story, Big Deal?"
+        },
+        {
+          "who": "MARCUS",
+          "line": "It's a Honda, Problem."
+        },
+        {
+          "who": "LIL' PROBLEM",
+          "line": "…A legendary Honda."
+        }
+      ],
+      "turn": "By now you're all drivin' for me. Phone up.\nGrab every stolen ride you can and pull it into your convoy — just don't cross your own tail, or it's over.\nLongest convoy rides with us tonight. Everybody else — you drove a Honda. It's okay.",
+      "gameCard": "CHOP SHOP — Build the longest convoy. Cross your own tail and it's over.",
+      "assembly": [
+        [
+          "OPEN",
+          "a line of chrome rides on a cyan-lit block"
+        ],
+        [
+          "BUILD",
+          "Problem's origin story; the Honda"
+        ],
+        [
+          "TURN",
+          "Marcus pushing off a lowrider and stepping to camera"
+        ],
+        [
+          "CARD",
+          "▮ CHOP SHOP"
+        ],
+        [
+          "OUT",
+          "a convoy pulls out into the neon night"
+        ]
+      ],
+      "music": {
+        "station": "Street Kings (cyan)",
+        "bed": "lowrider oldies / Chicano soul, hydraulics bounce",
+        "duck": "duck for Marcus's turn; engine revs",
+        "slam": "a bouncy G-funk cut for the convoy game",
+        "cuts": "lowrider oldies; talkbox funk; the coolest groove you own",
+        "tip": "Coolest groove of the night — let the room ride the bounce."
+      }
     },
     {
       "n": 11,
-      "codename": "THE DRY RUN",
-      "act": "Act II — Case the Job",
-      "job": "Rehearsing the job. Everything that can go wrong, does.",
-      "endsOn": "A rehearsal goes loud. Cops are now watching.",
-      "transmission": "Half this room wants the front door. Half wants the roof. Tonight the job decides for us.\nWe run the whole thing. Start to finish, full speed, no shortcuts — and I want it to go wrong in here, where going wrong is free.\nEvery mistake you make tonight is one you don’t make in that vault. So make them early and make them loud.\nJust understand what loud does. It carries. And this city has very good ears.\nDecks are hot — let’s run it."
+      "tag": "SCENE 10",
+      "title": "The Getaway",
+      "owner": "don",
+      "station": "gold vs pink",
+      "color": "#ff5a6e",
+      "energy": "Rising, face-off",
+      "dur": "~40s",
+      "satire": "The rain-pier stand-off / drag race",
+      "game": 10,
+      "vo": "Two crews, one light. They'll jump the gun on each other before either one thinks to ask why they're racing at all.",
+      "dialogue": [
+        {
+          "who": "RICO",
+          "line": "This is MY city, old man!"
+        },
+        {
+          "who": "DON",
+          "line": "It's-a nobody's city, boy. We just rent it."
+        },
+        {
+          "action": "He looks up. A single lit penthouse window, high above the pier. One hand flat against the glass — the myth, or a trick of the rain."
+        },
+        {
+          "who": "DON",
+          "line": "…From him."
+        }
+      ],
+      "turn": "DON: You want turf in this city? You gotta be FAST for it.\nRICO: Two teams. Five lights. Phone up — the second they all go green, punch it.\nJump early, you're busted; the other one takes the block. Thirty seconds. Don't blink.",
+      "gameCard": "THE GETAWAY — Five lights. Go on green. Jump early and you're busted.",
+      "assembly": [
+        [
+          "OPEN",
+          "a rain-soaked pier, a drag-strip staging line, five lights above"
+        ],
+        [
+          "BUILD",
+          "the two bosses squaring off, gold-lit against pink-lit"
+        ],
+        [
+          "TURN",
+          "both to camera, trading the rules"
+        ],
+        [
+          "CARD",
+          "▮ THE GETAWAY"
+        ],
+        [
+          "OUT",
+          "green light — everything moves at once"
+        ]
+      ],
+      "music": {
+        "station": "Gold vs Pink (duel)",
+        "bed": "gold and pink trading bars — a musical stand-off on the pier",
+        "duck": "duck for both bosses; the five-light beeps",
+        "slam": "a drag-race build; the green light is the drop",
+        "cuts": "a tension build that resolves on the green; a two-station duel",
+        "tip": "Let the two stations fight — cut between gold and pink on the bar."
+      }
     },
     {
       "n": 12,
-      "codename": "THE HEAT",
-      "act": "Act II — Case the Job",
-      "job": "Police pressure builds. The crew lays low — but parties harder.",
-      "endsOn": "A detective is one step behind. He has a name: yours.",
-      "transmission": "We got heard. There are cars on this block that weren’t on it last week, and nobody in them is here to party.\nSo let me show you how a real crew lays low: we don’t hide. We get louder. Nobody watches the room that’s obviously having a good time.\nAct like you’ve got nothing to hide and you’ll have nothing to hide. That’s the job tonight, top to bottom.\nOne of them is closer than the others, though. He stopped chasing the crew — he’s chasing a name now. The name he’s got is yours.\nDecks are hot — let’s run it."
+      "tag": "SCENE 11",
+      "title": "Throw Up",
+      "owner": "marcus",
+      "station": "cyan",
+      "color": "#00e5ff",
+      "energy": "Mid, stealthy-cool",
+      "dur": "~40s",
+      "satire": "The 4 a.m. graffiti scene",
+      "game": 11,
+      "vo": "Every crew leaves a mark. The whole trick is not gettin' caught leavin' it.",
+      "dialogue": [
+        {
+          "who": "LIL' PROBLEM",
+          "line": "Lookout's asleep. Light's on a timer. We move when you're ready, Big Deal. …Also I ate the lookout's nachos."
+        },
+        {
+          "who": "MARCUS",
+          "line": "We never had a lookout, Problem."
+        },
+        {
+          "who": "LIL' PROBLEM",
+          "line": "…RIP the nachos, then."
+        }
+      ],
+      "turn": "Before we hit anything, you gotta tag the wall without the light catchin' you.\nPhone up. Spray while it's dark, lift off the second the searchlight sweeps — get spotted and you're done.\nCleanest piece rides with us. Sixty seconds. …We move when you're ready.",
+      "gameCard": "THROW UP — Spray in the dark, lift off on the searchlight. Cleanest piece wins.",
+      "assembly": [
+        [
+          "OPEN",
+          "a dim neon alley at 4 a.m."
+        ],
+        [
+          "BUILD",
+          "the nachos; the lookout who never existed"
+        ],
+        [
+          "TURN",
+          "Marcus stepping back from a glowing piece, handing the job over"
+        ],
+        [
+          "CARD",
+          "▮ THROW UP"
+        ],
+        [
+          "OUT",
+          "a searchlight sweeps the wall clean"
+        ]
+      ],
+      "music": {
+        "station": "Street Kings (cyan)",
+        "bed": "a low night-time boom-bap under the alley",
+        "duck": "duck for Marcus's turn; a searchlight sweep whoosh",
+        "slam": "a stealthy head-nod cut for the graffiti game",
+        "cuts": "90s boom-bap; a 4 a.m. groove",
+        "tip": "Quieter, sneakier — this is the calm before Act Three explodes."
+      }
     },
     {
       "n": 13,
-      "codename": "THE RAT",
-      "act": "Act II — Case the Job",
-      "job": "Someone’s talking. The crew hunts the informant.",
-      "endsOn": "The rat is revealed — someone the crew trusted.",
-      "transmission": "Cops don’t pull a name out of thin air. Somebody in this crew handed it to them.\nI told you on night two that one of us was working two sides. Tonight we find out who.\nNobody leaves, nobody’s above it, and I don’t want a mob — I want the truth. This room happens to be very good at getting the truth.\nBrace up for it. It’s going to be somebody we let all the way in.\nDecks are hot — let’s run it."
+      "tag": "SCENE 12",
+      "title": "The Combination",
+      "owner": "handler",
+      "station": "all",
+      "color": "#ffd36b",
+      "energy": "PEAK",
+      "dur": "~50s",
+      "satire": "The gala / the vault / everything at once",
+      "game": 12,
+      "vo": "Four gangs, one vault, one code. They've spent all night trying to out-shout each other, and not one of them thought to ask the room for help.",
+      "dialogue": [
+        {
+          "who": "PRESIDENT",
+          "line": "Tonight this city stands UNITED against crime—"
+        },
+        {
+          "action": "Four colour envelopes — gold, pink, cyan, violet — slide into his jacket at once."
+        },
+        {
+          "who": "PRESIDENT",
+          "line": "—and I have never, EVER taken a dollar from any of these fine… patrons. Four more years."
+        },
+        {
+          "action": "The four gangs file in behind him. McGraw is at the buffet, oblivious, a shrimp halfway to his mouth."
+        }
+      ],
+      "turn": "You've been circling each other all night. Pick your colour. Pick your corner.\nThere's one vault in the middle of this city and one code opens it. Phone up. Crack the four-colour combination before the other three — black dot, right colour right spot; white dot, right colour wrong spot.\nWhen this glass hits the floor— (shatter) —CRACK IT.",
+      "gameCard": "THE COMBINATION — Four colours, one code. Black dot: right colour, right spot. White dot: right colour, wrong spot.",
+      "assembly": [
+        [
+          "OPEN",
+          "a four-colour ballroom, a giant four-colour vault lock glowing at the centre"
+        ],
+        [
+          "BUILD",
+          "the President's speech; the envelopes; four gangs filing in"
+        ],
+        [
+          "TURN",
+          "TJ to camera — a hand tips a champagne glass off the podium, glass falls in slow motion"
+        ],
+        [
+          "CARD",
+          "▮ THE COMBINATION"
+        ],
+        [
+          "OUT",
+          "the glass shatters → the biggest drop of the night"
+        ]
+      ],
+      "music": {
+        "station": "ALL FOUR → Handler",
+        "bed": "President broadcast pomp → all four stations bleed into one four-colour wall",
+        "duck": "duck for the Handler PEAK transmission; the motif goes full; the glass falls in slow-mo",
+        "slam": "the glass shatters → the biggest drop of the night for the vault-crack game",
+        "cuts": "your peak-energy anthem; the Handler motif at full power",
+        "tip": "The apex. Everything you've built pays off here — max lights, max sound. Never blow this peak earlier."
+      },
+      "note": "The app's peak game and your peak track land together. Protect this beat."
     },
     {
       "n": 14,
-      "codename": "THE FAVOR",
-      "act": "Act II — Case the Job",
-      "job": "Calling in a debt. The crew needs a powerful ally.",
-      "endsOn": "The ally agrees — now the crew owes the worst people in the city.",
-      "transmission": "We found our rat. I’m not saying the name from up here. They know, and so do you.\nThat cost us a body and it cost us time, so tonight I go do something I hate. I go ask for help.\nI’ve got exactly one favor left in this city and I’ve been saving it for a night this bad. I’m burning it on you.\nWhen it gets granted we’ll owe the kind of people you never want to owe. Worth it.\nDecks are hot — let’s run it."
-    },
-    {
-      "n": 15,
-      "codename": "THE POINT OF NO RETURN",
-      "act": "Act II — Case the Job",
-      "job": "Last chance to walk away. Nobody does.",
-      "endsOn": "The Handler sets the date: tomorrow night, the score goes down.",
-      "transmission": "We’re in debt to the worst people in this city, and there’s only one way left to pay them. Through that vault.\nWhich makes tonight the last honest night any of us get. So here’s one clean way out: door’s right there. No questions, no hard feelings, no story about you afterward.\nI’ll wait. I’ve done this long enough to know how this goes.\nNobody moved. Then hear the date, because it isn’t “someday” anymore. It’s tomorrow night.\nDecks are hot — let’s run it."
-    },
-    {
-      "n": 16,
-      "codename": "THE EVE",
-      "act": "Act II — Case the Job",
-      "job": "The night before the big one. Nerves, loyalty, last words.",
-      "endsOn": "Lights out. Next time the doors open — it’s go time.",
-      "transmission": "Tomorrow. That’s the whole briefing. That’s the only word that matters.\nSo tonight isn’t about the job. Tonight is about the people who are going to do it with you.\nFind whoever you’d want standing next to you in that vault and tell them so. Say the thing you’d regret not saying. Then we get loud and forget the clock for a few hours.\nWhen the lights go down tonight, that’s the last easy breath we take. Next time those doors open, it’s go time.\nDecks are hot. Let’s make tonight count."
-    },
-    {
-      "n": 17,
-      "codename": "THE SCORE",
-      "act": "Act III — The Score",
-      "job": "THE BIG ONE. The vault. The whole night is the heist.",
-      "endsOn": "The take is bigger than anyone imagined. So is the heat.",
-      "transmission": "This is it. No more rehearsals. No more talking.\nEverything — every night, every favor, every body — it all led here. The vault’s open. The crew’s in position. The clock is running.\nYou know your jobs. You know the risks. There’s no walking out of this room the same way you walked in.\nTonight we take the whole thing. Tonight we become legends or we go down trying.\nDecks are hot. Crew — let’s go to work."
-    },
-    {
-      "n": 18,
-      "codename": "THE GETAWAY",
-      "act": "Act III — The Score",
-      "job": "Five stars. Choppers up. The whole city is chasing the crew.",
-      "endsOn": "The crew scatters. The money’s split. Trust is gone.",
-      "transmission": "We got it. All of it. More than the plan said was in there.\nAnd now every siren in this city is pointed at this room. Five stars. Choppers up. A badge on every bridge.\nSo we do the only thing left to do — we move, and we don’t stop moving. Fast, loud, together. You slow down tonight, you get taken.\nGet through this one and the money is real. Get through this one and we scatter.\nDecks are hot — let’s run it."
-    },
-    {
-      "n": 19,
-      "codename": "THE SPLIT",
-      "act": "Act III — The Score",
-      "job": "Dividing the take. Greed sets in. Old grudges surface.",
-      "endsOn": "Someone took more than their share. Blood is owed.",
-      "transmission": "We made it out. Barely, and not all of us in one piece.\nNow the part nobody plans for. The money’s on the table and it has to be cut.\nI’ve watched more crews die over a split than over a score, so we do this one in the open, in this room, in front of each other. No side deals, no quiet envelopes.\nCount it twice. Because if a number comes up short tonight, somebody answers for it in blood.\nDecks are hot — let’s run it."
-    },
-    {
-      "n": 20,
-      "codename": "THE DOUBLE CROSS",
-      "act": "Act III — The Score",
-      "job": "Betrayal. The crew turns on itself.",
-      "endsOn": "A traitor tips off the cops — but the Handler won’t leave anyone behind.",
-      "transmission": "The count came up short, and now this crew is looking at itself sideways.\nIt gets worse. Whoever took it made a phone call. The cops know where we sleep.\nSo let me say the thing I said on night one, because nothing about it has changed: you want to know who to trust in this room, it’s me.\nGet loud, stay tight, and hold each other down. Nobody in my crew gets left behind tonight — not even the one who did this.\nDecks are hot — let’s run it."
-    },
-    {
-      "n": 21,
-      "codename": "THE TRUTH",
-      "act": "Act III — The Score",
-      "job": "The Handler levels with the crew: this was never about the money.",
-      "endsOn": "The truth’s out — and the crew’s tighter than it’s ever been.",
-      "transmission": "You want the truth? Fine. You’ve earned it.\nEvery night, every job, every favor — people kept asking me what the real score was. Here it is: it was never about the money.\nI’ve run rooms for twenty-five years. Different cities. Different crews. And I’ve been waiting a long time for one like this.\nThe score was you. Building something that doesn’t fall apart when the lights come up — that’s the only thing I ever cared about.\nSo before this all comes to a head — decks are hot. Let me give you a night you’ll never forget."
-    },
-    {
-      "n": 22,
-      "codename": "THE RECKONING",
-      "act": "Act III — The Score",
-      "job": "Scores get settled. The crew and the Handler go after the ones who came for them.",
-      "endsOn": "One last job remains. The biggest yet.",
-      "transmission": "I told you the truth last night and this room got tighter, not looser. That tells me everything I needed to know.\nSo now we settle up. The rival crew. The fence. The badge who wanted your name. Everybody who took a shot at this crew hears from us tonight.\nI’m not asking anyone to be brave. I’m asking you to be loud, and together, and completely unbothered — which has always been the scariest thing in this city.\nWhen the board’s clean, there’s still one job left on it. The biggest one yet.\nDecks are hot — let’s run it."
-    },
-    {
-      "n": 23,
-      "codename": "THE LAST JOB",
-      "act": "Act III — The Score",
-      "job": "One final score. Everything on the line.",
-      "endsOn": "The crew pulls it off — or goes down swinging. It ends tomorrow.",
-      "transmission": "One job left. Everything this crew has, on the table, one more time.\nNo favors left to call. No allies left to owe. Nobody coming to help. Just this room and whatever we built in it.\nI don’t need you perfect tonight. I need you all the way in — every ounce you’ve got, right now, nothing saved back. There’s nothing to save it for.\nWin or lose, this ends tomorrow. Let’s make sure nobody in this city ever forgets how we played it.\nDecks are hot — let’s run it."
-    },
-    {
-      "n": 24,
-      "codename": "THE LEGEND",
-      "act": "Act III — The Score",
-      "job": "The finale. The crew becomes myth. A celebration of everything.",
-      "endsOn": "The story closes. But legends never really end…",
-      "transmission": "Twenty-four nights. One crew. One impossible run.\nThey said it couldn’t be done. They said you’d turn on each other, get caught, get buried. Look around. You’re still standing.\nWhat we built here doesn’t end when the lights come up. It becomes a story. The kind people tell for years. The kind that turns into legend.\nYou are the syndicate now. Every one of you.\nDecks are hot — one last time. Let’s make it the loudest night this city has ever seen."
+      "tag": "FINALE",
+      "title": "The Empty Vault",
+      "owner": "handler",
+      "station": "all",
+      "color": "#e0e0ea",
+      "energy": "Release → warm",
+      "dur": "~90s",
+      "satire": "The heist-movie reveal, turned on the room",
+      "game": null,
+      "vo": "…You made it.\nBoats are in the Keys, the cash is loaded, and the cops lost everybody at the bridge.\nFour gangs spent this whole night tearing a city apart over a vault with eight figures in it.\nHere's the part none of 'em ever checked. That vault was empty. It's been empty the whole time. There was never eight figures in that room — there was never anything in that room.\nThe money was never the score.",
+      "dialogue": [
+        {
+          "action": "The vault door groans open in slow motion. An empty concrete chamber. One hard overhead light."
+        },
+        {
+          "who": "DON",
+          "line": "…Where's-a the money."
+        },
+        {
+          "who": "RICO",
+          "line": "…Where's the money."
+        },
+        {
+          "who": "MARCUS",
+          "line": "Man — where's the money?"
+        },
+        {
+          "who": "PRESTON (refreshing an app)",
+          "line": "The money is… pending."
+        },
+        {
+          "action": "On the floor, under the light: a single folded note. Two letters, handwritten. “— H.” Nobody in this film ever finds out who that was, because there was never anybody to find."
+        },
+        {
+          "who": "McGRAW (bursting in, gun up, cuffing the President by mistake)",
+          "line": "TWENTY YEARS! I finally caught the Handler!"
+        },
+        {
+          "who": "PRESIDENT (to a camera that appears from nowhere)",
+          "line": "This is a historic night for justice, and I personally led the—"
+        }
+      ],
+      "turn": "You want to know what the score actually was?\nYou. This. A room full of strangers who walked in separately and spent the whole night turning into a crew.\nFour gangs fought over that vault all night and walked out with nothing. You danced, you played, you got made — and you're walking out with a night nobody can ever take off you.\nThat's the only score in this city that ever pays out.\nThere's always another one. Same crew. Next night. Don't be late.\n…Welcome to After-Dark. You're made now.",
+      "gameCard": "No game — this plays over the closer. Release into the sing-along.",
+      "assembly": [
+        [
+          "OPEN",
+          "the vault door opening → the empty reveal"
+        ],
+        [
+          "BUILD",
+          "the four bosses' “where's the money” round; the note; McGraw cuffing the President"
+        ],
+        [
+          "TURN",
+          "TJ to camera — the toast, straight down the lens"
+        ],
+        [
+          "CARD",
+          "▮ YOU'RE MADE NOW"
+        ],
+        [
+          "OUT",
+          "a black yacht into neon water → the sing-along send-off"
+        ]
+      ],
+      "music": {
+        "station": "Handler → sing-along",
+        "bed": "the drop empties out — the vault reveal plays near-silent, just the motif and a note-drop sting",
+        "duck": "the Handler CLOSE transmission over the slowed motif; the reveal; the toast",
+        "slam": "release into a huge nostalgic SING-ALONG send-off — the whole room, one voice",
+        "cuts": "a universal cross-era sing-along everybody knows — the “you're made now” moment",
+        "tip": "End on nostalgia and unity. They danced, they played, they won the night. Send them out singing."
+      },
+      "note": "POST-CREDIT: McGraw, alone in the empty vault, finds a phone still logged into After-Dark under a handle matching no gang — the myth was just another player. He looks dead into the lens. Wanted Level ★★★★★★."
     }
   ],
-  "missions": [
+  "games": [
     {
       "n": 1,
-      "name": "THE LINEUP",
-      "category": "Stage Theatrical",
-      "gtaRef": "Police lineup / wanted poster",
-      "props": "Height marker backdrop, single spotlight, phone with vertical camera ready",
-      "howItRuns": "Pull 3–5 people on stage. Line them up like a mugshot. Read each person’s mock “rap sheet” on mic (“Suspect #1: charged with looking too good tonight”). Take the photo. Crowd cheers loudest for the Most Wanted.",
-      "win": "Loudest crowd reaction = Most Wanted. Winner gets a drink ticket.",
-      "time": "3–4 min",
-      "handlerVO": "Line ‘em up. Eyes forward. Don’t smile — you’re looking at a long sentence.",
-      "scene": {
-        "cue": "Music down to a low bed, not off. One spotlight on the height marker. You’re centre stage, mic in hand, clipboard or phone as the ‘file’.",
-        "fourthWall": "Quick honesty break. This is a bar. You came out for a drink and some music, and nobody in this building has stolen anything heavier than a traffic cone.\nAnd yet — for the next four minutes, every person in here has a record. I don’t make the rules. Actually, I do make the rules. That’s the entire point of me.",
-        "driver": {
-          "actI": "Every crew starts with a file. Before I put anybody on a job, I need to know what this city already has on you — so tonight we open the file and read it out loud.",
-          "actII": "There’s a detective building a photo book with our faces in it. If you’re going in it, I’d rather it be a good photo — and I’d rather we find out tonight who they can actually identify.",
-          "actIII": "The whole city’s got our description now. So let’s find out which one of you they’re really looking for — and which one of you they’d never suspect."
-        },
-        "rules": "Here’s how it works. Bodies against that wall — shoulder to shoulder, facing me, like you’ve done this before.\nI read each of you your charges. You do not laugh, you do not smile, you hold the face.\nThen this room decides which one of you is Most Wanted, and the loudest reaction takes it.",
-        "callUp": "I need five. Don’t make me pick — but I will pick.\nYou. You. The one already walking up. And whoever’s friends are pointing at them right now. That’s how it always happens. Come on.",
-        "underscore": [
-          "Suspect number three, chin up. This is the photo they’re going to use on the news.",
-          "Look at this lineup. Not one honest face in the row.",
-          "Somebody’s friend just yelled ‘that’s him.’ Noted. Recorded."
-        ],
-        "win": "There it is. That’s the loudest this room has been all night, and it was for this one right here.\nCongratulations — you are the most wanted person in this building. Enjoy the notoriety. It doesn’t last.",
-        "out": "Get them out of my lineup. File’s open, the crew’s on record, and now we know exactly who this city is looking for.\nMusic back up."
-      },
-      "variation": "MOST-WANTED RANKINGS — instead of one winner, the crowd ranks all 5 from “Most Wanted” to “Rookie.” Each rank gets a different mock charge."
+      "name": "THE INTERROGATION",
+      "scene": "SCENE 1",
+      "station": "law",
+      "launchedBy": "mcgraw",
+      "howItPlays": "Eight rapid-fire questions on every phone. Answer straight, answer quick. Hesitate or contradict yourself and the room sees it.",
+      "win": "Top score talks first.",
+      "time": "~3 min"
     },
     {
       "n": 2,
-      "name": "THE GETAWAY — BALLOON CHASE",
-      "category": "Room-Wide Chaos",
-      "gtaRef": "Five-star police chase",
-      "props": "20–30 red balloons (“getaway cars”), 20–30 blue balloons (“police”), tape boundaries on the floor",
-      "howItRuns": "Pull 5–6 people. Each gets ONE red balloon. The crowd gets the blue balloons. The crew has to keep their red balloon in the air for 60 seconds while the crowd bats blue balloons to knock theirs down. Last red balloon standing wins.",
-      "win": "Last crew member with their red balloon still in the air at the 60-second buzzer.",
-      "time": "3–4 min including cleanup",
-      "handlerVO": "Five stars. Choppers up. Keep your car in the air or you’re done.",
-      "scene": {
-        "cue": "Balloons pre-inflated and stashed behind the booth. Red ones out first, blue ones into the crowd on your cue. Tape boundary already down.",
-        "fourthWall": "Time out. What’s about to happen is six adults protecting balloons from a room full of other adults. I want you to know that I know.\nI’ve been doing this twenty-five years, and I’m telling you — this is the loudest three minutes of any night I run. So nobody be too cool for it.",
-        "driver": {
-          "actI": "Before I trust anybody with a getaway, I need to see how you move when something’s coming at you. Nobody’s chasing us yet. That’s what tonight is for.",
-          "actII": "There are cars on this block that weren’t here last week. This is the rehearsal — because when it’s real you get one shot at the road.",
-          "actIII": "This isn’t practice. Five stars, choppers up, a badge on every bridge. Show me you can get out."
-        },
-        "rules": "Red balloon is your car. Keep it in the air. That’s the whole job.\nEverybody else gets a blue one — you are the police, and you have exactly one purpose: put their car on the ground. Bat it, spike it, be a menace about it.\nSixty seconds. Last car still in the air walks.",
-        "callUp": "Six drivers. Hands up — real hands, up high.\nYou six, out in the middle, spread out. Everybody else: blue balloons are coming into the crowd, and I would like you to take this personally.",
-        "underscore": [
-          "One star. Two. Three — dispatch just put out your description.",
-          "Blue team, you’re embarrassing yourselves. That car has been up for thirty seconds.",
-          "Down goes a car. Pour one out. Keep it moving."
-        ],
-        "win": "One car still up. Everybody else is in the back of a van.\nThat’s your wheelman right there — the only one who made it out.",
-        "out": "Balloons on the floor, leave them, we’ll deal with it. Crew got out clean tonight and that’s all I needed to know.\nBack to the music."
-      },
-      "variation": "ESCALATION MODE — every 20 seconds you call up the wanted level and add more blue balloons. By 60s the room is chaos."
+      "name": "THE JOYRIDE",
+      "scene": "SCENE 2",
+      "station": "cyan",
+      "launchedBy": "marcus",
+      "howItPlays": "Your phone is the getaway car. Grab cash, keep it on the road, dodge cops, people and dogs. Every hit adds a wanted star.",
+      "win": "Furthest run before you rack up too many stars.",
+      "time": "~3 min",
+      "note": "Ride the wanted-level SFX with the app's star escalation — the heat is audible."
     },
     {
       "n": 3,
-      "name": "THE SHOOTOUT — NERF GALLERY",
-      "category": "Stage Theatrical",
-      "gtaRef": "Combat / shooting gallery missions",
-      "props": "2–3 Nerf guns (dart blasters), 5–6 cardboard target cutouts (silhouettes painted black &amp; pink), a folding table",
-      "howItRuns": "Pull 3 contestants. Each gets 10 darts. 30 seconds to knock down as many targets as possible. Crowd counts down. Highest score wins.",
-      "win": "Most targets knocked down in 30 seconds.",
-      "time": "3–4 min",
-      "handlerVO": "This is what we trained you for. Don’t miss.",
-      "scene": {
-        "cue": "Targets on the table, blasters loaded and laid out, darts counted to ten per shooter. Keep the firing line pointed away from the bar.",
-        "fourthWall": "Nobody’s getting hurt tonight. That’s foam, those are cardboard, and my insurance is very clear on the subject.\nBut I need you to react like it’s real — because a room that plays along is worth more to me than a room that’s honest.",
-        "driver": {
-          "actI": "Everybody in a crew says they can handle themselves. Tonight I find out who actually can, while it’s still free to find out.",
-          "actII": "The dry run happens in here, where mistakes cost nothing. Miss in this room and we laugh. Miss in that vault and we don’t.",
-          "actIII": "It went loud out there. So here’s what I need answered tonight: when it goes loud, whose hands stay steady?"
-        },
-        "rules": "Ten darts each. Thirty seconds. Every target you put down counts.\nYou do not pick darts up, you do not get a reload. Ten shots is what this crew could afford.\nMost targets down takes it.",
-        "callUp": "Three shooters. I want the ones who look too confident — you, you, and whoever just said ‘I got this’ loud enough for me to hear it.\nUp here.",
-        "underscore": [
-          "Twenty seconds, four darts left. The math is not on your side.",
-          "That’s the worst shot I’ve seen in twenty-five years. Do it again.",
-          "This room counts out loud or it doesn’t count at all."
-        ],
-        "win": "That’s the crew’s best shot right there.\nRemember this face — when it goes sideways, this is who I’m putting at the front.",
-        "out": "Darts stay where they are, we’ll get them. Crew can handle itself — that was the last thing I needed to know.\nMusic up."
-      },
-      "variation": "MOVING TARGETS — a staffer walks behind the table holding targets above their head (safely above shoulders), making them moving. Bigger laughs, more skill required."
+      "name": "CROSSFIRE",
+      "scene": "SCENE 3",
+      "station": "pink",
+      "launchedBy": "rico",
+      "howItPlays": "The whole city is shooting at you. Three lives, no more. Drag to weave through incoming fire.",
+      "win": "Last one standing in the crossfire.",
+      "time": "~3 min"
     },
     {
       "n": 4,
-      "name": "THE DEAD DROP — BRIEFCASE HOT POTATO",
-      "category": "Background Gameplay",
-      "gtaRef": "Drug deal / money handoff",
-      "props": "1 black briefcase ($15 on Amazon), filler weight inside, silly reward (candy, fake cash, stickers)",
-      "howItRuns": "Earlier in the night, hand the briefcase to someone in the crowd: “Keep it moving. Don’t open it. If you’re holding it when the music stops, you’re holding the evidence.” The briefcase circulates while you DJ. At mission time, cut the music abruptly. Whoever’s holding it comes to stage. They open it OR pick a silly punishment.",
-      "win": "Be holding it when the music stops. Or don’t. Either way the bit pays off.",
-      "time": "2 min on stage (background play happens during 30+ min of the set)",
-      "handlerVO": "Drop’s active. Don’t look at the briefcase. Don’t talk about the briefcase. Move it.",
-      "scene": {
-        "cue": "The handoff line goes out 30+ minutes before the payoff, quietly, to one person mid-set. The rest of this scene runs the moment you cut the music.",
-        "fourthWall": "Somewhere in this room, for the last half hour, a black briefcase has been quietly ruining somebody’s night.\nAnd every single one of you who touched it made the same face — the ‘am I actually in trouble’ face. That face is why I do this job.",
-        "driver": {
-          "actI": "A crew that can’t move product can’t move anything. That case went hand to hand all night and nobody dropped it — you passed a test you didn’t know you were taking.",
-          "actII": "Everything we need moves through hands like yours. There are eyes on this room, so the case never stops and never opens. Tonight we find out where it ended up.",
-          "actIII": "The take is still moving through this room. Whoever’s holding it right now is holding the evidence — and the music is about to stop."
-        },
-        "rules": "[Handoff, delivered early and quiet:] Take this. Don’t open it, don’t set it down, don’t ask what’s in it. Keep it moving and keep your mouth shut.\nOne thing, though — if you’re holding it when the music stops, you’re holding the evidence. And I will find you.",
-        "callUp": "Music’s off. Nobody move.\nWhoever has the case — and this room knows exactly who has the case — bring it to me. Take your time. Everybody’s watching.",
-        "underscore": [
-          "Don’t look at the briefcase. Don’t talk about the briefcase. Move the briefcase.",
-          "Somebody just handed that off like it was on fire. Coward. Respect.",
-          "That case has been in this room thirty minutes and nobody’s opened it. Disciplined crew."
-        ],
-        "win": "Two options. Open it — right here, in front of everybody — or take the punishment and let it stay a mystery.\nRoom’s going to help you decide.",
-        "out": "Case is closed. Whatever was in it, we never discussed it.\nEverybody back to what you were doing. Music."
-      },
-      "variation": "TIMED DROPS — cut the music 2–3 times across the night instead of once. Each “drop” gets a smaller bit; the final drop is the big stage moment."
+      "name": "THE DROP-OFF",
+      "scene": "SCENE 4",
+      "station": "gold",
+      "launchedBy": "don",
+      "howItPlays": "Hop the traffic, make the drop, get back, go again — as fast as you can without getting clipped. Every package counts.",
+      "win": "Most packages delivered when the music stops.",
+      "time": "~3 min"
     },
     {
       "n": 5,
-      "name": "THE INFORMANT HUNT — FIND THE RAT",
-      "category": "Background Gameplay",
-      "gtaRef": "Hunting the snitch / interrogation",
-      "props": "5 colored wristbands handed out at the door (4 the same color, 1 different)",
-      "howItRuns": "At doors, secretly hand 5 people wristbands — four matching, one odd. At mission time: “Crew check. If you got a wristband, to the stage.” On stage, the crowd has to spot which one is the rat (the odd-colored band). Once identified, the rat does a punishment moment. The four crew get small rewards.",
-      "win": "Crowd correctly identifies the rat by band color.",
-      "time": "3 min on stage",
-      "handlerVO": "Somebody in this crew’s wearing a wire. Find them before the score goes down.",
-      "scene": {
-        "cue": "Bands go out at the door, quietly, to five people — four matching, one odd. Note who has the odd one so you can call it if the room can’t.",
-        "fourthWall": "Let me admit something. Nobody in here is a rat. You’re all lovely. Half of you are here for somebody’s birthday.\nBut for the next three minutes this room is going to turn on one person over the colour of a bracelet, and you’re going to enjoy it more than you expect.",
-        "driver": {
-          "actI": "Somebody in this crew is already working two sides. I told you that on night two — I wasn’t guessing.",
-          "actII": "The cops got a name, and names come from people. One of the five standing up here handed it over.",
-          "actIII": "The count came up short and somebody made a phone call. Tonight we find out who’s been talking."
-        },
-        "rules": "Five of you got a band at the door tonight. Four of them match. One doesn’t.\nThe one that doesn’t match is the rat — and this room has to work out which. No confessions, no help from me.\nLook at the wrists. Listen to the room. Make the call.",
-        "callUp": "Crew check. If you got a band at the door, that’s you — to the stage.\nAll five. Yes, you too. Don’t play.",
-        "underscore": [
-          "Somebody in this crew is wearing a wire. Find them before the score goes down.",
-          "Look at the hands. A rat always covers the wrist.",
-          "This room is far too good at this. Genuinely concerning."
-        ],
-        "win": "There’s your rat. Caught by their own bracelet.\nThe four of you are clean, you’re crew, you get looked after. And you — you’ve got some explaining to do.",
-        "out": "Rat’s handled, crew’s clean again. For now.\nNobody in this room says a word about how easy that was. Music up."
-      },
-      "variation": "DOUBLE RAT — hand out 6 wristbands (4 matching, 2 odd). Crowd has to find BOTH rats. Higher difficulty, bigger payoff."
+      "name": "THE STAKEOUT",
+      "scene": "SCENE 5",
+      "station": "violet",
+      "launchedBy": "preston",
+      "howItPlays": "You're watching the cameras. Red faces are perps — tap them fast. Blue faces are guests: touch a guest and you become the leak.",
+      "win": "Cleanest block — most perps, no guests.",
+      "time": "~3 min"
     },
     {
       "n": 6,
-      "name": "THE BAGMAN — BEACH BALL VAULT FILL",
-      "category": "Room-Wide Chaos",
-      "gtaRef": "Looting the vault / stuffing the duffel",
-      "props": "4–5 beach balls (spray-painted gold = “money bags”), 2 large bins / laundry baskets / boxes",
-      "howItRuns": "Two teams of 3 pulled from the crowd. Beach balls are tossed into the crowd at the start. Teams have to retrieve as many “money bags” from the crowd and get them into THEIR team’s bin within 60 seconds. The crowd is the obstacle — they can throw them, hide them, bat them away.",
-      "win": "Most balls in your team’s bin at the 60-second buzzer.",
-      "time": "3–4 min",
-      "handlerVO": "Vault’s open. Grab everything you can. Don’t leave a dollar.",
-      "scene": {
-        "cue": "Beach balls into the crowd at the top of the scene, not before — they disappear fast. Bins set well apart so the two teams have to cross the room.",
-        "fourthWall": "I’d like to state plainly that those are beach balls painted gold, and those are laundry baskets.\nAnd in about ten seconds you’re going to care about them more than anything that’s happened to you this week. That’s not me being clever — that’s just what a room does.",
-        "driver": {
-          "actI": "You’ll never touch the big score if you can’t handle a small take. Tonight’s take is small.",
-          "actII": "When that vault opens we get sixty seconds inside it. Sixty. So let’s find out what this crew can carry in sixty seconds.",
-          "actIII": "Vault’s open, the take is real, the clock is running. Grab everything you can and don’t leave a dollar."
-        },
-        "rules": "Two crews of three. That’s your bin. That’s yours.\nThe money’s already out in the crowd, and the crowd is not on your side — they can throw it, hide it, sit on it, send it back.\nSixty seconds. Most money in your bin wins.",
-        "callUp": "Two crews, three each. I want people who don’t mind getting into a crowd.\nYou three on that bin, you three on that one. Everybody else — the money’s coming to you, and you should be a problem about it.",
-        "underscore": [
-          "Vault’s open. Grab everything you can. Don’t leave a dollar.",
-          "Somebody in the crowd is just holding one. Sir. That is not yours.",
-          "Fifteen seconds and that bin is embarrassing."
-        ],
-        "win": "Count it. That’s the take, and this crew carried it.\nWinners get looked after. Losers can explain the shortfall to the people upstairs.",
-        "out": "Money’s in the bin, crowd keeps whatever’s left, we’re gone. Vault’s empty.\nLet’s move. Music."
-      },
-      "variation": "GUARD MODE — one player from each team is designated “guard” — they stand at their bin and can deflect incoming balls from the other team. Adds defense to offense."
+      "name": "SMASH & GRAB",
+      "scene": "SCENE 6",
+      "station": "gold+pink",
+      "launchedBy": "don + rico",
+      "howItPlays": "Bounce the ball into the glass, break every window, and take everything behind it before the buzzer.",
+      "win": "Most dollars grabbed. Don't leave a dollar.",
+      "time": "~3 min"
     },
     {
       "n": 7,
-      "name": "THE HACK — LASER GRID",
-      "category": "Stage Theatrical",
-      "gtaRef": "Bypassing security / vault infiltration",
-      "props": "2 A-frame stands or chair posts, 3–4 rolls of red crepe streamer OR red string + masking tape, blacklight optional",
-      "howItRuns": "Set up a “laser grid” between two stands at the front of the stage — a web of crisscrossed red lines across a 6-foot doorway. Pull 2–3 contestants. They have to crawl, duck, or limbo through without touching a single line. Crowd counts touches.",
-      "win": "Fewest lines touched. Fastest time as tiebreaker.",
-      "time": "4 min for 3 contestants",
-      "handlerVO": "One wrong move and the whole place lights up. Take your time. Don’t. Touch. Anything.",
-      "scene": {
-        "cue": "Grid built before doors if you can — it takes longer than you think. Blacklight on it if you’ve got one. Keep a spare roll of streamer for repairs mid-scene.",
-        "fourthWall": "That is crepe paper. It’s a dollar a roll. There’s no laser, there’s no alarm, and if you touch it the only thing that happens is this room makes a noise.\nSomehow that’s worse. That’s exactly why it works.",
-        "driver": {
-          "actI": "Every door on this job is electric. Before I bring in the tech, I want to see who in here has the patience for it.",
-          "actII": "That system belongs to the biggest boss in this city and it does not care how tough you are. One wrong move and the whole place lights up.",
-          "actIII": "We’re past the alarms and into the part where one twitch ends it for everybody. Slow is smooth. Smooth is out."
-        },
-        "rules": "This is the grid, and every line on it is live.\nYou get through — over, under, through, I don’t care how — without touching a single one. This room counts every touch out loud, and the count follows you for the rest of the night.\nFewest touches takes it. Fastest breaks a tie.",
-        "callUp": "Give me two — and I want one person who’s flexible and one who absolutely is not.\nThat contrast is the whole show. Up here.",
-        "underscore": [
-          "Take your time. Don’t. Touch. Anything.",
-          "That’s one. The whole room heard it. The building heard it.",
-          "Look at this — genuine technique. Somebody’s done this before."
-        ],
-        "win": "Clean run. That’s our way in.\nEverybody else here would have had the whole block surrounded.",
-        "out": "Grid’s down, system’s ours, nobody set off an alarm. That’s how this is supposed to go.\nMusic back."
-      },
-      "variation": "BLINDFOLD HACK — same grid, but contestant is blindfolded and their partner from the crowd has to talk them through it using only voice. Doubled comedy."
+      "name": "THE DEVICE",
+      "scene": "SCENE 7",
+      "station": "violet",
+      "launchedBy": "preston",
+      "howItPlays": "Cut the wires in the right order, dial the code, then hold your hand dead steady while it counts down. One twitch and it blows.",
+      "win": "Defuse it without dropping it.",
+      "time": "~3–4 min",
+      "note": "Use silence in the room. The held breath before the alarm is the whole beat."
     },
     {
       "n": 8,
-      "name": "THE BLUEPRINT — MEMORY GRID",
-      "category": "Skill & Brain",
-      "gtaRef": "Casing the joint / mission briefing",
-      "props": "A board, posterboard, or projection showing 12–16 simple icons (guns, cars, dollar signs, masks, badges) in a grid",
-      "howItRuns": "Show the grid for 10 seconds. Cover it. Pull 3 contestants. Each gets 30 seconds (separately) to recall as many icons as possible. Most correct recalls wins.",
-      "win": "Most icons correctly recalled.",
-      "time": "3 min",
-      "handlerVO": "Memorize it. You only get one look. Get this wrong and the whole job’s blown.",
-      "scene": {
-        "cue": "Board covered before anybody’s looking. Have a timer you can actually see — ten seconds by feel is always wrong. Keep the room quiet for this one; it’s the only game that needs it.",
-        "fourthWall": "This is the one nobody volunteers for, because this one’s actually hard.\nNo hiding behind being loud here. It’s just you and whether you’ve been paying attention — which, let’s be honest, most of us have not been tonight.",
-        "driver": {
-          "actI": "Before I hand out roles I need to know who in here can hold a plan in their head.",
-          "actII": "We’re casing the target. You get one look at the layout and you get it tonight — because on the night there is no second look.",
-          "actIII": "Everything from here runs on memory. Nothing written down, nothing on a phone. What you remember is all we’ve got."
-        },
-        "rules": "Ten seconds. That’s your one look at the layout — every icon on that board.\nThen it’s covered, and one at a time you tell me everything you can remember. Thirty seconds each, no help from the room.\nMost correct takes it.",
-        "callUp": "Three of you. I want the one who says they’ve got a great memory — you’re going first, and I want this room to hold you to it.",
-        "underscore": [
-          "Memorize it. You only get one look. Get this wrong and the whole job’s blown.",
-          "Room — not a word. Don’t you dare help them.",
-          "Ten seconds doesn’t sound like much until you’re the one standing here."
-        ],
-        "win": "That’s the best head in the building.\nYou’re on the blueprint. Everybody else is carrying something heavy.",
-        "out": "Layout’s locked. This crew knows the room now — whether they remember it or not.\nMusic up."
-      },
-      "variation": "GROUP RECALL — instead of solo, three contestants take turns naming icons round-robin without repeats. First to repeat or blank is out. Last standing wins."
+      "name": "THE BLUEPRINT",
+      "scene": "SCENE 8",
+      "station": "violet+pink",
+      "launchedBy": "rico",
+      "howItPlays": "Two blueprints, ten seconds each. Burn every icon into your head, then they're gone and you call them back.",
+      "win": "Most icons recalled. Miss one and the job's blown.",
+      "time": "~3 min",
+      "note": "It's always the falcon."
     },
     {
       "n": 9,
-      "name": "THE CAR JACK — KEYS IN THE BUCKET",
-      "category": "Background Gameplay",
-      "gtaRef": "Stealing the getaway car",
-      "props": "1 bucket, ~30 fake car keys (cheap dollar-store sets or printed cutouts), one labeled “GETAWAY KEY” in bold",
-      "howItRuns": "Pass the bucket of keys into the crowd earlier in the night — each person grabs ONE without looking. At mission time: “We need a wheelman. Whoever’s got the GETAWAY KEY — to the stage.” Whoever finds it wins. If nobody steps up in 60 seconds, you reveal who actually has it.",
-      "win": "Find the marked key.",
-      "time": "2 min on stage (background distribution earlier)",
-      "handlerVO": "One of you walked out of here with the keys to the score. Find them. Bring them to me.",
-      "scene": {
-        "cue": "Bucket goes through the room early, one key each, nobody looks. Know who took the marked key so you can name them if nobody comes up.",
-        "fourthWall": "Half of you took a key out of a bucket earlier tonight without asking a single question about why.\nI want you to sit with that. A stranger handed you a bucket and you just took one. This is how it starts.",
-        "driver": {
-          "actI": "A score like ours lives or dies on ninety seconds of road, and we still don’t have a driver. One of you has been carrying the keys all night.",
-          "actII": "Two ways in, one way out — and the way out needs a car. Whoever’s holding the getaway key is holding the whole plan.",
-          "actIII": "Every bridge is watched and there’s one car that can still get us out of this city. One of you has the key to it. Find it. Now."
-        },
-        "rules": "A bucket of keys went through this room and exactly one of them is marked.\nIf you’re holding the getaway key, you’re our wheelman — bring it up.\nSixty seconds. After that I name whoever’s got it, whether they come up or not.",
-        "callUp": "One of you walked out of here with the keys to the score.\nFind them. Bring them to me. Clock’s on.",
-        "underscore": [
-          "Somebody in here is holding it and still hasn’t looked. Classic.",
-          "Check your pocket. Check your friend’s pocket. Check the floor.",
-          "Thirty seconds and no wheelman. This is how crews die."
-        ],
-        "win": "That’s the key. That’s our driver.\nEverybody get a look at the person who’s about to get us out of here.",
-        "out": "We’ve got a car and we’ve got a driver. Keys stay with them.\nEverybody else — yours were always fake. Sorry about that. Music."
-      },
-      "variation": "MULTIPLE KEYS — mark 3 keys (gold, silver, bronze) with different rewards. Three winners, three tiers of prize."
+      "name": "CHOP SHOP",
+      "scene": "SCENE 9",
+      "station": "cyan",
+      "launchedBy": "marcus",
+      "howItPlays": "Grab every stolen ride you can and pull it into your convoy — but never cross your own tail.",
+      "win": "Longest convoy.",
+      "time": "~3 min"
     },
     {
       "n": 10,
-      "name": "THE TAKEDOWN — TUG OF WAR",
-      "category": "Stage Theatrical",
-      "gtaRef": "Crew vs rival crew turf war",
-      "props": "One rope (10–15 ft, soft cotton/poly so nobody gets burned), tape line on the floor for the center",
-      "howItRuns": "Pull two teams of 3 from the crowd. Mark a center line on the floor. Quick 30-second tug of war — first team pulled across loses. Losers do a silly punishment (lead a chant, take a group photo as the “arrested crew”). Winners get drink tickets each.",
-      "win": "Pull the other team across the center line, OR have more team on your side at the 30-second buzzer.",
-      "time": "3 min",
-      "handlerVO": "Two crews. One city. Only one of you walks out tonight — the other one goes down.",
-      "scene": {
-        "cue": "Centre line taped before doors. Check the rope for grit, clear a body-length behind each team, and make sure nobody’s holding a drink.",
-        "fourthWall": "Two teams, one rope. This is the oldest game there is and I have never once seen a room not lose its mind for it.\nNo story I could write beats what’s about to happen naturally, so I’m getting out of the way after this sentence.",
-        "driver": {
-          "actI": "Another crew’s been sniffing around what’s ours. Tonight we find out whether this room can hold a line.",
-          "actII": "The rival crew wants their hardware back and they’re not asking nicely. Two crews, one city.",
-          "actIII": "Everybody who came at this crew answers tonight. Only one side walks out of this."
-        },
-        "rules": "Three on each end. Feet behind the line — that line, the one on the floor.\nThirty seconds. Pull the other crew across and it’s done. Nobody goes over, whoever’s got more ground when I call it takes it.\nAnd losers don’t walk away quietly. Losers get arrested.",
-        "callUp": "Two crews of three. Pick your own — that’s half the entertainment, and I want to see who nobody picks.\nRope in the middle. Don’t touch it yet.",
-        "underscore": [
-          "Two crews. One city. Only one of you walks out tonight.",
-          "This room is nowhere near loud enough for what’s happening on this rope.",
-          "Ten seconds. Somebody’s about to find out who their friends are."
-        ],
-        "win": "That’s the crew that holds this block.\nThe other three — you’re getting arrested, and this room is taking the photo.",
-        "out": "Turf’s settled, rope’s down, nobody needed stitches. Good night’s work.\nMusic back up."
-      },
-      "variation": "BEST OF THREE — instead of one pull, run three quick rounds. Winners switch sides each round. Best record takes it."
+      "name": "THE GETAWAY",
+      "scene": "SCENE 10",
+      "station": "gold vs pink",
+      "launchedBy": "don + rico",
+      "howItPlays": "Two teams, five staging lights. The second they all go green, punch it. Jump early and you're busted — the other team takes the block.",
+      "win": "First team away clean. Thirty seconds.",
+      "time": "~2–3 min"
     },
     {
       "n": 11,
-      "name": "THE STAKEOUT — CUP STACK SPEED",
-      "category": "Skill & Brain",
-      "gtaRef": "Pre-heist prep / building the rig",
-      "props": "12 red Solo cups per contestant ($5 on Amazon for plenty), folding table",
-      "howItRuns": "Pull 3 contestants. Each gets 12 cups in a stack. Race: build a pyramid (6-3-2-1 or 3-2-1 stacked twice = 12 cups), knock it clean, then re-stack into the starting column. First to finish wins. Crowd counts down from 60.",
-      "win": "First to complete the full sequence (pyramid up, knocked down, re-stacked to single column).",
-      "time": "2–3 min",
-      "handlerVO": "Set the rig. Sixty seconds. We move when you’re ready.",
-      "scene": {
-        "cue": "Twelve cups per shooter, pre-counted and stacked. Table steady — a wobbly table ruins this one. Room counts down from sixty out loud.",
-        "fourthWall": "Twelve plastic cups. That’s the entire prop budget for this one.\nAnd I promise the last thirty seconds of this will be louder than anything else in this room tonight, because nothing makes people scream like watching somebody almost drop something.",
-        "driver": {
-          "actI": "Before the job comes the prep, and the prep is boring, and boring is where crews fall apart. Let’s see who’s got the hands.",
-          "actII": "We build the rig tonight. Set it, break it down, set it again — because on the night we’re doing this in the dark with somebody watching the door.",
-          "actIII": "One job left, and it starts with the rig. Sixty seconds to build, break, and be gone. Nothing left behind."
-        },
-        "rules": "Twelve cups each. Build the pyramid, knock it flat, stack it back into one column. All three, in that order.\nKnock it early and it doesn’t count. Rush the restack and you’ll be picking cups off the floor.\nFirst one done takes it — and this room counts down from sixty.",
-        "callUp": "Three of you at the table. Steady hands only.\nAnd if you’ve got long nails I want you up here specifically, because I want to watch.",
-        "underscore": [
-          "Set the rig. Sixty seconds. We move when you’re ready.",
-          "That pyramid is a war crime. Fix it.",
-          "Twenty seconds. One of these three is about to panic and I want to be there for it."
-        ],
-        "win": "Rig built, broken down and packed in under a minute.\nThat’s the steadiest set of hands in the building.",
-        "out": "Prep’s done. Everything we need is ready and nothing’s left on the table.\nNow the only thing between us and the score is time. Music."
-      },
-      "variation": "TEAM RELAY — two teams of 3, relay-style. First person stacks the pyramid, second knocks it down, third re-stacks. Faster, louder, team energy."
+      "name": "THROW UP",
+      "scene": "SCENE 11",
+      "station": "cyan",
+      "launchedBy": "marcus",
+      "howItPlays": "Spray while it's dark, lift off the instant the searchlight sweeps. Get spotted and you're done.",
+      "win": "Cleanest piece in sixty seconds.",
+      "time": "~2–3 min"
+    },
+    {
+      "n": 12,
+      "name": "THE COMBINATION",
+      "scene": "SCENE 12",
+      "station": "all",
+      "launchedBy": "handler",
+      "howItPlays": "Pick your colour, pick your corner. One four-colour code opens the vault: black dot means right colour in the right spot, white dot means right colour in the wrong spot. Crack it before the other three.",
+      "win": "First to crack the combination.",
+      "time": "~5 min",
+      "note": "The peak of the night. The app's peak game and your peak track land together."
     }
   ],
-  "rotation": {
-    "firstNight": [
-      1,
-      6,
-      4
+  "energyArc": [
+    {
+      "beat": "INTRO",
+      "level": 30
+    },
+    {
+      "beat": "S1",
+      "level": 42
+    },
+    {
+      "beat": "S2",
+      "level": 72
+    },
+    {
+      "beat": "S3",
+      "level": 80
+    },
+    {
+      "beat": "S4",
+      "level": 55
+    },
+    {
+      "beat": "S5",
+      "level": 52
+    },
+    {
+      "beat": "S6",
+      "level": 68
+    },
+    {
+      "beat": "S7",
+      "level": 62
+    },
+    {
+      "beat": "S8",
+      "level": 58
+    },
+    {
+      "beat": "S9",
+      "level": 66
+    },
+    {
+      "beat": "S10",
+      "level": 78
+    },
+    {
+      "beat": "S11",
+      "level": 54
+    },
+    {
+      "beat": "S12",
+      "level": 100
+    },
+    {
+      "beat": "FINALE",
+      "level": 40
+    }
+  ],
+  "runOfShow": {
+    "locked": true,
+    "order": [
+      "INTRO",
+      "SCENE 1",
+      "SCENE 2",
+      "SCENE 3",
+      "SCENE 4",
+      "SCENE 5",
+      "SCENE 6",
+      "SCENE 7",
+      "SCENE 8",
+      "SCENE 9",
+      "SCENE 10",
+      "SCENE 11",
+      "SCENE 12",
+      "FINALE"
     ],
-    "returning": [
-      10,
-      7,
-      9
-    ],
-    "smallRoom": [
-      8,
-      11,
-      5
-    ]
+    "note": "The run order is locked to the film and to the app's GM control — INTRO through FINALE, in sequence. There is no per-night mission picking in The Score: one night, one film, twelve games, in order. Acts: I Setup (INTRO–S4) · II The Jobs (S5–S11) · III The Vault (S12→FINALE). The dips (S5, S8, S11) are what make the S12 peak land — never blow the peak early."
   }
 }

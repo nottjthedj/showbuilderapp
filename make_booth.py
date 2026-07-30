@@ -265,7 +265,7 @@ def generate_from_cfg(cfg: dict, out_dir: str, config_dir: str = ".") -> dict:
     n_ch = n_mi = 0
     if has_show:
         show = json.loads(tokens["show_json"])
-        n_ch, n_mi = len(show.get("chapters", [])), len(show.get("missions", []))
+        n_ch, n_mi = len(show.get("film", [])), len(show.get("games", []))
         modules += ["crew card", "handler console"]
 
     return {
@@ -288,7 +288,7 @@ def generate(config_path: str, out_dir: str) -> dict:
     print(f"  logo:    {'embedded' if r['logo_embedded'] else 'text lockup (no logo file)'}")
     mods = "booth (index/gallery/setup + B2 + NAS)"
     if r["has_show"]:
-        mods += f", crew card (player), handler console ({r['chapters']} chapters · {r['missions']} missions)"
+        mods += f", crew card (player), handler console ({r['chapters']} beats · {r['missions']} games)"
     print(f"  modules: {mods}")
     if r["skipped"]:
         print(f"  skipped: {', '.join(r['skipped'])} (no \"show\" in config)")

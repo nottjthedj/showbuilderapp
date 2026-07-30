@@ -67,18 +67,38 @@
     font-weight:800;font-size:10px;letter-spacing:.08em;text-transform:uppercase;border-radius:8px;
     padding:6px 10px;cursor:pointer;}
 
-  /* mission scene — the 4th-wall story driver / game introduction */
-  .scene{border:1px solid rgba({{colors.secondaryRgb}},.35);border-radius:12px;margin:4px 0 10px;overflow:hidden;}
-  .scene .sbar{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 12px;
-    border-bottom:1px solid rgba({{colors.secondaryRgb}},.22);font-size:9.5px;letter-spacing:.14em;
-    text-transform:uppercase;color:var(--secondary);font-weight:800;}
-  .scene .beat{padding:10px 12px;border-top:1px dashed rgba(255,255,255,.10);}
-  .scene .beat.first{border-top:0;}
-  .scene .bk{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:5px;}
-  .scene .bt{font-size:15px;line-height:1.55;white-space:pre-line;color:var(--ink);overflow-wrap:anywhere;}
-  .scene .bt.dir{color:var(--dim);font-style:italic;font-size:13px;}
-  .scene ul.adlib{margin:0;padding-left:17px;}
-  .scene ul.adlib li{font-size:14px;line-height:1.5;margin-bottom:4px;overflow-wrap:anywhere;}
+  /* run-of-show stepper */
+  .stepper{display:flex;align-items:center;gap:10px;margin:0 0 12px;}
+  .stepper button{flex:1;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--ink);
+    font-weight:800;font-size:13px;border-radius:10px;padding:11px 12px;cursor:pointer;}
+  .stepper button:active{transform:scale(.97);}
+  .stepper button:disabled{opacity:.35;cursor:default;}
+  .stepper .pos{font-family:"Bebas Neue",Oswald,Impact,sans-serif;font-size:20px;color:var(--secondary);
+    min-width:74px;text-align:center;letter-spacing:1px;}
+
+  /* the ◆ turn — the frame the live show cannot run without */
+  .trans.turn{border-color:var(--primary);box-shadow:0 0 22px rgba({{colors.primaryRgb}},.22);}
+  .trans.turn .bar{border-bottom-color:rgba({{colors.primaryRgb}},.3);color:var(--primary);}
+  .trans.turn .body{font-size:22px;}
+
+  /* the ▮ game card */
+  .gcard{border:1px dashed var(--secondary);border-radius:12px;padding:12px 14px;margin-top:12px;
+    font-size:14px;line-height:1.5;color:var(--ink);}
+  .gcard .k{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--secondary);
+    font-weight:800;margin-bottom:5px;}
+
+  /* assembly strip + music cue */
+  .asm{display:grid;gap:0;margin-top:12px;border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .asm .row{display:flex;gap:10px;padding:9px 12px;border-top:1px solid rgba(255,255,255,.07);font-size:13px;line-height:1.45;}
+  .asm .row:first-child{border-top:0;}
+  .asm .row b{color:var(--secondary);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+    min-width:56px;flex:0 0 auto;padding-top:3px;}
+  .music{margin-top:12px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;}
+  .music .k{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:6px;}
+  .music .l{font-size:13px;line-height:1.5;margin-bottom:5px;}
+  .music .l b{color:var(--secondary);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;margin-right:6px;}
+  .music .tip{font-size:12.5px;color:var(--dim);line-height:1.5;margin-top:7px;
+    border-top:1px dashed rgba(255,255,255,.12);padding-top:7px;}
 
   /* missions */
   .recipes{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
@@ -182,26 +202,38 @@
 
   <!-- ===== SHOW ===== -->
   <div class="panel on" id="show">
-    <div class="field"><label>Tonight's chapter</label><select id="chapterSel"></select></div>
+    <div class="field"><label>The run — locked, Intro → Finale</label><select id="chapterSel"></select></div>
+    <div class="stepper">
+      <button id="beatPrev">‹ Back</button>
+      <span class="pos" id="beatPos">1 / 14</span>
+      <button id="beatNext">Next ›</button>
+    </div>
     <div class="card">
       <div class="act" id="cAct">—</div>
       <div class="code" id="cCode">—</div>
       <div class="kv">
-        <div class="r"><div class="k">The job</div><div class="v" id="cJob">—</div></div>
-        <div class="r"><div class="k">Ends on</div><div class="v" id="cEnds">—</div></div>
+        <div class="r"><div class="k">Owns the turn</div><div class="v" id="cOwner">—</div></div>
+        <div class="r"><div class="k">Station · energy · length</div><div class="v" id="cStation">—</div></div>
+        <div class="r"><div class="k">Sending up</div><div class="v" id="cSatire">—</div></div>
       </div>
     </div>
     <div class="trans">
-      <div class="bar"><span>Opening Transmission — read on mic / play VO</span><button class="copybtn" id="copyVO">Copy</button></div>
+      <div class="bar"><span>Handler VO — read on mic / play VO</span><button class="copybtn" id="copyVO">Copy</button></div>
       <div class="body" id="cTrans">—</div>
     </div>
+    <div class="trans turn">
+      <div class="bar"><span>◆ The Turn — straight down the lens</span><button class="copybtn" id="copyTurn">Copy</button></div>
+      <div class="body" id="cTurn">—</div>
+    </div>
+    <div class="gcard"><div class="k">▮ Game card</div><div id="cCard">—</div></div>
+    <div class="asm" id="cAsm"></div>
+    <div class="music" id="cMusic"></div>
   </div>
 
   <!-- ===== MISSIONS ===== -->
   <div class="panel" id="missions">
-    <div class="h">Pick 3 for tonight</div>
-    <div class="recipes" id="recipes"></div>
-    <div class="counter"><b id="selCount">0</b> / 3 selected — tap a mission to expand the how-to</div>
+    <div class="h">The run — 12 games, locked order</div>
+    <div class="counter">Live game: <b id="selCount">—</b> — driven by the beat on the Show tab. Tap any game to expand.</div>
     <div id="missionList"></div>
   </div>
 
@@ -265,7 +297,7 @@
 
     <div class="h">Guest crew-card QR</div>
     <p style="color:var(--dim);font-size:13px;line-height:1.5;margin:0 0 14px;">
-      Set tonight's chapter + wanted level, then show/print this QR at the door. Guests scan it to get made — the card loads with tonight's job and the missions you picked.</p>
+      Set the beat + wanted level, then show/print this QR at the door. Guests scan it to get made — the card loads with what's on screen now and the game that's live.</p>
     <div class="field"><label>Wanted level at the door</label>
       <div class="starsel" id="starSel"></div></div>
     <div class="qrbox">
@@ -288,8 +320,10 @@
   "use strict";
   var $=function(id){return document.getElementById(id);};
   var SHOW=window.SHOW||{};
-  var chapters=SHOW.chapters||[], missions=SHOW.missions||[];
-  var picked=[]; // mission ids
+  var chapters=SHOW.film||[], missions=SHOW.games||[];
+  var chars=SHOW.characters||[], stations=SHOW.stations||[];
+  function charName(id){ var c=chars.filter(function(x){return x.id===id;})[0]; return c?c.name:(id||''); }
+  var picked=[]; // the live game id, derived from the beat (the run order is locked)
   var heat=1, chapterNo=1;
   var currentPoll=null;   // {id,q,options,open,winner}
   var PREFIX="{{web.storagePrefix}}";
@@ -345,128 +379,78 @@
   });
 
   // ---- show / chapter ----
+  function beat(){ return chapters.filter(function(x){return x.n===chapterNo;})[0]||{}; }
   function fillChapters(){
     var sel=$('chapterSel');
     sel.innerHTML=chapters.map(function(c){
-      return '<option value="'+c.n+'">'+(c.n<10?'0':'')+c.n+' — '+c.codename+'</option>';
+      return '<option value="'+c.n+'">'+c.tag+' — '+c.title+'</option>';
     }).join('');
-    // re-render missions too: the scene's story driver follows tonight's act
-    sel.onchange=function(){ chapterNo=parseInt(this.value,10); renderChapter(); renderMissions(); syncCrew(); maybePush(); };
+    sel.onchange=function(){ goBeat(parseInt(this.value,10)); };
+    $('beatPrev').onclick=function(){ goBeat(chapterNo-1); };
+    $('beatNext').onclick=function(){ goBeat(chapterNo+1); };
+  }
+  // One night, one locked run: stepping the beat also sets the live game, so the
+  // crew cards follow the film without anybody picking anything.
+  function goBeat(n){
+    if(n<1||n>chapters.length) return;
+    chapterNo=n; $('chapterSel').value=String(n);
+    renderChapter(); renderMissions(); syncCrew(); maybePush();
   }
   function renderChapter(){
-    var c=chapters.filter(function(x){return x.n===chapterNo;})[0]||{};
-    $('cAct').textContent=c.act||''; $('cCode').textContent=c.codename||'';
-    $('cJob').textContent=c.job||''; $('cEnds').textContent=c.endsOn||'';
-    $('cTrans').textContent=c.transmission||'';
+    var c=beat();
+    picked=c.game?[c.game]:[];
+    $('cAct').textContent=c.tag||''; $('cCode').textContent=c.title||'';
+    $('cOwner').textContent=charName(c.owner);
+    $('cStation').textContent=[c.station,c.energy,c.dur].filter(Boolean).join(' · ');
+    $('cSatire').textContent=c.satire||'';
+    $('cTrans').textContent=c.vo||'';
+    $('cTurn').textContent=c.turn||'';
+    $('cCard').textContent=c.gameCard||'';
+    $('beatPos').textContent=chapterNo+' / '+chapters.length;
+    $('beatPrev').disabled=(chapterNo<=1); $('beatNext').disabled=(chapterNo>=chapters.length);
+    $('cAsm').innerHTML=(c.assembly||[]).map(function(a){
+      return '<div class="row"><b>'+a[0]+'</b><span>'+a[1]+'</span></div>'; }).join('');
+    var mu=c.music||{}, h='<div class="k">Music — duck → VO → stinger → SLAM</div>';
+    [['bed',mu.bed],['duck',mu.duck],['slam',mu.slam],['cuts',mu.cuts]].forEach(function(x){
+      if(x[1]) h+='<div class="l"><b>'+x[0]+'</b>'+x[1]+'</div>'; });
+    if(mu.station) h+='<div class="l"><b>station</b>'+mu.station+'</div>';
+    if(mu.tip) h+='<div class="tip">'+mu.tip+'</div>';
+    if(c.note) h+='<div class="tip">'+c.note+'</div>';
+    $('cMusic').innerHTML=h;
   }
-  $('copyVO').onclick=function(){
-    var t=$('cTrans').textContent||'';
-    if(navigator.clipboard) navigator.clipboard.writeText(t);
-    this.textContent='Copied'; var b=this; setTimeout(function(){b.textContent='Copy';},1200);
-  };
+  function copyBtn(id, src){
+    $(id).onclick=function(){
+      var t=$(src).textContent||'';
+      if(navigator.clipboard) navigator.clipboard.writeText(t);
+      this.textContent='Copied'; var b=this; setTimeout(function(){b.textContent='Copy';},1200);
+    };
+  }
+  copyBtn('copyVO','cTrans'); copyBtn('copyTurn','cTurn');
 
-  // ---- mission scenes (4th wall → story driver → the game) ----
-  // The story driver follows tonight's act, so the same game carries different
-  // stakes in Act I than it does after the score has gone down.
-  function actOf(){
-    var c=chapters.filter(function(x){return x.n===chapterNo;})[0]||{}, a=c.act||'';
-    if(a.indexOf('Act III')>-1) return ['actIII','Act III'];
-    if(a.indexOf('Act II')>-1)  return ['actII','Act II'];
-    return ['actI','Act I'];
-  }
-  var SCENE_BEATS=[
-    ['cue',        'Cue — not spoken', 'dir'],
-    ['fourthWall', 'Break the 4th wall'],
-    ['driver',     'Story driver'],
-    ['rules',      'Introduce the game'],
-    ['callUp',     'Call them up'],
-    ['underscore', 'Under the game — ad lib'],
-    ['win',        'Pay off the win'],
-    ['out',        'Out — back to the story']
-  ];
-  function sceneHtml(m){
-    var s=m.scene; if(!s) return '';
-    var act=actOf(), first=true;
-    var h='<div class="scene"><div class="sbar"><span>Scene — 4th wall → the game</span>'+
-          '<button class="copybtn" data-scene="'+m.n+'">Copy</button></div>';
-    SCENE_BEATS.forEach(function(b){
-      var key=b[0], label=b[1], cls=b[2]||'', body='';
-      if(key==='driver'){
-        var dr=(s.driver||{})[act[0]]; if(!dr) return;
-        label+=' — '+act[1]; body='<div class="bt">'+dr+'</div>';
-      } else if(key==='underscore'){
-        if(!(s.underscore||[]).length) return;
-        body='<ul class="adlib">'+s.underscore.map(function(l){return '<li>'+l+'</li>';}).join('')+'</ul>';
-      } else {
-        if(!s[key]) return;
-        body='<div class="bt '+cls+'">'+s[key]+'</div>';
-      }
-      h+='<div class="beat'+(first?' first':'')+'"><div class="bk">'+label+'</div>'+body+'</div>';
-      first=false;
-    });
-    return h+'</div>';
-  }
-  function sceneScript(m){
-    var s=m.scene||{}, act=actOf(), out=[];
-    SCENE_BEATS.forEach(function(b){
-      var key=b[0], label=b[1].toUpperCase(), v;
-      if(key==='driver'){ v=(s.driver||{})[act[0]]; label+=' — '+act[1].toUpperCase(); }
-      else if(key==='underscore'){ v=(s.underscore||[]).map(function(l){return '· '+l;}).join('\n'); }
-      else v=s[key];
-      if(v) out.push('['+label+']\n'+v);
-    });
-    return m.name+' — '+act[1]+'\n\n'+out.join('\n\n');
-  }
-
-  // ---- missions ----
-  function recipeButtons(){
-    var r=SHOW.rotation||{}, wrap=$('recipes');
-    var defs=[['First night',r.firstNight],['Returning city',r.returning],['Small room',r.smallRoom]];
-    wrap.innerHTML='';
-    defs.forEach(function(d){
-      if(!d[1]) return;
-      var b=document.createElement('button'); b.textContent=d[0];
-      b.onclick=function(){ picked=d[1].slice(0,3); renderMissions(); syncCrew(); maybePush(); };
-      wrap.appendChild(b);
-    });
-  }
+  // ---- games (reference; the run order is locked to the film) ----
   function renderMissions(){
     var wrap=$('missionList'); wrap.innerHTML='';
+    var live=beat().game||0;
     missions.forEach(function(m){
-      var on=picked.indexOf(m.n)>-1;
+      var on=(m.n===live);
       var row=document.createElement('div'); row.className='mrow'+(on?' sel':'');
       row.innerHTML=
         '<div class="head"><div class="no">'+(m.n<10?'0':'')+m.n+'</div>'+
-        '<div><div class="nm">'+m.name+'</div><div class="cat">'+(m.category||'')+' · '+(m.gtaRef||'')+'</div></div>'+
-        '<div class="chk">'+(on?'✓':'')+'</div></div>'+
+        '<div><div class="nm">'+m.name+'</div><div class="cat">'+(m.scene||'')+' · '+(m.station||'')+'</div></div>'+
+        '<div class="chk">'+(on?'▶':'')+'</div></div>'+
         '<div class="detail">'+
-          '<div class="k">Props</div><div class="t">'+(m.props||'')+'</div>'+
-          '<div class="k">How it runs</div><div class="t">'+(m.howItRuns||'')+'</div>'+
+          '<div class="k">How it plays</div><div class="t">'+(m.howItPlays||'')+'</div>'+
           '<div class="k">Win</div><div class="t">'+(m.win||'')+'</div>'+
-          '<div class="k">Game Master — on the mic</div><div class="t vo">“'+(m.handlerVO||'')+'”</div>'+
-          sceneHtml(m)+
-          '<div class="k">Variation</div><div class="t">'+(m.variation||'')+'</div>'+
+          '<div class="k">Launched by</div><div class="t">'+(m.launchedBy||'')+'</div>'+
           '<div class="k">Time</div><div class="t">'+(m.time||'')+'</div>'+
+          (m.note?'<div class="k">Note</div><div class="t">'+m.note+'</div>':'')+
         '</div>';
-      var chk=row.querySelector('.chk'), detail=row.querySelector('.detail');
-      row.querySelector('.no').onclick=function(e){e.stopPropagation();toggle(m.n);};
-      row.querySelector('.chk').onclick=function(e){e.stopPropagation();toggle(m.n);};
+      var detail=row.querySelector('.detail');
       row.querySelector('.head').onclick=function(){ detail.classList.toggle('on'); };
-      var cp=row.querySelector('[data-scene]');
-      if(cp) cp.onclick=function(e){
-        e.stopPropagation();
-        if(navigator.clipboard) navigator.clipboard.writeText(sceneScript(m));
-        cp.textContent='Copied'; setTimeout(function(){cp.textContent='Copy';},1200);
-      };
       wrap.appendChild(row);
     });
-    $('selCount').textContent=picked.length;
-  }
-  function toggle(n){
-    var i=picked.indexOf(n);
-    if(i>-1) picked.splice(i,1);
-    else { if(picked.length>=3) picked.shift(); picked.push(n); }
-    renderMissions(); syncCrew(); maybePush();
+    var lm=missions.filter(function(m){return m.n===live;})[0];
+    $('selCount').textContent=lm?lm.name:'—';
   }
 
   // ---- wanted stars ----
@@ -597,7 +581,7 @@
   function loadStats(){
     // local: tonight's chapter + wanted level (no fetch needed)
     var ch=chapters.filter(function(x){return x.n===chapterNo;})[0]||{};
-    $('stChapter').textContent=ch.codename||('Night '+chapterNo);
+    $('stChapter').textContent=ch.title||ch.tag||('Beat '+chapterNo);
     $('stHeat').textContent='Wanted '+Array(heat+1).join('★')+'  ·  '+((ch.act||'').replace(/ —.*/,'')||'');
     // remote: made members / polls / votes
     fetch('/api/crew?event='+encodeURIComponent(eventKey))
@@ -634,8 +618,7 @@
   };
 
   // ---- init ----
-  fillChapters(); renderChapter(); recipeButtons(); fillPollTemplates();
-  picked=((SHOW.rotation||{}).firstNight||[]).slice(0,3);
+  fillChapters(); renderChapter(); fillPollTemplates();
   renderMissions(); starButtons(); syncCrew(); paintLive();
 })();
 </script>
