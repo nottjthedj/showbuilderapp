@@ -1,4 +1,4 @@
-<title>GTAD — 30 days of transmissions</title>
+<title>GTAD — 122 days of transmissions</title>
 <style>
   :root{
     color-scheme: dark;
@@ -117,10 +117,14 @@
 <div class="wrap">
   <header>
     <p class="eyebrow">Grand Theft After-Dark · the Handler fronts everything</p>
-    <h1><span class="a">30 Days</span><br><span class="b">Of Transmissions</span></h1>
-    <p class="standfirst">Thirty daily posts, all TJ to camera, <b>30–60 seconds each, hook in the
-      first three</b>. Tap any day for the full script, the on-screen text, the shot list and why
-      that one gets shared. Hit <b>Read aloud</b> to hear whether it actually fits.</p>
+    <h1><span class="a">122 Days</span><br><span class="b">Of Transmissions</span></h1>
+    <p class="standfirst">Every daily post from launch to the first November show — all TJ to camera,
+      <b>26–45 seconds each, hook in the first three</b>. Day 122 is event day, so slide the whole
+      calendar to your date. Tap any day for the full script, on-screen text, shot list and why it
+      gets shared; <b>Read aloud</b> times it for you.</p>
+    <p class="standfirst" style="margin-top:12px">122 posts is <b>not</b> 122 shoots — seven recurring
+      formats means you batch. One setup, one wardrobe, twenty <b>RAP SHEET</b>s in an afternoon.
+      Shoot a month ahead.</p>
   </header>
 
   <h2 class="sec">The engine</h2>
@@ -145,8 +149,16 @@
   <p class="seclede">Land day 30 on the event and count backwards. Put money behind <b>day 15</b> (all four
     crews established, everyone has a side) and <b>day 28</b> (the payoff).</p>
 
+  <div class="triggers" id="formats" style="margin-bottom:6px"></div>
+
   <div class="filters" id="filters"></div>
+  <div class="filters" id="fmtfilters" style="top:58px;padding-top:0"></div>
   <div class="posts" id="posts"></div>
+
+  <h2 class="sec">After the first show</h2>
+  <p class="seclede" id="tourLede"></p>
+  <div class="triggers" id="tour"></div>
+  <p class="seclede" id="tourReuse" style="margin-top:18px"></p>
 
   <footer>
     GRAND THEFT AFTER-DARK · “THE SCORE” · scripts live in marketing/daily-transmissions.json<br>
@@ -189,6 +201,26 @@
     $('triggers').appendChild(c);
   });
 
+  // ---- the seven formats ----
+  D.formats.forEach(function(f){
+    var c = el('div','trig');
+    c.appendChild(el('h3',null,f.name));
+    c.appendChild(el('p',null,f.what));
+    $('formats').appendChild(c);
+  });
+
+  // ---- tour cadence ----
+  $('tourLede').textContent = D.tour.when + ' ' + D.tour.volume;
+  D.tour.theThree.forEach(function(t){
+    var c = el('div','trig');
+    c.appendChild(el('h3',null,t.slot));
+    c.appendChild(el('p',null,t.what));
+    var w = el('p',null,t.why); w.style.color = 'var(--cyan)'; w.style.margin = '0';
+    c.appendChild(w);
+    $('tour').appendChild(c);
+  });
+  $('tourReuse').textContent = D.tour.reuse;
+
   // ---- filters ----
   var phases = [];
   POSTS.forEach(function(p){ if (phases.indexOf(p.phase) < 0) phases.push(p.phase); });
@@ -206,6 +238,20 @@
     $('filters').appendChild(b);
   });
   var count = el('span','count'); $('filters').appendChild(count);
+
+  var activeFmt = 'All formats';
+  var fchips = [];
+  ['All formats'].concat(D.formats.map(function(f){ return f.name; })).forEach(function(name){
+    var b = el('button','chip' + (name === 'All formats' ? ' on' : ''), name);
+    b.type = 'button';
+    b.addEventListener('click', function(){
+      activeFmt = name;
+      fchips.forEach(function(c){ c.classList.toggle('on', c.textContent === name); });
+      render();
+    });
+    fchips.push(b);
+    $('fmtfilters').appendChild(b);
+  });
 
   // ---- speech ----
   var synth = window.speechSynthesis, speakingCard = null, timer = null, t0 = 0;
@@ -250,7 +296,7 @@
     var hw = el('div','hookwrap');
     hw.appendChild(el('div','hooklabel','First 3 seconds'));
     hw.appendChild(el('p','hook','“' + p.hook + '”'));
-    hw.appendChild(el('div','ttl', p.phase + ' · ' + p.title));
+    hw.appendChild(el('div','ttl', p.format + ' · ' + p.title));
     sum.appendChild(hw);
 
     var rt = el('div','rt');
@@ -308,13 +354,17 @@
   function render(){
     var wrap = $('posts');
     wrap.innerHTML = '';
-    var shown = POSTS.filter(function(p){ return active === 'All' || p.phase === active; });
+    var shown = POSTS.filter(function(p){
+      return (active === 'All' || p.phase === active) &&
+             (activeFmt === 'All formats' || p.format === activeFmt);
+    });
     shown.forEach(function(p){ wrap.appendChild(card(p)); });
     count.textContent = shown.length + ' of ' + POSTS.length + ' posts';
   }
   function openDay(n){
-    active = 'All';
+    active = 'All'; activeFmt = 'All formats';
     chips.forEach(function(c){ c.classList.toggle('on', c.textContent === 'All'); });
+    fchips.forEach(function(c){ c.classList.toggle('on', c.textContent === 'All formats'); });
     render();
     var t = document.querySelector('.post[data-day="' + n + '"]');
     if (t){ t.open = true; t.scrollIntoView({ behavior: 'smooth', block: 'center' }); }

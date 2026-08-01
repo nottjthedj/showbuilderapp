@@ -14,7 +14,7 @@ listening to that voice for a month.
 | File | What it is |
 |---|---|
 | [`origin-story.md`](origin-story.md) | **The website story.** How the four gangs formed, what the vault is, and why all four are in one building on one night. Spoiler-safe. |
-| [`daily-transmissions.json`](daily-transmissions.json) | **30 daily posts**, 30–60s each: hook, on-screen text, full TJ script, shot list, caption, CTA and why each one gets shared. |
+| [`daily-transmissions.json`](daily-transmissions.json) | **122 daily posts** — launch to the November show — 26–45s each: hook, on-screen text, full TJ script, shot list, caption, CTA and why each gets shared. Plus the 3-a-week tour cadence for after it. |
 | [`how-to-play.md`](how-to-play.md) | **The explainer video** — 75–90s, built to kill the "will I get pulled on stage" objection. |
 
 ## The thing that makes the story work
@@ -32,17 +32,55 @@ That single rule does all the heavy lifting:
 - **It pays off in the actual game.** The finale game *is* a four-colour code. The marketing
   isn't describing the night; it's teaching people how to win it.
 
-## The 30 days
+## The calendar — 122 days
+
+`daily-transmissions.json` runs **day 1 to day 122, where day 122 is event day**. It's
+countdown-relative, so slide the whole thing onto whatever November date the show lands on.
 
 | Days | Phase | Job |
 |---|---|---|
-| 1–7 | **The world** | What this is, the vault, the four keys, why tonight, why you. Ends on the first tease of the man with no face. |
-| 8–15 | **The crews** | Two posts per gang. This is where people pick a colour and start arguing. |
-| 16–22 | **The people** | Vinnie, Problem, Sugar, Kayleigh, McGraw, the President. The posts that escape your own audience. |
-| 23–30 | **The games** | How it actually works, the games themselves, then the ask. |
+| 1–7 | **The offer** | What this is, the vault, the four keys, why tonight, why you. |
+| 8–31 | **The city** | The four districts, the dial, the texture of the world. |
+| 32–61 | **The families** | The fifty years that made this inevitable. The founding, the keys, the wars. |
+| 62–92 | **The heat** | The keys move, the gala is announced, tickets go up, McGraw gets a lead. |
+| 93–99 | **Final approach** | Three weeks out. Everybody's committed to something they can't undo. |
+| 100–122 | **The countdown** | The crews, the people, the games, the ask. |
 
-Land day 30 on the event and count backwards. **Put money behind days 15 and 28** — 15 because
-all four crews are established by then and the audience has a side, 28 because it's the payoff.
+**Put money behind day 82** (all four crews RSVP — the heist frame finally lands) and **day 118**
+(the four-colour code, the payoff).
+
+## 122 posts is not 122 shoots
+
+Seven recurring formats, so you **batch**. One lighting setup, one wardrobe, twenty `RAP SHEET`s
+in an afternoon. Always be a month ahead.
+
+| Format | What it is |
+|---|---|
+| **TRANSMISSION** | TJ to camera about the night itself. The only format that sells — use it for offers and asks. |
+| **CITY RECORDS** | A piece of the fifty-year history, over archive-feel b-roll. VO only, no face needed. |
+| **RAP SHEET** | One character, one file. The most batchable format you have. |
+| **OVERHEARD** | One line somebody said, then what it meant. Shortest, highest share rate. |
+| **THE DIAL** | The music. Your natural territory — shoot these behind the decks. |
+| **EVIDENCE** | McGraw's case. This is the format that carries the myth. |
+| **HOUSE RULES** | Practical. Kills objections, drives tickets, gets saved. |
+
+A weekly rotation gives the audience a ritual: they learn that Tuesday is a character and
+Saturday moves the mystery, and they come back for the one they like.
+
+## After the first show — 3 a week
+
+Once the tour starts, live footage exists and the job changes from *building a world* to
+*proving it happened*. Drop to three, and make them count:
+
+| Slot | What | Why |
+|---|---|---|
+| **Mon · PROOF** | The last show's best 30 seconds. Real crowd, real noise. No narration — let it be loud. | Nothing you can write beats a wide of 800 phones going up at once. |
+| **Thu · TRANSMISSION** | TJ to camera. Lore, a character, or the next city's story. | The voice is the brand. Losing it between dates costs you what you spent four months building. |
+| **Sat · THE ASK** | Next city, next date, tickets — cut over a clip from the last one. | A date announced over footage converts several times better than a poster. |
+
+Everything in the calendar that isn't tied to the first event is **evergreen**. A new city gets
+the run-up again, compressed to six weeks, with proof clips from the shows you've already done
+cut in. And once there's a crowd, they shoot the PROOF slot for you.
 
 ## How you get people to share
 

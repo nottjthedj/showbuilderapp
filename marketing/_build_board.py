@@ -10,6 +10,8 @@ DATA = json.dumps({
     'posts': SRC['posts'],
     'format': SRC['format'],
     'share': SRC['shareEngine'],
+    'formats': SRC['formats'],
+    'tour': SRC['tourCadence'],
 }, ensure_ascii=False)
 
 HTML = pathlib.Path(__file__).with_name('board_template.html').read_text()
