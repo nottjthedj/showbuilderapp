@@ -32,22 +32,44 @@ That single rule does all the heavy lifting:
 - **It pays off in the actual game.** The finale game *is* a four-colour code. The marketing
   isn't describing the night; it's teaching people how to win it.
 
-## The calendar — 122 days
+## The calendar — dated to the show
 
-`daily-transmissions.json` runs **day 1 to day 122, where day 122 is event day**. It's
-countdown-relative, so slide the whole thing onto whatever November date the show lands on.
+First show is **Saturday 21 November 2026**. Posting starts **Saturday 1 August 2026** — 113 days
+inclusive. Every post in `daily-transmissions.json` carries a real `date` and `weekday`, and the
+last one lands on the door.
 
-| Days | Phase | Job |
+| Days | Phase | Dates | Job |
+|---|---|---|---|
+| 1–7 | **The offer** | Aug 1–7 | What this is, the vault, the four keys, why tonight, why you. |
+| 8–31 | **The city** | Aug 8–31 | The four districts, the dial, the texture of the world. |
+| 32–61 | **The families** | Sep | The fifty years that made this inevitable. |
+| 62–92 | **The heat** | Oct | The keys move, the gala is announced, tickets go up, McGraw gets a lead. |
+| 93–99 | **Final approach** | Nov 1–8 | Everybody's committed to something they can't undo. |
+| 100–122 | **The countdown** | Nov 9–21 | The crews, the people, the games, the ask. |
+
+**The dates that matter:**
+
+| | Date | |
 |---|---|---|
-| 1–7 | **The offer** | What this is, the vault, the four keys, why tonight, why you. |
-| 8–31 | **The city** | The four districts, the dial, the texture of the world. |
-| 32–61 | **The families** | The fifty years that made this inevitable. The founding, the keys, the wars. |
-| 62–92 | **The heat** | The keys move, the gala is announced, tickets go up, McGraw gets a lead. |
-| 93–99 | **Final approach** | Three weeks out. Everybody's committed to something they can't undo. |
-| 100–122 | **The countdown** | The crews, the people, the games, the ask. |
+| Tickets go up | **Fri 2 Oct** | day 70 |
+| The gala is announced | **Tue 6 Oct** | day 75 |
+| All four crews RSVP | **Mon 12 Oct** | day 82 — *put money here*, the heist frame finally lands |
+| The Combination | **Thu 19 Nov** | day 120 — *put money here*, the payoff |
+| Pick your colour | **Fri 20 Nov** | day 121 — last identity push before doors |
+| **Doors** | **Sat 21 Nov** | day 122 |
 
-**Put money behind day 82** (all four crews RSVP — the heist frame finally lands) and **day 118**
-(the four-colour code, the payoff).
+### The reserve bench
+
+122 posts were written; there are 113 days. The 9 that didn't fit are **not deleted** — they're
+benched, undated, marked `reserve: true`, and they're deliberately the cheapest to shoot:
+
+`35 Is It A Rave Or A Show` · `42 Can I Come Alone` · `46 Doo-Wop And Menace` ·
+`49 Timings` · `56 Photos` · `60 Double Nostalgia` · `67 Cold Rooms` · `74 The Scanner` ·
+`81 State Broadcast`
+
+Four HOUSE RULES and five THE DIAL — all shootable in an afternoon, none load-bearing for the
+plot. **When a shoot day gets away from you, drop one of these in instead of skipping a day.**
+That's what they're for. If the date moves later, they go back into the run.
 
 ## 122 posts is not 122 shoots
 

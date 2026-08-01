@@ -152,7 +152,7 @@ NEW = [
  "a warm restaurant back room, empty","a checkered tablecloth and four chairs",
  "Four people. One back room. The restaurant's still open.","Would you sit at that table?","Real-world texture makes fiction feel local.",G),
 (37,"RAP SHEET","The Woman Nobody Mentions","One of the four founders was a woman and three families have quietly written her out.","SHE OWNED THE WATERFRONT.",
- "One of the four was a woman.\nShe ran every bar on that waterfront, which meant she knew everything about everyone, which is a more valuable asset than trucks or docks and all four of them knew it.\nShe's in the photograph. She's on the document.\nAnd she is in almost none of the versions of this story the families tell now.\nWork out which crew has been quietly editing her out for fifty years, and you've learnt something real about them.\nI'll come back to her.",
+ "One of the four was a woman.\nShe ran every bar on that waterfront, which meant she knew everything about everyone, which is a more valuable asset than trucks or docks and all four of them knew it.\nShe's in the photograph. She's on the document.\nAnd she is in almost none of the versions of this story the families tell now.\nWork out which crew has been quietly editing her out for fifty years, and you've learnt something real about them.\nNobody's going to tell you her name. Not even me.",
  "an archive photo, a woman at a bar, back to camera","a bar mirror, gold light, no faces",
  "One of the four founders was a woman. Three families have edited her out.","Which crew do you think did it?","Injustice + a puzzle — extremely strong comment driver.",G),
 (38,"OVERHEARD","Like Brothers","Two men agreed to split it fifty-fifty. Neither of them let go of the handshake.","\"LIKE *BROTHERS*.\"",
@@ -428,6 +428,34 @@ def remap_share(se):
         m['posts'] = sorted(set(days + EXTRA.get(m['name'], [])))
     return out
 
+
+# ---- schedule ---------------------------------------------------------------
+# First show: Saturday 21 November 2026. Posting starts Saturday 1 August 2026,
+# which is 113 days inclusive — 9 fewer than the 122 posts written. Rather than
+# bin nine, the cheapest-to-shoot and most-overlapping posts go to a RESERVE
+# bench: undated, still written, there to drop in whenever a shoot day gets away
+# from you. Swapping one in for a scheduled post costs nothing.
+import datetime as _dt
+EVENT = _dt.date(2026, 11, 21)
+START = _dt.date(2026, 8, 1)
+RESERVE = {35, 42, 46, 49, 56, 60, 67, 74, 81}
+
+def schedule(posts):
+    live = [p for p in posts if p['day'] not in RESERVE]
+    runway = (EVENT - START).days + 1
+    assert len(live) == runway, f'{len(live)} scheduled posts for {runway} days'
+    for slot, p in enumerate(live, 1):
+        d = START + _dt.timedelta(days=slot - 1)
+        p['slot'] = slot
+        p['date'] = d.isoformat()
+        p['weekday'] = d.strftime('%a')
+        p['reserve'] = False
+    for p in posts:
+        if p['day'] in RESERVE:
+            p['slot'] = None; p['date'] = None; p['weekday'] = None; p['reserve'] = True
+    assert live[-1]['date'] == EVENT.isoformat(), 'last post must land on event day'
+    return posts
+
 # ---- assemble the 122-day calendar --------------------------------------------
 def mk(day, fmt, title, hook, on, script, sa, sb, cap, cta, share, col):
     words = len(script.split())
@@ -460,11 +488,17 @@ for i, d in enumerate(range(8, 31)):          # the original countdown run
         ("day","format","phase","title","colour","hook","onScreenText","script","runtimeSec","words",
          "shots","caption","cta","shareTrigger")]))
 
+posts = schedule(posts)
+
 doc = O([
  ("meta", O([
    ("name", "Grand Theft After-Dark — the run-up calendar"),
    ("what", "122 daily posts narrated by TJ, from launch to the first event. Day 122 is event day, so "
             "the calendar is countdown-relative — shift it to whatever November date the show lands on."),
+   ("event", "Saturday 21 November 2026 (tentative)"),
+   ("startsOn", "Saturday 1 August 2026"),
+   ("scheduled", "113 posts dated Aug 1 -> Nov 21. 9 more sit on the RESERVE bench, undated — "
+                 "swap one in whenever a shoot day gets away from you."),
    ("cadence", "7 a week until the first event. After that the tour starts and live footage takes over: "
                "drop to 3 a week (see tourCadence)."),
    ("phases", ["Days 1–7 · the offer — what this is, the vault, the four keys, why you",
@@ -514,6 +548,9 @@ print(f'runtime: {min(rt)}–{max(rt)}s · mean {sum(rt)/len(rt):.0f}s')
 print('all 25–60s:', all(24 <= r <= 60 for r in rt),
       '| outliers:', [(p['day'], p['runtimeSec']) for p in posts if not 24 <= p['runtimeSec'] <= 60] or 'none')
 print('days contiguous:', [p['day'] for p in posts] == list(range(1, 123)))
+live = [p for p in posts if not p['reserve']]
+print(f"scheduled: {len(live)}  {live[0]['date']} ({live[0]['weekday']}) -> {live[-1]['date']} ({live[-1]['weekday']})")
+print(f"reserve  : {sum(1 for p in posts if p['reserve'])} — days {sorted(RESERVE)}")
 print('distinct hooks:', len({p['hook'] for p in posts}) == len(posts))
 from collections import Counter
 print('formats:', dict(Counter(p['format'] for p in posts)))

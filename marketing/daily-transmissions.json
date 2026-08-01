@@ -2,6 +2,9 @@
   "meta": {
     "name": "Grand Theft After-Dark — the run-up calendar",
     "what": "122 daily posts narrated by TJ, from launch to the first event. Day 122 is event day, so the calendar is countdown-relative — shift it to whatever November date the show lands on.",
+    "event": "Saturday 21 November 2026 (tentative)",
+    "startsOn": "Saturday 1 August 2026",
+    "scheduled": "113 posts dated Aug 1 -> Nov 21. 9 more sit on the RESERVE bench, undated — swap one in whenever a shoot day gets away from you.",
     "cadence": "7 a week until the first event. After that the tour starts and live footage takes over: drop to 3 a week (see tourCadence).",
     "phases": [
       "Days 1–7 · the offer — what this is, the vault, the four keys, why you",
@@ -195,7 +198,11 @@
       ],
       "caption": "Fifty years. Nobody's opened it. That changes on one night. #GrandTheftAfterDark",
       "cta": "Follow — the whole story drops daily.",
-      "shareTrigger": "Curiosity gap: a locked thing with a reason nobody's guessed yet."
+      "shareTrigger": "Curiosity gap: a locked thing with a reason nobody's guessed yet.",
+      "slot": 1,
+      "date": "2026-08-01",
+      "weekday": "Sat",
+      "reserve": false
     },
     {
       "day": 2,
@@ -215,7 +222,11 @@
       ],
       "caption": "It's not a safe. It's an argument made out of steel.",
       "cta": "Come back tomorrow.",
-      "shareTrigger": "Cliffhanger — a promise with a date on it."
+      "shareTrigger": "Cliffhanger — a promise with a date on it.",
+      "slot": 2,
+      "date": "2026-08-02",
+      "weekday": "Sun",
+      "reserve": false
     },
     {
       "day": 3,
@@ -235,7 +246,11 @@
       ],
       "caption": "Four keys. Four crews. Nobody gets it alone. Which one are you? #GTAD",
       "cta": "Gold, pink, cyan or violet — comment your colour.",
-      "shareTrigger": "Identity + argument: people pick a side and defend it."
+      "shareTrigger": "Identity + argument: people pick a side and defend it.",
+      "slot": 3,
+      "date": "2026-08-03",
+      "weekday": "Mon",
+      "reserve": false
     },
     {
       "day": 4,
@@ -255,7 +270,11 @@
       ],
       "caption": "A night of unity, he's calling it. In the same building as the vault. Sure.",
       "cta": "Tickets in bio.",
-      "shareTrigger": "Conspiracy hook — invites the audience to spot the setup."
+      "shareTrigger": "Conspiracy hook — invites the audience to spot the setup.",
+      "slot": 4,
+      "date": "2026-08-04",
+      "weekday": "Tue",
+      "reserve": false
     },
     {
       "day": 5,
@@ -275,7 +294,11 @@
       ],
       "caption": "You don't watch this one. You get recruited.",
       "cta": "Pick your colour at the door.",
-      "shareTrigger": "Participation promise — the reason to bring people."
+      "shareTrigger": "Participation promise — the reason to bring people.",
+      "slot": 5,
+      "date": "2026-08-05",
+      "weekday": "Wed",
+      "reserve": false
     },
     {
       "day": 6,
@@ -295,7 +318,11 @@
       ],
       "caption": "Don't get wasted. Don't get busted. That's the whole list.",
       "cta": "Say it back to me.",
-      "shareTrigger": "A chantable catchphrase — the room repeats it, the comments repeat it."
+      "shareTrigger": "A chantable catchphrase — the room repeats it, the comments repeat it.",
+      "slot": 6,
+      "date": "2026-08-06",
+      "weekday": "Thu",
+      "reserve": false
     },
     {
       "day": 7,
@@ -315,7 +342,11 @@
       ],
       "caption": "Four crews. Not one of them will say his name out loud.",
       "cta": "Who do you think he is?",
-      "shareTrigger": "Secret-keeping — sharing signals you're in on something."
+      "shareTrigger": "Secret-keeping — sharing signals you're in on something.",
+      "slot": 7,
+      "date": "2026-08-07",
+      "weekday": "Fri",
+      "reserve": false
     },
     {
       "day": 8,
@@ -334,7 +365,11 @@
       ],
       "caption": "It was four towns before it was one city. That never really stopped.",
       "cta": "Which quarter are you from?",
-      "shareTrigger": "Local-identity hook — people map it onto their own city."
+      "shareTrigger": "Local-identity hook — people map it onto their own city.",
+      "slot": 8,
+      "date": "2026-08-08",
+      "weekday": "Sat",
+      "reserve": false
     },
     {
       "day": 9,
@@ -353,7 +388,11 @@
       ],
       "caption": "The oldest money here still smells like the docks.",
       "cta": "Gold crew — this is yours.",
-      "shareTrigger": "District identity: gives the gold faction a home to claim."
+      "shareTrigger": "District identity: gives the gold faction a home to claim.",
+      "slot": 9,
+      "date": "2026-08-09",
+      "weekday": "Sun",
+      "reserve": false
     },
     {
       "day": 10,
@@ -372,7 +411,11 @@
       ],
       "caption": "\"It's nobody's city, boy. We just rent it. …From him.\"",
       "cta": "Rent it from who?",
-      "shareTrigger": "Mystery + a quotable line — the two things that travel."
+      "shareTrigger": "Mystery + a quotable line — the two things that travel.",
+      "slot": 10,
+      "date": "2026-08-10",
+      "weekday": "Mon",
+      "reserve": false
     },
     {
       "day": 11,
@@ -391,7 +434,11 @@
       ],
       "caption": "Four crews. Four stations. You'll hear the city change hands.",
       "cta": "Which station are you tuned to?",
-      "shareTrigger": "Music identity — the audience's real entry point."
+      "shareTrigger": "Music identity — the audience's real entry point.",
+      "slot": 11,
+      "date": "2026-08-11",
+      "weekday": "Tue",
+      "reserve": false
     },
     {
       "day": 12,
@@ -410,7 +457,11 @@
       ],
       "caption": "Not a club night. Not a show. You get recruited.",
       "cta": "Save this for whoever keeps asking.",
-      "shareTrigger": "Answers the actual objection — saveable, so it gets sent."
+      "shareTrigger": "Answers the actual objection — saveable, so it gets sent.",
+      "slot": 12,
+      "date": "2026-08-12",
+      "weekday": "Wed",
+      "reserve": false
     },
     {
       "day": 13,
@@ -429,7 +480,11 @@
       ],
       "caption": "Twenty years. One empty space in the middle of the board.",
       "cta": "Who goes in the gap?",
-      "shareTrigger": "Invites theorising — the comments write themselves."
+      "shareTrigger": "Invites theorising — the comments write themselves.",
+      "slot": 13,
+      "date": "2026-08-13",
+      "weekday": "Thu",
+      "reserve": false
     },
     {
       "day": 14,
@@ -448,7 +503,11 @@
       ],
       "caption": "Minute one, you're in a gang. That's how it starts.",
       "cta": "Who are you bringing?",
-      "shareTrigger": "Removes fear, adds a plus-one prompt."
+      "shareTrigger": "Removes fear, adds a plus-one prompt.",
+      "slot": 14,
+      "date": "2026-08-14",
+      "weekday": "Fri",
+      "reserve": false
     },
     {
       "day": 15,
@@ -467,7 +526,11 @@
       ],
       "caption": "A suitcase and a grudge. Three generations later they still don't write anything down.",
       "cta": "Gold crew, stand up.",
-      "shareTrigger": "Origin myth — factions love a founding story."
+      "shareTrigger": "Origin myth — factions love a founding story.",
+      "slot": 15,
+      "date": "2026-08-15",
+      "weekday": "Sat",
+      "reserve": false
     },
     {
       "day": 16,
@@ -486,7 +549,11 @@
       ],
       "caption": "You can see it from three miles out. On purpose.",
       "cta": "Pink crew — make noise.",
-      "shareTrigger": "Direct rivalry bait at the gold faction."
+      "shareTrigger": "Direct rivalry bait at the gold faction.",
+      "slot": 16,
+      "date": "2026-08-16",
+      "weekday": "Sun",
+      "reserve": false
     },
     {
       "day": 17,
@@ -505,7 +572,11 @@
       ],
       "caption": "\"Pop… what's the drop?\" A question you ask exactly once.",
       "cta": "Tag your Vinnie.",
-      "shareTrigger": "Family-tag comedy, the highest-travel format."
+      "shareTrigger": "Family-tag comedy, the highest-travel format.",
+      "slot": 17,
+      "date": "2026-08-17",
+      "weekday": "Mon",
+      "reserve": false
     },
     {
       "day": 18,
@@ -524,7 +595,11 @@
       ],
       "caption": "Warm right up until it isn't. That's the whole family in one sound.",
       "cta": "What's your gold-crew anthem?",
-      "shareTrigger": "Music request = comments, and you're a DJ. Free content."
+      "shareTrigger": "Music request = comments, and you're a DJ. Free content.",
+      "slot": 18,
+      "date": "2026-08-18",
+      "weekday": "Tue",
+      "reserve": false
     },
     {
       "day": 19,
@@ -543,7 +618,11 @@
       ],
       "caption": "You're not the audience. You're the labour. #GTAD",
       "cta": "Who are you bringing?",
-      "shareTrigger": "Flattery + purpose — makes people want a role."
+      "shareTrigger": "Flattery + purpose — makes people want a role.",
+      "slot": 19,
+      "date": "2026-08-19",
+      "weekday": "Wed",
+      "reserve": false
     },
     {
       "day": 20,
@@ -562,7 +641,11 @@
       ],
       "caption": "The most data-obsessed crew in the city has one empty file. And they keep it.",
       "cta": "Theories.",
-      "shareTrigger": "Mystery — never explained, so it keeps circulating."
+      "shareTrigger": "Mystery — never explained, so it keeps circulating.",
+      "slot": 20,
+      "date": "2026-08-20",
+      "weekday": "Thu",
+      "reserve": false
     },
     {
       "day": 21,
@@ -581,7 +664,11 @@
       ],
       "caption": "Gold, pink, cyan or violet. Nobody's checking. Everybody's looking.",
       "cta": "What are you wearing?",
-      "shareTrigger": "Outfit posts drive tagging and group planning."
+      "shareTrigger": "Outfit posts drive tagging and group planning.",
+      "slot": 21,
+      "date": "2026-08-21",
+      "weekday": "Fri",
+      "reserve": false
     },
     {
       "day": 22,
@@ -600,7 +687,11 @@
       ],
       "caption": "Twelve streets. They never wanted more. That's why they still have them.",
       "cta": "Cyan crew — where you at?",
-      "shareTrigger": "Underdog appeal; the easiest faction to root for."
+      "shareTrigger": "Underdog appeal; the easiest faction to root for.",
+      "slot": 22,
+      "date": "2026-08-22",
+      "weekday": "Sat",
+      "reserve": false
     },
     {
       "day": 23,
@@ -619,7 +710,11 @@
       ],
       "caption": "You can't lean on a neighbourhood that likes who runs it.",
       "cta": "Cyan.",
-      "shareTrigger": "Values-based identity — the crew you join to be a good guy."
+      "shareTrigger": "Values-based identity — the crew you join to be a good guy.",
+      "slot": 23,
+      "date": "2026-08-23",
+      "weekday": "Sun",
+      "reserve": false
     },
     {
       "day": 24,
@@ -638,7 +733,11 @@
       ],
       "caption": "\"…A *legendary* Honda.\"",
       "cta": "Tag whoever this is in your group.",
-      "shareTrigger": "Pure comedy — the clip that escapes your following."
+      "shareTrigger": "Pure comedy — the clip that escapes your following.",
+      "slot": 24,
+      "date": "2026-08-24",
+      "weekday": "Mon",
+      "reserve": false
     },
     {
       "day": 25,
@@ -657,7 +756,11 @@
       ],
       "caption": "The only station in this city nobody argues about.",
       "cta": "Name one that belongs on it.",
-      "shareTrigger": "Music tribalism + request bait."
+      "shareTrigger": "Music tribalism + request bait.",
+      "slot": 25,
+      "date": "2026-08-25",
+      "weekday": "Tue",
+      "reserve": false
     },
     {
       "day": 26,
@@ -676,7 +779,11 @@
       ],
       "caption": "Gold, pink, cyan or violet. At the door it's final. #GTAD",
       "cta": "Comment your colour. I'm counting.",
-      "shareTrigger": "THE identity post — repeatable monthly, always performs."
+      "shareTrigger": "THE identity post — repeatable monthly, always performs.",
+      "slot": 26,
+      "date": "2026-08-26",
+      "weekday": "Wed",
+      "reserve": false
     },
     {
       "day": 27,
@@ -695,7 +802,11 @@
       ],
       "caption": "One photograph. Four men. And a hand on the fourth chair.",
       "cta": "Zoom in. Tell me what you see.",
-      "shareTrigger": "Zoom-in bait — people literally screenshot and circle it."
+      "shareTrigger": "Zoom-in bait — people literally screenshot and circle it.",
+      "slot": 27,
+      "date": "2026-08-27",
+      "weekday": "Thu",
+      "reserve": false
     },
     {
       "day": 28,
@@ -714,7 +825,11 @@
       ],
       "caption": "Nothing to download. Just charge your phone.",
       "cta": "Send this to the one who always asks.",
-      "shareTrigger": "Objection-killer, highly saveable."
+      "shareTrigger": "Objection-killer, highly saveable.",
+      "slot": 28,
+      "date": "2026-08-28",
+      "weekday": "Fri",
+      "reserve": false
     },
     {
       "day": 29,
@@ -733,7 +848,11 @@
       ],
       "caption": "Three families died for that seat. The Firm bought it.",
       "cta": "Violet crew, defend yourselves.",
-      "shareTrigger": "Villain faction — being hated is engagement."
+      "shareTrigger": "Villain faction — being hated is engagement.",
+      "slot": 29,
+      "date": "2026-08-29",
+      "weekday": "Sat",
+      "reserve": false
     },
     {
       "day": 30,
@@ -752,7 +871,11 @@
       ],
       "caption": "No history. They've made that a selling point. And it's working.",
       "cta": "Violet.",
-      "shareTrigger": "The faction people love to argue against."
+      "shareTrigger": "The faction people love to argue against.",
+      "slot": 30,
+      "date": "2026-08-30",
+      "weekday": "Sun",
+      "reserve": false
     },
     {
       "day": 31,
@@ -771,7 +894,11 @@
       ],
       "caption": "\"The rat is you, Preston. You post everything.\"",
       "cta": "Tag the one holding your workplace together.",
-      "shareTrigger": "Workplace recognition — travels far outside nightlife."
+      "shareTrigger": "Workplace recognition — travels far outside nightlife.",
+      "slot": 31,
+      "date": "2026-08-31",
+      "weekday": "Mon",
+      "reserve": false
     },
     {
       "day": 32,
@@ -790,7 +917,11 @@
       ],
       "caption": "\"We don't play requests. We play what's optimal.\"",
       "cta": "Is it a banger or is it a spreadsheet?",
-      "shareTrigger": "Opinion bait — an argument with a clear side."
+      "shareTrigger": "Opinion bait — an argument with a clear side.",
+      "slot": 32,
+      "date": "2026-09-01",
+      "weekday": "Tue",
+      "reserve": false
     },
     {
       "day": 33,
@@ -809,7 +940,11 @@
       ],
       "caption": "Four men who hated each other built this problem in 1974.",
       "cta": "Follow — I'm telling the whole fifty years.",
-      "shareTrigger": "Serial promise — converts a scroller into a follower."
+      "shareTrigger": "Serial promise — converts a scroller into a follower.",
+      "slot": 33,
+      "date": "2026-09-02",
+      "weekday": "Wed",
+      "reserve": false
     },
     {
       "day": 34,
@@ -828,7 +963,11 @@
       ],
       "caption": "Three names. And one letter. H.",
       "cta": "What's the H?",
-      "shareTrigger": "The myth advances — this is the post people bookmark."
+      "shareTrigger": "The myth advances — this is the post people bookmark.",
+      "slot": 34,
+      "date": "2026-09-03",
+      "weekday": "Thu",
+      "reserve": false
     },
     {
       "day": 35,
@@ -847,7 +986,11 @@
       ],
       "caption": "It's a night out with a plot. You can ignore the plot. You won't.",
       "cta": "Which one of you goes competitive first?",
-      "shareTrigger": "Group-dynamic prompt — tags friends automatically."
+      "shareTrigger": "Group-dynamic prompt — tags friends automatically.",
+      "slot": null,
+      "date": null,
+      "weekday": null,
+      "reserve": true
     },
     {
       "day": 36,
@@ -866,7 +1009,11 @@
       ],
       "caption": "Four people. One back room. The restaurant's still open.",
       "cta": "Would you sit at that table?",
-      "shareTrigger": "Real-world texture makes fiction feel local."
+      "shareTrigger": "Real-world texture makes fiction feel local.",
+      "slot": 35,
+      "date": "2026-09-04",
+      "weekday": "Fri",
+      "reserve": false
     },
     {
       "day": 37,
@@ -876,16 +1023,20 @@
       "colour": "#f5c542",
       "hook": "One of the four founders was a woman and three families have quietly written her out.",
       "onScreenText": "SHE OWNED THE WATERFRONT.",
-      "script": "One of the four was a woman.\nShe ran every bar on that waterfront, which meant she knew everything about everyone, which is a more valuable asset than trucks or docks and all four of them knew it.\nShe's in the photograph. She's on the document.\nAnd she is in almost none of the versions of this story the families tell now.\nWork out which crew has been quietly editing her out for fifty years, and you've learnt something real about them.\nI'll come back to her.",
-      "runtimeSec": 35,
-      "words": 87,
+      "script": "One of the four was a woman.\nShe ran every bar on that waterfront, which meant she knew everything about everyone, which is a more valuable asset than trucks or docks and all four of them knew it.\nShe's in the photograph. She's on the document.\nAnd she is in almost none of the versions of this story the families tell now.\nWork out which crew has been quietly editing her out for fifty years, and you've learnt something real about them.\nNobody's going to tell you her name. Not even me.",
+      "runtimeSec": 37,
+      "words": 92,
       "shots": [
         "an archive photo, a woman at a bar, back to camera",
         "a bar mirror, gold light, no faces"
       ],
       "caption": "One of the four founders was a woman. Three families have edited her out.",
       "cta": "Which crew do you think did it?",
-      "shareTrigger": "Injustice + a puzzle — extremely strong comment driver."
+      "shareTrigger": "Injustice + a puzzle — extremely strong comment driver.",
+      "slot": 36,
+      "date": "2026-09-05",
+      "weekday": "Sat",
+      "reserve": false
     },
     {
       "day": 38,
@@ -904,7 +1055,11 @@
       ],
       "caption": "\"Cain and Abel were brothers. You remember how that ended.\"",
       "cta": "Who breaks first?",
-      "shareTrigger": "Prediction bait — people commit to an answer publicly."
+      "shareTrigger": "Prediction bait — people commit to an answer publicly.",
+      "slot": 37,
+      "date": "2026-09-06",
+      "weekday": "Sun",
+      "reserve": false
     },
     {
       "day": 39,
@@ -923,7 +1078,11 @@
       ],
       "caption": "I'm not playing a set that night. I'm playing a timeline.",
       "cta": "What's your 1974?",
-      "shareTrigger": "DJ-craft content — respect from the music audience."
+      "shareTrigger": "DJ-craft content — respect from the music audience.",
+      "slot": 38,
+      "date": "2026-09-07",
+      "weekday": "Mon",
+      "reserve": false
     },
     {
       "day": 40,
@@ -942,7 +1101,11 @@
       ],
       "caption": "It's not a vault. It's four men holding each other hostage in steel.",
       "cta": "Would you have signed it?",
-      "shareTrigger": "Reframe — a sentence people quote back."
+      "shareTrigger": "Reframe — a sentence people quote back.",
+      "slot": 39,
+      "date": "2026-09-08",
+      "weekday": "Tue",
+      "reserve": false
     },
     {
       "day": 41,
@@ -961,7 +1124,11 @@
       ],
       "caption": "Officially, there is no vault. Officially, that's soil.",
       "cta": "Who erases a building?",
-      "shareTrigger": "Conspiracy escalation — feeds the theory crowd."
+      "shareTrigger": "Conspiracy escalation — feeds the theory crowd.",
+      "slot": 40,
+      "date": "2026-09-09",
+      "weekday": "Wed",
+      "reserve": false
     },
     {
       "day": 42,
@@ -980,7 +1147,11 @@
       ],
       "caption": "Come alone if you want. You won't stay alone.",
       "cta": "Send this to someone who never goes out.",
-      "shareTrigger": "Inclusion — reaches the people your ads miss."
+      "shareTrigger": "Inclusion — reaches the people your ads miss.",
+      "slot": null,
+      "date": null,
+      "weekday": null,
+      "reserve": true
     },
     {
       "day": 43,
@@ -999,7 +1170,11 @@
       ],
       "caption": "Fifty years. They never once tried. That's the strategy.",
       "cta": "Patience or fear?",
-      "shareTrigger": "Debate prompt with two defensible sides."
+      "shareTrigger": "Debate prompt with two defensible sides.",
+      "slot": 41,
+      "date": "2026-09-10",
+      "weekday": "Thu",
+      "reserve": false
     },
     {
       "day": 44,
@@ -1018,7 +1193,11 @@
       ],
       "caption": "In 1981 he stopped shouting. Nobody's ever found out why.",
       "cta": "What happened in 1981?",
-      "shareTrigger": "An open loop you can pay off much later."
+      "shareTrigger": "An open loop you can pay off much later.",
+      "slot": 42,
+      "date": "2026-09-11",
+      "weekday": "Fri",
+      "reserve": false
     },
     {
       "day": 45,
@@ -1037,7 +1216,11 @@
       ],
       "caption": "\"Nothing written down. Nothing said twice.\"",
       "cta": "Would you survive in that family?",
-      "shareTrigger": "A quotable rule — screenshot fodder."
+      "shareTrigger": "A quotable rule — screenshot fodder.",
+      "slot": 43,
+      "date": "2026-09-12",
+      "weekday": "Sat",
+      "reserve": false
     },
     {
       "day": 46,
@@ -1056,7 +1239,11 @@
       ],
       "caption": "Warm music over a bad room. Works every time.",
       "cta": "Name the best example.",
-      "shareTrigger": "Film-nerd bait — pulls a whole adjacent audience."
+      "shareTrigger": "Film-nerd bait — pulls a whole adjacent audience.",
+      "slot": null,
+      "date": null,
+      "weekday": null,
+      "reserve": true
     },
     {
       "day": 47,
@@ -1075,7 +1262,11 @@
       ],
       "caption": "You can't seize a favour. That's why they still have everything.",
       "cta": "Who do you still owe?",
-      "shareTrigger": "Uncomfortable-question format — high reply rate."
+      "shareTrigger": "Uncomfortable-question format — high reply rate.",
+      "slot": 44,
+      "date": "2026-09-13",
+      "weekday": "Sun",
+      "reserve": false
     },
     {
       "day": 48,
@@ -1094,7 +1285,11 @@
       ],
       "caption": "A man who doesn't exist sends flowers to a grave with no name. Every year.",
       "cta": "Who's in the grave?",
-      "shareTrigger": "Emotional mystery — the strongest myth post in the run."
+      "shareTrigger": "Emotional mystery — the strongest myth post in the run.",
+      "slot": 45,
+      "date": "2026-09-14",
+      "weekday": "Mon",
+      "reserve": false
     },
     {
       "day": 49,
@@ -1113,7 +1308,11 @@
       ],
       "caption": "Come early. The first game matters more than people think.",
       "cta": "What time are you getting there?",
-      "shareTrigger": "Practical + urgency; reduces late arrivals."
+      "shareTrigger": "Practical + urgency; reduces late arrivals.",
+      "slot": null,
+      "date": null,
+      "weekday": null,
+      "reserve": true
     },
     {
       "day": 50,
@@ -1132,7 +1331,11 @@
       ],
       "caption": "The pink key wasn't inherited. It was taken. In 1987.",
       "cta": "Does that make it theirs?",
-      "shareTrigger": "Moral argument — genuinely divides a comment section."
+      "shareTrigger": "Moral argument — genuinely divides a comment section.",
+      "slot": 46,
+      "date": "2026-09-15",
+      "weekday": "Tue",
+      "reserve": false
     },
     {
       "day": 51,
@@ -1151,7 +1354,11 @@
       ],
       "caption": "The suit, the tiger, the mansion. It's not vanity. It's armour.",
       "cta": "Genius or too much?",
-      "shareTrigger": "Reframes a joke into strategy — earns respect."
+      "shareTrigger": "Reframes a joke into strategy — earns respect.",
+      "slot": 47,
+      "date": "2026-09-16",
+      "weekday": "Wed",
+      "reserve": false
     },
     {
       "day": 52,
@@ -1170,7 +1377,11 @@
       ],
       "caption": "\"You believe this, Sugar? After everything I do for this city?\"",
       "cta": "Would you have ducked?",
-      "shareTrigger": "Character-defining + a direct question."
+      "shareTrigger": "Character-defining + a direct question.",
+      "slot": 48,
+      "date": "2026-09-17",
+      "weekday": "Thu",
+      "reserve": false
     },
     {
       "day": 53,
@@ -1189,7 +1400,11 @@
       ],
       "caption": "The loudest signal on the water. No apologies.",
       "cta": "Your one La Onda record — go.",
-      "shareTrigger": "Request bait; builds your actual crate."
+      "shareTrigger": "Request bait; builds your actual crate.",
+      "slot": 49,
+      "date": "2026-09-18",
+      "weekday": "Fri",
+      "reserve": false
     },
     {
       "day": 54,
@@ -1208,7 +1423,11 @@
       ],
       "caption": "Quiet power or loud power. One of them is about to be wrong.",
       "cta": "Which theory are you?",
-      "shareTrigger": "Binary identity — instant, low-effort engagement."
+      "shareTrigger": "Binary identity — instant, low-effort engagement.",
+      "slot": 50,
+      "date": "2026-09-19",
+      "weekday": "Sat",
+      "reserve": false
     },
     {
       "day": 55,
@@ -1227,7 +1446,11 @@
       ],
       "caption": "Three open investigations. Immaculate tiger paperwork.",
       "cta": "Explain this crew to me.",
-      "shareTrigger": "Absurd detail — the kind people read out loud."
+      "shareTrigger": "Absurd detail — the kind people read out loud.",
+      "slot": 51,
+      "date": "2026-09-20",
+      "weekday": "Sun",
+      "reserve": false
     },
     {
       "day": 56,
@@ -1246,7 +1469,11 @@
       ],
       "caption": "The people at the first one are going to be insufferable about it. Rightly.",
       "cta": "Be early. That's the flex.",
-      "shareTrigger": "FOMO + status; drives first-event urgency."
+      "shareTrigger": "FOMO + status; drives first-event urgency.",
+      "slot": null,
+      "date": null,
+      "weekday": null,
+      "reserve": true
     },
     {
       "day": 57,
@@ -1265,7 +1492,11 @@
       ],
       "caption": "They handed it over because they thought he'd be easy. Fifty years later.",
       "cta": "Cyan crew.",
-      "shareTrigger": "Underdog vindication — the most satisfying arc there is."
+      "shareTrigger": "Underdog vindication — the most satisfying arc there is.",
+      "slot": 52,
+      "date": "2026-09-21",
+      "weekday": "Mon",
+      "reserve": false
     },
     {
       "day": 58,
@@ -1284,7 +1515,11 @@
       ],
       "caption": "The name was an insult. He kept it until everybody said it straight.",
       "cta": "Cyan.",
-      "shareTrigger": "Origin story with a real lesson — highly saveable."
+      "shareTrigger": "Origin story with a real lesson — highly saveable.",
+      "slot": 53,
+      "date": "2026-09-22",
+      "weekday": "Tue",
+      "reserve": false
     },
     {
       "day": 59,
@@ -1303,7 +1538,11 @@
       ],
       "caption": "\"We never *had* a lookout, Problem.\" \"…RIP the nachos, then.\"",
       "cta": "Tag them. You know who.",
-      "shareTrigger": "Pure comedy — the highest-velocity post type in the run."
+      "shareTrigger": "Pure comedy — the highest-velocity post type in the run.",
+      "slot": 54,
+      "date": "2026-09-23",
+      "weekday": "Wed",
+      "reserve": false
     },
     {
       "day": 60,
@@ -1322,7 +1561,11 @@
       ],
       "caption": "Play the original. Then play what sampled it. Watch the room split and re-join.",
       "cta": "Best sample flip of all time. Go.",
-      "shareTrigger": "DJ-craft + a music argument that never ends."
+      "shareTrigger": "DJ-craft + a music argument that never ends.",
+      "slot": null,
+      "date": null,
+      "weekday": null,
+      "reserve": true
     },
     {
       "day": 61,
@@ -1341,7 +1584,11 @@
       ],
       "caption": "Three crews take people. One has a waiting list.",
       "cta": "Cyan crew, say it loud.",
-      "shareTrigger": "Faction recruitment with a genuine argument behind it."
+      "shareTrigger": "Faction recruitment with a genuine argument behind it.",
+      "slot": 55,
+      "date": "2026-09-24",
+      "weekday": "Thu",
+      "reserve": false
     },
     {
       "day": 62,
@@ -1360,7 +1607,11 @@
       ],
       "caption": "Fifty years of handshakes. And one perfect receipt.",
       "cta": "Why would you paper it?",
-      "shareTrigger": "Detective logic — invites the audience to reason."
+      "shareTrigger": "Detective logic — invites the audience to reason.",
+      "slot": 56,
+      "date": "2026-09-25",
+      "weekday": "Fri",
+      "reserve": false
     },
     {
       "day": 63,
@@ -1379,7 +1630,11 @@
       ],
       "caption": "Every game can be played sitting down. That's by design.",
       "cta": "Send this to whoever needs to know.",
-      "shareTrigger": "Access post — earns real goodwill and reaches carers."
+      "shareTrigger": "Access post — earns real goodwill and reaches carers.",
+      "slot": 57,
+      "date": "2026-09-26",
+      "weekday": "Sat",
+      "reserve": false
     },
     {
       "day": 64,
@@ -1398,7 +1653,11 @@
       ],
       "caption": "They took the money and walked. Cowards or the only smart ones here?",
       "cta": "Would you have sold?",
-      "shareTrigger": "Moral dilemma — the format that always fills comments."
+      "shareTrigger": "Moral dilemma — the format that always fills comments.",
+      "slot": 58,
+      "date": "2026-09-27",
+      "weekday": "Sun",
+      "reserve": false
     },
     {
       "day": 65,
@@ -1417,7 +1676,11 @@
       ],
       "caption": "\"No masks. No guns. A proprietary infiltration solution.\"",
       "cta": "Every industry has one. Name yours.",
-      "shareTrigger": "Recognition comedy with a real point underneath."
+      "shareTrigger": "Recognition comedy with a real point underneath.",
+      "slot": 59,
+      "date": "2026-09-28",
+      "weekday": "Mon",
+      "reserve": false
     },
     {
       "day": 66,
@@ -1436,7 +1699,11 @@
       ],
       "caption": "He called three crime families \"legacy infrastructure\". With a laser pointer.",
       "cta": "Villain or just early?",
-      "shareTrigger": "Contrarian bait — the reply guys arrive immediately."
+      "shareTrigger": "Contrarian bait — the reply guys arrive immediately.",
+      "slot": 60,
+      "date": "2026-09-29",
+      "weekday": "Tue",
+      "reserve": false
     },
     {
       "day": 67,
@@ -1455,7 +1722,11 @@
       ],
       "caption": "The only station on the dial not trying to be your friend.",
       "cta": "Cold techno at 4am — yes or no?",
-      "shareTrigger": "Music opinion with a built-in argument."
+      "shareTrigger": "Music opinion with a built-in argument.",
+      "slot": null,
+      "date": null,
+      "weekday": null,
+      "reserve": true
     },
     {
       "day": 68,
@@ -1474,7 +1745,11 @@
       ],
       "caption": "All four keys moved this month. Every crew thinks they were the only one.",
       "cta": "It's happening.",
-      "shareTrigger": "Plot escalation — signals the campaign is going somewhere."
+      "shareTrigger": "Plot escalation — signals the campaign is going somewhere.",
+      "slot": 61,
+      "date": "2026-09-30",
+      "weekday": "Wed",
+      "reserve": false
     },
     {
       "day": 69,
@@ -1493,7 +1768,11 @@
       ],
       "caption": "Twenty years of nothing. Now he's sitting on something and hasn't told anyone.",
       "cta": "What did he find?",
-      "shareTrigger": "Cliffhanger on the audience's favourite character."
+      "shareTrigger": "Cliffhanger on the audience's favourite character.",
+      "slot": 62,
+      "date": "2026-10-01",
+      "weekday": "Thu",
+      "reserve": false
     },
     {
       "day": 70,
@@ -1512,7 +1791,11 @@
       ],
       "caption": "Tickets up. One night, one room, one number.",
       "cta": "Link in bio.",
-      "shareTrigger": "Rewards the long-time follower — converts the serial."
+      "shareTrigger": "Rewards the long-time follower — converts the serial.",
+      "slot": 63,
+      "date": "2026-10-02",
+      "weekday": "Fri",
+      "reserve": false
     },
     {
       "day": 71,
@@ -1531,7 +1814,11 @@
       ],
       "caption": "Last time all four were in a room it lasted four minutes.",
       "cta": "What was said?",
-      "shareTrigger": "History + dread — builds real anticipation for the event."
+      "shareTrigger": "History + dread — builds real anticipation for the event.",
+      "slot": 64,
+      "date": "2026-10-03",
+      "weekday": "Sat",
+      "reserve": false
     },
     {
       "day": 72,
@@ -1550,7 +1837,11 @@
       ],
       "caption": "Zero arrests in twenty years. The only honest man here.",
       "cta": "Does he ever get him?",
-      "shareTrigger": "Empathy — this is the character people get attached to."
+      "shareTrigger": "Empathy — this is the character people get attached to.",
+      "slot": 65,
+      "date": "2026-10-04",
+      "weekday": "Sun",
+      "reserve": false
     },
     {
       "day": 73,
@@ -1569,7 +1860,11 @@
       ],
       "caption": "\"Twenty years asking the wrong questions.\" He says it every time.",
       "cta": "Is this the year?",
-      "shareTrigger": "Sympathy + prediction; short and quotable."
+      "shareTrigger": "Sympathy + prediction; short and quotable.",
+      "slot": 66,
+      "date": "2026-10-05",
+      "weekday": "Mon",
+      "reserve": false
     },
     {
       "day": 74,
@@ -1588,7 +1883,11 @@
       ],
       "caption": "There's a fifth signal on that dial. It's not music.",
       "cta": "Ever noticed a DJ making you nervous on purpose?",
-      "shareTrigger": "Craft reveal — makes the audience feel let in."
+      "shareTrigger": "Craft reveal — makes the audience feel let in.",
+      "slot": null,
+      "date": null,
+      "weekday": null,
+      "reserve": true
     },
     {
       "day": 75,
@@ -1607,7 +1906,11 @@
       ],
       "caption": "A night of unity. In that building. Sure.",
       "cta": "Coincidence?",
-      "shareTrigger": "The plot turn the whole serial has been building to."
+      "shareTrigger": "The plot turn the whole serial has been building to.",
+      "slot": 67,
+      "date": "2026-10-06",
+      "weekday": "Tue",
+      "reserve": false
     },
     {
       "day": 76,
@@ -1626,7 +1929,11 @@
       ],
       "caption": "Four crews. Five names on the list.",
       "cta": "He's going.",
-      "shareTrigger": "The myth confirmed as present — huge escalation."
+      "shareTrigger": "The myth confirmed as present — huge escalation.",
+      "slot": 68,
+      "date": "2026-10-07",
+      "weekday": "Wed",
+      "reserve": false
     },
     {
       "day": 77,
@@ -1645,7 +1952,11 @@
       ],
       "caption": "Miss the open and you'll spend all night going \"which one's the tiger guy?\"",
       "cta": "Who in your group is always late?",
-      "shareTrigger": "Group-callout — tags happen automatically."
+      "shareTrigger": "Group-callout — tags happen automatically.",
+      "slot": 69,
+      "date": "2026-10-08",
+      "weekday": "Thu",
+      "reserve": false
     },
     {
       "day": 78,
@@ -1664,7 +1975,11 @@
       ],
       "caption": "His four biggest donors are registered at a restaurant, a closed office, a corner store and a tower.",
       "cta": "Nobody reads filings.",
-      "shareTrigger": "Satire that lands as real — travels beyond the audience."
+      "shareTrigger": "Satire that lands as real — travels beyond the audience.",
+      "slot": 70,
+      "date": "2026-10-09",
+      "weekday": "Fri",
+      "reserve": false
     },
     {
       "day": 79,
@@ -1683,7 +1998,11 @@
       ],
       "caption": "\"I know all the criminals personally. Great people. Total winners.\"",
       "cta": "Four more years?",
-      "shareTrigger": "Political satire — the widest-reaching format here."
+      "shareTrigger": "Political satire — the widest-reaching format here.",
+      "slot": 71,
+      "date": "2026-10-10",
+      "weekday": "Sat",
+      "reserve": false
     },
     {
       "day": 80,
@@ -1702,7 +2021,11 @@
       ],
       "caption": "He asked if the timing could be adjusted. Not the envelopes.",
       "cta": "Four more years.",
-      "shareTrigger": "Satire with a punchline — the most shareable joke format."
+      "shareTrigger": "Satire with a punchline — the most shareable joke format.",
+      "slot": 72,
+      "date": "2026-10-11",
+      "weekday": "Sun",
+      "reserve": false
     },
     {
       "day": 81,
@@ -1721,7 +2044,11 @@
       ],
       "caption": "Don't tell people it's ridiculous. Play the fanfare and let them notice.",
       "cta": "Best use of pomp in a film — go.",
-      "shareTrigger": "Craft + film argument; pulls the cinema crowd."
+      "shareTrigger": "Craft + film argument; pulls the cinema crowd.",
+      "slot": null,
+      "date": null,
+      "weekday": null,
+      "reserve": true
     },
     {
       "day": 82,
@@ -1740,7 +2067,11 @@
       ],
       "caption": "Four crews. One building. Nobody's sneaking. Black tie.",
       "cta": "Which door are you coming through?",
-      "shareTrigger": "The heist frame lands — this is the ticket-driver."
+      "shareTrigger": "The heist frame lands — this is the ticket-driver.",
+      "slot": 73,
+      "date": "2026-10-12",
+      "weekday": "Mon",
+      "reserve": false
     },
     {
       "day": 83,
@@ -1759,7 +2090,11 @@
       ],
       "caption": "The hard part isn't the stealing. It's four crews agreeing for four minutes.",
       "cta": "Can they do it?",
-      "shareTrigger": "Reframes the whole story — the smartest post in the run."
+      "shareTrigger": "Reframes the whole story — the smartest post in the run.",
+      "slot": 74,
+      "date": "2026-10-13",
+      "weekday": "Tue",
+      "reserve": false
     },
     {
       "day": 84,
@@ -1778,7 +2113,11 @@
       ],
       "caption": "Bring the friend who says they hate this stuff. They go hardest. Every time.",
       "cta": "Tag your sceptic.",
-      "shareTrigger": "Direct tag mechanic with a promise attached."
+      "shareTrigger": "Direct tag mechanic with a promise attached.",
+      "slot": 75,
+      "date": "2026-10-14",
+      "weekday": "Wed",
+      "reserve": false
     },
     {
       "day": 85,
@@ -1797,7 +2136,11 @@
       ],
       "caption": "It's never failed. It's also never let anybody in. That's the flaw.",
       "cta": "Perfect security or a perfect waste?",
-      "shareTrigger": "Philosophical hook — surprisingly strong on longer platforms."
+      "shareTrigger": "Philosophical hook — surprisingly strong on longer platforms.",
+      "slot": 76,
+      "date": "2026-10-15",
+      "weekday": "Thu",
+      "reserve": false
     },
     {
       "day": 86,
@@ -1816,7 +2159,11 @@
       ],
       "caption": "By weight, the tiger has stolen more than anyone in this story.",
       "cta": "Send this to someone who'd get away with it.",
-      "shareTrigger": "The single highest-velocity post in the campaign."
+      "shareTrigger": "The single highest-velocity post in the campaign.",
+      "slot": 77,
+      "date": "2026-10-16",
+      "weekday": "Fri",
+      "reserve": false
     },
     {
       "day": 87,
@@ -1835,7 +2182,11 @@
       ],
       "caption": "They said it in unison. Then hated each other for it.",
       "cta": "Enemies-to-allies. Called it.",
-      "shareTrigger": "Ships the rivalry — audiences adore this dynamic."
+      "shareTrigger": "Ships the rivalry — audiences adore this dynamic.",
+      "slot": 78,
+      "date": "2026-10-17",
+      "weekday": "Sat",
+      "reserve": false
     },
     {
       "day": 88,
@@ -1854,7 +2205,11 @@
       ],
       "caption": "When they ally, I blend their stations. When it breaks, so does the mix.",
       "cta": "This is why it's live.",
-      "shareTrigger": "Craft flex — justifies the ticket price without saying so."
+      "shareTrigger": "Craft flex — justifies the ticket price without saying so.",
+      "slot": 79,
+      "date": "2026-10-18",
+      "weekday": "Sun",
+      "reserve": false
     },
     {
       "day": 89,
@@ -1873,7 +2228,11 @@
       ],
       "caption": "One month. You already know more than most people who'll be in that room.",
       "cta": "Colour. Now. In the comments.",
-      "shareTrigger": "Rewards long-term followers; makes lurkers commit."
+      "shareTrigger": "Rewards long-term followers; makes lurkers commit.",
+      "slot": 80,
+      "date": "2026-10-19",
+      "weekday": "Mon",
+      "reserve": false
     },
     {
       "day": 90,
@@ -1892,7 +2251,11 @@
       ],
       "caption": "Eleven years he sat in that cemetery. This year he didn't go.",
       "cta": "He's ahead. For the first time.",
-      "shareTrigger": "Pays off day 48 — long-arc payoff builds serial loyalty."
+      "shareTrigger": "Pays off day 48 — long-arc payoff builds serial loyalty.",
+      "slot": 81,
+      "date": "2026-10-20",
+      "weekday": "Tue",
+      "reserve": false
     },
     {
       "day": 91,
@@ -1911,7 +2274,11 @@
       ],
       "caption": "No mystique. That's the whole night, start to finish.",
       "cta": "Any questions, ask below — I answer all of them.",
-      "shareTrigger": "Clarity converts; the Q&A replies become more content."
+      "shareTrigger": "Clarity converts; the Q&A replies become more content.",
+      "slot": 82,
+      "date": "2026-10-21",
+      "weekday": "Wed",
+      "reserve": false
     },
     {
       "day": 92,
@@ -1930,7 +2297,11 @@
       ],
       "caption": "Fifty years to the week. His office says coincidence.",
       "cta": "It's not a coincidence.",
-      "shareTrigger": "Ties the whole serial together — the pre-countdown peak."
+      "shareTrigger": "Ties the whole serial together — the pre-countdown peak.",
+      "slot": 83,
+      "date": "2026-10-22",
+      "weekday": "Thu",
+      "reserve": false
     },
     {
       "day": 93,
@@ -1949,7 +2320,11 @@
       ],
       "caption": "Three weeks. Nobody can call it off now.",
       "cta": "Colour + ticket. That's the whole ask.",
-      "shareTrigger": "Urgency without a fake deadline."
+      "shareTrigger": "Urgency without a fake deadline.",
+      "slot": 84,
+      "date": "2026-10-23",
+      "weekday": "Fri",
+      "reserve": false
     },
     {
       "day": 94,
@@ -1968,7 +2343,11 @@
       ],
       "caption": "Four crews prepping in four different languages. All think they're alone.",
       "cta": "Which crew's play is smartest?",
-      "shareTrigger": "Comparison prompt — factions argue their own corner."
+      "shareTrigger": "Comparison prompt — factions argue their own corner.",
+      "slot": 85,
+      "date": "2026-10-24",
+      "weekday": "Sat",
+      "reserve": false
     },
     {
       "day": 95,
@@ -1987,7 +2366,11 @@
       ],
       "caption": "\"If it goes wrong, get to the water.\" Somebody's planning to lose.",
       "cta": "Which crew said it?",
-      "shareTrigger": "Dread + a guessing game — very high comment volume."
+      "shareTrigger": "Dread + a guessing game — very high comment volume.",
+      "slot": 86,
+      "date": "2026-10-25",
+      "weekday": "Sun",
+      "reserve": false
     },
     {
       "day": 96,
@@ -2006,7 +2389,11 @@
       ],
       "caption": "One sound that doesn't belong to any crew. You'll hear it twice.",
       "cta": "What is it?",
-      "shareTrigger": "Musical mystery — a payoff people attend to receive."
+      "shareTrigger": "Musical mystery — a payoff people attend to receive.",
+      "slot": 87,
+      "date": "2026-10-26",
+      "weekday": "Mon",
+      "reserve": false
     },
     {
       "day": 97,
@@ -2025,7 +2412,11 @@
       ],
       "caption": "Told to drop it. Third time. He's going anyway.",
       "cta": "He deserves this one.",
-      "shareTrigger": "Rooting interest at peak — sets up the post-credit payoff."
+      "shareTrigger": "Rooting interest at peak — sets up the post-credit payoff.",
+      "slot": 88,
+      "date": "2026-10-27",
+      "weekday": "Tue",
+      "reserve": false
     },
     {
       "day": 98,
@@ -2044,7 +2435,11 @@
       ],
       "caption": "ID. Charged phone. Doors. Colour. That's the list.",
       "cta": "Screenshot this one.",
-      "shareTrigger": "Explicitly saveable — a checklist gets kept and re-shared."
+      "shareTrigger": "Explicitly saveable — a checklist gets kept and re-shared.",
+      "slot": 89,
+      "date": "2026-10-28",
+      "weekday": "Wed",
+      "reserve": false
     },
     {
       "day": 99,
@@ -2063,7 +2458,11 @@
       ],
       "caption": "History's done. From tomorrow: who you're about to meet.",
       "cta": "Don't tune out now.",
-      "shareTrigger": "Momentum handoff into the countdown run."
+      "shareTrigger": "Momentum handoff into the countdown run.",
+      "slot": 90,
+      "date": "2026-10-29",
+      "weekday": "Thu",
+      "reserve": false
     },
     {
       "day": 100,
@@ -2083,7 +2482,11 @@
       ],
       "caption": "Three generations. Nothing written down. GOLD — the Corvettis. #GTAD",
       "cta": "Gold crew, say something.",
-      "shareTrigger": "Faction recruitment — the first of four; people start claiming."
+      "shareTrigger": "Faction recruitment — the first of four; people start claiming.",
+      "slot": 91,
+      "date": "2026-10-30",
+      "weekday": "Fri",
+      "reserve": false
     },
     {
       "day": 101,
@@ -2103,7 +2506,11 @@
       ],
       "caption": "\"Pop… what's the drop?\" — a question you only ask once.",
       "cta": "Tag the Vinnie in your crew.",
-      "shareTrigger": "Tag-a-friend: the character is a person everyone knows."
+      "shareTrigger": "Tag-a-friend: the character is a person everyone knows.",
+      "slot": 92,
+      "date": "2026-10-31",
+      "weekday": "Sat",
+      "reserve": false
     },
     {
       "day": 102,
@@ -2123,7 +2530,11 @@
       ],
       "caption": "If you have to ask whether it's theirs, it isn't. PINK — Los Halcóns.",
       "cta": "Pink crew — make some noise.",
-      "shareTrigger": "Faction rivalry: directly baits the gold crew."
+      "shareTrigger": "Faction rivalry: directly baits the gold crew.",
+      "slot": 93,
+      "date": "2026-11-01",
+      "weekday": "Sun",
+      "reserve": false
     },
     {
       "day": 103,
@@ -2143,7 +2554,11 @@
       ],
       "caption": "\"You believe this, Sugar? After everything I do for this city?\"",
       "cta": "Which crew would you actually survive in?",
-      "shareTrigger": "Disbelief + humour — the tiger does the sharing."
+      "shareTrigger": "Disbelief + humour — the tiger does the sharing.",
+      "slot": 94,
+      "date": "2026-11-02",
+      "weekday": "Mon",
+      "reserve": false
     },
     {
       "day": 104,
@@ -2163,7 +2578,11 @@
       ],
       "caption": "The only crew people join because they want to. CYAN.",
       "cta": "Cyan crew — where you at?",
-      "shareTrigger": "Underdog identity: the sympathetic pick, easy to champion."
+      "shareTrigger": "Underdog identity: the sympathetic pick, easy to champion.",
+      "slot": 95,
+      "date": "2026-11-03",
+      "weekday": "Tue",
+      "reserve": false
     },
     {
       "day": 105,
@@ -2183,7 +2602,11 @@
       ],
       "caption": "One cop. Then four. Then a helicopter. And Problem's still talking about tacos.",
       "cta": "Tag your Lil' Problem.",
-      "shareTrigger": "Relatable duo — the comedy travels further than the lore."
+      "shareTrigger": "Relatable duo — the comedy travels further than the lore.",
+      "slot": 96,
+      "date": "2026-11-04",
+      "weekday": "Wed",
+      "reserve": false
     },
     {
       "day": 106,
@@ -2203,7 +2626,11 @@
       ],
       "caption": "The other three call them tourists. They call the other three legacy infrastructure.",
       "cta": "Violet crew — defend yourselves.",
-      "shareTrigger": "Villain faction: people love picking the hated one."
+      "shareTrigger": "Villain faction: people love picking the hated one.",
+      "slot": 97,
+      "date": "2026-11-05",
+      "weekday": "Thu",
+      "reserve": false
     },
     {
       "day": 107,
@@ -2223,7 +2650,11 @@
       ],
       "caption": "\"That was a soft launch.\" #GTAD",
       "cta": "Every office has one. Name them.",
-      "shareTrigger": "Recognition humour — everyone has worked for this man."
+      "shareTrigger": "Recognition humour — everyone has worked for this man.",
+      "slot": 98,
+      "date": "2026-11-06",
+      "weekday": "Fri",
+      "reserve": false
     },
     {
       "day": 108,
@@ -2243,7 +2674,11 @@
       ],
       "caption": "The most feared crew in the city. This is the succession plan.",
       "cta": "Every family's got a Vinnie.",
-      "shareTrigger": "Family-tag humour — the most re-shareable format there is."
+      "shareTrigger": "Family-tag humour — the most re-shareable format there is.",
+      "slot": 99,
+      "date": "2026-11-07",
+      "weekday": "Sat",
+      "reserve": false
     },
     {
       "day": 109,
@@ -2263,7 +2698,11 @@
       ],
       "caption": "\"…A *legendary* Honda.\"",
       "cta": "Tag whoever's already spending it.",
-      "shareTrigger": "Pure comedy clip — the one that escapes the fanbase."
+      "shareTrigger": "Pure comedy clip — the one that escapes the fanbase.",
+      "slot": 100,
+      "date": "2026-11-08",
+      "weekday": "Sun",
+      "reserve": false
     },
     {
       "day": 110,
@@ -2283,7 +2722,11 @@
       ],
       "caption": "The tiger robbed both crime families and nobody has noticed yet.",
       "cta": "Send this to someone who'd get away with it.",
-      "shareTrigger": "The single most shareable image in the world — an animal outsmarting everyone."
+      "shareTrigger": "The single most shareable image in the world — an animal outsmarting everyone.",
+      "slot": 101,
+      "date": "2026-11-09",
+      "weekday": "Mon",
+      "reserve": false
     },
     {
       "day": 111,
@@ -2303,7 +2746,11 @@
       ],
       "caption": "Ended the whole investigation in one sentence. Went back to work.",
       "cta": "Tag the Kayleigh holding your workplace together.",
-      "shareTrigger": "Workplace recognition — huge crossover outside the nightlife audience."
+      "shareTrigger": "Workplace recognition — huge crossover outside the nightlife audience.",
+      "slot": 102,
+      "date": "2026-11-10",
+      "weekday": "Tue",
+      "reserve": false
     },
     {
       "day": 112,
@@ -2323,7 +2770,11 @@
       ],
       "caption": "Twenty years. Every year he almost has him. #GTAD",
       "cta": "Is he ever going to get it right?",
-      "shareTrigger": "Sympathy + prediction — people theorise in the comments."
+      "shareTrigger": "Sympathy + prediction — people theorise in the comments.",
+      "slot": 103,
+      "date": "2026-11-11",
+      "weekday": "Wed",
+      "reserve": false
     },
     {
       "day": 113,
@@ -2343,7 +2794,11 @@
       ],
       "caption": "\"I know all the criminals personally. Great people.\"",
       "cta": "Four more years?",
-      "shareTrigger": "Satire — political comedy travels beyond the event audience."
+      "shareTrigger": "Satire — political comedy travels beyond the event audience.",
+      "slot": 104,
+      "date": "2026-11-12",
+      "weekday": "Thu",
+      "reserve": false
     },
     {
       "day": 114,
@@ -2363,7 +2818,11 @@
       ],
       "caption": "An empty file. Four terrified crime families. Explain that one.",
       "cta": "Theories below. I'll read them.",
-      "shareTrigger": "Mystery participation — comments become the content."
+      "shareTrigger": "Mystery participation — comments become the content.",
+      "slot": 105,
+      "date": "2026-11-13",
+      "weekday": "Fri",
+      "reserve": false
     },
     {
       "day": 115,
@@ -2383,7 +2842,11 @@
       ],
       "caption": "Phone up. Pick a colour. Twelve games. #GTAD",
       "cta": "Full how-to-play in bio.",
-      "shareTrigger": "Removes the #1 objection: 'do I have to get on stage?'"
+      "shareTrigger": "Removes the #1 objection: 'do I have to get on stage?'",
+      "slot": 106,
+      "date": "2026-11-14",
+      "weekday": "Sat",
+      "reserve": false
     },
     {
       "day": 116,
@@ -2403,7 +2866,11 @@
       ],
       "caption": "Eight questions. Don't get clever. #GTAD",
       "cta": "How fast are you under pressure?",
-      "shareTrigger": "Low-stakes challenge — invites a self-assessment reply."
+      "shareTrigger": "Low-stakes challenge — invites a self-assessment reply.",
+      "slot": 107,
+      "date": "2026-11-15",
+      "weekday": "Sun",
+      "reserve": false
     },
     {
       "day": 117,
@@ -2423,7 +2890,11 @@
       ],
       "caption": "Cops, people, dogs. Every hit is a star.",
       "cta": "Who's driving? Tag your wheelman.",
-      "shareTrigger": "Callback to day 13 — rewards followers who've been there."
+      "shareTrigger": "Callback to day 13 — rewards followers who've been there.",
+      "slot": 108,
+      "date": "2026-11-16",
+      "weekday": "Mon",
+      "reserve": false
     },
     {
       "day": 118,
@@ -2443,7 +2914,11 @@
       ],
       "caption": "Three lives. Last one standing owns the night.",
       "cta": "Are you surviving this one?",
-      "shareTrigger": "Competitive callout — people tag whoever they'd beat."
+      "shareTrigger": "Competitive callout — people tag whoever they'd beat.",
+      "slot": 109,
+      "date": "2026-11-17",
+      "weekday": "Tue",
+      "reserve": false
     },
     {
       "day": 119,
@@ -2463,7 +2938,11 @@
       ],
       "caption": "It's always the falcon. Every time. #GTAD",
       "cta": "How many can you hold for 10 seconds?",
-      "shareTrigger": "Testable skill — people want to prove they'd win."
+      "shareTrigger": "Testable skill — people want to prove they'd win.",
+      "slot": 110,
+      "date": "2026-11-18",
+      "weekday": "Wed",
+      "reserve": false
     },
     {
       "day": 120,
@@ -2483,7 +2962,11 @@
       ],
       "caption": "One code. Four colours. Whoever cracks it first takes the whole thing.",
       "cta": "What colour are you cracking for?",
-      "shareTrigger": "The payoff post — the one to boost paid."
+      "shareTrigger": "The payoff post — the one to boost paid.",
+      "slot": 111,
+      "date": "2026-11-19",
+      "weekday": "Thu",
+      "reserve": false
     },
     {
       "day": 121,
@@ -2503,7 +2986,11 @@
       ],
       "caption": "Gold, pink, cyan or violet. At the door it's final. Which one? #GTAD",
       "cta": "Comment your colour. I'm counting.",
-      "shareTrigger": "THE identity post — the single most shareable format on any platform."
+      "shareTrigger": "THE identity post — the single most shareable format on any platform.",
+      "slot": 112,
+      "date": "2026-11-20",
+      "weekday": "Fri",
+      "reserve": false
     },
     {
       "day": 122,
@@ -2523,7 +3010,11 @@
       ],
       "caption": "Tonight. All four keys, one building. Don't be late.",
       "cta": "Doors at [TIME]. Last tickets in bio.",
-      "shareTrigger": "Urgency + the catchphrase the audience already knows."
+      "shareTrigger": "Urgency + the catchphrase the audience already knows.",
+      "slot": 113,
+      "date": "2026-11-21",
+      "weekday": "Sat",
+      "reserve": false
     }
   ]
 }

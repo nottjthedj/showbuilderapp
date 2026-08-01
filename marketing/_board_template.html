@@ -74,6 +74,14 @@
     min-width:44px;letter-spacing:.02em;}
   .day small{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;color:var(--dim);
     margin-top:4px;}
+  .when{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--c);margin:0 0 5px;
+    text-transform:uppercase;font-weight:800;}
+  .when .wd{color:var(--dim);font-weight:400;}
+  .post.bench{border-left-style:dashed;opacity:.82;}
+  .post.bench .when{color:var(--dim);}
+  .benchtag{display:inline-block;font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;
+    text-transform:uppercase;border:1px solid var(--dim);color:var(--dim);border-radius:5px;
+    padding:2px 6px;margin-left:8px;vertical-align:middle;}
   .hookwrap{min-width:0;}
   .hooklabel{font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;
     color:var(--c);margin:0 0 5px;}
@@ -119,12 +127,15 @@
     <p class="eyebrow">Grand Theft After-Dark · the Handler fronts everything</p>
     <h1><span class="a">122 Days</span><br><span class="b">Of Transmissions</span></h1>
     <p class="standfirst">Every daily post from launch to the first November show — all TJ to camera,
-      <b>26–45 seconds each, hook in the first three</b>. Day 122 is event day, so slide the whole
-      calendar to your date. Tap any day for the full script, on-screen text, shot list and why it
-      gets shared; <b>Read aloud</b> times it for you.</p>
+      <b>26–45 seconds each, hook in the first three</b>. Dated: <b>Sat 1 Aug → Sat 21 Nov 2026</b>,
+      the last one landing on the door. Tap any day for the full script, on-screen text, shot list
+      and why it gets shared; <b>Read aloud</b> times it for you.</p>
     <p class="standfirst" style="margin-top:12px">122 posts is <b>not</b> 122 shoots — seven recurring
       formats means you batch. One setup, one wardrobe, twenty <b>RAP SHEET</b>s in an afternoon.
       Shoot a month ahead.</p>
+    <p class="standfirst" style="margin-top:12px">There are 113 days and 122 posts, so nine sit on the
+      <b>Reserve</b> bench — undated, deliberately the cheapest to shoot. When a shoot day gets away
+      from you, drop one in rather than skipping a day.</p>
   </header>
 
   <h2 class="sec">The engine</h2>
@@ -239,6 +250,20 @@
   });
   var count = el('span','count'); $('filters').appendChild(count);
 
+  var showBench = 'Scheduled';
+  var bchips = [];
+  ['Scheduled','Reserve','Everything'].forEach(function(name){
+    var b = el('button','chip' + (name === 'Scheduled' ? ' on' : ''), name);
+    b.type = 'button';
+    b.addEventListener('click', function(){
+      showBench = name;
+      bchips.forEach(function(c){ c.classList.toggle('on', c.textContent === name); });
+      render();
+    });
+    bchips.push(b);
+    $('filters').insertBefore(b, count);
+  });
+
   var activeFmt = 'All formats';
   var fchips = [];
   ['All formats'].concat(D.formats.map(function(f){ return f.name; })).forEach(function(name){
@@ -284,7 +309,7 @@
 
   // ---- render ----
   function card(p){
-    var d = el('details','post');
+    var d = el('details','post' + (p.reserve ? ' bench' : ''));
     d.style.setProperty('--c', p.colour);
     d.dataset.day = p.day;
 
@@ -294,9 +319,22 @@
     sum.appendChild(day);
 
     var hw = el('div','hookwrap');
+    var when = el('div','when');
+    if (p.reserve){
+      when.appendChild(el('span', null, 'Reserve — undated'));
+    } else {
+      var dt = new Date(p.date + 'T12:00:00');
+      when.appendChild(el('span', null, dt.toLocaleDateString(undefined,
+        { weekday:'short', day:'numeric', month:'short' })));
+      var left = Math.round((new Date('2026-11-21T12:00:00') - dt) / 86400000);
+      when.appendChild(el('span','wd', left === 0 ? '  ·  DOORS' : '  ·  ' + left + ' to go'));
+    }
+    hw.appendChild(when);
     hw.appendChild(el('div','hooklabel','First 3 seconds'));
     hw.appendChild(el('p','hook','“' + p.hook + '”'));
-    hw.appendChild(el('div','ttl', p.format + ' · ' + p.title));
+    var ttl = el('div','ttl', p.format + ' · ' + p.title);
+    if (p.reserve) ttl.appendChild(el('span','benchtag','swap-in'));
+    hw.appendChild(ttl);
     sum.appendChild(hw);
 
     var rt = el('div','rt');
@@ -355,14 +393,17 @@
     var wrap = $('posts');
     wrap.innerHTML = '';
     var shown = POSTS.filter(function(p){
-      return (active === 'All' || p.phase === active) &&
+      var benchOk = showBench === 'Everything' ||
+                    (showBench === 'Reserve' ? p.reserve : !p.reserve);
+      return benchOk && (active === 'All' || p.phase === active) &&
              (activeFmt === 'All formats' || p.format === activeFmt);
     });
     shown.forEach(function(p){ wrap.appendChild(card(p)); });
     count.textContent = shown.length + ' of ' + POSTS.length + ' posts';
   }
   function openDay(n){
-    active = 'All'; activeFmt = 'All formats';
+    active = 'All'; activeFmt = 'All formats'; showBench = 'Everything';
+    bchips.forEach(function(c){ c.classList.toggle('on', c.textContent === 'Everything'); });
     chips.forEach(function(c){ c.classList.toggle('on', c.textContent === 'All'); });
     fchips.forEach(function(c){ c.classList.toggle('on', c.textContent === 'All formats'); });
     render();
