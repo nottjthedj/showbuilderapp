@@ -73,22 +73,30 @@
         "why": "Choosing a faction is a self-description, and self-descriptions get posted. Four crews means four tribes recruiting for you, for free.",
         "posts": [
           3,
-          8,
-          10,
-          12,
-          14,
-          29
+          11,
+          21,
+          26,
+          61,
+          100,
+          102,
+          104,
+          106,
+          121
         ]
       },
       {
         "name": "Argument — my crew beats your crew",
         "why": "Rivalry is the cheapest engagement there is. Every crew post is written to bait the other three.",
         "posts": [
-          10,
-          12,
-          14,
-          26,
-          29
+          16,
+          30,
+          54,
+          66,
+          102,
+          104,
+          106,
+          118,
+          121
         ]
       },
       {
@@ -96,34 +104,48 @@
         "why": "Sharing a mystery signals you're on the inside. The moment it's explained, it stops moving.",
         "posts": [
           7,
-          22
+          20,
+          27,
+          34,
+          48,
+          76,
+          92,
+          114
         ]
       },
       {
         "name": "Tag-a-friend — the characters are people they know",
         "why": "Vinnie, Problem and Kayleigh exist to be someone's mate, someone's cousin, someone's colleague. This is the format that escapes your own audience.",
         "posts": [
-          9,
-          16,
           17,
-          19
+          24,
+          31,
+          59,
+          77,
+          101,
+          108,
+          109,
+          111
         ]
       },
       {
         "name": "Disbelief — the tiger",
         "why": "An animal outsmarting two crime families is the single most forwardable thing in this world. Do not overthink it, do not over-explain it.",
         "posts": [
-          11,
-          18
+          55,
+          86,
+          103,
+          110
         ]
       },
       {
         "name": "Flex — you're made now",
         "why": "The crew card, the member number and the leaderboard are post-event proof. The audience makes the recap content for you.",
         "posts": [
-          23,
-          28,
-          30
+          56,
+          115,
+          120,
+          122
         ]
       }
     ],

@@ -89,8 +89,9 @@ something that **settles an argument**, or something they **can't believe**. Eve
 on one of six triggers:
 
 **1 · Identity — pick a colour.** Choosing a faction is a self-description, and self-descriptions
-get posted. Four crews means four tribes recruiting on your behalf for free. *Day 29 is the
-single most shareable post in the run — it's a personality quiz with a door on the end.*
+get posted. Four crews means four tribes recruiting on your behalf for free. *Days 26 and 121 are the
+most shareable posts in the run — a personality quiz with a door on the end. Re-run that format
+whenever engagement dips; it always works.*
 
 **2 · Argument — my crew beats your crew.** Every crew post is written to bait the other three.
 The Firm posts exist partly to be disliked; a villain faction is a gift.
@@ -104,8 +105,9 @@ Problem is somebody's mate. Kayleigh is holding somebody's office together right
 the posts that leave your audience and reach people who've never heard of the night.
 
 **5 · Disbelief — the tiger.** Sugar robbing a summit of the two most dangerous men in the city
-while neither notices is the most forwardable thing in this world. Don't overthink it, don't
-over-explain it, and don't only use it once.
+while neither notices is the most forwardable thing in this world. Deliberately run twice — day 86
+frames her as a legend ("by weight, she's stolen more than anyone in this story"), day 110 tells
+the incident itself. Don't overthink it and don't over-explain it.
 
 **6 · Flex — you're made now.** The crew card, the member number and the leaderboard are proof
 you were there. After the night the audience makes the recap content for you, which is the
@@ -115,7 +117,7 @@ thesis of the show anyway: the score was the room.
 
 - **Hook in three seconds or it's dead.** Start mid-sentence. Never "hey guys", never "welcome
   to", never name the format. Lead with a number, a name, or a contradiction.
-- **One idea per post.** If it needs two, it's two posts. The 30 days exist so you never have to
+- **One idea per post.** If it needs two, it's two posts. There are 122 days — you never have to
   cram.
 - **On-screen text is not the spoken line.** It's the punch underneath it.
 - **Burned-in captions, always.** Most of this is watched on mute.

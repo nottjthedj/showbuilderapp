@@ -11,8 +11,10 @@ November date the show lands on.
 import json
 from collections import OrderedDict as O
 
-SRC = '/home/user/showbuilderapp/marketing/daily-transmissions.json'
-OUT = SRC
+# Pinned source for the opening week + the countdown run. Kept separate from OUT so
+# re-running this builder is idempotent — it must never read its own output.
+SRC = '/home/user/showbuilderapp/marketing/_source-opening-and-countdown.json'
+OUT = '/home/user/showbuilderapp/marketing/daily-transmissions.json'
 old = json.load(open(SRC))
 OLD = {p['day']: p for p in old['posts']}
 
@@ -407,6 +409,25 @@ NEW = [
  "History's done. From tomorrow: who you're about to meet.","Don't tune out now.","Momentum handoff into the countdown run.",P),
 ]
 
+
+# The original 30-post day numbers moved: 1–7 stayed, 8–30 shifted to 100–122.
+# Remap the share-trigger references and fold in the new serial posts that hit
+# the same trigger, so the board's deep-links land on the right days.
+EXTRA = {
+ "Identity — pick a colour":            [11, 21, 26, 61],
+ "Argument — my crew beats your crew":  [16, 30, 54, 66],
+ "Secret — never explain the myth":     [20, 27, 34, 48, 76, 92],
+ "Tag-a-friend — the characters are people they know": [17, 24, 31, 59, 77],
+ "Disbelief — the tiger":               [55, 86],
+ "Flex — you're made now":              [56],
+}
+def remap_share(se):
+    out = json.loads(json.dumps(se))
+    for m in out['mechanisms']:
+        days = [d if d <= 7 else d + 92 for d in m['posts']]
+        m['posts'] = sorted(set(days + EXTRA.get(m['name'], [])))
+    return out
+
 # ---- assemble the 122-day calendar --------------------------------------------
 def mk(day, fmt, title, hook, on, script, sa, sb, cap, cta, share, col):
     words = len(script.split())
@@ -457,7 +478,7 @@ doc = O([
  ])),
  ("formats", [O([("name", k), ("what", v)]) for k, v in FORMATS.items()]),
  ("format", old['format']),
- ("shareEngine", old['shareEngine']),
+ ("shareEngine", remap_share(old['shareEngine'])),
  ("tourCadence", O([
    ("when", "From the first event onward. Live footage exists now, so the job changes from building a "
             "world to proving it happened."),
