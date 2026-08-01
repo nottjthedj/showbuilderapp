@@ -1,0 +1,326 @@
+<title>GTAD — 30 days of transmissions</title>
+<style>
+  :root{
+    color-scheme: dark;
+    --ground:#08080b; --panel:#0e0e14; --panel2:#12121a;
+    --line:rgba(255,255,255,.10); --ink:#f4f4f8; --mut:#8f8fa6; --dim:#5c5c72;
+    --cyan:#00e5ff; --pink:#ff2d9b; --gold:#f5c542;
+    --display:"Haettenschweiler","Arial Narrow Bold",Impact,"Franklin Gothic Bold",sans-serif;
+    --body:ui-sans-serif,system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Courier New",monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:radial-gradient(120% 60% at 50% -10%,#16121c 0%,var(--ground) 60%) no-repeat,var(--ground);
+    color:var(--ink);font-family:var(--body);line-height:1.6;padding:0 0 90px;}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.045;
+    background:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 3px);}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px;position:relative;z-index:1;}
+
+  header{padding:48px 0 8px;}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--dim);margin:0 0 12px;}
+  h1{font-family:var(--display);font-weight:400;text-transform:uppercase;
+    font-size:clamp(40px,8.5vw,84px);line-height:.88;margin:0;letter-spacing:.02em;text-wrap:balance;}
+  h1 .a{color:transparent;-webkit-text-stroke:1.5px var(--pink);text-shadow:0 0 18px rgba(255,45,155,.5);}
+  h1 .b{color:transparent;-webkit-text-stroke:1.5px var(--cyan);text-shadow:0 0 18px rgba(0,229,255,.45);}
+  .standfirst{color:var(--mut);font-size:16px;max-width:64ch;margin:18px 0 0;}
+  .standfirst b{color:var(--ink);font-weight:600;}
+
+  h2.sec{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(24px,3.6vw,34px);
+    margin:52px 0 4px;letter-spacing:.02em;}
+  .seclede{color:var(--mut);font-size:15px;max-width:64ch;margin:0 0 20px;}
+
+  /* the engine */
+  .engine{border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,var(--panel),var(--panel2));
+    padding:22px;margin:26px 0 0;}
+  .keys{display:flex;gap:8px;margin:0 0 18px;flex-wrap:wrap;}
+  .key{flex:1 1 120px;min-width:0;border-radius:10px;padding:13px 14px;border:1px solid currentColor;}
+  .key .kn{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;margin:0 0 4px;}
+  .key .kg{font-family:var(--display);font-weight:400;font-size:21px;text-transform:uppercase;color:var(--ink);
+    line-height:1;letter-spacing:.02em;}
+  .engine p{margin:0 0 10px;font-size:15.5px;color:var(--mut);max-width:70ch;}
+  .engine p:last-child{margin-bottom:0;}
+  .engine b{color:var(--ink);}
+
+  /* share triggers */
+  .triggers{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;}
+  .trig{border:1px solid var(--line);border-radius:13px;padding:15px 16px;background:rgba(255,255,255,.02);}
+  .trig h3{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--cyan);margin:0 0 8px;font-weight:800;}
+  .trig p{margin:0 0 10px;font-size:14px;color:var(--mut);line-height:1.55;}
+  .trig .days{display:flex;gap:5px;flex-wrap:wrap;}
+  .trig .days button{font-family:var(--mono);font-size:10px;border:1px solid var(--line);background:transparent;
+    color:var(--dim);border-radius:6px;padding:3px 7px;cursor:pointer;}
+  .trig .days button:hover{color:var(--ink);border-color:var(--cyan);}
+
+  /* filters */
+  .filters{position:sticky;top:0;z-index:50;display:flex;gap:8px;flex-wrap:wrap;align-items:center;
+    padding:14px 0;background:linear-gradient(180deg,rgba(8,8,11,.97) 74%,rgba(8,8,11,0));margin-top:8px;}
+  .chip{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+    border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--mut);
+    border-radius:999px;padding:9px 14px;cursor:pointer;}
+  .chip:hover{color:var(--ink);}
+  .chip.on{background:#fff;color:#08080b;border-color:#fff;font-weight:800;}
+  .count{font-family:var(--mono);font-size:10.5px;color:var(--dim);margin-left:auto;letter-spacing:.1em;}
+
+  /* post cards */
+  .posts{display:grid;gap:12px;}
+  .post{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:rgba(255,255,255,.02);
+    border-left:3px solid var(--c);}
+  .post > summary{list-style:none;cursor:pointer;padding:16px 18px;display:grid;
+    grid-template-columns:auto 1fr auto;gap:14px;align-items:start;}
+  .post > summary::-webkit-details-marker{display:none;}
+  .day{font-family:var(--display);font-weight:400;font-size:34px;line-height:.85;color:var(--c);
+    min-width:44px;letter-spacing:.02em;}
+  .day small{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;color:var(--dim);
+    margin-top:4px;}
+  .hookwrap{min-width:0;}
+  .hooklabel{font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--c);margin:0 0 5px;}
+  .hook{margin:0;font-size:18px;line-height:1.35;color:var(--ink);font-weight:600;text-wrap:pretty;}
+  .ttl{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);
+    margin:7px 0 0;}
+  .rt{font-family:var(--mono);font-size:11px;color:var(--mut);text-align:right;white-space:nowrap;
+    font-variant-numeric:tabular-nums;}
+  .rt b{display:block;font-size:19px;color:var(--ink);font-family:var(--display);font-weight:400;letter-spacing:.02em;}
+
+  .body{padding:0 18px 18px;}
+  .blk{border-top:1px dashed rgba(255,255,255,.1);padding-top:13px;margin-top:13px;}
+  .k{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin:0 0 7px;}
+  .onscreen{display:inline-block;font-family:var(--display);font-weight:400;font-size:23px;letter-spacing:.03em;
+    text-transform:uppercase;color:#08080b;background:var(--c);padding:7px 13px;border-radius:5px;line-height:1;}
+  .scriptbox{white-space:pre-line;font-size:16px;line-height:1.62;color:#d8d8e6;max-width:66ch;margin:0;}
+  .shots{display:flex;gap:7px;flex-wrap:wrap;margin:0;padding:0;list-style:none;}
+  .shots li{font-family:var(--mono);font-size:11px;color:var(--mut);border:1px solid var(--line);
+    border-radius:7px;padding:6px 9px;}
+  .meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;}
+  .meta p{margin:0;font-size:14px;color:var(--mut);line-height:1.5;}
+  .meta .k{margin-bottom:5px;}
+  .why{color:var(--cyan);}
+  .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+  .act{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+    border:1px solid var(--c);background:transparent;color:var(--c);border-radius:8px;padding:9px 13px;cursor:pointer;}
+  .act:hover{background:color-mix(in srgb,var(--c) 14%,transparent);}
+  .act.timing{border-color:var(--line);color:var(--mut);}
+  :focus-visible{outline:2px solid var(--cyan);outline-offset:2px;}
+
+  footer{margin:56px 0 0;padding:22px 0 0;border-top:1px solid var(--line);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--dim);line-height:1.9;}
+
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important;}}
+  @media (max-width:620px){
+    .post > summary{grid-template-columns:auto 1fr;}
+    .rt{grid-column:2;text-align:left;}
+  }
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Grand Theft After-Dark · the Handler fronts everything</p>
+    <h1><span class="a">30 Days</span><br><span class="b">Of Transmissions</span></h1>
+    <p class="standfirst">Thirty daily posts, all TJ to camera, <b>30–60 seconds each, hook in the
+      first three</b>. Tap any day for the full script, the on-screen text, the shot list and why
+      that one gets shared. Hit <b>Read aloud</b> to hear whether it actually fits.</p>
+  </header>
+
+  <h2 class="sec">The engine</h2>
+  <p class="seclede">One rule makes the whole story work — and it's the same rule the final game runs on.</p>
+  <div class="engine">
+    <div class="keys" id="keys"></div>
+    <p><b>The vault takes four keys.</b> Four colours, four turns, all inside the same minute. One key
+      went to each family that built this city, fifty years ago, because none of them trusted the others.</p>
+    <p>That single rule answers every question the marketing has to answer: <b>why they're all in one
+      building</b> (nobody opens it alone), <b>why they team up and betray each other</b> (every alliance is
+      two crews who need a second key), and <b>why you're there</b> (a key gets a crew a turn — it doesn't
+      get them the room, so all four are recruiting off the floor).</p>
+    <p>And it pays off for real: the last game of the night <b>is</b> a four-colour code. The campaign isn't
+      describing the night — it's teaching people how to win it.</p>
+  </div>
+
+  <h2 class="sec">Why people share</h2>
+  <p class="seclede" id="shareLede"></p>
+  <div class="triggers" id="triggers"></div>
+
+  <h2 class="sec">The run</h2>
+  <p class="seclede">Land day 30 on the event and count backwards. Put money behind <b>day 15</b> (all four
+    crews established, everyone has a side) and <b>day 28</b> (the payoff).</p>
+
+  <div class="filters" id="filters"></div>
+  <div class="posts" id="posts"></div>
+
+  <footer>
+    GRAND THEFT AFTER-DARK · “THE SCORE” · scripts live in marketing/daily-transmissions.json<br>
+    Independent fan tribute event. Not affiliated with, endorsed by, or sponsored by Rockstar Games,
+    Take-Two Interactive, or any related entity.
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var D = /*__DATA__*/null;
+  var POSTS = D.posts;
+  var $ = function(id){ return document.getElementById(id); };
+  function el(t, c, x){ var n=document.createElement(t); if(c)n.className=c; if(x!=null)n.textContent=x; return n; }
+
+  // ---- the four keys ----
+  [['Gold','The Corvettis','#f5c542'],['Pink','Los Halcóns','#ff2d9b'],
+   ['Cyan','The Street Kings','#00e5ff'],['Violet','The Firm','#a06bff']].forEach(function(k){
+    var d = el('div','key'); d.style.color = k[2];
+    d.appendChild(el('div','kn',k[0] + ' key'));
+    d.appendChild(el('div','kg',k[1]));
+    $('keys').appendChild(d);
+  });
+
+  // ---- share triggers ----
+  $('shareLede').textContent = D.share.principle;
+  D.share.mechanisms.forEach(function(m){
+    var c = el('div','trig');
+    c.appendChild(el('h3',null,m.name));
+    c.appendChild(el('p',null,m.why));
+    var days = el('div','days');
+    m.posts.forEach(function(n){
+      var b = el('button',null,'Day ' + n);
+      b.type='button';
+      b.addEventListener('click', function(){ openDay(n); });
+      days.appendChild(b);
+    });
+    c.appendChild(days);
+    $('triggers').appendChild(c);
+  });
+
+  // ---- filters ----
+  var phases = [];
+  POSTS.forEach(function(p){ if (phases.indexOf(p.phase) < 0) phases.push(p.phase); });
+  var active = 'All';
+  var chips = [];
+  ['All'].concat(phases).forEach(function(name){
+    var b = el('button','chip' + (name === 'All' ? ' on' : ''), name);
+    b.type = 'button';
+    b.addEventListener('click', function(){
+      active = name;
+      chips.forEach(function(c){ c.classList.toggle('on', c.textContent === name); });
+      render();
+    });
+    chips.push(b);
+    $('filters').appendChild(b);
+  });
+  var count = el('span','count'); $('filters').appendChild(count);
+
+  // ---- speech ----
+  var synth = window.speechSynthesis, speakingCard = null, timer = null, t0 = 0;
+  function stopSpeech(){
+    if (timer){ clearInterval(timer); timer = null; }
+    synth && synth.cancel();
+    if (speakingCard){ speakingCard.btn.textContent = 'Read aloud'; speakingCard = null; }
+  }
+  function readAloud(post, btn, clock){
+    if (speakingCard && speakingCard.btn === btn){ stopSpeech(); return; }
+    stopSpeech();
+    if (!('speechSynthesis' in window)){ clock.textContent = 'no speech support'; return; }
+    speakingCard = { btn: btn };
+    btn.textContent = 'Stop';
+    t0 = Date.now();
+    timer = setInterval(function(){
+      var s = Math.round((Date.now() - t0) / 1000);
+      clock.textContent = 'speaking · ' + String(Math.floor(s/60)) + ':' + String(s%60).padStart(2,'0');
+    }, 250);
+    var u = new SpeechSynthesisUtterance(post.script.replace(/\n/g, '. '));
+    u.rate = 1.0; u.pitch = 0.92;
+    u.onend = function(){
+      var s = Math.round((Date.now() - t0) / 1000);
+      stopSpeech();
+      clock.textContent = 'read in ' + s + 's' + (s >= 30 && s <= 60 ? ' ✓' : ' — adjust');
+    };
+    u.onerror = function(){ stopSpeech(); clock.textContent = 'playback stopped'; };
+    synth.speak(u);
+  }
+
+  // ---- render ----
+  function card(p){
+    var d = el('details','post');
+    d.style.setProperty('--c', p.colour);
+    d.dataset.day = p.day;
+
+    var sum = el('summary');
+    var day = el('div','day', String(p.day));
+    day.appendChild(el('small', null, 'DAY'));
+    sum.appendChild(day);
+
+    var hw = el('div','hookwrap');
+    hw.appendChild(el('div','hooklabel','First 3 seconds'));
+    hw.appendChild(el('p','hook','“' + p.hook + '”'));
+    hw.appendChild(el('div','ttl', p.phase + ' · ' + p.title));
+    sum.appendChild(hw);
+
+    var rt = el('div','rt');
+    rt.appendChild(el('b', null, p.runtimeSec + 's'));
+    rt.appendChild(document.createTextNode(p.words + ' words'));
+    sum.appendChild(rt);
+    d.appendChild(sum);
+
+    var body = el('div','body');
+
+    var b0 = el('div','blk');
+    b0.appendChild(el('div','k','On-screen text'));
+    b0.appendChild(el('div','onscreen', p.onScreenText));
+    body.appendChild(b0);
+
+    var b1 = el('div','blk');
+    b1.appendChild(el('div','k','The script — TJ to camera'));
+    b1.appendChild(el('p','scriptbox', p.script));
+    var acts = el('div','acts');
+    var btn = el('button','act','Read aloud'); btn.type = 'button';
+    var clock = el('span','act timing', p.runtimeSec + 's estimated');
+    btn.addEventListener('click', function(){ readAloud(p, btn, clock); });
+    var copy = el('button','act','Copy script'); copy.type = 'button';
+    copy.addEventListener('click', function(){
+      if (navigator.clipboard) navigator.clipboard.writeText(p.script);
+      copy.textContent = 'Copied'; setTimeout(function(){ copy.textContent = 'Copy script'; }, 1200);
+    });
+    acts.appendChild(btn); acts.appendChild(copy); acts.appendChild(clock);
+    b1.appendChild(acts);
+    body.appendChild(b1);
+
+    var b2 = el('div','blk');
+    b2.appendChild(el('div','k','Shots'));
+    var ul = el('ul','shots');
+    p.shots.forEach(function(s){ ul.appendChild(el('li', null, s)); });
+    b2.appendChild(ul);
+    body.appendChild(b2);
+
+    var b3 = el('div','blk');
+    var grid = el('div','meta');
+    [['Caption', p.caption, ''], ['The ask', p.cta, ''], ['Why it gets shared', p.shareTrigger, 'why']]
+      .forEach(function(x){
+        var w = el('div');
+        w.appendChild(el('div','k', x[0]));
+        w.appendChild(el('p', x[2], x[1]));
+        grid.appendChild(w);
+      });
+    b3.appendChild(grid);
+    body.appendChild(b3);
+
+    d.appendChild(body);
+    return d;
+  }
+
+  function render(){
+    var wrap = $('posts');
+    wrap.innerHTML = '';
+    var shown = POSTS.filter(function(p){ return active === 'All' || p.phase === active; });
+    shown.forEach(function(p){ wrap.appendChild(card(p)); });
+    count.textContent = shown.length + ' of ' + POSTS.length + ' posts';
+  }
+  function openDay(n){
+    active = 'All';
+    chips.forEach(function(c){ c.classList.toggle('on', c.textContent === 'All'); });
+    render();
+    var t = document.querySelector('.post[data-day="' + n + '"]');
+    if (t){ t.open = true; t.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+  }
+
+  window.addEventListener('beforeunload', stopSpeech);
+  render();
+})();
+</script>
