@@ -105,6 +105,21 @@
   .cont{border:1px solid var(--warn);border-radius:8px;padding:11px 13px;margin:0;
     background:rgba(255,90,110,.07);font-size:14px;line-height:1.55;color:#f0d6da;}
   .aud{font-size:14px;color:var(--cyan);margin:0;line-height:1.5;}
+  /* dialogue */
+  .say{display:inline-block;font-family:var(--mono);font-size:8.5px;letter-spacing:.13em;
+    text-transform:uppercase;border-radius:4px;padding:2px 6px;margin:0 0 5px 6px;
+    border:1px solid currentColor;}
+  .say.line{color:#7dffb2;} .say.vo{color:#8f8fa6;} .say.sil{color:#5c5c72;}
+  .quote{border-left:2px solid #7dffb2;padding:2px 0 2px 13px;margin:0;}
+  .quote q{font-family:var(--display);font-weight:400;font-size:clamp(17px,2.1vw,21px);
+    line-height:1.34;color:var(--ink);quotes:'“' '”';}
+  .quote .who{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.16em;
+    text-transform:uppercase;color:#7dffb2;margin-bottom:5px;}
+  .quote .how{display:block;font-size:13px;color:var(--mut);margin-top:7px;line-height:1.5;}
+  .quote.off{border-left-color:var(--dim);}
+  .quote.off .who{color:var(--dim);}
+  .budget{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--dim);margin-top:8px;}
+  .budget.tight{color:var(--warn);}
   .acts{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px;}
   .cbtn{font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;
     border:1px solid var(--cyan);background:transparent;color:var(--cyan);border-radius:7px;padding:8px 12px;cursor:pointer;}
@@ -188,6 +203,7 @@
       localStorage.setItem('gtad.locked', LOCKED ? '1' : '0');
     } catch(e){}
   }
+  function NAME_OF(k){ return k === 'both' ? 'Both of them' : (TOKENS[k] || k); }
   function sub(text, cast){
     if (!LOCKED || !text) return text;
     (cast || Object.keys(SEEDS)).forEach(function(k){
@@ -199,11 +215,14 @@
   function clipCard(c, showCast){
     var d = el('details','clip' + (c.ensemble ? ' ens' : (['TURN','APPROACH','HOLD'].indexOf(c.role)>-1 ? ' money' : '')));
     d.style.setProperty('--rc', c.ensemble ? '#ff5a6e' : (ROLE_C[c.role] || '#8f8fa6'));
+    var dg = c.dialogue || {kind:'silent', lines:[]};
     var s = el('summary','ch2');
     s.appendChild(el('div','cid', c.id));
     var mid = el('div','cmid');
     mid.appendChild(el('span','role', c.role));
     if (showCast) mid.appendChild(el('span','cast', c.cast.join(' + ')));
+    mid.appendChild(el('span','say ' + (dg.kind==='speaks'?'line':(dg.kind==='voice-over'?'vo':'sil')),
+      dg.kind==='speaks' ? 'Line' : (dg.kind==='voice-over' ? 'VO only' : 'No line')));
     mid.appendChild(el('p','cam', c.camera));
     mid.appendChild(el('div','csub', c.beat + ' · ' + c.beatTitle));
     s.appendChild(mid);
@@ -215,13 +234,38 @@
       b.appendChild(el('div','lbl','Continuity — read before you render'));
       b.appendChild(el('p','cont', c.continuity));
     }
+    if (dg.lines && dg.lines.length){
+      b.appendChild(el('div','lbl', dg.kind==='speaks' ? 'The line — it is in the prompt below'
+        : 'Voice-over — record this separately, there is no mouth to sync'));
+      dg.lines.forEach(function(l){
+        var q = el('p','quote' + (l.placement==='on' ? '' : ' off'));
+        q.appendChild(el('span','who', NAME_OF(l.speaker)
+          + (l.placement==='on' ? '' : (l.placement==='vo' ? ' · voice-over' : ' · off-screen'))));
+        var qq = document.createElement('q'); qq.textContent = l.line; q.appendChild(qq);
+        if (l.delivery && l.placement==='on') q.appendChild(el('span','how', l.delivery));
+        b.appendChild(q);
+      });
+      if (dg.words){
+        var head = dg.seconds != null ? dg.seconds : c.seconds;
+        b.appendChild(el('p','budget' + (dg.fits ? '' : ' tight'),
+          dg.words + ' words ≈ ' + dg.spokenSeconds + 's spoken in a ' + c.seconds + 's clip'
+          + (dg.fits ? '' : ' — TOO LONG, split it or slow the clip down')));
+      }
+    } else if (c.subject && c.subject !== '—' && c.subject !== 'handler'){
+      b.appendChild(el('div','lbl','No line'));
+      b.appendChild(el('p','aud','Silence is the direction here — the prompt tells the model to keep the mouth closed.'));
+    }
     var full = sub(c.full, c.cast);
     b.appendChild(el('div','lbl','Prompt'));
     b.appendChild(el('p','ptext', full));
     b.appendChild(el('div','lbl','Negative'));
     b.appendChild(el('p','ntext', c.negative));
-    b.appendChild(el('div','lbl','Audio under it'));
-    b.appendChild(el('p','aud', c.audio));
+    // Once the line is in the prompt, repeating the audio note underneath is noise —
+    // keep it only when it carries something the line doesn't (a cue, a game card).
+    if (dg.kind !== 'speaks' || c.audio.indexOf('→') > -1 || c.audio.indexOf('◆') > -1){
+      b.appendChild(el('div','lbl', dg.kind === 'speaks' ? 'What this line lands on' : 'Audio under it'));
+      b.appendChild(el('p','aud', c.audio));
+    }
     var a = el('div','acts');
     a.appendChild(copyBtn('Copy prompt', full));
     a.appendChild(copyBtn('Copy negative', c.negative, 'alt'));
@@ -288,9 +332,20 @@
         sb.appendChild(el('code', null, ch.seed));
         sc.appendChild(sb); sec.appendChild(sc);
       }
+      var voice = (D.voices||{})[ch.key];
+      if (voice){
+        var vc = el('div','card seed'); vc.style.setProperty('--cc', ch.colour);
+        var vh = el('div','cardh');
+        var spoken = ch.clips.filter(function(c){ return (c.dialogue||{}).kind === 'speaks'; }).length;
+        vh.appendChild(el('span', null, '2 · The voice — ' + spoken + ' of these ' + ch.clipCount
+          + ' clips have a spoken line'));
+        vc.appendChild(vh);
+        var vb = el('div','cardb'); vb.appendChild(document.createTextNode(voice));
+        vc.appendChild(vb); sec.appendChild(vc);
+      }
       if (ch.lock){
         var lc = el('div','card lock');
-        var lh = el('div','cardh'); lh.appendChild(el('span',null,'2 · The lock — check every render against this'));
+        var lh = el('div','cardh'); lh.appendChild(el('span',null,'3 · The lock — check every render against this'));
         lc.appendChild(lh);
         var lb = el('div','cardb'); lb.appendChild(document.createTextNode(ch.lock));
         lc.appendChild(lb); sec.appendChild(lc);

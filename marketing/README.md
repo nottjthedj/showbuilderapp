@@ -16,7 +16,7 @@ listening to that voice for a month.
 | [`origin-story.md`](origin-story.md) | **The website story.** How the four gangs formed, what the vault is, and why all four are in one building on one night. Spoiler-safe. |
 | [`daily-transmissions.json`](daily-transmissions.json) | **122 daily posts** — launch to the November show — 26–45s each: hook, on-screen text, full TJ script, shot list, caption, CTA and why each gets shared. Plus the 3-a-week tour cadence for after it. |
 | [`how-to-play.md`](how-to-play.md) | **The explainer video** — 75–90s, built to kill the "will I get pulled on stage" objection. |
-| [`shot-sheet.json`](shot-sheet.json) | **The master prompt sheet** — the whole film in 135 clips of ≤15s, each with a ready-to-paste prompt, its negative, the camera move and the audio under it. Built for a 15-second generation limit. |
+| [`shot-sheet.json`](shot-sheet.json) | **The master prompt sheet** — the whole film in 135 clips of ≤15s, each with a ready-to-paste prompt (spoken line and delivery included), its negative, the camera move and the cue under it. Built for a 15-second generation limit. |
 | [`shot-list.json`](shot-list.json) | **The same 135 clips regrouped for generation** — 122 single-subject clips batched by character (seed + continuity lock + prompts), and the 13 two-or-more-subject clips split out and re-prompted with frame positions and per-subject lighting. |
 
 ## Generating the film — the turn needs three clips
@@ -42,6 +42,16 @@ two or more established subjects in frame are pulled into their own list and don
 every solo reference frame to exist before you can put two people in one frame, and those are the
 shots where faces average together and subjects swap sides. Each carries explicit FRAME LEFT / FRAME
 RIGHT positions, per-crew lighting, and negatives for merging and side-swapping.
+
+**The dialogue is in the prompt.** It used to sit in an "audio under it" note, which meant the
+generator never saw it and every clip came back with a mouth doing something approximate. Now each
+clip carries the line itself, who says it, how it's delivered — *a hoarse rising Cuban accent, quiet
+and coiled before it detonates* — and an instruction that lip movement matches those exact words.
+Clips where nobody speaks say so explicitly, because a model given no instruction about the mouth
+will invent one. **65 clips have a spoken line, 13 are told to stay silent, 32 are voice-over**
+(the Handler's face is never in shot, so his lines can never be lip-sync — generate the picture and
+record the voice separately). Each line shows its word count against the clip length; nothing is
+currently over budget.
 
 **If your generator has a character feature, use it and say so.** The shot-list page has a switch
 at the top — *"I've built these as characters in my tool"*. Off, every prompt carries the full

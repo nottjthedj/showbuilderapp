@@ -48,6 +48,33 @@ SEEDS = O([
              "turned away from camera, face never visible"),
 ])
 
+# How each part sounds. The line alone gets you a mouth moving; the delivery is what
+# makes it that character saying it.
+VOICES = O([
+ ("rico", "a hoarse rising Cuban accent, quiet and coiled before it detonates"),
+ ("don", "an old whispered New York-Italian rasp, slow, never raised"),
+ ("vinnie", "a loud sweaty New York-Italian bark, always a half-step too eager"),
+ ("marcus", "a low unhurried West Coast calm, never raised, entirely certain"),
+ ("problem", "an eager overlapping delivery, mouth half full, no pauses"),
+ ("preston", "a flat clipped tech-founder cadence with a rehearsed upward lilt"),
+ ("kayleigh", "a dry bored perfectly level delivery, no emphasis anywhere"),
+ ("mcgraw", "a gravelled tired American drawl, talking around a toothpick"),
+ ("president", "a booming self-satisfied stump-speech delivery, stressing the wrong words"),
+ ("handler", "a calm close unhurried baritone, speaking directly to one person"),
+])
+SPEAKERS = O([("HANDLER","handler"), ("VO","handler"), ("RICO","rico"), ("DON","don"),
+              ("VINNIE","vinnie"), ("MARCUS","marcus"), ("PROBLEM","problem"),
+              ("PRESTON","preston"), ("KAYLEIGH","kayleigh"), ("MCGRAW","mcgraw"),
+              ("PRESIDENT","president"), ("BOTH","both")])
+
+# Words per second of delivered dialogue. These parts are all slow — menace, whisper,
+# stump speech — so this is deliberately under the ~2.8 of ordinary conversation.
+WPS = 2.3
+AIR = 2.0  # seconds of silence a clip needs around the line to be cuttable
+
+NEG_SILENT = "talking, mouth moving, lip flap, speaking, shouting"
+NEG_SPEAKING = "closed mouth, mismatched lip sync, muted, silent performance"
+
 LOCS = O([
  ("mansion", "a mirrored hot-pink neon mansion interior, mirrored walls, white leather couches, floor-to-ceiling windows over a night marina"),
  ("backroom", "a warm gold-lit restaurant back room, checkered tablecloth, velvet banquettes, low hanging lamp"),
@@ -253,25 +280,130 @@ def fill(t):
             t = t.replace(tok + ',', v + ',').replace(tok + '.', v + '.').replace(tok, v + ',')
     return t
 
+# --- dialogue ---------------------------------------------------------------
+# The audio column was only ever a note to the editor. The generator never saw it,
+# so every clip came back with a mouth doing something approximate. These lines are
+# the film — they belong in the prompt.
+
+import re
+
+# The two clips where the line genuinely changes hands mid-shot, plus the one line
+# with no speaker label on it. Everything else parses.
+HAND_OFF = {
+ "S8-05": [("preston", "The falcon.", "off"), ("rico", "…It's always the falcon.", "on")],
+ "S6-06": [("don", "The vault's open. My crew and his crew—", "on"),
+           ("rico", "—and every one of YOU—", "on")],
+ "S12-03": [("president", "—and I have never, EVER taken a dollar from any of these "
+                          "fine… patrons.", "off")],
+}
+LABEL = re.compile(r"^\s*(?:◆\s*)?(?:THE TURN\s*—\s*)?"
+                   r"(Handler VO|VO|McGRAW|[A-Z][A-Za-z']+)?\s*(\(off\))?\s*(?:—\s*)?'")
+
+def strip_marks(a):
+    a = a.split('→')[0]
+    return re.sub(r"\s*\([^)]*\)\s*$", "", a).strip()
+
+# Clips with no single subject key that still have people in frame — the two-hander
+# beats. Everywhere else a blank subject means an empty plate, so a line over it is
+# somebody talking off-screen, not a mouth to sync.
+IN_FRAME_NO_SUBJ = {"S6-02", "S6-03", "S6-06", "S6-07", "S6-08", "S10-02", "S10-06"}
+
+def parse_line(clip_id, audio, subj):
+    """(speaker_key, line, placement) list. placement: on | off | vo."""
+    if clip_id in HAND_OFF:
+        return HAND_OFF[clip_id]
+    a = strip_marks(audio)
+    if a.count("'") < 2:
+        return []
+    m = LABEL.match(a)
+    if not m and '◆' not in audio:
+        return []                      # an editor's note that happens to contain an apostrophe
+    label, off = (m.group(1), m.group(2)) if m else (None, None)
+    line = a[a.index("'") + 1: a.rindex("'")].strip().replace('*', '')
+    if len(line.split()) < 2:
+        return []
+    who = SPEAKERS.get((label or '').upper()) if label else None
+    if not who:
+        who = subj or 'handler'
+    # The Handler's face is never in shot, so his lines can never be a lip-sync —
+    # they are voice-over, recorded separately, every time.
+    if who == 'handler' or (label or '').upper() in ('VO', 'HANDLER VO'):
+        place = 'vo'
+    elif off or (subj and who != subj) or (not subj and clip_id not in IN_FRAME_NO_SUBJ):
+        place = 'off'
+    else:
+        place = 'on'
+    return [(who, line, place)]
+
+def speech_block(lines, role):
+    """The bit the generator actually needs: who says what, how, and lips that match."""
+    on = [l for l in lines if l[2] == 'on']
+    if not on:
+        return None
+    to = ("directly into the lens, addressing the viewer" if role in ('TURN', 'HOLD')
+          else "in scene, not to camera")
+    if len(on) == 1:
+        who, line, _ = on[0]
+        subject = 'both subjects speak in unison' if who == 'both' else f'the subject speaks {to}'
+        body = f'SPOKEN LINE — {subject}: "{line}"' + (
+            f' — delivered in {VOICES[who]}' if who in VOICES else '')
+    else:
+        body = 'SPOKEN LINES — ' + ' then '.join(
+            f'the {"first" if i == 0 else "second"} subject speaks {to}: "{line}"'
+            + (f' (delivered in {VOICES[who]})' if who in VOICES else '')
+            for i, (who, line, _) in enumerate(on))
+    sep = ' ' if body.endswith(('."', '?"', '!"', '—"')) else '. '
+    return (body + sep + 'Lip movement matches these exact words. Clean audible dialogue, '
+                         'no subtitles, no on-screen text')
+
+NO_LINE = ("NO DIALOGUE — the subject does not speak in this clip; mouth closed and still, "
+           "the performance is in the eyes")
+NO_ROAR = ("NO DIALOGUE — the animal does not roar, snarl, or open its mouth; she is calm "
+           "and indifferent throughout")
+
 clips, n = [], 0
 for tag, title, owner, loc, rows in BEATS:
     code = tag.replace('SCENE ', 'S').replace('INTRO', 'IN').replace('FINALE', 'FIN')
     for i, (role, sec, cam, subj, prompt, audio) in enumerate(rows, 1):
         n += 1
+        cid = f"{code}-{i:02d}"
         negs = [NEG, NEG_PERIOD, NEG_MOTION]
         if subj == 'handler':
             negs.append(NEG_HANDLER)
         body = fill(prompt)
+
+        lines = parse_line(cid, audio, subj)
+        block = speech_block(lines, role)
+        spoken = sum(len(l.split()) for _, l, p in lines if p == 'on')
+        if block:
+            negs.append(NEG_SPEAKING)
+        elif subj == 'sugar':
+            block = NO_ROAR
+            negs.append(NEG_SILENT)
+        elif subj and subj != 'handler':   # no face on the Handler, so nothing to hold still
+            block = NO_LINE
+            negs.append(NEG_SILENT)
+        say = f" {block}." if block else ""
+        dialogue = O([
+            ("kind", "speaks" if spoken else ("voice-over" if lines else "silent")),
+            ("lines", [O([("speaker", w), ("line", l), ("placement", p),
+                          ("delivery", VOICES.get(w))]) for w, l, p in lines]),
+            ("words", spoken),
+            ("spokenSeconds", round(spoken / WPS, 1) if spoken else 0),
+            ("fits", (spoken / WPS) + AIR <= sec if spoken else True),
+        ])
+
         clips.append(O([
-            ("id", f"{code}-{i:02d}"),
+            ("id", cid),
             ("n", n),
             ("beat", tag), ("beatTitle", title), ("role", role),
             ("seconds", sec), ("subject", subj or "—"),
             ("camera", cam),
-            ("prompt", f"{body}, {cam}"),
-            ("full", f"{body}, {cam}. {STYLE}. {PERIOD}"),
+            ("prompt", f"{body}, {cam}.{say}"),
+            ("full", f"{body}, {cam}.{say} {STYLE}. {PERIOD}"),
             ("negative", ", ".join(negs)),
             ("audio", audio),
+            ("dialogue", dialogue),
             ("lockRef", bool(subj) and subj != '—'),
         ]))
 
@@ -317,7 +449,9 @@ doc = O([
    "No text in-gen. Banners, game cards, the '— H.' note and all titles go on in post.",
  ]),
  ("blocks", O([("STYLE", STYLE), ("PERIOD", PERIOD), ("NEG", NEG),
-               ("NEG_PERIOD", NEG_PERIOD), ("NEG_HANDLER", NEG_HANDLER), ("NEG_MOTION", NEG_MOTION)])),
+               ("NEG_PERIOD", NEG_PERIOD), ("NEG_HANDLER", NEG_HANDLER), ("NEG_MOTION", NEG_MOTION),
+               ("NEG_SILENT", NEG_SILENT), ("NEG_SPEAKING", NEG_SPEAKING)])),
+ ("voices", VOICES),
  ("seeds", SEEDS),
  ("locations", LOCS),
  ("clips", clips),

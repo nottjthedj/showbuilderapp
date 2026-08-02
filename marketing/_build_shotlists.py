@@ -166,6 +166,60 @@ def fill(t):
             t = t.replace(tok + ',', v + ',').replace(tok + '.', v + '.').replace(tok, v + ',')
     return t
 
+POSITIONS = ("FRAME LEFT", "FRAME RIGHT", "CENTRE FRAME", "FOREGROUND", "BACKGROUND")
+VOICES = {  # same deliveries as the master sheet, keyed for the two-hander prompts
+ "rico": "a hoarse rising Cuban accent, quiet and coiled before it detonates",
+ "don": "an old whispered New York-Italian rasp, slow, never raised",
+ "marcus": "a low unhurried West Coast calm, never raised, entirely certain",
+ "preston": "a flat clipped tech-founder cadence with a rehearsed upward lilt",
+ "mcgraw": "a gravelled tired American drawl, talking around a toothpick",
+ "president": "a booming self-satisfied stump-speech delivery, stressing the wrong words",
+ "problem": "an eager overlapping delivery, mouth half full, no pauses",
+ "vinnie": "a loud sweaty New York-Italian bark, always a half-step too eager",
+ "kayleigh": "a dry bored perfectly level delivery, no emphasis anywhere",
+}
+
+def where(body, key):
+    """Which side of frame a subject was placed on, so the line lands on the right mouth."""
+    i = body.find('{' + key + '}')
+    if i < 0:
+        return None
+    best = None
+    for p in POSITIONS:
+        j = body.rfind(p, 0, i)
+        if j > -1 and (best is None or j > best[1]):
+            best = (p, j)
+    return best[0] if best else None
+
+def ens_speech(c, body, cast):
+    """Who speaks, on which side, and — just as important — who doesn't."""
+    on = [l for l in c['dialogue']['lines'] if l['placement'] == 'on']
+    if not on:
+        return None
+    to = ("directly into the lens" if c['role'] in ('TURN', 'HOLD') else "in scene, not to camera")
+    if on[0]['speaker'] == 'both':
+        return (f'SPOKEN LINE — both subjects say the same words at the same moment {to}: '
+                f'"{on[0]["line"]}" — in unison, not overlapping. Lip movement matches these '
+                f'exact words on both subjects. Clean audible dialogue, no subtitles')
+    said, parts = set(), []
+    for l in on:
+        pos = where(body, l['speaker'])
+        subject = f'the subject on {pos}' if pos else 'the speaking subject'
+        parts.append(f'{subject} speaks {to}: "{l["line"]}"'
+                     + (f' — delivered in {VOICES[l["speaker"]]}' if l['speaker'] in VOICES else ''))
+        said.add(l['speaker'])
+    silent = [k for k in cast if k not in said and k != 'sugar']
+    quiet = ''
+    if silent:
+        pos = [p for p in (where(body, k) for k in silent) if p]
+        who = ' and '.join(f'the subject on {p}' for p in pos) if pos else 'the other subject'
+        quiet = (f' {who[0].upper() + who[1:]} does not speak at all — mouth closed and still, '
+                 f'watching, no lip movement')
+    said_bit = ('SPOKEN LINE — ' + ' then '.join(parts)).rstrip('.')
+    return (said_bit + '.' + (quiet + '.' if quiet else '')
+            + ' Lip movement matches these exact words on the speaking subject only. '
+              'Clean audible dialogue, no subtitles, no on-screen text')
+
 clips = []
 for c in SRC['clips']:
     c = dict(c)
@@ -174,13 +228,22 @@ for c in SRC['clips']:
         c['cast'] = cast
         c['ensemble'] = True
         c['continuity'] = note
-        c['prompt'] = f"{fill(body)}, {c['camera']}"
-        c['full'] = f"{fill(body)}, {c['camera']}. {SRC['blocks']['STYLE']}. {SRC['blocks']['PERIOD']}"
+        say = ens_speech(c, body, cast)
+        say = f" {say}." if say else ""
+        c['prompt'] = f"{fill(body)}, {c['camera']}.{say}"
+        c['full'] = (f"{fill(body)}, {c['camera']}.{say} "
+                     f"{SRC['blocks']['STYLE']}. {SRC['blocks']['PERIOD']}")
         negs = [SRC['blocks']['NEG'], SRC['blocks']['NEG_PERIOD'], SRC['blocks']['NEG_MOTION'],
                 "the two subjects swapping sides, subjects merging, identical faces, twins, "
                 "one subject's clothing appearing on the other"]
         if 'handler' in cast:
             negs.append(SRC['blocks']['NEG_HANDLER'])
+        if say:
+            negs.append(SRC['blocks']['NEG_SPEAKING'])
+            if c['dialogue']['lines'][0]['speaker'] != 'both':
+                negs.append("both subjects talking at once, the wrong subject speaking")
+        else:
+            negs.append(SRC['blocks']['NEG_SILENT'])
         c['negative'] = ", ".join(negs)
     else:
         subj = SOLO_FIX.get(c['id'], c['subject'] if c['subject'] != '—' else 'none')
@@ -222,6 +285,9 @@ doc = O([
    "Work down the batch in order. It's grouped by beat, so the set stays locked as long as possible.",
    "Check every render against the LOCK list before you accept it. Wardrobe drift is the thing you "
    "won't notice until the edit.",
+   "Read the line before you generate. It is already written into the prompt, with the delivery — "
+   "the clip comes back with that mouth saying those words. Clips marked VO have no lip-sync: the "
+   "line is spoken over the picture, so generate the shot and record the voice separately.",
    "Do the ensemble list LAST, once every solo reference frame exists — you need both locked faces "
    "before you can put two people in one frame.",
  ]),
@@ -235,10 +301,13 @@ doc = O([
    "keep them distinct.",
    "The negative block for these clips adds subjects swapping sides, subjects merging, identical faces "
    "and one subject's clothing appearing on the other.",
+   "Say who is NOT talking. Every two-hander prompt names the speaking side and then tells the other "
+   "subject to hold a closed mouth — otherwise both mouths move and the shot is unusable.",
    "Shoot ensemble clips more times than solo ones. They fail more often and they fail in ways you only "
    "see at full size.",
  ]),
  ("blocks", SRC['blocks']),
+ ("voices", SRC['voices']),
  ("characters", chars),
  ("ensemble", ens),
 ])
