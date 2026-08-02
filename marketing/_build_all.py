@@ -26,5 +26,9 @@ for i, (label, path) in enumerate(STEPS, 1):
     if not path.exists():
         sys.exit(f"missing builder: {path}")
     runpy.run_path(str(path), run_name='__main__')
-print("\nDone. Pages are built separately — _build_sheet_page.py, _build_shotlist_pages.py, "
-      "_build_vo_page.py.")
+print("\n[pages] " + ' '.join(str(x.name) for x in [
+    ROOT / 'marketing/_build_hub_page.py', ROOT / 'marketing/_build_sheet_page.py',
+    ROOT / 'marketing/_build_shotlist_pages.py', ROOT / 'marketing/_build_vo_page.py']))
+runpy.run_path(str(ROOT / 'marketing/_build_hub_page.py'), run_name='__main__')
+print("\nDone. The other pages build separately — _build_sheet_page.py, "
+      "_build_shotlist_pages.py, _build_vo_page.py.")
