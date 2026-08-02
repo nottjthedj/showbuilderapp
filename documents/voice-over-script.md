@@ -122,7 +122,7 @@ _Voice-over, over picture. No lip to match, so pace it to the length of the shot
 
 `15 words · target 6.5s · the shot is 10s`
 
-Over: holding completely still, half-turned toward the lens, face still unlit, neon breathing behind him
+Over: holding completely still, half-turned toward the lens, face still unlit, neon breathing behind him, in a…
 
 ### HANDLER-10 · S1-01 · SCENE 1 The Interrogation
 
@@ -360,7 +360,7 @@ _Straight down the lens. This is the fourth-wall break — he is talking to the 
 
 `9 words · target 3.9s · the shot is 12s`
 
-Over: leaning into the lens, manic joy taking over, tracer fire still streaking past him unremarked
+Over: leaning into the lens, manic joy taking over, tracer fire still streaking past him unremarked, in a mirrored…
 
 ### RICO-05 · S3-09 · SCENE 3 Crossfire
 
@@ -370,7 +370,7 @@ _Straight down the lens. This is the fourth-wall break — he is talking to the 
 
 `6 words · target 2.6s · the shot is 8s`
 
-Over: arms wide, holding the stare into the lens, grinning, mirrors doubling him infinitely behind
+Over: arms wide, holding the stare into the lens, grinning, mirrors doubling him infinitely behind, in a mirrored…
 
 ### RICO-06 · S6-02 · SCENE 6 Smash & Grab
 
@@ -450,7 +450,7 @@ _Straight down the lens. This is the fourth-wall break — he is talking to the 
 
 `9 words · target 3.9s · the shot is 12s`
 
-Over: still to lens, counting down on his fingers, the projection behind him beginning to fade
+Over: still to lens, counting down on his fingers, the projection behind him beginning to fade, in a dark planning…
 
 ### RICO-14 · S8-08 · SCENE 8 The Blueprint
 
@@ -460,7 +460,7 @@ _Straight down the lens. This is the fourth-wall break — he is talking to the 
 
 `4 words · target 1.7s · the shot is 8s`
 
-Over: holding the look, tapping his temple once, the blueprint gone entirely behind him
+Over: holding the look, tapping his temple once, the blueprint gone entirely behind him, in a dark planning room at…
 
 ### RICO-15 · S10-02 · SCENE 10 The Getaway
 
@@ -548,7 +548,7 @@ _Straight down the lens. This is the fourth-wall break — he is talking to the 
 
 `7 words · target 3.0s · the shot is 8s`
 
-Over: finishing, holding the look into the lens, then the smallest shrug
+Over: finishing, holding the look into the lens, then the smallest shrug, in a warm gold-lit restaurant back room,…
 
 ### DON-06 · S6-06 · SCENE 6 Smash & Grab
 
@@ -636,7 +636,7 @@ _Straight down the lens. This is the fourth-wall break — he is talking to the 
 
 `12 words · target 5.2s · the shot is 12s`
 
-Over: still looking into the lens, one hand loose on the wheel, the chase visible but out of focus behind him
+Over: still looking into the lens, one hand loose on the wheel, the chase visible but out of focus behind him, in the…
 
 ### MARCUS-04 · S2-08 · SCENE 2 The Joyride
 
@@ -646,7 +646,7 @@ _Straight down the lens. This is the fourth-wall break — he is talking to the 
 
 `7 words · target 3.0s · the shot is 8s`
 
-Over: holding the look into the lens, then the smallest flick of the eyes to his passenger
+Over: holding the look into the lens, then the smallest flick of the eyes to his passenger, in the interior of a…
 
 ### MARCUS-05 · S9-03 · SCENE 9 Chop Shop
 
@@ -676,7 +676,7 @@ _Straight down the lens. This is the fourth-wall break — he is talking to the 
 
 `13 words · target 5.7s · the shot is 12s`
 
-Over: still to lens, one hand indicating the line of cars behind him without looking
+Over: still to lens, one hand indicating the line of cars behind him without looking, in a cyan-lit inner-city street…
 
 ### MARCUS-08 · S9-08 · SCENE 9 Chop Shop
 
@@ -686,7 +686,7 @@ _Straight down the lens. This is the fourth-wall break — he is talking to the 
 
 `9 words · target 3.9s · the shot is 8s`
 
-Over: holding the look into the lens, the smallest amused nod
+Over: holding the look into the lens, the smallest amused nod, in a cyan-lit inner-city street corner at night,…
 
 ### MARCUS-09 · S11-03 · SCENE 11 Throw Up
 
@@ -716,7 +716,7 @@ _Straight down the lens. This is the fourth-wall break — he is talking to the 
 
 `11 words · target 4.8s · the shot is 12s`
 
-Over: still to lens, the searchlight beam crossing behind him mid-sentence, he doesn't flinch
+Over: still to lens, the searchlight beam crossing behind him mid-sentence, he doesn't flinch, in a dim neon alley at…
 
 ### MARCUS-12 · S11-08 · SCENE 11 Throw Up
 
@@ -726,7 +726,7 @@ _Straight down the lens. This is the fourth-wall break — he is talking to the 
 
 `5 words · target 2.2s · the shot is 8s`
 
-Over: holding the look into the lens, calm, the light passing off him into darkness
+Over: holding the look into the lens, calm, the light passing off him into darkness, in a dim neon alley at four in…
 
 ### MARCUS-13 · FIN-05 · FINALE The Empty Vault
 
@@ -764,7 +764,7 @@ _In scene. He's talking to someone in the shot, not to you. Lower, faster, less 
 
 `2 words · target 0.9s · the shot is 10s`
 
-Over: absorbing that, wounded for exactly one beat, then recovering completely
+Over: absorbing that, wounded for exactly one beat, then recovering completely, in a cold violet-lit glass office…
 
 ### PRESTON-03 · S5-06 · SCENE 5 The Stakeout
 
@@ -774,7 +774,7 @@ _Straight down the lens. This is the fourth-wall break — he is talking to the 
 
 `10 words · target 4.3s · the shot is 15s`
 
-Over: facing the lens directly, far too close, over-lit and unblinking, addressing the viewer with corporate menace
+Over: facing the lens directly, far too close, over-lit and unblinking, addressing the viewer with corporate menace,…
 
 ### PRESTON-04 · S5-07 · SCENE 5 The Stakeout
 
@@ -784,7 +784,7 @@ _Straight down the lens. This is the fourth-wall break — he is talking to the 
 
 `14 words · target 6.1s · the shot is 12s`
 
-Over: still too close to the lens, gesturing precisely, violet glow flickering across his turtleneck
+Over: still too close to the lens, gesturing precisely, violet glow flickering across his turtleneck, in a cold…
 
 ### PRESTON-05 · S5-08 · SCENE 5 The Stakeout
 
@@ -814,7 +814,7 @@ _In scene. He's talking to someone in the shot, not to you. Lower, faster, less 
 
 `5 words · target 2.2s · the shot is 10s`
 
-Over: straightening his turtleneck, composing himself, and craning slowly toward the lens still holding the device
+Over: straightening his turtleneck, composing himself, and craning slowly toward the lens still holding the device,…
 
 ### PRESTON-08 · S7-06 · SCENE 7 The Device
 
@@ -834,7 +834,7 @@ _Straight down the lens. This is the fourth-wall break — he is talking to the 
 
 `16 words · target 7.0s · the shot is 12s`
 
-Over: still to lens, holding the device dead steady, hand visibly tense
+Over: still to lens, holding the device dead steady, hand visibly tense, in a violet-lit vault workroom at night, a…
 
 ### PRESTON-10 · S7-08 · SCENE 7 The Device
 
@@ -844,7 +844,7 @@ _Straight down the lens. This is the fourth-wall break — he is talking to the 
 
 `6 words · target 2.6s · the shot is 8s`
 
-Over: holding the look and the device, absolutely motionless, red light pulsing
+Over: holding the look and the device, absolutely motionless, red light pulsing, in a violet-lit vault workroom at…
 
 ### PRESTON-11 · S8-02 · SCENE 8 The Blueprint
 
@@ -902,7 +902,7 @@ _In scene. He's talking to someone in the shot, not to you. Lower, faster, less 
 
 `6 words · target 2.6s · the shot is 12s`
 
-Over: stopping and pointing flatly at someone off-frame, deadpan, red and blue light crossing his face
+Over: stopping and pointing flatly at someone off-frame, deadpan, red and blue light crossing his face, in a gritty…
 
 ### MCGRAW-03 · S1-06 · SCENE 1 The Interrogation
 
@@ -922,7 +922,7 @@ _Straight down the lens. This is the fourth-wall break — he is talking to the 
 
 `12 words · target 5.2s · the shot is 12s`
 
-Over: continuing to speak directly into the lens, leaning in slightly, unblinking
+Over: continuing to speak directly into the lens, leaning in slightly, unblinking, in a gritty precinct lineup room…
 
 ### MCGRAW-05 · S1-08 · SCENE 1 The Interrogation
 
@@ -932,7 +932,7 @@ _Straight down the lens. This is the fourth-wall break — he is talking to the 
 
 `4 words · target 1.7s · the shot is 8s`
 
-Over: finishing, holding the stare into the lens, absolutely still, one eyebrow slightly raised
+Over: finishing, holding the stare into the lens, absolutely still, one eyebrow slightly raised, in a gritty precinct…
 
 ### MCGRAW-06 · FIN-08 · FINALE The Empty Vault
 

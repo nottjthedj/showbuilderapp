@@ -53,6 +53,30 @@
     width:190px;text-transform:none;}
   .tok input:focus{outline:none;border-color:var(--cc);}
 
+  /* progress */
+  .totbar{height:8px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden;margin:0 0 11px;}
+  .totbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pink),#7dffb2);transition:width .25s;}
+  .totline{margin:0 0 13px;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--ink);}
+  .row2{display:flex;gap:9px;flex-wrap:wrap;align-items:center;}
+  .hr{border:none;border-top:1px solid var(--line);margin:16px 0 14px;}
+  .port{margin:13px 0 0;}
+  .port textarea{width:100%;font-family:var(--mono);font-size:11.5px;line-height:1.5;color:var(--ink);
+    background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:8px;padding:10px;resize:vertical;}
+  .pbar{height:5px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden;margin:12px 0 6px;}
+  .pbar i{display:block;height:100%;width:0;background:var(--cc);transition:width .25s;}
+  .pcount{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim);}
+  .tick{flex:0 0 22px;height:22px;border-radius:6px;border:1px solid var(--line);background:rgba(255,255,255,.04);
+    display:grid;place-items:center;cursor:pointer;font-size:13px;color:transparent;margin-right:2px;}
+  .tick.on{border-color:#7dffb2;color:#7dffb2;background:rgba(125,255,178,.13);}
+  details.clip.isdone{opacity:.42;}
+  .nextup{display:inline-block;font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:#08080b;background:#7dffb2;border-radius:4px;padding:2px 7px;
+    font-weight:800;margin-left:9px;vertical-align:3px;}
+  .cid{display:flex;align-items:baseline;flex-wrap:wrap;}
+  .cbtn.next{border-color:#7dffb2;color:#7dffb2;font-size:10.5px;padding:10px 15px;}
+  .cbtn.done{border-color:rgba(125,255,178,.5);color:#7dffb2;}
+  .allgood{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#7dffb2;}
+
   /* jump nav */
   .jump{position:sticky;top:0;z-index:60;display:flex;gap:7px;flex-wrap:wrap;align-items:center;
     padding:13px 0;background:linear-gradient(180deg,rgba(8,8,11,.97) 74%,rgba(8,8,11,0));margin-top:22px;}
@@ -86,7 +110,7 @@
     border-left:3px solid var(--rc);overflow:hidden;}
   .clip.money{border-color:rgba(255,45,155,.4);}
   .clip.ens{border-color:rgba(255,90,110,.45);box-shadow:0 0 20px rgba(255,90,110,.1);}
-  .ch2{display:grid;grid-template-columns:auto 1fr auto;gap:13px;align-items:center;padding:12px 15px;cursor:pointer;}
+  .ch2{display:grid;grid-template-columns:22px auto 1fr auto;gap:13px;align-items:center;padding:12px 15px;cursor:pointer;}
   .cid{font-family:var(--display);font-weight:400;font-size:21px;color:var(--rc);letter-spacing:.03em;min-width:62px;line-height:1;}
   .cmid{min-width:0;}
   .role{display:inline-block;font-family:var(--mono);font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;
@@ -131,7 +155,8 @@
   footer{margin:52px 0 0;padding:22px 0 0;border-top:1px solid var(--line);
     font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--dim);line-height:1.9;}
   @media (prefers-reduced-motion: reduce){*{transition:none!important;}}
-  @media (max-width:640px){ .ch2{grid-template-columns:auto 1fr;} .secs{grid-column:2;text-align:left;} }
+  @media (max-width:640px){ .ch2{grid-template-columns:22px 1fr;} .cid{grid-column:2;}
+    .cmid{grid-column:2;} .secs{grid-column:2;text-align:left;} }
 </style>
 
 <div class="wrap">
@@ -145,6 +170,24 @@
   <ol class="how" id="how"></ol>
 
   <div class="tools">
+    <div class="totbar"><i id="totalbar"></i></div>
+    <p class="totline" id="total"></p>
+    <div class="row2">
+      <label class="sw"><input type="checkbox" id="hideDone"><span></span>
+        <b>Hide what I've generated</b></label>
+      <button type="button" class="cbtn alt" id="expBtn">Back up / move progress</button>
+    </div>
+    <div class="port" id="port" hidden>
+      <p class="toolnote">Progress lives in this browser only. Copy this line somewhere safe, or
+        paste one in from another device and press load — it replaces what's here.</p>
+      <textarea id="portbox" spellcheck="false" rows="3"></textarea>
+      <div class="row2">
+        <button type="button" class="cbtn" id="copyProg">Copy</button>
+        <button type="button" class="cbtn alt" id="loadProg">Load pasted list</button>
+        <button type="button" class="cbtn alt" id="clearProg">Clear everything</button>
+      </div>
+    </div>
+    <hr class="hr">
     <label class="sw"><input type="checkbox" id="lockedMode"><span></span>
       <b>I've built these as characters in my tool</b></label>
     <p class="toolnote" id="toolnote"></p>
@@ -197,6 +240,17 @@
     Object.keys(saved).forEach(function(k){ if(TOKENS[k]) TOKENS[k]=saved[k]; });
     LOCKED = localStorage.getItem('gtad.locked') === '1';
   } catch(e){}
+  /* ---- what's already generated ---------------------------------------
+     Shared with the production hub and the assembly page under one key, so a
+     clip ticked anywhere is ticked everywhere. Generating is expensive; the
+     record of what exists has to be one record, not three. */
+  var DONE = {};
+  try { DONE = JSON.parse(localStorage.getItem('gtad.done') || '{}'); } catch(e){}
+  function saveDone(){
+    try { localStorage.setItem('gtad.done', JSON.stringify(DONE)); } catch(e){}
+  }
+  var SECTIONS = {};   // key -> {clips:[ids], el}
+
   function save(){
     try {
       localStorage.setItem('gtad.tokens', JSON.stringify(TOKENS));
@@ -212,11 +266,76 @@
     return text;
   }
 
+  function setDone(id, on){
+    if (on) DONE[id] = 1; else delete DONE[id];
+    saveDone();
+    var card = document.getElementById('k-' + id);
+    if (card){
+      card.classList.toggle('isdone', !!on);
+      var t = card.querySelector('.tick'); if (t) t.classList.toggle('on', !!on);
+      var m = card.querySelector('.cbtn.done');
+      if (m) m.textContent = on ? 'Not done after all' : 'Mark generated';
+      if (HIDE_DONE) card.style.display = on ? 'none' : '';
+    }
+    Object.keys(SECTIONS).forEach(refreshSection);
+    paintTotal();
+  }
+
+  function nextUndone(key){
+    var ids = SECTIONS[key].clips;
+    for (var i = 0; i < ids.length; i++) if (!DONE[ids[i]]) return ids[i];
+    return null;
+  }
+
+  function refreshSection(key){
+    var S = SECTIONS[key], done = S.clips.filter(function(i){ return DONE[i]; }).length;
+    if (S.count) S.count.textContent = done + ' / ' + S.clips.length + ' generated';
+    if (S.bar) S.bar.style.width = Math.round(done / S.clips.length * 100) + '%';
+    var nxt = nextUndone(key);
+    S.el.querySelectorAll('.nextup').forEach(function(n){ n.parentNode.removeChild(n); });
+    if (S.nextBtn){
+      S.nextBtn.style.display = nxt ? '' : 'none';
+      S.nextBtn.textContent = nxt ? 'Copy the next prompt — ' + nxt : '';
+      S.nextBtn.dataset.clip = nxt || '';
+    }
+    if (S.doneMsg) S.doneMsg.style.display = nxt ? 'none' : '';
+    if (nxt){
+      var card = document.getElementById('k-' + nxt);
+      if (card){
+        var cidEl = card.querySelector('.cid');
+        if (cidEl) cidEl.appendChild(el('span','nextup','Next'));
+      }
+    }
+  }
+
+  var HIDE_DONE = false;
+  try { HIDE_DONE = localStorage.getItem('gtad.hideDoneList') === '1'; } catch(e){}
+
+  function paintTotal(){
+    var all = [], done = 0;
+    Object.keys(SECTIONS).forEach(function(k){
+      SECTIONS[k].clips.forEach(function(i){ all.push(i); if (DONE[i]) done++; });
+    });
+    var n = $('total');
+    if (n) n.textContent = done + ' of ' + all.length + ' generated on this page · '
+      + (all.length - done) + ' to go';
+    var f = $('totalbar');
+    if (f) f.style.width = Math.round(done / (all.length || 1) * 100) + '%';
+  }
+
   function clipCard(c, showCast){
     var d = el('details','clip' + (c.ensemble ? ' ens' : (['TURN','APPROACH','HOLD'].indexOf(c.role)>-1 ? ' money' : '')));
     d.style.setProperty('--rc', c.ensemble ? '#ff5a6e' : (ROLE_C[c.role] || '#8f8fa6'));
     var dg = c.dialogue || {kind:'silent', lines:[]};
+    d.id = 'k-' + c.id;
+    if (DONE[c.id]) d.className += ' isdone';
     var s = el('summary','ch2');
+    var tick = el('div','tick' + (DONE[c.id] ? ' on' : ''), '✓');
+    tick.title = 'Mark this clip generated';
+    tick.addEventListener('click', function(e){
+      e.preventDefault(); e.stopPropagation(); setDone(c.id, !DONE[c.id]);
+    });
+    s.appendChild(tick);
     s.appendChild(el('div','cid', c.id));
     var mid = el('div','cmid');
     mid.appendChild(el('span','role', c.role));
@@ -270,6 +389,13 @@
     a.appendChild(copyBtn('Copy prompt', full));
     a.appendChild(copyBtn('Copy negative', c.negative, 'alt'));
     a.appendChild(copyBtn('Copy both — one box', full + ' Avoid: ' + c.negative + '.', 'alt'));
+    var mk = el('button','cbtn done', DONE[c.id] ? 'Not done after all' : 'Mark generated');
+    mk.type = 'button';
+    mk.addEventListener('click', function(){
+      setDone(c.id, !DONE[c.id]);
+      mk.textContent = DONE[c.id] ? 'Not done after all' : 'Mark generated';
+    });
+    a.appendChild(mk);
     b.appendChild(a);
     d.appendChild(b);
     return d;
@@ -277,6 +403,7 @@
 
   function render(){
   $('main').innerHTML=''; $('jump').innerHTML=''; $('how').innerHTML='';
+  SECTIONS = {};
   if (MODE === 'characters'){
     $('stand').innerHTML ='Every single-subject clip, grouped by who is in it, so you can generate a '
       + 'whole part in one sitting and then move on. <b>' + D.meta.soloClips + ' clips</b> across '
@@ -307,6 +434,11 @@
       h.appendChild(el('span','cnt', ch.clipCount + ' clips · ' + Math.floor(ch.seconds/60) + 'm '
         + (ch.seconds%60) + 's · ' + ch.beats.join(', ')));
       sec.appendChild(h);
+
+      var pb = el('div','pbar'), pf = el('i');
+      pb.appendChild(pf);
+      var pc = el('div','pcount');
+      sec.appendChild(pb); sec.appendChild(pc);
 
       if (ch.seed){
         var sc = el('div','card seed');
@@ -356,12 +488,33 @@
              + sub(c.full, c.cast) + '\n\nNEGATIVE: ' + c.negative;
       }).join('\n\n---\n\n');
       var bar = el('div','acts'); bar.style.marginTop='14px';
+      var nextBtn = el('button','cbtn next',''); nextBtn.type='button';
+      nextBtn.addEventListener('click', function(){
+        var id = nextBtn.dataset.clip;
+        if (!id) return;
+        var c = ch.clips.filter(function(x){ return x.id === id; })[0];
+        if (!c) return;
+        if (navigator.clipboard) navigator.clipboard.writeText(sub(c.full, c.cast));
+        var o = nextBtn.textContent; nextBtn.textContent = 'Copied ' + id;
+        setTimeout(function(){ nextBtn.textContent = o; }, 1300);
+        var card = document.getElementById('k-' + id);
+        if (card){ card.open = true; card.scrollIntoView({block:'center'}); }
+      });
+      bar.appendChild(nextBtn);
+      var doneMsg = el('span','allgood', 'Whole part generated.');
+      doneMsg.style.display = 'none'; bar.appendChild(doneMsg);
       bar.appendChild(copyBtn('Copy all ' + ch.clipCount + ' prompts', all, 'big'));
       sec.appendChild(bar);
 
       var w = el('div','clips');
-      ch.clips.forEach(function(c){ w.appendChild(clipCard(c, false)); });
+      ch.clips.forEach(function(c){
+        var card = clipCard(c, false);
+        if (HIDE_DONE && DONE[c.id]) card.style.display = 'none';
+        w.appendChild(card);
+      });
       sec.appendChild(w);
+      SECTIONS[ch.key] = { clips: ch.clips.map(function(c){ return c.id; }), el: sec,
+                           count: pc, bar: pf, nextBtn: nextBtn, doneMsg: doneMsg };
       $('main').appendChild(sec);
     });
 
@@ -397,16 +550,27 @@
              + c.cast.join(' + ') + '\nCONTINUITY: ' + c.continuity + '\n\n' + sub(c.full, c.cast)
              + '\n\nNEGATIVE: ' + c.negative;
       }).join('\n\n---\n\n');
+      var pb=el('div','pbar'), pf=el('i'); pb.appendChild(pf);
+      var pc=el('div','pcount');
+      sec.appendChild(pb); sec.appendChild(pc);
       var bar=el('div','acts'); bar.style.marginTop='14px';
       bar.appendChild(copyBtn('Copy all ' + mine.length + ' prompts', all, 'big'));
       sec.appendChild(bar);
       var w=el('div','clips');
-      mine.forEach(function(c){ w.appendChild(clipCard(c, true)); });
+      mine.forEach(function(c){
+        var card = clipCard(c, true);
+        if (HIDE_DONE && DONE[c.id]) card.style.display = 'none';
+        w.appendChild(card);
+      });
       sec.appendChild(w);
+      SECTIONS[bt] = { clips: mine.map(function(c){ return c.id; }), el: sec,
+                       count: pc, bar: pf, nextBtn: null, doneMsg: null };
       $('main').appendChild(sec);
     });
   }
   paintTools();
+  Object.keys(SECTIONS).forEach(refreshSection);
+  paintTotal();
   }
 
   /* the toolbar */
@@ -442,6 +606,37 @@
       n.parentNode.appendChild(row);
     }
   }
+
+  // hide-done, and a portable copy of the record — localStorage is one browser deep
+  $('hideDone').checked = HIDE_DONE;
+  $('hideDone').addEventListener('change', function(){
+    HIDE_DONE = $('hideDone').checked;
+    try { localStorage.setItem('gtad.hideDoneList', HIDE_DONE ? '1' : '0'); } catch(e){}
+    Object.keys(SECTIONS).forEach(function(k){
+      SECTIONS[k].clips.forEach(function(id){
+        var card = document.getElementById('k-' + id);
+        if (card) card.style.display = (HIDE_DONE && DONE[id]) ? 'none' : '';
+      });
+    });
+  });
+  $('expBtn').addEventListener('click', function(){
+    var open = $('port').hidden;
+    $('port').hidden = !open;
+    if (open) $('portbox').value = Object.keys(DONE).sort().join(', ');
+  });
+  $('copyProg').addEventListener('click', function(){
+    if (navigator.clipboard) navigator.clipboard.writeText($('portbox').value);
+    var b = $('copyProg'); b.textContent = 'Copied'; setTimeout(function(){ b.textContent='Copy'; }, 1200);
+  });
+  $('loadProg').addEventListener('click', function(){
+    var ids = $('portbox').value.split(/[^A-Za-z0-9-]+/).filter(Boolean);
+    DONE = {}; ids.forEach(function(i){ DONE[i.toUpperCase()] = 1; });
+    saveDone(); render();
+  });
+  $('clearProg').addEventListener('click', function(){
+    if (!confirm('Clear every tick? The prompts are untouched.')) return;
+    DONE = {}; saveDone(); render();
+  });
 
   $('lockedMode').checked = LOCKED;
   $('lockedMode').addEventListener('change', function(){

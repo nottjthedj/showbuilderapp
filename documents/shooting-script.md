@@ -71,7 +71,7 @@ a figure in a flawless tailored black three-piece suit and black leather gloves,
 
 **IN-09 · TURN · 15s** — STATIC LOCKED CAMERA — no push, no drift · subject: handler
 
-a figure in a flawless tailored black three-piece suit and black leather gloves, always turned away from camera, face never visible, slowly turning his head a quarter toward the lens and stopping — the face stays out of the light, only the jaw and the gloved hand catching magenta rim light, addressing the viewer directly
+a figure in a flawless tailored black three-piece suit and black leather gloves, always turned away from camera, face never visible, slowly turning his head a quarter toward the lens and stopping — the face stays out of the light, only the jaw and the gloved hand catching magenta rim light, addressing the viewer directly, in a penthouse interior at night, floor-to-ceiling windows over a rain-soaked neon skyline
 
 **HANDLER (V.O.)**
 
@@ -81,7 +81,7 @@ a figure in a flawless tailored black three-piece suit and black leather gloves,
 
 **IN-10 · HOLD · 10s** — STATIC LOCKED CAMERA · subject: handler
 
-a figure in a flawless tailored black three-piece suit and black leather gloves, always turned away from camera, face never visible, holding completely still, half-turned toward the lens, face still unlit, neon breathing behind him
+a figure in a flawless tailored black three-piece suit and black leather gloves, always turned away from camera, face never visible, holding completely still, half-turned toward the lens, face still unlit, neon breathing behind him, in a penthouse interior at night, floor-to-ceiling windows over a rain-soaked neon skyline
 
 **HANDLER (V.O.)**
 
@@ -119,7 +119,7 @@ a rumpled world-weary detective in his 50s, grey stubble, tired eyes, a toothpic
 
 **S1-04 · BUILD · 12s** — locked camera · subject: mcgraw
 
-a rumpled world-weary detective in his 50s, grey stubble, tired eyes, a toothpick in his mouth, wrinkled trench coat over a cheap tie, stopping and pointing flatly at someone off-frame, deadpan, red and blue light crossing his face
+a rumpled world-weary detective in his 50s, grey stubble, tired eyes, a toothpick in his mouth, wrinkled trench coat over a cheap tie, stopping and pointing flatly at someone off-frame, deadpan, red and blue light crossing his face, in a gritty precinct lineup room at night, height-marker wall, venetian blinds throwing red and blue siren light
 
 **MCGRAW**
 
@@ -143,7 +143,7 @@ a rumpled world-weary detective in his 50s, grey stubble, tired eyes, a toothpic
 
 **S1-07 · TURN · 12s** — STATIC LOCKED CAMERA · subject: mcgraw
 
-a rumpled world-weary detective in his 50s, grey stubble, tired eyes, a toothpick in his mouth, wrinkled trench coat over a cheap tie, continuing to speak directly into the lens, leaning in slightly, unblinking
+a rumpled world-weary detective in his 50s, grey stubble, tired eyes, a toothpick in his mouth, wrinkled trench coat over a cheap tie, continuing to speak directly into the lens, leaning in slightly, unblinking, in a gritty precinct lineup room at night, height-marker wall, venetian blinds throwing red and blue siren light
 
 **MCGRAW**
 
@@ -153,7 +153,7 @@ a rumpled world-weary detective in his 50s, grey stubble, tired eyes, a toothpic
 
 **S1-08 · HOLD · 8s** — STATIC LOCKED CAMERA · subject: mcgraw
 
-a rumpled world-weary detective in his 50s, grey stubble, tired eyes, a toothpick in his mouth, wrinkled trench coat over a cheap tie, finishing, holding the stare into the lens, absolutely still, one eyebrow slightly raised
+a rumpled world-weary detective in his 50s, grey stubble, tired eyes, a toothpick in his mouth, wrinkled trench coat over a cheap tie, finishing, holding the stare into the lens, absolutely still, one eyebrow slightly raised, in a gritty precinct lineup room at night, height-marker wall, venetian blinds throwing red and blue siren light
 
 **MCGRAW**
 
@@ -179,7 +179,7 @@ a chrome-and-cyan lowrider bouncing on hydraulics on a cyan-lit inner-city stree
 
 **S2-02 · BUILD · 15s** — locked interior camera · subject: problem
 
-a heavyset likeable Black man in his late 20s, cyan-and-black tracksuit, gold rope chain, mid-sentence, holding food, in the passenger seat of a lowrider at night, mid-sentence, gesturing with food in one hand, cyan neon washing through the windscreen
+a heavyset likeable Black man in his late 20s, cyan-and-black tracksuit, gold rope chain, mid-sentence, holding food, in the passenger seat of a lowrider at night, mid-sentence, gesturing with food in one hand, cyan neon washing through the windscreen, in the interior of a lowrider at night, cyan neon and police lights through the windscreen, a wet neon street behind
 
 **PROBLEM**
 
@@ -191,7 +191,7 @@ a rear-view mirror at night filling with police lights — first one car, then f
 
 **S2-04 · BUILD · 12s** — locked interior camera · subject: marcus
 
-a calm commanding Black man in his early 30s, sharp fresh fade, neat short beard, a single gold chain, clean black bomber jacket, at the wheel of a lowrider at night, glancing once at the mirror, completely unbothered, cyan light across his face
+a calm commanding Black man in his early 30s, sharp fresh fade, neat short beard, a single gold chain, clean black bomber jacket, at the wheel of a lowrider at night, glancing once at the mirror, completely unbothered, cyan light across his face, in the interior of a lowrider at night, cyan neon and police lights through the windscreen, a wet neon street behind
 
 **MARCUS**
 
@@ -199,13 +199,13 @@ a calm commanding Black man in his early 30s, sharp fresh fade, neat short beard
 
 **S2-05 · APPROACH · 10s** — STATIC LOCKED CAMERA · subject: marcus
 
-a calm commanding Black man in his early 30s, sharp fresh fade, neat short beard, a single gold chain, clean black bomber jacket, at the wheel, slowly turning his head from the road toward the lens and holding, calm, no expression change yet
+a calm commanding Black man in his early 30s, sharp fresh fade, neat short beard, a single gold chain, clean black bomber jacket, at the wheel, slowly turning his head from the road toward the lens and holding, calm, no expression change yet, in the interior of a lowrider at night, cyan neon and police lights through the windscreen, a wet neon street behind
 
 _No line — the prompt holds the mouth closed._
 
 **S2-06 · TURN · 15s** — STATIC LOCKED CAMERA — no push, no drift · subject: marcus
 
-a calm commanding Black man in his early 30s, sharp fresh fade, neat short beard, a single gold chain, clean black bomber jacket, looking directly into the lens through the windscreen, deadly calm, talking to the viewer, cyan neon and police lights strobing behind him
+a calm commanding Black man in his early 30s, sharp fresh fade, neat short beard, a single gold chain, clean black bomber jacket, looking directly into the lens through the windscreen, deadly calm, talking to the viewer, cyan neon and police lights strobing behind him, in the interior of a lowrider at night, cyan neon and police lights through the windscreen, a wet neon street behind
 
 **MARCUS**
 
@@ -215,7 +215,7 @@ a calm commanding Black man in his early 30s, sharp fresh fade, neat short beard
 
 **S2-07 · TURN · 12s** — STATIC LOCKED CAMERA · subject: marcus
 
-a calm commanding Black man in his early 30s, sharp fresh fade, neat short beard, a single gold chain, clean black bomber jacket, still looking into the lens, one hand loose on the wheel, the chase visible but out of focus behind him
+a calm commanding Black man in his early 30s, sharp fresh fade, neat short beard, a single gold chain, clean black bomber jacket, still looking into the lens, one hand loose on the wheel, the chase visible but out of focus behind him, in the interior of a lowrider at night, cyan neon and police lights through the windscreen, a wet neon street behind
 
 **MARCUS**
 
@@ -225,7 +225,7 @@ a calm commanding Black man in his early 30s, sharp fresh fade, neat short beard
 
 **S2-08 · HOLD · 8s** — STATIC LOCKED CAMERA · subject: marcus
 
-a calm commanding Black man in his early 30s, sharp fresh fade, neat short beard, a single gold chain, clean black bomber jacket, holding the look into the lens, then the smallest flick of the eyes to his passenger
+a calm commanding Black man in his early 30s, sharp fresh fade, neat short beard, a single gold chain, clean black bomber jacket, holding the look into the lens, then the smallest flick of the eyes to his passenger, in the interior of a lowrider at night, cyan neon and police lights through the windscreen, a wet neon street behind
 
 **MARCUS**
 
@@ -281,7 +281,7 @@ _No line — the prompt holds the mouth closed._
 
 **S3-07 · TURN · 15s** — STATIC LOCKED CAMERA — no push, no drift, no cut · subject: rico
 
-a Latin cartel kingpin in his late 30s, intense dark eyes, slicked-back black hair, a thin scar over his right eyebrow, open-chested white linen suit, large gold falcon medallion, gold rings, completing a slow deliberate turn from profile to face the lens directly, eyes locking on the viewer, quiet at first then building, hot-pink neon on his sweating face
+a Latin cartel kingpin in his late 30s, intense dark eyes, slicked-back black hair, a thin scar over his right eyebrow, open-chested white linen suit, large gold falcon medallion, gold rings, completing a slow deliberate turn from profile to face the lens directly, eyes locking on the viewer, quiet at first then building, hot-pink neon on his sweating face, in a mirrored hot-pink neon mansion interior, mirrored walls, white leather couches, floor-to-ceiling windows over a night marina
 
 **RICO**
 
@@ -291,7 +291,7 @@ a Latin cartel kingpin in his late 30s, intense dark eyes, slicked-back black ha
 
 **S3-08 · TURN · 12s** — STATIC LOCKED CAMERA · subject: rico
 
-a Latin cartel kingpin in his late 30s, intense dark eyes, slicked-back black hair, a thin scar over his right eyebrow, open-chested white linen suit, large gold falcon medallion, gold rings, leaning into the lens, manic joy taking over, tracer fire still streaking past him unremarked
+a Latin cartel kingpin in his late 30s, intense dark eyes, slicked-back black hair, a thin scar over his right eyebrow, open-chested white linen suit, large gold falcon medallion, gold rings, leaning into the lens, manic joy taking over, tracer fire still streaking past him unremarked, in a mirrored hot-pink neon mansion interior, mirrored walls, white leather couches, floor-to-ceiling windows over a night marina
 
 **RICO**
 
@@ -301,7 +301,7 @@ a Latin cartel kingpin in his late 30s, intense dark eyes, slicked-back black ha
 
 **S3-09 · HOLD · 8s** — STATIC LOCKED CAMERA · subject: rico
 
-a Latin cartel kingpin in his late 30s, intense dark eyes, slicked-back black hair, a thin scar over his right eyebrow, open-chested white linen suit, large gold falcon medallion, gold rings, arms wide, holding the stare into the lens, grinning, mirrors doubling him infinitely behind
+a Latin cartel kingpin in his late 30s, intense dark eyes, slicked-back black hair, a thin scar over his right eyebrow, open-chested white linen suit, large gold falcon medallion, gold rings, arms wide, holding the stare into the lens, grinning, mirrors doubling him infinitely behind, in a mirrored hot-pink neon mansion interior, mirrored walls, white leather couches, floor-to-ceiling windows over a night marina
 
 **RICO**
 
@@ -347,7 +347,7 @@ _No line — the prompt holds the mouth closed._
 
 **S4-05 · APPROACH · 10s** — STATIC LOCKED CAMERA · subject: don
 
-an elderly Italian-American crime patriarch in his late 70s, heavy jowls, hooded eyes, thin silver hair combed straight back, charcoal three-piece suit, gold silk pocket square, gold pinky ring, red carnation in the lapel, setting the cannoli down, dabbing his mouth once, and slowly beginning to turn his head toward the lens, unhurried
+an elderly Italian-American crime patriarch in his late 70s, heavy jowls, hooded eyes, thin silver hair combed straight back, charcoal three-piece suit, gold silk pocket square, gold pinky ring, red carnation in the lapel, setting the cannoli down, dabbing his mouth once, and slowly beginning to turn his head toward the lens, unhurried, in a warm gold-lit restaurant back room, checkered tablecloth, velvet banquettes, low hanging lamp
 
 **DON**
 
@@ -375,7 +375,7 @@ an elderly Italian-American crime patriarch in his late 70s, heavy jowls, hooded
 
 **S4-08 · HOLD · 8s** — STATIC LOCKED CAMERA · subject: don
 
-an elderly Italian-American crime patriarch in his late 70s, heavy jowls, hooded eyes, thin silver hair combed straight back, charcoal three-piece suit, gold silk pocket square, gold pinky ring, red carnation in the lapel, finishing, holding the look into the lens, then the smallest shrug
+an elderly Italian-American crime patriarch in his late 70s, heavy jowls, hooded eyes, thin silver hair combed straight back, charcoal three-piece suit, gold silk pocket square, gold pinky ring, red carnation in the lapel, finishing, holding the look into the lens, then the smallest shrug, in a warm gold-lit restaurant back room, checkered tablecloth, velvet banquettes, low hanging lamp
 
 **DON**
 
@@ -417,7 +417,7 @@ a sharp unbothered woman in her early 30s, sleek low bun, headset, holding a cli
 
 **S5-04 · BUILD · 10s** — locked camera · subject: preston
 
-a cold corporate executive in his late 30s, pale, slicked hair, sharp jaw, black turtleneck under a charcoal suit, absorbing that, wounded for exactly one beat, then recovering completely
+a cold corporate executive in his late 30s, pale, slicked hair, sharp jaw, black turtleneck under a charcoal suit, absorbing that, wounded for exactly one beat, then recovering completely, in a cold violet-lit glass office tower interior at night, a wall of CRT surveillance monitors
 
 **PRESTON**
 
@@ -431,7 +431,7 @@ _No line — the prompt holds the mouth closed._
 
 **S5-06 · TURN · 15s** — STATIC LOCKED CAMERA — no push, no drift · subject: preston
 
-a cold corporate executive in his late 30s, pale, slicked hair, sharp jaw, black turtleneck under a charcoal suit, facing the lens directly, far too close, over-lit and unblinking, addressing the viewer with corporate menace
+a cold corporate executive in his late 30s, pale, slicked hair, sharp jaw, black turtleneck under a charcoal suit, facing the lens directly, far too close, over-lit and unblinking, addressing the viewer with corporate menace, in a cold violet-lit glass office tower interior at night, a wall of CRT surveillance monitors
 
 **PRESTON**
 
@@ -441,7 +441,7 @@ a cold corporate executive in his late 30s, pale, slicked hair, sharp jaw, black
 
 **S5-07 · TURN · 12s** — STATIC LOCKED CAMERA · subject: preston
 
-a cold corporate executive in his late 30s, pale, slicked hair, sharp jaw, black turtleneck under a charcoal suit, still too close to the lens, gesturing precisely, violet glow flickering across his turtleneck
+a cold corporate executive in his late 30s, pale, slicked hair, sharp jaw, black turtleneck under a charcoal suit, still too close to the lens, gesturing precisely, violet glow flickering across his turtleneck, in a cold violet-lit glass office tower interior at night, a wall of CRT surveillance monitors
 
 **PRESTON**
 
@@ -485,7 +485,7 @@ an elderly gold-suited don and a white-suited cartel kingpin shaking hands acros
 
 **S6-03 · BUILD · 12s** — locked camera · subject: don
 
-an elderly Italian-American crime patriarch in his late 70s, heavy jowls, hooded eyes, thin silver hair combed straight back, charcoal three-piece suit, gold silk pocket square, gold pinky ring, red carnation in the lapel, leaning aside to speak quietly to someone off-frame while still gripping the handshake, eyes never leaving the other man
+an elderly Italian-American crime patriarch in his late 70s, heavy jowls, hooded eyes, thin silver hair combed straight back, charcoal three-piece suit, gold silk pocket square, gold pinky ring, red carnation in the lapel, leaning aside to speak quietly to someone off-frame while still gripping the handshake, eyes never leaving the other man, in a neutral warehouse interior at night, half lit warm gold and half lit hot pink, crates and hanging worklights
 
 _No line — the prompt holds the mouth closed._
 
@@ -569,7 +569,7 @@ _No line — the prompt holds the mouth closed._
 
 **S7-05 · APPROACH · 10s** — STATIC LOCKED CAMERA · subject: preston
 
-a cold corporate executive in his late 30s, pale, slicked hair, sharp jaw, black turtleneck under a charcoal suit, straightening his turtleneck, composing himself, and craning slowly toward the lens still holding the device
+a cold corporate executive in his late 30s, pale, slicked hair, sharp jaw, black turtleneck under a charcoal suit, straightening his turtleneck, composing himself, and craning slowly toward the lens still holding the device, in a violet-lit vault workroom at night, a steel bench, emergency red light pulsing
 
 **PRESTON**
 
@@ -577,7 +577,7 @@ a cold corporate executive in his late 30s, pale, slicked hair, sharp jaw, black
 
 **S7-06 · TURN · 15s** — STATIC LOCKED CAMERA — no push, no drift · subject: preston
 
-a cold corporate executive in his late 30s, pale, slicked hair, sharp jaw, black turtleneck under a charcoal suit, facing the lens holding the wired countdown device up beside his face, violet and emergency-red light alternating, deadpan, addressing the viewer
+a cold corporate executive in his late 30s, pale, slicked hair, sharp jaw, black turtleneck under a charcoal suit, facing the lens holding the wired countdown device up beside his face, violet and emergency-red light alternating, deadpan, addressing the viewer, in a violet-lit vault workroom at night, a steel bench, emergency red light pulsing
 
 **PRESTON**
 
@@ -587,7 +587,7 @@ a cold corporate executive in his late 30s, pale, slicked hair, sharp jaw, black
 
 **S7-07 · TURN · 12s** — STATIC LOCKED CAMERA · subject: preston
 
-a cold corporate executive in his late 30s, pale, slicked hair, sharp jaw, black turtleneck under a charcoal suit, still to lens, holding the device dead steady, hand visibly tense
+a cold corporate executive in his late 30s, pale, slicked hair, sharp jaw, black turtleneck under a charcoal suit, still to lens, holding the device dead steady, hand visibly tense, in a violet-lit vault workroom at night, a steel bench, emergency red light pulsing
 
 **PRESTON**
 
@@ -597,7 +597,7 @@ a cold corporate executive in his late 30s, pale, slicked hair, sharp jaw, black
 
 **S7-08 · HOLD · 8s** — STATIC LOCKED CAMERA · subject: preston
 
-a cold corporate executive in his late 30s, pale, slicked hair, sharp jaw, black turtleneck under a charcoal suit, holding the look and the device, absolutely motionless, red light pulsing
+a cold corporate executive in his late 30s, pale, slicked hair, sharp jaw, black turtleneck under a charcoal suit, holding the look and the device, absolutely motionless, red light pulsing, in a violet-lit vault workroom at night, a steel bench, emergency red light pulsing
 
 **PRESTON**
 
@@ -645,7 +645,7 @@ a Latin cartel kingpin in his late 30s, intense dark eyes, slicked-back black ha
 
 **S8-05 · APPROACH · 10s** — STATIC LOCKED CAMERA · subject: rico
 
-a Latin cartel kingpin in his late 30s, intense dark eyes, slicked-back black hair, a thin scar over his right eyebrow, open-chested white linen suit, large gold falcon medallion, gold rings, recovering instantly, stepping toward the lens and reaching back to tap a glowing falcon icon on the frosted glass without looking at it
+a Latin cartel kingpin in his late 30s, intense dark eyes, slicked-back black hair, a thin scar over his right eyebrow, open-chested white linen suit, large gold falcon medallion, gold rings, recovering instantly, stepping toward the lens and reaching back to tap a glowing falcon icon on the frosted glass without looking at it, in a dark planning room at night, glowing blue-cyan blueprints projected on frosted glass
 
 **PRESTON (off-screen)**
 
@@ -657,7 +657,7 @@ a Latin cartel kingpin in his late 30s, intense dark eyes, slicked-back black ha
 
 **S8-06 · TURN · 15s** — STATIC LOCKED CAMERA — no push, no drift · subject: rico
 
-a Latin cartel kingpin in his late 30s, intense dark eyes, slicked-back black hair, a thin scar over his right eyebrow, open-chested white linen suit, large gold falcon medallion, gold rings, facing the lens directly with two glowing blueprints projected on frosted glass behind him, one finger raised, addressing the viewer
+a Latin cartel kingpin in his late 30s, intense dark eyes, slicked-back black hair, a thin scar over his right eyebrow, open-chested white linen suit, large gold falcon medallion, gold rings, facing the lens directly with two glowing blueprints projected on frosted glass behind him, one finger raised, addressing the viewer, in a dark planning room at night, glowing blue-cyan blueprints projected on frosted glass
 
 **RICO**
 
@@ -667,7 +667,7 @@ a Latin cartel kingpin in his late 30s, intense dark eyes, slicked-back black ha
 
 **S8-07 · TURN · 12s** — STATIC LOCKED CAMERA · subject: rico
 
-a Latin cartel kingpin in his late 30s, intense dark eyes, slicked-back black hair, a thin scar over his right eyebrow, open-chested white linen suit, large gold falcon medallion, gold rings, still to lens, counting down on his fingers, the projection behind him beginning to fade
+a Latin cartel kingpin in his late 30s, intense dark eyes, slicked-back black hair, a thin scar over his right eyebrow, open-chested white linen suit, large gold falcon medallion, gold rings, still to lens, counting down on his fingers, the projection behind him beginning to fade, in a dark planning room at night, frosted glass panels, the blueprint projection dimming out
 
 **RICO**
 
@@ -677,7 +677,7 @@ a Latin cartel kingpin in his late 30s, intense dark eyes, slicked-back black ha
 
 **S8-08 · HOLD · 8s** — STATIC LOCKED CAMERA · subject: rico
 
-a Latin cartel kingpin in his late 30s, intense dark eyes, slicked-back black hair, a thin scar over his right eyebrow, open-chested white linen suit, large gold falcon medallion, gold rings, holding the look, tapping his temple once, the blueprint gone entirely behind him
+a Latin cartel kingpin in his late 30s, intense dark eyes, slicked-back black hair, a thin scar over his right eyebrow, open-chested white linen suit, large gold falcon medallion, gold rings, holding the look, tapping his temple once, the blueprint gone entirely behind him, in a dark planning room at night, dark frosted glass panels, the projection gone, thin schematic afterglow
 
 **RICO**
 
@@ -741,7 +741,7 @@ a calm commanding Black man in his early 30s, sharp fresh fade, neat short beard
 
 **S9-07 · TURN · 12s** — STATIC LOCKED CAMERA · subject: marcus
 
-a calm commanding Black man in his early 30s, sharp fresh fade, neat short beard, a single gold chain, clean black bomber jacket, still to lens, one hand indicating the line of cars behind him without looking
+a calm commanding Black man in his early 30s, sharp fresh fade, neat short beard, a single gold chain, clean black bomber jacket, still to lens, one hand indicating the line of cars behind him without looking, in a cyan-lit inner-city street corner at night, murals, chrome lowriders at the kerb, wet asphalt
 
 **MARCUS**
 
@@ -751,7 +751,7 @@ a calm commanding Black man in his early 30s, sharp fresh fade, neat short beard
 
 **S9-08 · HOLD · 8s** — STATIC LOCKED CAMERA · subject: marcus
 
-a calm commanding Black man in his early 30s, sharp fresh fade, neat short beard, a single gold chain, clean black bomber jacket, holding the look into the lens, the smallest amused nod
+a calm commanding Black man in his early 30s, sharp fresh fade, neat short beard, a single gold chain, clean black bomber jacket, holding the look into the lens, the smallest amused nod, in a cyan-lit inner-city street corner at night, murals, chrome lowriders at the kerb, wet asphalt
 
 **MARCUS**
 
@@ -883,7 +883,7 @@ a calm commanding Black man in his early 30s, sharp fresh fade, neat short beard
 
 **S11-07 · TURN · 12s** — STATIC LOCKED CAMERA · subject: marcus
 
-a calm commanding Black man in his early 30s, sharp fresh fade, neat short beard, a single gold chain, clean black bomber jacket, still to lens, the searchlight beam crossing behind him mid-sentence, he doesn't flinch
+a calm commanding Black man in his early 30s, sharp fresh fade, neat short beard, a single gold chain, clean black bomber jacket, still to lens, the searchlight beam crossing behind him mid-sentence, he doesn't flinch, in a dim neon alley at four in the morning, brick wall, a single searchlight sweeping
 
 **MARCUS**
 
@@ -893,7 +893,7 @@ a calm commanding Black man in his early 30s, sharp fresh fade, neat short beard
 
 **S11-08 · HOLD · 8s** — STATIC LOCKED CAMERA · subject: marcus
 
-a calm commanding Black man in his early 30s, sharp fresh fade, neat short beard, a single gold chain, clean black bomber jacket, holding the look into the lens, calm, the light passing off him into darkness
+a calm commanding Black man in his early 30s, sharp fresh fade, neat short beard, a single gold chain, clean black bomber jacket, holding the look into the lens, calm, the light passing off him into darkness, in a dim neon alley at four in the morning, brick wall, a single searchlight sweeping
 
 **MARCUS**
 

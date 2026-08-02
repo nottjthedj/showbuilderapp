@@ -158,7 +158,7 @@
           "clipSeconds": 10,
           "targetSeconds": 6.5,
           "direction": "Voice-over, over picture. No lip to match, so pace it to the length of the shot rather than the other way round.",
-          "picture": "holding completely still, half-turned toward the lens, face still unlit, neon breathing behind him",
+          "picture": "holding completely still, half-turned toward the lens, face still unlit, neon breathing behind him, in a…",
           "cue": "◆ '…the only voice in this room you can trust is coming out of that booth.'"
         },
         {
@@ -515,7 +515,7 @@
           "clipSeconds": 12,
           "targetSeconds": 3.9,
           "direction": "Straight down the lens. This is the fourth-wall break — he is talking to the room, not to another character.",
-          "picture": "leaning into the lens, manic joy taking over, tracer fire still streaking past him unremarked",
+          "picture": "leaning into the lens, manic joy taking over, tracer fire still streaking past him unremarked, in a mirrored…",
           "cue": "◆ 'Three lives, that's all. Drag, weave, don't get hit.'"
         },
         {
@@ -530,7 +530,7 @@
           "clipSeconds": 8,
           "targetSeconds": 2.6,
           "direction": "Straight down the lens. This is the fourth-wall break — he is talking to the room, not to another character.",
-          "picture": "arms wide, holding the stare into the lens, grinning, mirrors doubling him infinitely behind",
+          "picture": "arms wide, holding the stare into the lens, grinning, mirrors doubling him infinitely behind, in a mirrored…",
           "cue": "◆ 'Say goodnight to the bad guy!' → ▮ CROSSFIRE"
         },
         {
@@ -650,7 +650,7 @@
           "clipSeconds": 12,
           "targetSeconds": 3.9,
           "direction": "Straight down the lens. This is the fourth-wall break — he is talking to the room, not to another character.",
-          "picture": "still to lens, counting down on his fingers, the projection behind him beginning to fade",
+          "picture": "still to lens, counting down on his fingers, the projection behind him beginning to fade, in a dark planning…",
           "cue": "◆ 'Burn every icon into your head, then they're gone.'"
         },
         {
@@ -665,7 +665,7 @@
           "clipSeconds": 8,
           "targetSeconds": 1.7,
           "direction": "Straight down the lens. This is the fourth-wall break — he is talking to the room, not to another character.",
-          "picture": "holding the look, tapping his temple once, the blueprint gone entirely behind him",
+          "picture": "holding the look, tapping his temple once, the blueprint gone entirely behind him, in a dark planning room at…",
           "cue": "◆ 'Eyes up. Ten… nine…' → ▮ THE BLUEPRINT"
         },
         {
@@ -797,7 +797,7 @@
           "clipSeconds": 8,
           "targetSeconds": 3.0,
           "direction": "Straight down the lens. This is the fourth-wall break — he is talking to the room, not to another character.",
-          "picture": "finishing, holding the look into the lens, then the smallest shrug",
+          "picture": "finishing, holding the look into the lens, then the smallest shrug, in a warm gold-lit restaurant back room,…",
           "cue": "◆ '…Move it like it was never born.' → ▮ THE DROP-OFF"
         },
         {
@@ -929,7 +929,7 @@
           "clipSeconds": 12,
           "targetSeconds": 5.2,
           "direction": "Straight down the lens. This is the fourth-wall break — he is talking to the room, not to another character.",
-          "picture": "still looking into the lens, one hand loose on the wheel, the chase visible but out of focus behind him",
+          "picture": "still looking into the lens, one hand loose on the wheel, the chase visible but out of focus behind him, in the…",
           "cue": "◆ 'Every hit's a wanted star. Rack up too many and you're done.'"
         },
         {
@@ -944,7 +944,7 @@
           "clipSeconds": 8,
           "targetSeconds": 3.0,
           "direction": "Straight down the lens. This is the fourth-wall break — he is talking to the room, not to another character.",
-          "picture": "holding the look into the lens, then the smallest flick of the eyes to his passenger",
+          "picture": "holding the look into the lens, then the smallest flick of the eyes to his passenger, in the interior of a…",
           "cue": "◆ '…Problem, put the taco down and drive.' → ▮ THE JOYRIDE"
         },
         {
@@ -989,7 +989,7 @@
           "clipSeconds": 12,
           "targetSeconds": 5.7,
           "direction": "Straight down the lens. This is the fourth-wall break — he is talking to the room, not to another character.",
-          "picture": "still to lens, one hand indicating the line of cars behind him without looking",
+          "picture": "still to lens, one hand indicating the line of cars behind him without looking, in a cyan-lit inner-city street…",
           "cue": "◆ 'Grab every stolen ride you can — just don't cross your own tail.'"
         },
         {
@@ -1004,7 +1004,7 @@
           "clipSeconds": 8,
           "targetSeconds": 3.9,
           "direction": "Straight down the lens. This is the fourth-wall break — he is talking to the room, not to another character.",
-          "picture": "holding the look into the lens, the smallest amused nod",
+          "picture": "holding the look into the lens, the smallest amused nod, in a cyan-lit inner-city street corner at night,…",
           "cue": "◆ 'Everybody else — you drove a Honda. It's okay.' → ▮ CHOP SHOP"
         },
         {
@@ -1049,7 +1049,7 @@
           "clipSeconds": 12,
           "targetSeconds": 4.8,
           "direction": "Straight down the lens. This is the fourth-wall break — he is talking to the room, not to another character.",
-          "picture": "still to lens, the searchlight beam crossing behind him mid-sentence, he doesn't flinch",
+          "picture": "still to lens, the searchlight beam crossing behind him mid-sentence, he doesn't flinch, in a dim neon alley at…",
           "cue": "◆ 'Spray while it's dark, lift off the second the searchlight sweeps.'"
         },
         {
@@ -1064,7 +1064,7 @@
           "clipSeconds": 8,
           "targetSeconds": 2.2,
           "direction": "Straight down the lens. This is the fourth-wall break — he is talking to the room, not to another character.",
-          "picture": "holding the look into the lens, calm, the light passing off him into darkness",
+          "picture": "holding the look into the lens, calm, the light passing off him into darkness, in a dim neon alley at four in…",
           "cue": "◆ '…We move when you're ready.' → ▮ THROW UP"
         },
         {
@@ -1121,7 +1121,7 @@
           "clipSeconds": 10,
           "targetSeconds": 0.9,
           "direction": "In scene. He's talking to someone in the shot, not to you. Lower, faster, less presentational.",
-          "picture": "absorbing that, wounded for exactly one beat, then recovering completely",
+          "picture": "absorbing that, wounded for exactly one beat, then recovering completely, in a cold violet-lit glass office…",
           "cue": "PRESTON — '…That's engagement.'"
         },
         {
@@ -1136,7 +1136,7 @@
           "clipSeconds": 15,
           "targetSeconds": 4.3,
           "direction": "Straight down the lens. This is the fourth-wall break — he is talking to the room, not to another character.",
-          "picture": "facing the lens directly, far too close, over-lit and unblinking, addressing the viewer with corporate menace",
+          "picture": "facing the lens directly, far too close, over-lit and unblinking, addressing the viewer with corporate menace,…",
           "cue": "◆ 'Statistically, someone in your feed is a wire right now.'"
         },
         {
@@ -1151,7 +1151,7 @@
           "clipSeconds": 12,
           "targetSeconds": 6.1,
           "direction": "Straight down the lens. This is the fourth-wall break — he is talking to the room, not to another character.",
-          "picture": "still too close to the lens, gesturing precisely, violet glow flickering across his turtleneck",
+          "picture": "still too close to the lens, gesturing precisely, violet glow flickering across his turtleneck, in a cold…",
           "cue": "◆ 'Red faces are perps: tap 'em, fast. Touch a guest and YOU'RE the leak.'"
         },
         {
@@ -1196,7 +1196,7 @@
           "clipSeconds": 10,
           "targetSeconds": 2.2,
           "direction": "In scene. He's talking to someone in the shot, not to you. Lower, faster, less presentational.",
-          "picture": "straightening his turtleneck, composing himself, and craning slowly toward the lens still holding the device",
+          "picture": "straightening his turtleneck, composing himself, and craning slowly toward the lens still holding the device,…",
           "cue": "PRESTON — '…That was a soft launch.'"
         },
         {
@@ -1226,7 +1226,7 @@
           "clipSeconds": 12,
           "targetSeconds": 7.0,
           "direction": "Straight down the lens. This is the fourth-wall break — he is talking to the room, not to another character.",
-          "picture": "still to lens, holding the device dead steady, hand visibly tense",
+          "picture": "still to lens, holding the device dead steady, hand visibly tense, in a violet-lit vault workroom at night, a…",
           "cue": "◆ 'Cut the wires in the right order, dial the code, then hold your hand DEAD steady.'"
         },
         {
@@ -1241,7 +1241,7 @@
           "clipSeconds": 8,
           "targetSeconds": 2.6,
           "direction": "Straight down the lens. This is the fourth-wall break — he is talking to the room, not to another character.",
-          "picture": "holding the look and the device, absolutely motionless, red light pulsing",
+          "picture": "holding the look and the device, absolutely motionless, red light pulsing, in a violet-lit vault workroom at…",
           "cue": "◆ 'Take your time. Don't. Drop it.' → ▮ THE DEVICE"
         },
         {
@@ -1328,7 +1328,7 @@
           "clipSeconds": 12,
           "targetSeconds": 2.6,
           "direction": "In scene. He's talking to someone in the shot, not to you. Lower, faster, less presentational.",
-          "picture": "stopping and pointing flatly at someone off-frame, deadpan, red and blue light crossing his face",
+          "picture": "stopping and pointing flatly at someone off-frame, deadpan, red and blue light crossing his face, in a gritty…",
           "cue": "McGRAW — 'And ONE of you knows him.' (points at a busboy)"
         },
         {
@@ -1358,7 +1358,7 @@
           "clipSeconds": 12,
           "targetSeconds": 5.2,
           "direction": "Straight down the lens. This is the fourth-wall break — he is talking to the room, not to another character.",
-          "picture": "continuing to speak directly into the lens, leaning in slightly, unblinking",
+          "picture": "continuing to speak directly into the lens, leaning in slightly, unblinking, in a gritty precinct lineup room…",
           "cue": "◆ 'Eight questions, comin' fast. Answer straight, answer quick, and do NOT crack.'"
         },
         {
@@ -1373,7 +1373,7 @@
           "clipSeconds": 8,
           "targetSeconds": 1.7,
           "direction": "Straight down the lens. This is the fourth-wall break — he is talking to the room, not to another character.",
-          "picture": "finishing, holding the stare into the lens, absolutely still, one eyebrow slightly raised",
+          "picture": "finishing, holding the stare into the lens, absolutely still, one eyebrow slightly raised, in a gritty precinct…",
           "cue": "◆ 'Let's see who talks.' → ▮ THE INTERROGATION"
         },
         {

@@ -89,6 +89,54 @@ LOCS = O([
  ("city", "a rain-slicked noir megacity at night seen from the air, four districts glowing gold, hot pink, cyan and violet"),
 ])
 
+# The set each beat is actually played on, in the words its own establishing shot uses.
+# Turn and hold clips describe a face, not a room — and a prompt that never says where it
+# is will invent somewhere, which is exactly the drift the test render showed. Any clip
+# with a person in it that doesn't state a location gets its beat's set appended.
+SETS = {
+ "INTRO": "a penthouse interior at night, floor-to-ceiling windows over a rain-soaked neon skyline",
+ "SCENE 1": "a gritty precinct lineup room at night, height-marker wall, venetian blinds throwing "
+            "red and blue siren light",
+ "SCENE 2": "the interior of a lowrider at night, cyan neon and police lights through the windscreen, "
+            "a wet neon street behind",
+ "SCENE 3": "a mirrored hot-pink neon mansion interior, mirrored walls, white leather couches, "
+            "floor-to-ceiling windows over a night marina",
+ "SCENE 4": "a warm gold-lit restaurant back room, checkered tablecloth, velvet banquettes, low "
+            "hanging lamp",
+ "SCENE 5": "a cold violet-lit glass office tower interior at night, a wall of CRT surveillance "
+            "monitors",
+ "SCENE 6": "a neutral warehouse interior at night, half lit warm gold and half lit hot pink, crates "
+            "and hanging worklights",
+ "SCENE 7": "a violet-lit vault workroom at night, a steel bench, emergency red light pulsing",
+ "SCENE 8": "a dark planning room at night, glowing blue-cyan blueprints projected on frosted glass",
+ "SCENE 9": "a cyan-lit inner-city street corner at night, murals, chrome lowriders at the kerb, "
+            "wet asphalt",
+ "SCENE 10": "a rain-soaked wooden pier at night, harbour fog, five drag-strip starting lights "
+             "glowing above, wet reflective boards",
+ "SCENE 11": "a dim neon alley at four in the morning, brick wall, a single searchlight sweeping",
+ "SCENE 12": "a grand ballroom lit in four colours — gold, hot pink, cyan and violet — a giant "
+             "four-colour vault lock glowing at the centre",
+ "FINALE": "a bare concrete vault chamber, a massive steel door standing open, one hard overhead "
+           "light, dust in the beam",
+}
+# Two clips in Scene 8 are played against the projection *going away*, so the beat's
+# set — which describes the blueprints glowing — would contradict the action.
+SET_OVERRIDE = {
+ "S8-07": "a dark planning room at night, frosted glass panels, the blueprint projection dimming out",
+ "S8-08": "a dark planning room at night, dark frosted glass panels, the projection gone, thin "
+          "schematic afterglow",
+}
+LOC_WORDS = ("room", "street", "pier", "alley", "mansion", "warehouse", "vault", "ballroom",
+             "tower", "precinct", "marina", "block", "corner", "corridor", "yacht", "deck",
+             "district", "city", "podium", "kerb", "wall", "couch", "window", "monitor",
+             "bench", "interior", "banquette", "table", "floor", "doorway", "penthouse")
+
+def has_location(text):
+    low = text.lower()
+    if any(v[:34].lower() in low for v in LOCS.values()):
+        return True
+    return any(w in low for w in LOC_WORDS)   # plurals included by substring
+
 # beat -> clips. role, seconds, camera (ONE move), subject key or '', prompt, audio
 BEATS = [
 
@@ -371,6 +419,8 @@ for tag, title, owner, loc, rows in BEATS:
         if subj == 'handler':
             negs.append(NEG_HANDLER)
         body = fill(prompt)
+        if subj and not has_location(body):
+            body += f", in {SET_OVERRIDE.get(cid, SETS[tag])}"
 
         lines = parse_line(cid, audio, subj)
         block = speech_block(lines, role)
