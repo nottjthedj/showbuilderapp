@@ -31,6 +31,28 @@
   ol.how li,ul.how li{margin:0 0 9px;}
   ol.how b,ul.how b{color:var(--ink);}
 
+  /* character-mode toolbar */
+  .tools{margin:26px 0 0;padding:15px 17px;border:1px solid var(--line);border-radius:12px;
+    background:rgba(255,255,255,.022);max-width:78ch;}
+  .sw{display:flex;align-items:center;gap:11px;cursor:pointer;font-size:14.5px;color:var(--ink);}
+  .sw input{position:absolute;opacity:0;width:0;height:0;}
+  .sw span{flex:0 0 40px;height:22px;border-radius:999px;border:1px solid var(--line);
+    background:rgba(255,255,255,.05);position:relative;transition:.16s;}
+  .sw span::after{content:'';position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;
+    background:var(--mut);transition:.16s;}
+  .sw input:checked + span{border-color:#00e5ff;background:rgba(0,229,255,.16);}
+  .sw input:checked + span::after{left:21px;background:#00e5ff;}
+  .sw input:focus-visible + span{outline:2px solid #00e5ff;outline-offset:2px;}
+  .toolnote{margin:9px 0 0;font-size:13.5px;color:var(--mut);line-height:1.6;}
+  .toolnote b{color:var(--ink);font-weight:600;}
+  .toolnote code{font-family:var(--mono);font-size:12px;color:#00e5ff;}
+  .tok{display:flex;align-items:center;gap:9px;margin:0 0 12px;
+    font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);}
+  .tok input{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+    background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:7px;padding:7px 10px;
+    width:190px;text-transform:none;}
+  .tok input:focus{outline:none;border-color:var(--cc);}
+
   /* jump nav */
   .jump{position:sticky;top:0;z-index:60;display:flex;gap:7px;flex-wrap:wrap;align-items:center;
     padding:13px 0;background:linear-gradient(180deg,rgba(8,8,11,.97) 74%,rgba(8,8,11,0));margin-top:22px;}
@@ -107,6 +129,12 @@
   <h2 class="sec" id="howHead"></h2>
   <ol class="how" id="how"></ol>
 
+  <div class="tools">
+    <label class="sw"><input type="checkbox" id="lockedMode"><span></span>
+      <b>I've built these as characters in my tool</b></label>
+    <p class="toolnote" id="toolnote"></p>
+  </div>
+
   <div class="jump" id="jump"></div>
   <div id="main"></div>
 
@@ -137,6 +165,37 @@
   var ROLE_C = { ESTABLISH:'#8f8fa6', BUILD:'#00e5ff', INSERT:'#f5c542', APPROACH:'#ff8ac4',
                  TURN:'#ff2d9b', HOLD:'#ff2d9b', OUT:'#a06bff', 'POST-CREDIT':'#ff5a6e' };
 
+  /* ---- character mode -------------------------------------------------
+     If you've built these people as reusable characters in your generator
+     (DaVinci, Firefly, Midjourney --cref, whatever), the 40-word physical
+     description in each prompt is no longer describing them — it's competing
+     with the character you locked. Flip the switch and every prompt swaps
+     that description for the name you gave the character. Everything else —
+     action, wardrobe beat, location, lighting, lens — stays. */
+  var SEEDS = {}, TOKENS = {}, LOCKED = false;
+  (D.seedIndex||[]).forEach(function(ch){
+    SEEDS[ch.key] = ch.seed;
+    TOKENS[ch.key] = ch.name.split(' ')[0].replace(/[“”"]/g,'');
+  });
+  try {
+    var saved = JSON.parse(localStorage.getItem('gtad.tokens')||'{}');
+    Object.keys(saved).forEach(function(k){ if(TOKENS[k]) TOKENS[k]=saved[k]; });
+    LOCKED = localStorage.getItem('gtad.locked') === '1';
+  } catch(e){}
+  function save(){
+    try {
+      localStorage.setItem('gtad.tokens', JSON.stringify(TOKENS));
+      localStorage.setItem('gtad.locked', LOCKED ? '1' : '0');
+    } catch(e){}
+  }
+  function sub(text, cast){
+    if (!LOCKED || !text) return text;
+    (cast || Object.keys(SEEDS)).forEach(function(k){
+      if (SEEDS[k]) text = text.split(SEEDS[k]).join(TOKENS[k]);
+    });
+    return text;
+  }
+
   function clipCard(c, showCast){
     var d = el('details','clip' + (c.ensemble ? ' ens' : (['TURN','APPROACH','HOLD'].indexOf(c.role)>-1 ? ' money' : '')));
     d.style.setProperty('--rc', c.ensemble ? '#ff5a6e' : (ROLE_C[c.role] || '#8f8fa6'));
@@ -156,25 +215,31 @@
       b.appendChild(el('div','lbl','Continuity — read before you render'));
       b.appendChild(el('p','cont', c.continuity));
     }
+    var full = sub(c.full, c.cast);
     b.appendChild(el('div','lbl','Prompt'));
-    b.appendChild(el('p','ptext', c.full));
+    b.appendChild(el('p','ptext', full));
     b.appendChild(el('div','lbl','Negative'));
     b.appendChild(el('p','ntext', c.negative));
     b.appendChild(el('div','lbl','Audio under it'));
     b.appendChild(el('p','aud', c.audio));
     var a = el('div','acts');
-    a.appendChild(copyBtn('Copy prompt', c.full));
+    a.appendChild(copyBtn('Copy prompt', full));
     a.appendChild(copyBtn('Copy negative', c.negative, 'alt'));
+    a.appendChild(copyBtn('Copy both — one box', full + ' Avoid: ' + c.negative + '.', 'alt'));
     b.appendChild(a);
     d.appendChild(b);
     return d;
   }
 
+  function render(){
+  $('main').innerHTML=''; $('jump').innerHTML=''; $('how').innerHTML='';
   if (MODE === 'characters'){
-    $('stand').innerHTML = 'Every single-subject clip, grouped by who is in it, so you can generate a '
+    $('stand').innerHTML ='Every single-subject clip, grouped by who is in it, so you can generate a '
       + 'whole part in one sitting and then move on. <b>' + D.meta.soloClips + ' clips</b> across '
-      + D.characters.length + ' batches. Generate the seed first, lock the reference frame, then work '
-      + 'straight down. Shots with two or more people in frame are in the <b>ensemble list</b> — do those last.';
+      + D.characters.length + ' batches. ' + (LOCKED
+        ? 'You\'ve built these as characters, so skip the seed and start at clip 1. '
+        : 'Generate the seed first, lock the reference frame, then work straight down. ')
+      + 'Shots with two or more people in frame are in the <b>ensemble list</b> — do those last.';
     $('howHead').textContent = 'How to run a batch';
     D.howToBatch.forEach(function(t){
       var li=el('li'); var i=t.indexOf('.');
@@ -201,10 +266,26 @@
 
       if (ch.seed){
         var sc = el('div','card seed');
-        var sh = el('div','cardh'); sh.appendChild(el('span',null,'1 · The seed — generate this first'));
+        var sh = el('div','cardh');
+        sh.appendChild(el('span', null, LOCKED
+          ? '1 · The seed — you already have this one, skip it'
+          : '1 · The seed — generate this first'));
         sh.appendChild(copyBtn('Copy seed', ch.seed + '. ' + D.blocks.STYLE + '. ' + D.blocks.PERIOD));
         sc.appendChild(sh);
-        var sb = el('div','cardb'); sb.appendChild(el('code', null, ch.seed));
+        var sb = el('div','cardb');
+        if (LOCKED){
+          var tk = el('div','tok');
+          tk.appendChild(el('span', null, 'Called, in your tool'));
+          var ti = document.createElement('input');
+          ti.type='text'; ti.value = TOKENS[ch.key]; ti.spellcheck = false;
+          ti.setAttribute('aria-label', 'Character name for ' + ch.name);
+          ti.addEventListener('change', function(){
+            TOKENS[ch.key] = ti.value.trim() || ch.name.split(' ')[0]; save(); render();
+          });
+          tk.appendChild(ti);
+          sb.appendChild(tk);
+        }
+        sb.appendChild(el('code', null, ch.seed));
         sc.appendChild(sb); sec.appendChild(sc);
       }
       if (ch.lock){
@@ -217,7 +298,7 @@
 
       var all = ch.clips.map(function(c,i){
         return '### ' + (i+1) + ' · ' + c.id + ' (' + c.seconds + 's, ' + c.role + ')\n'
-             + c.full + '\n\nNEGATIVE: ' + c.negative;
+             + sub(c.full, c.cast) + '\n\nNEGATIVE: ' + c.negative;
       }).join('\n\n---\n\n');
       var bar = el('div','acts'); bar.style.marginTop='14px';
       bar.appendChild(copyBtn('Copy all ' + ch.clipCount + ' prompts', all, 'big'));
@@ -258,7 +339,7 @@
       sec.appendChild(h);
       var all = mine.map(function(c,i){
         return '### ' + (i+1) + ' · ' + c.id + ' (' + c.seconds + 's, ' + c.role + ')\nCAST: '
-             + c.cast.join(' + ') + '\nCONTINUITY: ' + c.continuity + '\n\n' + c.full
+             + c.cast.join(' + ') + '\nCONTINUITY: ' + c.continuity + '\n\n' + sub(c.full, c.cast)
              + '\n\nNEGATIVE: ' + c.negative;
       }).join('\n\n---\n\n');
       var bar=el('div','acts'); bar.style.marginTop='14px';
@@ -270,5 +351,48 @@
       $('main').appendChild(sec);
     });
   }
+  paintTools();
+  }
+
+  /* the toolbar */
+  function paintTools(){
+    Array.prototype.slice.call(document.querySelectorAll('.tools .tok')).forEach(function(x){
+      x.parentNode.removeChild(x);
+    });
+    var n = $('toolnote'); n.innerHTML = '';
+    if (!LOCKED){
+      n.innerHTML = 'Leave this off and every prompt carries the full physical description — '
+        + 'right for a generator with no memory between clips. Turn it on if you\'ve already built '
+        + 'these people as reusable characters, and each prompt will call them by name instead. '
+        + 'Two descriptions of the same face fight each other; one of them wins, and it isn\'t '
+        + 'always yours.';
+      return;
+    }
+    n.innerHTML = 'On. Prompts now say the character\'s name where the description used to be, '
+      + 'and keep the action, wardrobe beat, location, lighting and lens. '
+      + '<b>The seed step is done for anyone you\'ve built</b> — start at clip 1. '
+      + 'Set the name to match exactly what you called the character in your tool:';
+    if (MODE !== 'characters'){
+      var row = el('div','tok'); row.style.margin = '12px 0 0'; row.style.flexWrap = 'wrap';
+      Object.keys(SEEDS).forEach(function(k){
+        var i = document.createElement('input');
+        i.type='text'; i.value=TOKENS[k]; i.spellcheck=false;
+        i.setAttribute('aria-label','Character name for '+k);
+        i.style.width='150px';
+        i.addEventListener('change', function(){
+          TOKENS[k] = i.value.trim() || k; save(); render();
+        });
+        row.appendChild(i);
+      });
+      n.parentNode.appendChild(row);
+    }
+  }
+
+  $('lockedMode').checked = LOCKED;
+  $('lockedMode').addEventListener('change', function(){
+    LOCKED = $('lockedMode').checked; save();
+    render();
+  });
+  render();
 })();
 </script>

@@ -8,5 +8,5 @@ DATA = json.dumps({
     'strip': (HERE/'snap.b64').read_text().strip(),
 }, ensure_ascii=False)
 out = HERE/'shot-sheet.html'
-out.write_text((HERE/'sheet_template.html').read_text().replace('/*__DATA__*/null', DATA))
+out.write_text((HERE/'_sheet_template.html').read_text().replace('/*__DATA__*/null', DATA))
 print('wrote', out, '|', len(SRC['clips']), 'clips |', round(out.stat().st_size/1024), 'KB')

@@ -43,6 +43,18 @@ every solo reference frame to exist before you can put two people in one frame, 
 shots where faces average together and subjects swap sides. Each carries explicit FRAME LEFT / FRAME
 RIGHT positions, per-crew lighting, and negatives for merging and side-swapping.
 
+**If your generator has a character feature, use it and say so.** The shot-list page has a switch
+at the top — *"I've built these as characters in my tool"*. Off, every prompt carries the full
+physical description, which is what a generator with no memory between clips needs. On, each prompt
+calls the person by the name you gave the character and keeps only the action, the wardrobe beat,
+the location, the lighting and the lens. Two descriptions of the same face compete, and the one
+that wins isn't always yours. Type the name to match your tool exactly; it's remembered, and it
+applies to the ensemble page too. Anyone you've already built can skip step 1 — the seed exists.
+
+Prompt and negative are **two different fields**, and both get used: the prompt is what to make,
+the negative is what to reject. If your tool only gives you one box, every clip has a **Copy both —
+one box** button that joins them into `…prompt… Avoid: …negative…`.
+
 **Generate ~2–2.5× what you cut.** 135 clips is 26 minutes of footage for a film that cuts to about
 nine. That surplus is what lets you cut on the beat instead of using whatever the model handed you.
 
