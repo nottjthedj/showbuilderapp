@@ -1,0 +1,274 @@
+<title>__TITLE__</title>
+<style>
+  :root{
+    color-scheme: dark;
+    --ground:#08080b; --panel:#0e0e14; --panel2:#12121a;
+    --line:rgba(255,255,255,.10); --ink:#f4f4f8; --mut:#8f8fa6; --dim:#5c5c72;
+    --cyan:#00e5ff; --pink:#ff2d9b; --gold:#f5c542; --warn:#ff5a6e;
+    --display:"Haettenschweiler","Arial Narrow Bold",Impact,"Franklin Gothic Bold",sans-serif;
+    --body:ui-sans-serif,system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Courier New",monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:radial-gradient(120% 60% at 50% -10%,#16121c 0%,var(--ground) 60%) no-repeat,var(--ground);
+    color:var(--ink);font-family:var(--body);line-height:1.6;padding:0 0 90px;}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.045;
+    background:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 3px);}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px;position:relative;z-index:1;}
+
+  header{padding:46px 0 6px;}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);margin:0 0 12px;}
+  h1{font-family:var(--display);font-weight:400;text-transform:uppercase;
+    font-size:clamp(36px,7.5vw,76px);line-height:.88;margin:0;letter-spacing:.02em;text-wrap:balance;}
+  h1 .a{color:transparent;-webkit-text-stroke:1.5px var(--pink);text-shadow:0 0 18px rgba(255,45,155,.5);}
+  h1 .b{color:transparent;-webkit-text-stroke:1.5px var(--cyan);text-shadow:0 0 18px rgba(0,229,255,.45);}
+  .standfirst{color:var(--mut);font-size:16px;max-width:68ch;margin:18px 0 0;}
+  .standfirst b{color:var(--ink);font-weight:600;}
+
+  h2.sec{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(22px,3.2vw,30px);
+    margin:44px 0 4px;letter-spacing:.02em;}
+  ol.how,ul.how{margin:14px 0 0;padding-left:20px;color:var(--mut);font-size:15px;max-width:78ch;}
+  ol.how li,ul.how li{margin:0 0 9px;}
+  ol.how b,ul.how b{color:var(--ink);}
+
+  /* jump nav */
+  .jump{position:sticky;top:0;z-index:60;display:flex;gap:7px;flex-wrap:wrap;align-items:center;
+    padding:13px 0;background:linear-gradient(180deg,rgba(8,8,11,.97) 74%,rgba(8,8,11,0));margin-top:22px;}
+  .jump a{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+    border:1px solid var(--jc);color:var(--jc);border-radius:999px;padding:8px 13px;text-decoration:none;}
+  .jump a:hover{background:color-mix(in srgb,var(--jc) 16%,transparent);}
+  .jump a b{color:var(--ink);font-weight:400;margin-left:5px;}
+
+  /* character block */
+  .char{margin:44px 0 0;scroll-margin-top:70px;}
+  .chead{border-top:2px solid var(--cc);padding-top:16px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;}
+  .chead h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(26px,4.4vw,40px);
+    margin:0;color:var(--cc);letter-spacing:.02em;}
+  .chead .cnt{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:.12em;margin-left:auto;
+    font-variant-numeric:tabular-nums;}
+
+  .card{border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.02);
+    overflow:hidden;margin:14px 0 0;}
+  .card.seed{border-color:var(--cc);}
+  .card.lock{border-style:dashed;}
+  .cardh{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 15px;
+    border-bottom:1px solid var(--line);font-family:var(--mono);font-size:10px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--cc);font-weight:800;}
+  .card.lock .cardh{color:var(--mut);}
+  .cardb{padding:13px 15px;font-size:14.5px;line-height:1.6;color:#cfcfdd;}
+  .cardb code{font-family:var(--mono);font-size:12.5px;line-height:1.62;color:#c6d2da;display:block;white-space:pre-wrap;}
+
+  /* clips */
+  .clips{display:grid;gap:9px;margin-top:14px;}
+  .clip{border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.02);
+    border-left:3px solid var(--rc);overflow:hidden;}
+  .clip.money{border-color:rgba(255,45,155,.4);}
+  .clip.ens{border-color:rgba(255,90,110,.45);box-shadow:0 0 20px rgba(255,90,110,.1);}
+  .ch2{display:grid;grid-template-columns:auto 1fr auto;gap:13px;align-items:center;padding:12px 15px;cursor:pointer;}
+  .cid{font-family:var(--display);font-weight:400;font-size:21px;color:var(--rc);letter-spacing:.03em;min-width:62px;line-height:1;}
+  .cmid{min-width:0;}
+  .role{display:inline-block;font-family:var(--mono);font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;
+    color:#08080b;background:var(--rc);border-radius:4px;padding:2px 6px;font-weight:800;margin-bottom:5px;}
+  .cast{display:inline-block;font-family:var(--mono);font-size:8.5px;letter-spacing:.13em;text-transform:uppercase;
+    border:1px solid var(--warn);color:var(--warn);border-radius:4px;padding:2px 6px;margin:0 0 5px 6px;}
+  .cam{font-size:13.5px;color:var(--ink);margin:0;line-height:1.4;}
+  .csub{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:4px;}
+  .secs{font-family:var(--display);font-weight:400;font-size:21px;color:var(--ink);}
+  .cbody{padding:0 15px 15px;}
+  .lbl{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin:12px 0 6px;}
+  .ptext{font-family:var(--mono);font-size:12.5px;line-height:1.62;color:#c6d2da;white-space:pre-wrap;
+    border:1px solid var(--line);border-radius:8px;padding:11px 12px;margin:0;}
+  .ntext{font-family:var(--mono);font-size:11.5px;line-height:1.6;color:#9aa4ad;white-space:pre-wrap;
+    border:1px dashed var(--line);border-radius:8px;padding:10px 12px;margin:0;}
+  .cont{border:1px solid var(--warn);border-radius:8px;padding:11px 13px;margin:0;
+    background:rgba(255,90,110,.07);font-size:14px;line-height:1.55;color:#f0d6da;}
+  .aud{font-size:14px;color:var(--cyan);margin:0;line-height:1.5;}
+  .acts{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px;}
+  .cbtn{font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;
+    border:1px solid var(--cyan);background:transparent;color:var(--cyan);border-radius:7px;padding:8px 12px;cursor:pointer;}
+  .cbtn:hover{background:rgba(0,229,255,.12);}
+  .cbtn.alt{border-color:var(--line);color:var(--mut);}
+  .cbtn.big{border-color:var(--cc);color:var(--cc);font-size:10.5px;padding:10px 15px;}
+  :focus-visible{outline:2px solid var(--cyan);outline-offset:2px;}
+
+  footer{margin:52px 0 0;padding:22px 0 0;border-top:1px solid var(--line);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--dim);line-height:1.9;}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;}}
+  @media (max-width:640px){ .ch2{grid-template-columns:auto 1fr;} .secs{grid-column:2;text-align:left;} }
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Grand Theft After-Dark · “The Score” · __EYEBROW__</p>
+    <h1>__H1__</h1>
+    <p class="standfirst" id="stand"></p>
+  </header>
+
+  <h2 class="sec" id="howHead"></h2>
+  <ol class="how" id="how"></ol>
+
+  <div class="jump" id="jump"></div>
+  <div id="main"></div>
+
+  <footer>
+    GRAND THEFT AFTER-DARK · “THE SCORE” · marketing/shot-list.json<br>
+    Independent fan tribute event. Not affiliated with, endorsed by, or sponsored by Rockstar Games,
+    Take-Two Interactive, or any related entity.
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var D = /*__DATA__*/null;
+  var MODE = "__MODE__";
+  var $ = function(id){ return document.getElementById(id); };
+  function el(t,c,x){ var n=document.createElement(t); if(c)n.className=c; if(x!=null)n.textContent=x; return n; }
+  function copyBtn(label, text, cls){
+    var b = el('button','cbtn'+(cls?' '+cls:''), label); b.type='button';
+    b.addEventListener('click', function(e){
+      e.stopPropagation();
+      if (navigator.clipboard) navigator.clipboard.writeText(text);
+      var o=b.textContent; b.textContent='Copied';
+      setTimeout(function(){ b.textContent=o; }, 1200);
+    });
+    return b;
+  }
+  var ROLE_C = { ESTABLISH:'#8f8fa6', BUILD:'#00e5ff', INSERT:'#f5c542', APPROACH:'#ff8ac4',
+                 TURN:'#ff2d9b', HOLD:'#ff2d9b', OUT:'#a06bff', 'POST-CREDIT':'#ff5a6e' };
+
+  function clipCard(c, showCast){
+    var d = el('details','clip' + (c.ensemble ? ' ens' : (['TURN','APPROACH','HOLD'].indexOf(c.role)>-1 ? ' money' : '')));
+    d.style.setProperty('--rc', c.ensemble ? '#ff5a6e' : (ROLE_C[c.role] || '#8f8fa6'));
+    var s = el('summary','ch2');
+    s.appendChild(el('div','cid', c.id));
+    var mid = el('div','cmid');
+    mid.appendChild(el('span','role', c.role));
+    if (showCast) mid.appendChild(el('span','cast', c.cast.join(' + ')));
+    mid.appendChild(el('p','cam', c.camera));
+    mid.appendChild(el('div','csub', c.beat + ' · ' + c.beatTitle));
+    s.appendChild(mid);
+    s.appendChild(el('div','secs', c.seconds + 's'));
+    d.appendChild(s);
+
+    var b = el('div','cbody');
+    if (c.continuity){
+      b.appendChild(el('div','lbl','Continuity — read before you render'));
+      b.appendChild(el('p','cont', c.continuity));
+    }
+    b.appendChild(el('div','lbl','Prompt'));
+    b.appendChild(el('p','ptext', c.full));
+    b.appendChild(el('div','lbl','Negative'));
+    b.appendChild(el('p','ntext', c.negative));
+    b.appendChild(el('div','lbl','Audio under it'));
+    b.appendChild(el('p','aud', c.audio));
+    var a = el('div','acts');
+    a.appendChild(copyBtn('Copy prompt', c.full));
+    a.appendChild(copyBtn('Copy negative', c.negative, 'alt'));
+    b.appendChild(a);
+    d.appendChild(b);
+    return d;
+  }
+
+  if (MODE === 'characters'){
+    $('stand').innerHTML = 'Every single-subject clip, grouped by who is in it, so you can generate a '
+      + 'whole part in one sitting and then move on. <b>' + D.meta.soloClips + ' clips</b> across '
+      + D.characters.length + ' batches. Generate the seed first, lock the reference frame, then work '
+      + 'straight down. Shots with two or more people in frame are in the <b>ensemble list</b> — do those last.';
+    $('howHead').textContent = 'How to run a batch';
+    D.howToBatch.forEach(function(t){
+      var li=el('li'); var i=t.indexOf('.');
+      li.appendChild(el('b',null,t.slice(0,i+1)));
+      li.appendChild(document.createTextNode(' '+t.slice(i+1).trim()));
+      $('how').appendChild(li);
+    });
+
+    D.characters.forEach(function(ch){
+      var a = el('a', null, ch.name.split(' ')[0].replace(/[“”]/g,''));
+      a.href = '#c-'+ch.key; a.style.setProperty('--jc', ch.colour);
+      a.appendChild(el('b', null, ch.clipCount));
+      $('jump').appendChild(a);
+    });
+
+    D.characters.forEach(function(ch){
+      var sec = el('section','char'); sec.id='c-'+ch.key;
+      sec.style.setProperty('--cc', ch.colour);
+      var h = el('div','chead');
+      h.appendChild(el('h3', null, ch.name));
+      h.appendChild(el('span','cnt', ch.clipCount + ' clips · ' + Math.floor(ch.seconds/60) + 'm '
+        + (ch.seconds%60) + 's · ' + ch.beats.join(', ')));
+      sec.appendChild(h);
+
+      if (ch.seed){
+        var sc = el('div','card seed');
+        var sh = el('div','cardh'); sh.appendChild(el('span',null,'1 · The seed — generate this first'));
+        sh.appendChild(copyBtn('Copy seed', ch.seed + '. ' + D.blocks.STYLE + '. ' + D.blocks.PERIOD));
+        sc.appendChild(sh);
+        var sb = el('div','cardb'); sb.appendChild(el('code', null, ch.seed));
+        sc.appendChild(sb); sec.appendChild(sc);
+      }
+      if (ch.lock){
+        var lc = el('div','card lock');
+        var lh = el('div','cardh'); lh.appendChild(el('span',null,'2 · The lock — check every render against this'));
+        lc.appendChild(lh);
+        var lb = el('div','cardb'); lb.appendChild(document.createTextNode(ch.lock));
+        lc.appendChild(lb); sec.appendChild(lc);
+      }
+
+      var all = ch.clips.map(function(c,i){
+        return '### ' + (i+1) + ' · ' + c.id + ' (' + c.seconds + 's, ' + c.role + ')\n'
+             + c.full + '\n\nNEGATIVE: ' + c.negative;
+      }).join('\n\n---\n\n');
+      var bar = el('div','acts'); bar.style.marginTop='14px';
+      bar.appendChild(copyBtn('Copy all ' + ch.clipCount + ' prompts', all, 'big'));
+      sec.appendChild(bar);
+
+      var w = el('div','clips');
+      ch.clips.forEach(function(c){ w.appendChild(clipCard(c, false)); });
+      sec.appendChild(w);
+      $('main').appendChild(sec);
+    });
+
+  } else {
+    $('stand').innerHTML = '<b>' + D.meta.ensembleClips + ' clips</b> where two or more established '
+      + 'subjects share a frame. These are re-prompted with explicit frame positions, per-subject '
+      + 'lighting and a continuity note, because this is exactly where faces average together and '
+      + 'people swap sides. <b>Do these last</b> — you need every solo reference frame to exist first.';
+    $('howHead').textContent = 'The rules for two people in one frame';
+    D.ensembleRules.forEach(function(t){
+      var li=el('li'); var i=t.indexOf('.');
+      li.appendChild(el('b',null,t.slice(0,i+1)));
+      li.appendChild(document.createTextNode(' '+t.slice(i+1).trim()));
+      $('how').appendChild(li);
+    });
+    var beats=[]; D.ensemble.forEach(function(c){ if(beats.indexOf(c.beat)<0) beats.push(c.beat); });
+    beats.forEach(function(bt){
+      var a=el('a',null,bt); a.href='#e-'+bt.replace(/\s+/g,''); a.style.setProperty('--jc','#ff5a6e');
+      a.appendChild(el('b',null,D.ensemble.filter(function(c){return c.beat===bt;}).length));
+      $('jump').appendChild(a);
+    });
+    beats.forEach(function(bt){
+      var mine = D.ensemble.filter(function(c){ return c.beat===bt; });
+      var sec = el('section','char'); sec.id='e-'+bt.replace(/\s+/g,'');
+      sec.style.setProperty('--cc','#ff5a6e');
+      var h=el('div','chead');
+      h.appendChild(el('h3',null, bt + ' — ' + mine[0].beatTitle));
+      h.appendChild(el('span','cnt', mine.length + ' clips · cast: ' +
+        Array.from(new Set(mine.reduce(function(a,c){ return a.concat(c.cast); },[]))).join(', ')));
+      sec.appendChild(h);
+      var all = mine.map(function(c,i){
+        return '### ' + (i+1) + ' · ' + c.id + ' (' + c.seconds + 's, ' + c.role + ')\nCAST: '
+             + c.cast.join(' + ') + '\nCONTINUITY: ' + c.continuity + '\n\n' + c.full
+             + '\n\nNEGATIVE: ' + c.negative;
+      }).join('\n\n---\n\n');
+      var bar=el('div','acts'); bar.style.marginTop='14px';
+      bar.appendChild(copyBtn('Copy all ' + mine.length + ' prompts', all, 'big'));
+      sec.appendChild(bar);
+      var w=el('div','clips');
+      mine.forEach(function(c){ w.appendChild(clipCard(c, true)); });
+      sec.appendChild(w);
+      $('main').appendChild(sec);
+    });
+  }
+})();
+</script>

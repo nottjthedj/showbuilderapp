@@ -17,6 +17,7 @@ listening to that voice for a month.
 | [`daily-transmissions.json`](daily-transmissions.json) | **122 daily posts** — launch to the November show — 26–45s each: hook, on-screen text, full TJ script, shot list, caption, CTA and why each gets shared. Plus the 3-a-week tour cadence for after it. |
 | [`how-to-play.md`](how-to-play.md) | **The explainer video** — 75–90s, built to kill the "will I get pulled on stage" objection. |
 | [`shot-sheet.json`](shot-sheet.json) | **The master prompt sheet** — the whole film in 135 clips of ≤15s, each with a ready-to-paste prompt, its negative, the camera move and the audio under it. Built for a 15-second generation limit. |
+| [`shot-list.json`](shot-list.json) | **The same 135 clips regrouped for generation** — 122 single-subject clips batched by character (seed + continuity lock + prompts), and the 13 two-or-more-subject clips split out and re-prompted with frame positions and per-subject lighting. |
 
 ## Generating the film — the turn needs three clips
 
@@ -34,6 +35,13 @@ happen in under a second.
 The same test also showed the location changing three times in five seconds, so every clip's
 negative now carries `location change, background change, jump cut`. Lock the subject and the set
 with a reference frame before rolling.
+
+**Batch by subject, not by scene.** `shot-list.json` regroups the same clips so you generate one
+person's whole part in a sitting: seed first, lock the reference frame, work down. The 13 shots with
+two or more established subjects in frame are pulled into their own list and done **last** — you need
+every solo reference frame to exist before you can put two people in one frame, and those are the
+shots where faces average together and subjects swap sides. Each carries explicit FRAME LEFT / FRAME
+RIGHT positions, per-crew lighting, and negatives for merging and side-swapping.
 
 **Generate ~2–2.5× what you cut.** 135 clips is 26 minutes of footage for a film that cuts to about
 nine. That surplus is what lets you cut on the beat instead of using whatever the model handed you.
