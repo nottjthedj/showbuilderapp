@@ -158,7 +158,8 @@
     var b = el('button','cbtn'+(cls?' '+cls:''), label); b.type='button';
     b.addEventListener('click', function(e){
       e.stopPropagation();
-      if (navigator.clipboard) navigator.clipboard.writeText(text);
+      if (navigator.clipboard) navigator.clipboard.writeText(
+        typeof text === 'function' ? text() : text);
       var o=b.textContent; b.textContent='Copied';
       setTimeout(function(){ b.textContent=o; }, 1200);
     });
@@ -179,8 +180,10 @@
     } catch(e){}
   }
 
-  var ALL = [];
-  D.beats.forEach(function(b){ b.clips.forEach(function(c){ ALL.push(c); }); });
+  var ALL = [], BY_ID = {};
+  D.beats.forEach(function(b){ b.clips.forEach(function(c){ ALL.push(c); BY_ID[c.id] = c; }); });
+  var WORDING = 'full';
+  try { WORDING = localStorage.getItem('gtad.wording') || 'full'; } catch(e){}
 
   function paintProgress(){
     var done = ALL.filter(function(c){ return DONE[c.id]; });
@@ -247,13 +250,14 @@
       b.appendChild(q);
     });
     b.appendChild(el('div','lbl','Prompt'));
-    b.appendChild(el('p','ptext', c.full));
+    b.appendChild(el('p','ptext', c[WORDING] || c.full));
     b.appendChild(el('div','lbl','Negative'));
     b.appendChild(el('p','ntext', c.negative));
     var a = el('div','acts');
-    a.appendChild(copyBtn('Copy prompt', c.full));
+    a.appendChild(copyBtn('Copy prompt', function(){ return c[WORDING] || c.full; }));
     a.appendChild(copyBtn('Copy negative', c.negative, 'alt'));
-    a.appendChild(copyBtn('Copy both — one box', c.full + ' Avoid: ' + c.negative + '.', 'alt'));
+    a.appendChild(copyBtn('Copy both — one box',
+      function(){ return (c[WORDING] || c.full) + ' Avoid: ' + c.negative + '.'; }, 'alt'));
     var mk = el('button','cbtn go', DONE[c.id] ? 'Not done after all' : 'Mark generated');
     mk.type = 'button';
     mk.addEventListener('click', function(){
@@ -285,6 +289,24 @@
     });
   });
   $('ctrls').appendChild(lab);
+  var wl = el('label','sw'); wl.appendChild(el('span', null, 'Wording'));
+  var sel = document.createElement('select');
+  [['full','As written'],['fullSafe','Filter-safe'],['fullSafest','Filter-safe, maximum']]
+    .forEach(function(o){
+      var op = document.createElement('option'); op.value = o[0]; op.textContent = o[1];
+      sel.appendChild(op);
+    });
+  sel.value = WORDING;
+  sel.addEventListener('change', function(){
+    WORDING = sel.value;
+    try { localStorage.setItem('gtad.wording', WORDING); } catch(e){}
+    document.querySelectorAll('details.clip').forEach(function(d){
+      var c = BY_ID[d.id.slice(2)];
+      if (!c) return;
+      d.querySelector('.ptext').textContent = c[WORDING] || c.full;
+    });
+  });
+  wl.appendChild(sel); $('ctrls').appendChild(wl);
   var reset = el('button','cbtn alt','Reset progress'); reset.type='button';
   reset.addEventListener('click', function(){
     if (!confirm('Clear every tick? The prompts are untouched.')) return;

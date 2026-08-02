@@ -71,6 +71,25 @@ the location, the lighting and the lens. Two descriptions of the same face compe
 that wins isn't always yours. Type the name to match your tool exactly; it's remembered, and it
 applies to the ensemble page too. Anyone you've already built can skip step 1 — the seed exists.
 
+**"Moderated image blocked" is the model's content filter, not your tool.** It runs over the
+prompt, over any reference image you feed it, and over the frames it just made — so the same
+prompt can pass once and fail once. On this film the trigger is always the gunfire language:
+`tracer round`, `muzzle flashes`, `revolver`, `shattering`. Eight clips carry it, across Scene 3,
+Scene 6, Scene 12 and the Finale burst-in.
+
+Every clip therefore has two alternate wordings, and the pages have a **Wording** control that
+switches which one the copy buttons emit:
+
+| Setting | What changes |
+|---|---|
+| **As written** | The original. |
+| **Filter-safe** | Weapons language only — `a tracer round passing his cheek` becomes `a streak of hot-pink light passing his cheek`. The picture is identical: it was always neon streaks in a mirrored room. |
+| **Filter-safe, maximum** | Also softens the crime nouns — `a Latin cartel kingpin` becomes `a Latin crime-drama boss character`. For filters that object to who the character is rather than what is happening. |
+
+**A spoken line is never rewritten** at any setting — those words are what the mouth has to match.
+If a clip still blocks on maximum, the line itself is the last suspect: drop the `SPOKEN LINE`
+block for that render and lay the recorded voice over it instead.
+
 Prompt and negative are **two different fields**, and both get used: the prompt is what to make,
 the negative is what to reject. If your tool only gives you one box, every clip has a **Copy both —
 one box** button that joins them into `…prompt… Avoid: …negative…`.

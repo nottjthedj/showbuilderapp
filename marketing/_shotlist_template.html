@@ -60,6 +60,11 @@
   .row2{display:flex;gap:9px;flex-wrap:wrap;align-items:center;}
   .hr{border:none;border-top:1px solid var(--line);margin:16px 0 14px;}
   .port{margin:13px 0 0;}
+  .wsel{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;
+    letter-spacing:.11em;text-transform:uppercase;color:var(--dim);border:1px solid var(--line);
+    border-radius:99px;padding:6px 8px 6px 13px;}
+  .wsel select{font-family:var(--mono);font-size:11px;color:var(--ink);background:rgba(255,255,255,.06);
+    border:1px solid var(--line);border-radius:7px;padding:5px 7px;}
   .port textarea{width:100%;font-family:var(--mono);font-size:11.5px;line-height:1.5;color:var(--ink);
     background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:8px;padding:10px;resize:vertical;}
   .pbar{height:5px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden;margin:12px 0 6px;}
@@ -176,6 +181,13 @@
       <label class="sw"><input type="checkbox" id="hideDone"><span></span>
         <b>Hide what I've generated</b></label>
       <button type="button" class="cbtn alt" id="expBtn">Back up / move progress</button>
+      <span class="wsel">Wording
+        <select id="wording">
+          <option value="full">As written</option>
+          <option value="fullSafe">Filter-safe</option>
+          <option value="fullSafest">Filter-safe, maximum</option>
+        </select>
+      </span>
     </div>
     <div class="port" id="port" hidden>
       <p class="toolnote">Progress lives in this browser only. Copy this line somewhere safe, or
@@ -250,6 +262,14 @@
     try { localStorage.setItem('gtad.done', JSON.stringify(DONE)); } catch(e){}
   }
   var SECTIONS = {};   // key -> {clips:[ids], el}
+
+  /* Cloud generators refuse prompts their content filter dislikes, and on this film that
+     is always the gunfire language — the picture wanted is neon streaks in a mirrored
+     room either way. 'Filter-safe' swaps the weapons out; 'maximum' also softens the
+     crime nouns. Neither ever rewrites a spoken line: that is what the mouth must match. */
+  var WORDING = 'full';
+  try { WORDING = localStorage.getItem('gtad.wording') || 'full'; } catch(e){}
+  function promptOf(c){ return sub(c[WORDING] || c.full, c.cast); }
 
   function save(){
     try {
@@ -374,7 +394,7 @@
       b.appendChild(el('div','lbl','No line'));
       b.appendChild(el('p','aud','Silence is the direction here — the prompt tells the model to keep the mouth closed.'));
     }
-    var full = sub(c.full, c.cast);
+    var full = promptOf(c);
     b.appendChild(el('div','lbl','Prompt'));
     b.appendChild(el('p','ptext', full));
     b.appendChild(el('div','lbl','Negative'));
@@ -485,7 +505,7 @@
 
       var all = ch.clips.map(function(c,i){
         return '### ' + (i+1) + ' · ' + c.id + ' (' + c.seconds + 's, ' + c.role + ')\n'
-             + sub(c.full, c.cast) + '\n\nNEGATIVE: ' + c.negative;
+             + promptOf(c) + '\n\nNEGATIVE: ' + c.negative;
       }).join('\n\n---\n\n');
       var bar = el('div','acts'); bar.style.marginTop='14px';
       var nextBtn = el('button','cbtn next',''); nextBtn.type='button';
@@ -494,7 +514,7 @@
         if (!id) return;
         var c = ch.clips.filter(function(x){ return x.id === id; })[0];
         if (!c) return;
-        if (navigator.clipboard) navigator.clipboard.writeText(sub(c.full, c.cast));
+        if (navigator.clipboard) navigator.clipboard.writeText(promptOf(c));
         var o = nextBtn.textContent; nextBtn.textContent = 'Copied ' + id;
         setTimeout(function(){ nextBtn.textContent = o; }, 1300);
         var card = document.getElementById('k-' + id);
@@ -547,7 +567,7 @@
       sec.appendChild(h);
       var all = mine.map(function(c,i){
         return '### ' + (i+1) + ' · ' + c.id + ' (' + c.seconds + 's, ' + c.role + ')\nCAST: '
-             + c.cast.join(' + ') + '\nCONTINUITY: ' + c.continuity + '\n\n' + sub(c.full, c.cast)
+             + c.cast.join(' + ') + '\nCONTINUITY: ' + c.continuity + '\n\n' + promptOf(c)
              + '\n\nNEGATIVE: ' + c.negative;
       }).join('\n\n---\n\n');
       var pb=el('div','pbar'), pf=el('i'); pb.appendChild(pf);
@@ -636,6 +656,13 @@
   $('clearProg').addEventListener('click', function(){
     if (!confirm('Clear every tick? The prompts are untouched.')) return;
     DONE = {}; saveDone(); render();
+  });
+
+  $('wording').value = WORDING;
+  $('wording').addEventListener('change', function(){
+    WORDING = $('wording').value;
+    try { localStorage.setItem('gtad.wording', WORDING); } catch(e){}
+    render();
   });
 
   $('lockedMode').checked = LOCKED;

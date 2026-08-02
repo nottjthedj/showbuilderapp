@@ -16,7 +16,8 @@ OUT = HERE / 'production-hub.html'
 by_beat = {}
 for c in SHEET['clips']:
     by_beat.setdefault(c['beat'], []).append({
-        k: c[k] for k in ('id', 'role', 'seconds', 'camera', 'subject', 'full', 'negative', 'dialogue')
+        k: c[k] for k in ('id', 'role', 'seconds', 'camera', 'subject', 'full', 'fullSafe',
+                          'fullSafest', 'negative', 'dialogue')
     })
 
 beats = []
