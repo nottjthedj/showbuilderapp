@@ -16,6 +16,27 @@ listening to that voice for a month.
 | [`origin-story.md`](origin-story.md) | **The website story.** How the four gangs formed, what the vault is, and why all four are in one building on one night. Spoiler-safe. |
 | [`daily-transmissions.json`](daily-transmissions.json) | **122 daily posts** — launch to the November show — 26–45s each: hook, on-screen text, full TJ script, shot list, caption, CTA and why each gets shared. Plus the 3-a-week tour cadence for after it. |
 | [`how-to-play.md`](how-to-play.md) | **The explainer video** — 75–90s, built to kill the "will I get pulled on stage" objection. |
+| [`shot-sheet.json`](shot-sheet.json) | **The master prompt sheet** — the whole film in 135 clips of ≤15s, each with a ready-to-paste prompt, its negative, the camera move and the audio under it. Built for a 15-second generation limit. |
+
+## Generating the film — the turn needs three clips
+
+The Rico test proved the look works and exposed one timing problem: **the fourth-wall turn happened
+between two frames** — profile at 5.47s, full-face at 5.63s. That's an internal jump cut, not a turn,
+and it happens because a single 15-second prompt was asked for four things (establish the room, light
+a cigar, turn to camera, deliver a rant). Given four beats and fifteen seconds, the model snaps
+through the one with no dialogue attached. That's always the turn.
+
+So in [`shot-sheet.json`](shot-sheet.json) every turn is **three clips** — APPROACH (he registers
+you, still quiet) → TURN (locked camera, the rotation is the only instruction) → HOLD (he finishes
+and holds while the card lands). About 30–35 seconds of material for a beat that was trying to
+happen in under a second.
+
+The same test also showed the location changing three times in five seconds, so every clip's
+negative now carries `location change, background change, jump cut`. Lock the subject and the set
+with a reference frame before rolling.
+
+**Generate ~2–2.5× what you cut.** 135 clips is 26 minutes of footage for a film that cuts to about
+nine. That surplus is what lets you cut on the beat instead of using whatever the model handed you.
 
 ## The thing that makes the story work
 

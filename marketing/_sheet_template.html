@@ -1,0 +1,308 @@
+<title>The Score — master prompt sheet</title>
+<style>
+  :root{
+    color-scheme: dark;
+    --ground:#08080b; --panel:#0e0e14; --panel2:#12121a;
+    --line:rgba(255,255,255,.10); --ink:#f4f4f8; --mut:#8f8fa6; --dim:#5c5c72;
+    --cyan:#00e5ff; --pink:#ff2d9b; --gold:#f5c542; --warn:#ff5a6e;
+    --display:"Haettenschweiler","Arial Narrow Bold",Impact,"Franklin Gothic Bold",sans-serif;
+    --body:ui-sans-serif,system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Courier New",monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:radial-gradient(120% 60% at 50% -10%,#16121c 0%,var(--ground) 60%) no-repeat,var(--ground);
+    color:var(--ink);font-family:var(--body);line-height:1.6;padding:0 0 90px;}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.045;
+    background:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 3px);}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px;position:relative;z-index:1;}
+
+  header{padding:48px 0 8px;}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--dim);margin:0 0 12px;}
+  h1{font-family:var(--display);font-weight:400;text-transform:uppercase;
+    font-size:clamp(38px,8vw,80px);line-height:.88;margin:0;letter-spacing:.02em;text-wrap:balance;}
+  h1 .a{color:transparent;-webkit-text-stroke:1.5px var(--pink);text-shadow:0 0 18px rgba(255,45,155,.5);}
+  h1 .b{color:transparent;-webkit-text-stroke:1.5px var(--cyan);text-shadow:0 0 18px rgba(0,229,255,.45);}
+  .standfirst{color:var(--mut);font-size:16px;max-width:66ch;margin:18px 0 0;}
+  .standfirst b{color:var(--ink);font-weight:600;}
+
+  h2.sec{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(23px,3.4vw,32px);
+    margin:50px 0 4px;letter-spacing:.02em;}
+  .seclede{color:var(--mut);font-size:15px;max-width:66ch;margin:0 0 18px;}
+
+  /* diagnosis */
+  .diag{border:1px solid var(--warn);border-radius:16px;padding:22px;margin:22px 0 0;
+    background:linear-gradient(180deg,rgba(255,90,110,.07),transparent);}
+  .diag h3{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--warn);margin:0 0 12px;font-weight:800;}
+  .strip{width:100%;border-radius:10px;display:block;margin:0 0 6px;border:1px solid var(--line);}
+  .stripcap{display:grid;grid-template-columns:repeat(4,1fr);gap:0;font-family:var(--mono);font-size:10px;
+    color:var(--dim);letter-spacing:.1em;text-align:center;margin-bottom:14px;}
+  .stripcap span:nth-child(3),.stripcap span:nth-child(4){color:var(--warn);}
+  .diag p{margin:0 0 10px;font-size:15px;color:#cfcfdd;max-width:72ch;}
+  .diag p:last-child{margin-bottom:0;}
+  .diag b{color:var(--ink);}
+  .diag ul{margin:10px 0 0;padding-left:18px;color:var(--mut);font-size:14.5px;}
+  .diag li{margin:0 0 7px;}
+
+  /* the fix */
+  .fix{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:18px;}
+  .step{border:1px solid var(--line);border-radius:13px;padding:15px 16px;background:rgba(255,255,255,.02);}
+  .step.turn{border-color:var(--pink);background:rgba(255,45,155,.07);}
+  .step h4{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--cyan);margin:0 0 7px;font-weight:800;}
+  .step.turn h4{color:var(--pink);}
+  .step p{margin:0;font-size:14px;color:var(--mut);line-height:1.55;}
+  .step .len{font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:8px;display:block;}
+
+  ul.rules{margin:16px 0 0;padding-left:18px;color:var(--mut);font-size:15px;max-width:76ch;}
+  ul.rules li{margin:0 0 9px;}
+  ul.rules b{color:var(--ink);}
+
+  /* global blocks */
+  .blocks{display:grid;gap:10px;}
+  .blk2{border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.02);overflow:hidden;}
+  .blk2 .bh{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;
+    border-bottom:1px solid var(--line);font-family:var(--mono);font-size:10px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--cyan);font-weight:800;}
+  .blk2 code{display:block;padding:12px 14px;font-family:var(--mono);font-size:12px;line-height:1.6;
+    color:#b9c6cf;white-space:pre-wrap;}
+
+  /* filters */
+  .filters{position:sticky;top:0;z-index:50;display:flex;gap:7px;flex-wrap:wrap;align-items:center;
+    padding:13px 0;background:linear-gradient(180deg,rgba(8,8,11,.97) 74%,rgba(8,8,11,0));margin-top:8px;}
+  .chip{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;
+    border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--mut);
+    border-radius:999px;padding:8px 12px;cursor:pointer;}
+  .chip:hover{color:var(--ink);}
+  .chip.on{background:#fff;color:#08080b;border-color:#fff;font-weight:800;}
+  .count{font-family:var(--mono);font-size:10.5px;color:var(--dim);margin-left:auto;letter-spacing:.1em;}
+
+  /* clips */
+  .clips{display:grid;gap:10px;}
+  .clip{border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.02);
+    border-left:3px solid var(--rc);overflow:hidden;}
+  .clip.money{border-color:rgba(255,45,155,.45);box-shadow:0 0 22px rgba(255,45,155,.12);}
+  .ch{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:13px 16px;
+    cursor:pointer;}
+  .cid{font-family:var(--display);font-weight:400;font-size:23px;color:var(--rc);letter-spacing:.03em;
+    min-width:66px;line-height:1;}
+  .cmid{min-width:0;}
+  .role{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;
+    color:#08080b;background:var(--rc);border-radius:4px;padding:2px 7px;font-weight:800;margin-bottom:6px;}
+  .cam{font-size:14px;color:var(--ink);margin:0;line-height:1.4;}
+  .csub{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:5px;}
+  .secs{font-family:var(--display);font-weight:400;font-size:24px;color:var(--ink);letter-spacing:.02em;}
+  .secs small{display:block;font-family:var(--mono);font-size:8.5px;color:var(--dim);letter-spacing:.14em;}
+  .cbody{padding:0 16px 16px;}
+  .lbl{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);
+    margin:13px 0 6px;}
+  .ptext{font-family:var(--mono);font-size:12.5px;line-height:1.62;color:#c6d2da;white-space:pre-wrap;
+    border:1px solid var(--line);border-radius:9px;padding:11px 13px;margin:0;}
+  .ntext{font-family:var(--mono);font-size:11.5px;line-height:1.6;color:#9aa4ad;white-space:pre-wrap;
+    border:1px dashed var(--line);border-radius:9px;padding:10px 12px;margin:0;}
+  .aud{font-size:14.5px;color:var(--cyan);margin:0;line-height:1.5;}
+  .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+  .cbtn{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;
+    border:1px solid var(--cyan);background:transparent;color:var(--cyan);border-radius:8px;
+    padding:9px 13px;cursor:pointer;}
+  .cbtn:hover{background:rgba(0,229,255,.12);}
+  .cbtn.alt{border-color:var(--line);color:var(--mut);}
+  :focus-visible{outline:2px solid var(--cyan);outline-offset:2px;}
+
+  footer{margin:54px 0 0;padding:22px 0 0;border-top:1px solid var(--line);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--dim);line-height:1.9;}
+
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;}}
+  @media (max-width:640px){
+    .ch{grid-template-columns:auto 1fr;}
+    .secs{grid-column:2;text-align:left;}
+  }
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Grand Theft After-Dark · “The Score” · for DaVinci</p>
+    <h1><span class="a">Master</span><br><span class="b">Prompt Sheet</span></h1>
+    <p class="standfirst">The whole film broken into <b>clips of 15 seconds or less</b> — one idea and
+      one camera move each. Nothing is condensed to fit the limit; the film is cut into more pieces
+      instead. <b id="hdrCount">—</b> clips, <b id="hdrMins">—</b> of generated footage for a film that
+      cuts to about nine minutes. That surplus is the point: you cut on the beat rather than using
+      whatever the model handed you.</p>
+  </header>
+
+  <h2 class="sec">What the Rico test showed</h2>
+  <p class="seclede">The look is right — suit, moustache, scar, medallion, tiger, mirrored pink room.
+    The problem is timing, and it's visible frame by frame.</p>
+
+  <div class="diag">
+    <h3>The turn happens between two frames</h3>
+    <img class="strip" id="strip" alt="Four consecutive frames from the test clip: profile, profile, then suddenly facing camera">
+    <div class="stripcap"><span>5.30s · profile</span><span>5.47s · profile</span>
+      <span>5.63s · FACING LENS</span><span>5.80s · facing lens</span></div>
+    <p><b>That isn't a turn — it's an internal jump cut.</b> He is in profile with a cigar at 5.47s and
+      full-face down the lens 0.17 seconds later. There's no rotation, no eye-line travel, no moment of
+      being noticed. The audience never gets the beat where the character catches them watching, which
+      is the entire point of the fourth wall.</p>
+    <p>The cause isn't the model. <b>One 15-second prompt was asked for four things</b> — establish the
+      room, light a cigar, turn to camera, deliver a rant. Given four beats and 15 seconds, it will
+      snap through the one that has no dialogue attached. That's always the turn.</p>
+    <h3 style="margin-top:18px">Three other things in the same clip</h3>
+    <ul id="alsoSeen"></ul>
+  </div>
+
+  <h2 class="sec">The fix — every turn is three clips</h2>
+  <p class="seclede">Roughly 30–35 seconds of material for the beat that was trying to happen in under
+    a second. Generate all three, cut them together, and the turn finally lands.</p>
+  <div class="fix">
+    <div class="step">
+      <h4>1 · Approach</h4>
+      <p>Still in the scene. He stops what he's doing and registers that you're there — but says
+        nothing yet. Quiet. This is the clip that was missing entirely.</p>
+      <span class="len">10–12s · camera locked</span>
+    </div>
+    <div class="step turn">
+      <h4>2 · The turn ◆</h4>
+      <p>Static locked camera. The rotation of the head is the <em>only</em> motion in frame, and the
+        only instruction in the prompt. Never combine it with a push-in — the model drops one, and it
+        drops the turn.</p>
+      <span class="len">15s · camera locked, no drift</span>
+    </div>
+    <div class="step">
+      <h4>3 · The hold</h4>
+      <p>He finishes the line and holds the look while the game card lands over him. Gives you an out
+        point that isn't mid-syllable.</p>
+      <span class="len">8–10s · camera locked</span>
+    </div>
+  </div>
+
+  <h2 class="sec">Rules that hold across all of it</h2>
+  <ul class="rules" id="rules"></ul>
+
+  <h2 class="sec">The blocks</h2>
+  <p class="seclede">Appended to every clip automatically in the copy buttons below — here in full if
+    you need them separately.</p>
+  <div class="blocks" id="blocks"></div>
+
+  <h2 class="sec">The clips</h2>
+  <p class="seclede">Copy <b>full prompt</b> to get the shot plus style and period blocks in one paste.
+    Copy <b>negative</b> for the matching negative prompt. The ◆ turn clips are outlined.</p>
+  <div class="filters" id="filters"></div>
+  <div class="clips" id="clips"></div>
+
+  <footer>
+    GRAND THEFT AFTER-DARK · “THE SCORE” · marketing/shot-sheet.json<br>
+    Independent fan tribute event. Not affiliated with, endorsed by, or sponsored by Rockstar Games,
+    Take-Two Interactive, or any related entity.
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var D = /*__DATA__*/null;
+  var $ = function(id){ return document.getElementById(id); };
+  function el(t,c,x){ var n=document.createElement(t); if(c)n.className=c; if(x!=null)n.textContent=x; return n; }
+
+  document.getElementById('strip').src = 'data:image/jpeg;base64,' + D.strip;
+  $('hdrCount').textContent = D.meta.clips;
+  $('hdrMins').textContent = Math.round(D.meta.totalSeconds/60) + ' minutes';
+
+  D.theFix.alsoSeen.forEach(function(t){ $('alsoSeen').appendChild(el('li',null,t)); });
+  D.rules.forEach(function(t){
+    var li = el('li');
+    var i = t.indexOf('.');
+    li.appendChild(el('b', null, t.slice(0, i+1)));
+    li.appendChild(document.createTextNode(' ' + t.slice(i+1).trim()));
+    $('rules').appendChild(li);
+  });
+
+  function copyBtn(label, text, cls){
+    var b = el('button','cbtn'+(cls?' '+cls:''), label);
+    b.type='button';
+    b.addEventListener('click', function(e){
+      e.stopPropagation();
+      if (navigator.clipboard) navigator.clipboard.writeText(text);
+      var old = b.textContent; b.textContent = 'Copied';
+      setTimeout(function(){ b.textContent = old; }, 1200);
+    });
+    return b;
+  }
+
+  Object.keys(D.blocks).forEach(function(k){
+    var w = el('div','blk2');
+    var h = el('div','bh'); h.appendChild(el('span',null,'§'+k));
+    h.appendChild(copyBtn('Copy', D.blocks[k]));
+    w.appendChild(h);
+    w.appendChild(el('code', null, D.blocks[k]));
+    $('blocks').appendChild(w);
+  });
+
+  var ROLE_C = { ESTABLISH:'#8f8fa6', BUILD:'#00e5ff', INSERT:'#f5c542',
+                 APPROACH:'#ff8ac4', TURN:'#ff2d9b', HOLD:'#ff2d9b',
+                 OUT:'#a06bff', 'POST-CREDIT':'#ff5a6e' };
+
+  var beat = 'All beats', role = 'All roles';
+  var bchips = [], rchips = [];
+  var beats = []; D.clips.forEach(function(c){ if(beats.indexOf(c.beat)<0) beats.push(c.beat); });
+  var roles = []; D.clips.forEach(function(c){ if(roles.indexOf(c.role)<0) roles.push(c.role); });
+
+  ['All beats'].concat(beats).forEach(function(nm){
+    var b = el('button','chip'+(nm==='All beats'?' on':''), nm); b.type='button';
+    b.addEventListener('click', function(){ beat=nm;
+      bchips.forEach(function(c){ c.classList.toggle('on', c.textContent===nm); }); render(); });
+    bchips.push(b); $('filters').appendChild(b);
+  });
+  var count = el('span','count'); $('filters').appendChild(count);
+  var row2 = el('div','filters'); row2.style.top='52px'; row2.style.paddingTop='0';
+  ['All roles'].concat(roles).forEach(function(nm){
+    var b = el('button','chip'+(nm==='All roles'?' on':''), nm); b.type='button';
+    b.addEventListener('click', function(){ role=nm;
+      rchips.forEach(function(c){ c.classList.toggle('on', c.textContent===nm); }); render(); });
+    rchips.push(b); row2.appendChild(b);
+  });
+  $('filters').parentNode.insertBefore(row2, $('clips'));
+
+  function card(c){
+    var money = (c.role==='TURN'||c.role==='APPROACH'||c.role==='HOLD');
+    var d = el('details','clip'+(money?' money':''));
+    d.style.setProperty('--rc', ROLE_C[c.role] || '#8f8fa6');
+
+    var s = el('summary','ch');
+    s.appendChild(el('div','cid', c.id));
+    var mid = el('div','cmid');
+    mid.appendChild(el('span','role', c.role));
+    mid.appendChild(el('p','cam', c.camera));
+    mid.appendChild(el('div','csub', c.beat + ' · ' + c.beatTitle +
+      (c.subject!=='—' ? '  ·  subject: ' + c.subject : '')));
+    s.appendChild(mid);
+    var sec = el('div','secs', c.seconds + 's'); sec.appendChild(el('small',null,'MAX'));
+    s.appendChild(sec);
+    d.appendChild(s);
+
+    var b = el('div','cbody');
+    b.appendChild(el('div','lbl','Prompt'));
+    b.appendChild(el('p','ptext', c.full));
+    b.appendChild(el('div','lbl','Negative'));
+    b.appendChild(el('p','ntext', c.negative));
+    b.appendChild(el('div','lbl','Audio under it'));
+    b.appendChild(el('p','aud', c.audio));
+    var a = el('div','acts');
+    a.appendChild(copyBtn('Copy full prompt', c.full));
+    a.appendChild(copyBtn('Copy negative', c.negative, 'alt'));
+    if (c.lockRef) a.appendChild(el('span','cbtn alt','⚑ feed the locked reference frame'));
+    b.appendChild(a);
+    d.appendChild(b);
+    return d;
+  }
+
+  function render(){
+    var w = $('clips'); w.innerHTML='';
+    var shown = D.clips.filter(function(c){
+      return (beat==='All beats'||c.beat===beat) && (role==='All roles'||c.role===role); });
+    shown.forEach(function(c){ w.appendChild(card(c)); });
+    var secs = shown.reduce(function(n,c){ return n+c.seconds; },0);
+    count.textContent = shown.length+' clips · '+Math.floor(secs/60)+'m '+(secs%60)+'s';
+  }
+  render();
+})();
+</script>
