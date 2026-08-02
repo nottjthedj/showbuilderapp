@@ -17,6 +17,7 @@ listening to that voice for a month.
 | [`daily-transmissions.json`](daily-transmissions.json) | **122 daily posts** — launch to the November show — 26–45s each: hook, on-screen text, full TJ script, shot list, caption, CTA and why each gets shared. Plus the 3-a-week tour cadence for after it. |
 | [`how-to-play.md`](how-to-play.md) | **The explainer video** — 75–90s, built to kill the "will I get pulled on stage" objection. |
 | [`shot-sheet.json`](shot-sheet.json) | **The master prompt sheet** — the whole film in 135 clips of ≤15s, each with a ready-to-paste prompt (spoken line and delivery included), its negative, the camera move and the cue under it. Built for a 15-second generation limit. |
+| [`voice-script.json`](voice-script.json) | **The recording script** — all 99 spoken lines grouped by voice, with delivery, direction, target length and the picture each one lands on. Under six minutes of audio for the whole cast. |
 | [`shot-list.json`](shot-list.json) | **The same 135 clips regrouped for generation** — 122 single-subject clips batched by character (seed + continuity lock + prompts), and the 13 two-or-more-subject clips split out and re-prompted with frame positions and per-subject lighting. |
 
 ## Generating the film — the turn needs three clips
@@ -52,6 +53,13 @@ will invent one. **65 clips have a spoken line, 13 are told to stay silent, 32 a
 (the Handler's face is never in shot, so his lines can never be lip-sync — generate the picture and
 record the voice separately). Each line shows its word count against the clip length; nothing is
 currently over budget.
+
+**Replacing the generated voices is the normal move.** Generate the picture first — the line is in
+the prompt, so the mouth comes back saying those words — then record to picture, ADR-style, one part
+at a time. That's a sync a blind read will never give you. [`voice-script.json`](voice-script.json)
+batches all 99 lines by voice with the same delivery notes that are written into the prompts, so the
+read matches the performance already on screen. The Handler's 28 lines are pure voice-over and need
+no picture at all, so they can be recorded today.
 
 **If your generator has a character feature, use it and say so.** The shot-list page has a switch
 at the top — *"I've built these as characters in my tool"*. Off, every prompt carries the full
