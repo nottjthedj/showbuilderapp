@@ -241,7 +241,19 @@ plain-text script.
 ├─ show-builder.spec           PyInstaller build (Windows/macOS/Linux)
 ├─ make_booth.py               the generator (stdlib only)
 ├─ booth_config.schema.json    machine-readable brand-config schema
-├─ campaign/                   the lore campaign (not part of the generated site)
+├─ documents/                  the script files — read these, don't edit them
+│  ├─ the-film-script.md       the screenplay: 14 beats, dialogue, turns, game cards
+│  ├─ voice-over-script.md     99 lines grouped by voice, ~5.7 min to record
+│  ├─ shooting-script.md       the same film in 135 generatable clips, in order
+│  ├─ the-story.md             the story told straight, no format
+│  └─ _build_documents.py      regenerates all of the above from the show file
+├─ marketing/                  the campaign + the prompt sheets for the film
+│  ├─ _build_all.py            show file → prompts → voices → documents
+│  ├─ shot-sheet.json          135 clips of ≤15s with prompts, negatives, dialogue
+│  ├─ shot-list.json           the same clips batched by subject for generation
+│  ├─ voice-script.json        the recording script as data
+│  └─ daily-transmissions.json 122 dated posts to the first show
+├─ campaign/                   the retired 24-night lore campaign (archived draft)
 │  ├─ gtad-lore-season.json    the 24 written transmissions (the source)
 │  └─ gtad-social-campaign.json  24 social + web-video drops
 ├─ brands/
