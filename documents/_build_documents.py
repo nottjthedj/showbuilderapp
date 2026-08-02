@@ -13,6 +13,7 @@ HERE = ROOT / 'documents'
 SHOW = json.load(open(ROOT / 'brands/gtad.show.json'))
 SHEET = json.load(open(ROOT / 'marketing/shot-sheet.json'))
 VOICE = json.load(open(ROOT / 'marketing/voice-script.json'))
+EDIT = json.load(open(ROOT / 'marketing/edit-list.json'))
 
 STAMP = ("> Generated from `brands/gtad.show.json` — do not edit by hand. "
          "Run `python3 documents/_build_documents.py` after changing the show file.\n")
@@ -123,6 +124,39 @@ def shooting_script():
     return ''.join(out) + FOOT
 
 
+def edit_assembly():
+    """The cut order with a running clock — what goes on the timeline, and how long."""
+    m = EDIT['meta']
+    out = ["# The Score — the assembly\n",
+           "> Generated from `marketing/edit-list.json`. Cut order, not shooting order.\n",
+           f"\n**{m['clips']} cuts · {m['runtimeText']} finished · shooting {m['shootRatio']}x "
+           f"what gets used.** The order is the film's and it is locked — the app fires the games "
+           f"in this sequence, so a beat moved in the edit is a beat moved in the room. The "
+           f"lengths are a first pass: each beat's on-screen duration from the show file, shared "
+           f"across its clips by what the shot is doing. The edit decides.\n",
+           "\n## How to assemble it\n\n"]
+    out += [f"{i}. {t}\n" for i, t in enumerate(EDIT['howToAssemble'], 1)]
+    beat = None
+    for r in EDIT['timeline']:
+        if r.get('marker'):
+            if r.get('card'):
+                out.append(f"\n**▮ {r['card']}** — card goes on in post.\n")
+            mus = r.get('music') or {}
+            if mus:
+                out.append("\n" + ' · '.join(f"**{k.title()}:** {v}" for k, v in mus.items() if v)
+                           + "\n")
+            out.append(f"\n`{r['beat']} runs {r['length']}s against a {r['target']}s target · "
+                       f"clock now {r['tc']}`\n")
+            continue
+        if r['beat'] != beat:
+            beat = r['beat']
+            out.append(f"\n## {r['beat']} · {r['beatTitle']}\n")
+            out.append("\n| At | Clip | Role | Cut | Of | Sound |\n|---|---|---|---|---|---|\n")
+        out.append(f"| {r['tc']} | **{r['id']}** | {r['role']} | **{r['cut']}s** | {r['generated']}s "
+                   f"| {r['audio'].replace('|', '/')} |\n")
+    return ''.join(out) + FOOT
+
+
 def index():
     m, v, s = SHOW['meta'], VOICE['meta'], SHEET['meta']
     turns = sum(1 for c in SHEET['clips'] if c['role'] in ('APPROACH', 'TURN', 'HOLD'))
@@ -136,6 +170,7 @@ built or shot.
 |---|---|
 | [`the-film-script.md`](the-film-script.md) | **The screenplay.** All {len(SHOW['film'])} beats in locked order — voice-over, dialogue, the turn to camera, the game card it hands to the room, the assembly and the music under it. |
 | [`voice-over-script.md`](voice-over-script.md) | **The recording script.** All {v['lines']} spoken lines grouped by voice with delivery, direction and target length. ~{v['minutes']} minutes of audio for the whole cast. |
+| [`edit-assembly.md`](edit-assembly.md) | **The assembly.** The cut order with a running clock — every clip, how long it runs in the film, what sound is on it, and where each game card lands. {EDIT['meta']['runtimeText']} finished. |
 | [`shooting-script.md`](shooting-script.md) | **The shooting script.** The same film in {s['clips']} generatable clips, in film order, written to read — picture, camera, line. |
 | [`the-story.md`](the-story.md) | **The story told straight.** The narration script — no format, no game cards, just what happens and why. |
 
@@ -147,6 +182,7 @@ built or shot.
 | [`../marketing/shot-sheet.json`](../marketing/shot-sheet.json) | The master prompt sheet — {s['clips']} clips of ≤15s with prompts, negatives and dialogue. |
 | [`../marketing/shot-list.json`](../marketing/shot-list.json) | The same clips regrouped by subject for generation. |
 | [`../marketing/voice-script.json`](../marketing/voice-script.json) | The recording script as data. |
+| [`../marketing/edit-list.json`](../marketing/edit-list.json) | The assembly as data, plus `edit-list.csv` to keep open while cutting. |
 | [`../marketing/`](../marketing/) | The campaign — {len(SHOW['film'])}-beat film aside, this is the 122-post run-up to the first show. |
 
 ## The numbers
@@ -178,6 +214,7 @@ files = {
     'the-film-script.md': film_script(),
     'voice-over-script.md': voice_script(),
     'shooting-script.md': shooting_script(),
+    'edit-assembly.md': edit_assembly(),
     'the-story.md': STORY.read_text() if STORY.exists() else None,
 }
 HERE.mkdir(exist_ok=True)

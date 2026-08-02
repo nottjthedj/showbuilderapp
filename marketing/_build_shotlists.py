@@ -261,7 +261,9 @@ for key, name in NAMES.items():
     mine = [c for c in solo if c['cast'][0] == key]
     if not mine:
         continue
-    mine.sort(key=lambda c: (c['beat'], c['n']))
+    # c['n'] is the master sheet's own sequence, which is film order — sorting on the
+    # beat tag instead sorts alphabetically and puts FINALE before SCENE 3.
+    mine.sort(key=lambda c: c['n'])
     chars.append(O([
         ("key", key), ("name", name), ("colour", COLOR[key]),
         ("seed", S.get(key)), ("lock", LOCK.get(key)),

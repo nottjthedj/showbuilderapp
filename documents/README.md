@@ -8,6 +8,7 @@ built or shot.
 |---|---|
 | [`the-film-script.md`](the-film-script.md) | **The screenplay.** All 14 beats in locked order — voice-over, dialogue, the turn to camera, the game card it hands to the room, the assembly and the music under it. |
 | [`voice-over-script.md`](voice-over-script.md) | **The recording script.** All 99 spoken lines grouped by voice with delivery, direction and target length. ~5.7 minutes of audio for the whole cast. |
+| [`edit-assembly.md`](edit-assembly.md) | **The assembly.** The cut order with a running clock — every clip, how long it runs in the film, what sound is on it, and where each game card lands. 10m 53s finished. |
 | [`shooting-script.md`](shooting-script.md) | **The shooting script.** The same film in 135 generatable clips, in film order, written to read — picture, camera, line. |
 | [`the-story.md`](the-story.md) | **The story told straight.** The narration script — no format, no game cards, just what happens and why. |
 
@@ -19,6 +20,7 @@ built or shot.
 | [`../marketing/shot-sheet.json`](../marketing/shot-sheet.json) | The master prompt sheet — 135 clips of ≤15s with prompts, negatives and dialogue. |
 | [`../marketing/shot-list.json`](../marketing/shot-list.json) | The same clips regrouped by subject for generation. |
 | [`../marketing/voice-script.json`](../marketing/voice-script.json) | The recording script as data. |
+| [`../marketing/edit-list.json`](../marketing/edit-list.json) | The assembly as data, plus `edit-list.csv` to keep open while cutting. |
 | [`../marketing/`](../marketing/) | The campaign — 14-beat film aside, this is the 122-post run-up to the first show. |
 
 ## The numbers
