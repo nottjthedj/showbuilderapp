@@ -19,6 +19,7 @@ STEPS = [
     ("Regrouped by subject", ROOT / 'marketing/_build_shotlists.py'),
     ("Regrouped by voice", ROOT / 'marketing/_build_vo.py'),
     ("The assembly / cut order", ROOT / 'marketing/_build_edit.py'),
+    ("Bridges, textures, joins", ROOT / 'marketing/_build_bridges.py'),
     ("The script documents", ROOT / 'documents/_build_documents.py'),
 ]
 
@@ -32,5 +33,6 @@ print("\n[pages] " + ' '.join(str(x.name) for x in [
     ROOT / 'marketing/_build_shotlist_pages.py', ROOT / 'marketing/_build_vo_page.py']))
 runpy.run_path(str(ROOT / 'marketing/_build_hub_page.py'), run_name='__main__')
 runpy.run_path(str(ROOT / 'marketing/_build_edit_page.py'), run_name='__main__')
+runpy.run_path(str(ROOT / 'marketing/_build_bridge_page.py'), run_name='__main__')
 print("\nDone. The other pages build separately — _build_sheet_page.py, "
       "_build_shotlist_pages.py, _build_vo_page.py.")

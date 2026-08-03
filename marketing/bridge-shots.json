@@ -1,0 +1,695 @@
+{
+  "meta": {
+    "name": "The Score — bridges, textures and transitions",
+    "what": "The cheap material that makes the cuts work: editorial fixes that need no render, six reusable elements, and two people-free textures per beat.",
+    "elements": 6,
+    "textures": 28,
+    "joins": 42,
+    "seamless": 12,
+    "needHelp": 30,
+    "extraSeconds": 186
+  },
+  "free": [
+    {
+      "rule": "Punch in on every other shot.",
+      "why": "Three locked shots of the same man at the same size will always cut badly. Scale the middle one up 12–18% in Resolve and the size changes, which is the thing that makes a cut read. Costs nothing, needs no render, and it is what a second camera would have given you anyway."
+    },
+    {
+      "rule": "Cut on the word, not the pause.",
+      "why": "Land the cut mid-phrase and the ear carries the join. Cutting in a silence puts all the weight on the picture, which is exactly where the seam is."
+    },
+    {
+      "rule": "Never bridge the APPROACH → TURN join.",
+      "why": "That one is meant to be invisible — match the head angle across it and it reads as one continuous rotation. Putting a flare or a cutaway in there destroys the only thing the three-clip structure buys you."
+    },
+    {
+      "rule": "Let the outgoing shot run under the incoming audio.",
+      "why": "Start the next line two or three frames before you cut to it. A J-cut hides a hard join better than any transition element."
+    },
+    {
+      "rule": "Use the insert you already generated.",
+      "why": "Every beat has an INSERT clip that exists for exactly this. If a join is ugly, the cutaway usually belongs there rather than where the list puts it."
+    }
+  ],
+  "order": [
+    "Try the free fixes first. Most of these joins are a punch-in away from working and a render you don't make is a render you don't pay for.",
+    "Then generate the six elements. They are people-free, so no character reference, no continuity risk and nothing for a content filter to object to — and one flare pass tinted four ways covers every crew in the film.",
+    "Then textures, only for the beats you have actually cut. Two per beat is plenty; you will find you reuse three or four of them across the whole film."
+  ],
+  "elementList": [
+    {
+      "id": "BR-01",
+      "name": "Flare pass",
+      "seconds": 3,
+      "prompt": "a single bright anamorphic lens flare streaking horizontally across a black frame, volumetric haze, halation bloom, heavy organic 35mm film grain, no subject, no text, locked camera, element moves only. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd",
+      "use": "The workhorse. Tint it gold, pink, cyan or violet on the colour page — one render covers all four crews. Two to four frames over a cut hides almost anything."
+    },
+    {
+      "id": "BR-02",
+      "name": "Film burn",
+      "seconds": 3,
+      "prompt": "an orange-white 35mm film burn flash blooming and dying, halation, dust and hair in the gate, sprocket flicker, on black, no subject, no text, locked camera, element moves only. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd",
+      "use": "For beat-to-beat transitions rather than shot-to-shot. This is the one that makes the whole thing feel like it came off a projector."
+    },
+    {
+      "id": "BR-03",
+      "name": "Smoke pass",
+      "seconds": 4,
+      "prompt": "thick cigar smoke curling slowly across frame, lit hard from one side, deep black background, volumetric, shallow depth of field, no subject, no text, locked camera, element moves only. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd",
+      "use": "A foreground wipe. Lay it over the tail of one shot and the head of the next at 60% opacity and the join disappears under it."
+    },
+    {
+      "id": "BR-04",
+      "name": "Mirror glint",
+      "seconds": 3,
+      "prompt": "a hard specular glint sweeping across a mirrored surface, fragmented neon reflections, shallow focus, deep shadow, no subject, no text, locked camera, element moves only. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd",
+      "use": "Scene 3 and Scene 12 specifically — mirrored mansion, four-colour ballroom. It carries the set's own texture across the cut."
+    },
+    {
+      "id": "BR-05",
+      "name": "Streak whip",
+      "seconds": 2,
+      "prompt": "streaks of neon light whipping horizontally past camera in extreme motion blur, rain-slick reflections, night, no subject, no text, locked camera, element moves only. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd",
+      "use": "The fastest option — under half a second on the timeline. Use it where the energy is already high and you want the cut to feel like impact rather than a transition."
+    },
+    {
+      "id": "BR-06",
+      "name": "CRT roll",
+      "seconds": 3,
+      "prompt": "extreme macro of CRT phosphor scanlines rolling and breaking into static, green-white glow, curved glass, no subject, no text, locked camera, element moves only. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd",
+      "use": "The Firm, the broadcasts, the surveillance beats. Also the honest way into and out of any shot that is meant to be footage of footage."
+    }
+  ],
+  "textureList": [
+    {
+      "id": "TX-IN-1",
+      "beat": "INTRO",
+      "name": "Rain on glass",
+      "seconds": 6,
+      "prompt": "rain running down a floor-to-ceiling penthouse window at night, a rain-soaked neon skyline thrown out of focus behind it, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-IN-2",
+      "beat": "INTRO",
+      "name": "Ice and crystal",
+      "seconds": 6,
+      "prompt": "a crystal tumbler of amber spirit on a black marble ledge, neon edge light through the glass, condensation, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-S1-1",
+      "beat": "SCENE 1",
+      "name": "Blinds and siren",
+      "seconds": 6,
+      "prompt": "venetian blinds throwing red and blue siren light across an empty precinct wall, dust turning in the beams, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-S1-2",
+      "beat": "SCENE 1",
+      "name": "The file",
+      "seconds": 6,
+      "prompt": "a battered manila case file on a scratched metal desk under one hard lamp, coffee ring, paper edges curling, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-S2-1",
+      "beat": "SCENE 2",
+      "name": "Mirror lights",
+      "seconds": 6,
+      "prompt": "a rear-view mirror at night filling with red and blue light, out-of-focus street beyond, wet glass, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-S2-2",
+      "beat": "SCENE 2",
+      "name": "Hydraulics",
+      "seconds": 6,
+      "prompt": "extreme close-up of a chrome lowrider wheel and hydraulic strut bouncing on wet asphalt, cyan neon reflection, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-S3-1",
+      "beat": "SCENE 3",
+      "name": "Cigar ash",
+      "seconds": 6,
+      "prompt": "extreme macro of a cigar burning down in a heavy crystal ashtray, ash falling, hot-pink neon rim light, smoke curling, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-S3-2",
+      "beat": "SCENE 3",
+      "name": "Mirrors doubling",
+      "seconds": 6,
+      "prompt": "a mirrored mansion wall reflecting hot-pink neon into infinity, shallow focus, drifting haze, no people, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-S4-1",
+      "beat": "SCENE 4",
+      "name": "Cannoli and cloth",
+      "seconds": 6,
+      "prompt": "a plate of cannoli on a red checkered tablecloth under a low warm lamp, crumbs, an espresso cup at the edge, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-S4-2",
+      "beat": "SCENE 4",
+      "name": "The rotary phone",
+      "seconds": 6,
+      "prompt": "macro of a black rotary telephone on dark wood, gold lamp light raking across the dial, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-S5-1",
+      "beat": "SCENE 5",
+      "name": "Monitor wall",
+      "seconds": 6,
+      "prompt": "a wall of CRT surveillance monitors flickering through four different night streets, violet glow, scan lines, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-S5-2",
+      "beat": "SCENE 5",
+      "name": "Cold water",
+      "seconds": 6,
+      "prompt": "a bottle of water sweating on a black glass desk under cold violet light, server LEDs bokeh behind, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-S6-1",
+      "beat": "SCENE 6",
+      "name": "Gold meets pink",
+      "seconds": 6,
+      "prompt": "an empty warehouse interior where warm gold light from one side meets hot pink from the other, dust turning in the seam between them, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-S6-2",
+      "beat": "SCENE 6",
+      "name": "Crates and worklights",
+      "seconds": 6,
+      "prompt": "stacked wooden crates under a hanging worklight swinging very slightly, long shadows moving across the floor, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-S7-1",
+      "beat": "SCENE 7",
+      "name": "Wires",
+      "seconds": 6,
+      "prompt": "macro of a tangle of coloured wires and a ticking countdown readout on pure black, faint flicker, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-S7-2",
+      "beat": "SCENE 7",
+      "name": "Red wash",
+      "seconds": 6,
+      "prompt": "an empty steel workbench as the whole room flips to emergency red, violet fighting the red, haze, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-S8-1",
+      "beat": "SCENE 8",
+      "name": "Blueprint glow",
+      "seconds": 6,
+      "prompt": "glowing blue-cyan schematic icons projected on frosted glass in a dark room, thin lines, drifting dust, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-S8-2",
+      "beat": "SCENE 8",
+      "name": "Projector beam",
+      "seconds": 6,
+      "prompt": "a projector beam cutting through haze in a dark planning room, the lens flaring, no people, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-S9-1",
+      "beat": "SCENE 9",
+      "name": "Chrome line",
+      "seconds": 6,
+      "prompt": "a line of chrome lowriders parked under cyan neon on wet asphalt, reflections stretching toward camera, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-S9-2",
+      "beat": "SCENE 9",
+      "name": "Corner store",
+      "seconds": 6,
+      "prompt": "a cyan-lit corner store window at night, steam from a grate crossing frame, hand-painted signage out of focus, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-S10-1",
+      "beat": "SCENE 10",
+      "name": "Five lights",
+      "seconds": 6,
+      "prompt": "five drag-strip starting lights glowing above a rain-soaked pier, rain streaking through the beams, harbour fog, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-S10-2",
+      "beat": "SCENE 10",
+      "name": "Wet boards",
+      "seconds": 6,
+      "prompt": "rain hammering wet reflective pier boards at night, gold and pink light bleeding across the water, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-S11-1",
+      "beat": "SCENE 11",
+      "name": "Searchlight sweep",
+      "seconds": 6,
+      "prompt": "a searchlight beam sweeping across a wet brick alley wall, steam rising, the beam passing off into darkness, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-S11-2",
+      "beat": "SCENE 11",
+      "name": "Spray can",
+      "seconds": 6,
+      "prompt": "macro of a spray can nozzle releasing a fine mist of cyan paint in cold night air, backlit, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-S12-1",
+      "beat": "SCENE 12",
+      "name": "Four-colour lock",
+      "seconds": 6,
+      "prompt": "a giant four-colour combination vault lock glowing gold, hot pink, cyan and violet in a dark ballroom, slow dust, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-S12-2",
+      "beat": "SCENE 12",
+      "name": "Champagne wall",
+      "seconds": 6,
+      "prompt": "a tower of champagne coupes catching four colours of light, shallow focus, bokeh behind, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-FIN-1",
+      "beat": "FINALE",
+      "name": "Dust in the beam",
+      "seconds": 6,
+      "prompt": "dust turning slowly in one hard overhead beam inside a bare concrete vault chamber, nothing on the floor, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    },
+    {
+      "id": "TX-FIN-2",
+      "beat": "FINALE",
+      "name": "Wake at night",
+      "seconds": 6,
+      "prompt": "the churned wake of a boat at night, a neon city burning gold, pink, cyan and violet reflected and receding on the water, very slow drift, locked otherwise. cinematic film still, anamorphic 40mm lens, matte black and charcoal palette with saturated neon accents, deep low-key shadows, volumetric haze, rain-slick reflections, luxury crime-drama noir, shallow depth of field, hyper-detailed, photographic, no text. late-1970s to early-1980s (1977–1983), shot on 35mm film, warm Kodak color science, heavy organic film grain, subtle gate weave, halation bloom on highlights, gentle anamorphic flares, period-correct wardrobe and hairstyles, boxy 1970s–80s automobiles, analog technology only — rotary and pay phones, CRT televisions, chrome and brushed steel, early neon and sodium-vapor streetlight; NOT clean modern digital",
+      "negative": "text, watermark, logo, caption, subtitles, cartoon, illustration, 3d render, cgi, video-game UI, HUD, low quality, oversaturated, deformed hands, extra fingers, plastic skin, smartphone, cell phone, flat-screen TV, LED screen, laptop, modern car, modern skyscraper glass, contemporary streetwear, modern signage, clean digital look, cut to another shot, scene change, location change, background change, teleporting subject, multiple camera angles, jump cut, morphing face, people, human figure, face, hands, crowd"
+    }
+  ],
+  "joinList": [
+    {
+      "beat": "INTRO",
+      "from": "IN-07",
+      "to": "IN-08",
+      "roles": "INSERT → APPROACH",
+      "subject": "handler",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "INTRO",
+      "from": "IN-08",
+      "to": "IN-09",
+      "roles": "APPROACH → TURN",
+      "subject": "handler",
+      "seamless": true,
+      "fix": "LEAVE IT ALONE. Match the head angle across this cut so the rotation reads as one continuous move. No flare, no cutaway, no dissolve."
+    },
+    {
+      "beat": "INTRO",
+      "from": "IN-09",
+      "to": "IN-10",
+      "roles": "TURN → HOLD",
+      "subject": "handler",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 1",
+      "from": "S1-03",
+      "to": "S1-04",
+      "roles": "BUILD → BUILD",
+      "subject": "mcgraw",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 1",
+      "from": "S1-04",
+      "to": "S1-05",
+      "roles": "BUILD → APPROACH",
+      "subject": "mcgraw",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 1",
+      "from": "S1-05",
+      "to": "S1-06",
+      "roles": "APPROACH → TURN",
+      "subject": "mcgraw",
+      "seamless": true,
+      "fix": "LEAVE IT ALONE. Match the head angle across this cut so the rotation reads as one continuous move. No flare, no cutaway, no dissolve."
+    },
+    {
+      "beat": "SCENE 1",
+      "from": "S1-06",
+      "to": "S1-07",
+      "roles": "TURN → TURN",
+      "subject": "mcgraw",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 1",
+      "from": "S1-07",
+      "to": "S1-08",
+      "roles": "TURN → HOLD",
+      "subject": "mcgraw",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 2",
+      "from": "S2-04",
+      "to": "S2-05",
+      "roles": "BUILD → APPROACH",
+      "subject": "marcus",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 2",
+      "from": "S2-05",
+      "to": "S2-06",
+      "roles": "APPROACH → TURN",
+      "subject": "marcus",
+      "seamless": true,
+      "fix": "LEAVE IT ALONE. Match the head angle across this cut so the rotation reads as one continuous move. No flare, no cutaway, no dissolve."
+    },
+    {
+      "beat": "SCENE 2",
+      "from": "S2-06",
+      "to": "S2-07",
+      "roles": "TURN → TURN",
+      "subject": "marcus",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 2",
+      "from": "S2-07",
+      "to": "S2-08",
+      "roles": "TURN → HOLD",
+      "subject": "marcus",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 3",
+      "from": "S3-03",
+      "to": "S3-04",
+      "roles": "BUILD → BUILD",
+      "subject": "rico",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 3",
+      "from": "S3-06",
+      "to": "S3-07",
+      "roles": "APPROACH → TURN",
+      "subject": "rico",
+      "seamless": true,
+      "fix": "LEAVE IT ALONE. Match the head angle across this cut so the rotation reads as one continuous move. No flare, no cutaway, no dissolve."
+    },
+    {
+      "beat": "SCENE 3",
+      "from": "S3-07",
+      "to": "S3-08",
+      "roles": "TURN → TURN",
+      "subject": "rico",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 3",
+      "from": "S3-08",
+      "to": "S3-09",
+      "roles": "TURN → HOLD",
+      "subject": "rico",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 4",
+      "from": "S4-04",
+      "to": "S4-05",
+      "roles": "BUILD → APPROACH",
+      "subject": "don",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 4",
+      "from": "S4-05",
+      "to": "S4-06",
+      "roles": "APPROACH → TURN",
+      "subject": "don",
+      "seamless": true,
+      "fix": "LEAVE IT ALONE. Match the head angle across this cut so the rotation reads as one continuous move. No flare, no cutaway, no dissolve."
+    },
+    {
+      "beat": "SCENE 4",
+      "from": "S4-06",
+      "to": "S4-07",
+      "roles": "TURN → TURN",
+      "subject": "don",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 4",
+      "from": "S4-07",
+      "to": "S4-08",
+      "roles": "TURN → HOLD",
+      "subject": "don",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 5",
+      "from": "S5-04",
+      "to": "S5-05",
+      "roles": "BUILD → APPROACH",
+      "subject": "preston",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 5",
+      "from": "S5-05",
+      "to": "S5-06",
+      "roles": "APPROACH → TURN",
+      "subject": "preston",
+      "seamless": true,
+      "fix": "LEAVE IT ALONE. Match the head angle across this cut so the rotation reads as one continuous move. No flare, no cutaway, no dissolve."
+    },
+    {
+      "beat": "SCENE 5",
+      "from": "S5-06",
+      "to": "S5-07",
+      "roles": "TURN → TURN",
+      "subject": "preston",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 5",
+      "from": "S5-07",
+      "to": "S5-08",
+      "roles": "TURN → HOLD",
+      "subject": "preston",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 7",
+      "from": "S7-05",
+      "to": "S7-06",
+      "roles": "APPROACH → TURN",
+      "subject": "preston",
+      "seamless": true,
+      "fix": "LEAVE IT ALONE. Match the head angle across this cut so the rotation reads as one continuous move. No flare, no cutaway, no dissolve."
+    },
+    {
+      "beat": "SCENE 7",
+      "from": "S7-06",
+      "to": "S7-07",
+      "roles": "TURN → TURN",
+      "subject": "preston",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 7",
+      "from": "S7-07",
+      "to": "S7-08",
+      "roles": "TURN → HOLD",
+      "subject": "preston",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 8",
+      "from": "S8-03",
+      "to": "S8-04",
+      "roles": "BUILD → BUILD",
+      "subject": "rico",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 8",
+      "from": "S8-04",
+      "to": "S8-05",
+      "roles": "BUILD → APPROACH",
+      "subject": "rico",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 8",
+      "from": "S8-05",
+      "to": "S8-06",
+      "roles": "APPROACH → TURN",
+      "subject": "rico",
+      "seamless": true,
+      "fix": "LEAVE IT ALONE. Match the head angle across this cut so the rotation reads as one continuous move. No flare, no cutaway, no dissolve."
+    },
+    {
+      "beat": "SCENE 8",
+      "from": "S8-06",
+      "to": "S8-07",
+      "roles": "TURN → TURN",
+      "subject": "rico",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 8",
+      "from": "S8-07",
+      "to": "S8-08",
+      "roles": "TURN → HOLD",
+      "subject": "rico",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 9",
+      "from": "S9-05",
+      "to": "S9-06",
+      "roles": "APPROACH → TURN",
+      "subject": "marcus",
+      "seamless": true,
+      "fix": "LEAVE IT ALONE. Match the head angle across this cut so the rotation reads as one continuous move. No flare, no cutaway, no dissolve."
+    },
+    {
+      "beat": "SCENE 9",
+      "from": "S9-06",
+      "to": "S9-07",
+      "roles": "TURN → TURN",
+      "subject": "marcus",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 9",
+      "from": "S9-07",
+      "to": "S9-08",
+      "roles": "TURN → HOLD",
+      "subject": "marcus",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 11",
+      "from": "S11-05",
+      "to": "S11-06",
+      "roles": "APPROACH → TURN",
+      "subject": "marcus",
+      "seamless": true,
+      "fix": "LEAVE IT ALONE. Match the head angle across this cut so the rotation reads as one continuous move. No flare, no cutaway, no dissolve."
+    },
+    {
+      "beat": "SCENE 11",
+      "from": "S11-06",
+      "to": "S11-07",
+      "roles": "TURN → TURN",
+      "subject": "marcus",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 11",
+      "from": "S11-07",
+      "to": "S11-08",
+      "roles": "TURN → HOLD",
+      "subject": "marcus",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "SCENE 12",
+      "from": "S12-06",
+      "to": "S12-07",
+      "roles": "APPROACH → TURN",
+      "subject": "handler",
+      "seamless": true,
+      "fix": "LEAVE IT ALONE. Match the head angle across this cut so the rotation reads as one continuous move. No flare, no cutaway, no dissolve."
+    },
+    {
+      "beat": "SCENE 12",
+      "from": "S12-07",
+      "to": "S12-08",
+      "roles": "TURN → TURN",
+      "subject": "handler",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    },
+    {
+      "beat": "FINALE",
+      "from": "FIN-10",
+      "to": "FIN-11",
+      "roles": "APPROACH → TURN",
+      "subject": "handler",
+      "seamless": true,
+      "fix": "LEAVE IT ALONE. Match the head angle across this cut so the rotation reads as one continuous move. No flare, no cutaway, no dissolve."
+    },
+    {
+      "beat": "FINALE",
+      "from": "FIN-11",
+      "to": "FIN-12",
+      "roles": "TURN → HOLD",
+      "subject": "handler",
+      "seamless": false,
+      "fix": "Punch in 12–18% on one of the two so the shot size changes, or drop a texture or a flare pass between them."
+    }
+  ]
+}

@@ -20,6 +20,7 @@ listening to that voice for a month.
 | [`shot-sheet.json`](shot-sheet.json) | **The master prompt sheet** — the whole film in 135 clips of ≤15s, each with a ready-to-paste prompt (spoken line and delivery included), its negative, the camera move and the cue under it. Built for a 15-second generation limit. |
 | [`voice-script.json`](voice-script.json) | **The recording script** — all 99 spoken lines grouped by voice, with delivery, direction, target length and the picture each one lands on. Under six minutes of audio for the whole cast. |
 | [`edit-list.json`](edit-list.json) · [`edit-list.csv`](edit-list.csv) | **The assembly** — the same clips in cut order with a target length and a running timecode, plus the beat markers, music cues and card drops. 10m 53s finished, shooting 2.41× what gets used. `_build_edit_page.py` renders it. |
+| [`bridge-shots.json`](bridge-shots.json) | **Bridges** — free editorial fixes, 6 people-free transition elements to generate once and reuse, 28 textures (two per beat), and every join in the film that puts the same person on two locked shots in a row. |
 | [`shot-list.json`](shot-list.json) | **The same 135 clips regrouped for generation** — 122 single-subject clips batched by character (seed + continuity lock + prompts), and the 13 two-or-more-subject clips split out and re-prompted with frame positions and per-subject lighting. |
 
 ## Generating the film — the turn needs three clips
@@ -102,6 +103,22 @@ the model handed you.
 so Rico starts at S3-03 in the mansion and ends at FIN-04 in the vault. Sorting on the beat tag
 instead sorts alphabetically, which puts the FINALE first and sends you to four sets in the wrong
 order — that bug is fixed, but it is worth knowing why the order matters.
+
+## When a cut is abrupt
+
+**It is almost always shot size, not missing footage.** Three locked shots of the same person at
+the same size will cut badly no matter what you put between them. Scaling one up 12–18% in Resolve
+gives you the size change a second camera would have — no render, no cost.
+
+42 joins in the film put the same person on two locked shots in a row. **12 of those are the
+APPROACH → TURN join and must be left completely alone** — bridging one destroys the fourth-wall
+move the three-clip structure exists to protect. The other 30 are where a punch-in or an element
+earns its keep. [`bridge-shots.json`](bridge-shots.json) lists them all with the fix for each.
+
+The element library is six clips — flare pass, film burn, smoke pass, mirror glint, streak whip,
+CRT roll — with no people in them, which means no character reference, no continuity risk and
+nothing for a content filter to object to. **Generate the flare pass once and tint it gold, pink,
+cyan or violet on the colour page**; one render covers all four crews for the whole film.
 
 ## The thing that makes the story work
 
