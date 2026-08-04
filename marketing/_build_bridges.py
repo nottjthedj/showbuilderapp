@@ -7,8 +7,12 @@ Three tiers, deliberately in this order:
      with a punch-in or a different cut point, not with another render.
   2. A tiny element library. Six people-free clips, generated once, reused at
      every join in the film and tinted per crew on the colour page.
-  3. Textures per beat. Two each, no people in frame — so no character
-     reference, no continuity risk, and nothing for a content filter to catch.
+  3. Textures per beat, on a quota. Production finding from the first two beats:
+     you need about as many people-free clips as you have clips with dialogue in
+     them, and usually more. Every beat therefore gets (dialogue clips + 2) of
+     b-roll, counting the plates already in the shot sheet, and the pool carries
+     spares past that. No people in frame — so no character reference, no
+     continuity risk, and nothing for a content filter to catch.
 
 It also works out which joins actually need help: two locked shots of the same
 person in a row is a jump cut waiting to happen, and the film has plenty.
@@ -135,6 +139,94 @@ TEXTURES = O([
 ])
 
 
+EXTRA = O([
+ ("INTRO", [
+   ("Neon sign", "a hand-painted neon sign buzzing and flickering above a wet street, sodium-vapour glow, rain crossing the beam"),
+   ("Car passing", "a boxy 1970s black sedan sliding past camera on a wet street at night, taillights smearing, no people"),
+   ("Weather over the city", "rain sheeting across a neon skyline seen from high above, cloud drifting through tower lights"),
+   ("Smoke in the shaft", "an empty penthouse room at night, cigar smoke hanging in a shaft of neon light from the window"),
+ ]),
+ ("SCENE 1", [
+   ("Swinging lamp", "a bare overhead lamp swinging in an empty interrogation room, its shadow sweeping a scratched steel table"),
+   ("Toothpick", "macro of a chewed toothpick rolling to a stop on a scratched metal desk under one hard lamp"),
+   ("The board", "a corkboard of pinned photographs and red string in a dark precinct office, one desk lamp burning"),
+   ("Cold coffee", "steam rising from a chipped coffee cup on a windowsill, venetian blind shadows across it"),
+ ]),
+ ("SCENE 2", [
+   ("Dashboard", "the dashboard of a 1970s lowrider at night, chrome dials glowing, cyan neon washing across the windscreen"),
+   ("Road under speed", "wet asphalt rushing under a car at speed, streetlight streaks, very low angle"),
+   ("Spotlight sweep", "a helicopter spotlight sweeping across rooftops and a chain-link fence at night"),
+   ("Hydraulics", "a chrome wheel dropping onto wet asphalt as hydraulic suspension releases, spray lifting"),
+ ]),
+ ("SCENE 3", [
+   ("Empty couch", "a white leather couch alone in an empty mirrored room, hot-pink neon crawling across it"),
+   ("The medallion", "a gold falcon medallion resting on black marble, hard pink light raking across the metal"),
+   ("Marina window", "rain on a floor-to-ceiling window over a night marina, black yachts out of focus below"),
+   ("Pink haze", "haze drifting slowly through a hot-pink beam in an empty mirrored hall"),
+ ]),
+ ("SCENE 4", [
+   ("The plate", "steam rising from a plate of pasta under a low warm lamp, velvet banquette out of focus behind"),
+   ("The briefcase", "a black briefcase sitting closed on a red checkered tablecloth, gold lamp light, no people"),
+   ("Ring and silk", "macro of a gold pinky ring beside a folded silk pocket square on dark polished wood"),
+   ("Beaded curtain", "a beaded curtain swaying in the doorway of a warm gold-lit back room, kitchen glow beyond"),
+ ]),
+ ("SCENE 5", [
+   ("Rain on the tower", "rain running down a glass tower window at night, violet server glow reflected, city far below"),
+   ("The camera pans", "a security camera panning slowly on its bracket, red indicator LED, cold violet corridor"),
+   ("Tape reels", "reels of magnetic tape turning on a rack of period computers, indicator lights blinking"),
+   ("Channel flip", "a wall of CRT monitors flipping through channels of empty night streets, scan lines rolling"),
+ ]),
+ ("SCENE 6", [
+   ("Worklight", "a hanging worklight swinging over stacked wooden crates, shadows sweeping the floor"),
+   ("The seam", "dust turning in the seam where warm gold light meets hot pink light in an empty warehouse"),
+   ("Chain hoist", "a chain hoist swinging gently in an empty warehouse, cold steel, deep shadow"),
+   ("The bag", "a gold carry-bag sitting alone on a crate under one hanging worklight"),
+ ]),
+ ("SCENE 7", [
+   ("Countdown", "a countdown readout ticking down on a steel bench, red emergency light pulsing across it"),
+   ("Sparks", "sparks falling in slow motion from a cut wire onto a steel workbench"),
+   ("Oscilloscope", "an oscilloscope trace jumping on a period CRT, green phosphor glow, dark room"),
+   ("Red rotator", "an emergency red light rotating on a bare wall, haze, empty room"),
+ ]),
+ ("SCENE 8", [
+   ("Projector fan", "a slide projector fan turning, dust swirling in the lens beam, dark room"),
+   ("Icons drifting", "schematic icons drifting across frosted glass, blue-cyan glow, shallow focus"),
+   ("Surveillance wall", "a pin board of surveillance photographs lit only by projector spill"),
+   ("Tracing paper", "a hand-drawn floor plan on tracing paper under a desk lamp, pencil lines sharp"),
+ ]),
+ ("SCENE 9", [
+   ("Hubcaps", "chrome hubcaps stacked against a garage wall under cyan neon"),
+   ("Engine bay", "an open engine bay lit by a hanging drop light, chrome and rising steam, no people"),
+   ("Headlights on the mural", "a painted wall mural lit by the headlights of a passing car, cyan night"),
+   ("Pegboard keys", "rows of keys hanging on a garage pegboard, cyan glow, shallow focus"),
+ ]),
+ ("SCENE 10", [
+   ("Black water", "rain hammering black water beside a pier at night, harbour lights smearing on the surface"),
+   ("Rope and fog", "a mooring rope creaking on a bollard as fog rolls past pier lights"),
+   ("Lights in the puddle", "five starting lights reflected in a puddle on wet boards, rain rings breaking them"),
+   ("Foghorn", "fog rolling across an empty pier, a distant light pulsing through it"),
+ ]),
+ ("SCENE 11", [
+   ("Grate steam", "steam pouring from a street grate in a dim alley, hard backlight through it"),
+   ("Paint running", "fresh paint running down a brick wall under a single work light"),
+   ("Fire escape", "a fire escape ladder above a wet alley, a searchlight beam crossing it"),
+   ("Cans on the ledge", "spray cans lined up on a wall ledge in the dark, cyan rim light"),
+ ]),
+ ("SCENE 12", [
+   ("Confetti", "confetti falling slowly through four colours of light in a grand ballroom"),
+   ("Empty podium", "an empty podium under a huge banner, four-colour light crossing it, no people"),
+   ("Chandelier", "a crystal chandelier refracting gold, hot pink, cyan and violet"),
+   ("Buffet", "a long buffet table of period canapés lit in four colours, no people"),
+ ]),
+ ("FINALE", [
+   ("The door opens", "a massive steel vault door swinging slowly open at the end of an empty concrete corridor"),
+   ("Drag marks", "a bare concrete floor with a single set of drag marks through the dust, one hard overhead light"),
+   ("Hull and water", "black water sliding past a yacht hull at night, neon glow breaking on the wake"),
+   ("Empty deck", "an empty deck chair and a champagne bucket on a dark yacht deck, city glow receding"),
+ ]),
+])
+
+
 def plate(body, cam):
     return (f"{body}, {cam}. {B['STYLE']}. {B['PERIOD']}")
 
@@ -144,8 +236,18 @@ elements = [O([("id", i), ("name", n), ("seconds", s),
                ("negative", NEG_PLATE), ("use", use)])
             for i, n, s, p, use in ELEMENTS]
 
+# Production finding from the first two beats: b-roll is not garnish. You need about
+# as many people-free clips as clips with dialogue in them, and usually more — the
+# cutaways are what let a cut breathe, hide a join and cover a take that half worked.
+# So every beat gets a quota rather than a token two.
+speak, plates = {}, {}
+for c in SHEET['clips']:
+    speak[c['beat']] = speak.get(c['beat'], 0) + (c['dialogue']['kind'] == 'speaks')
+    plates[c['beat']] = plates.get(c['beat'], 0) + (c['subject'] == '—')
+
 textures, n = [], 0
 for tag, rows in TEXTURES.items():
+    rows = list(rows) + list(EXTRA.get(tag, []))
     for j, (name, body) in enumerate(rows, 1):
         n += 1
         textures.append(O([
@@ -153,6 +255,8 @@ for tag, rows in TEXTURES.items():
             ("beat", tag), ("name", name), ("seconds", 6),
             ("prompt", plate(body, "very slow drift, locked otherwise")),
             ("negative", NEG_PLATE),
+            # required up to the beat's quota; anything past it is a spare to reach for
+            ("required", j <= max(0, max(3, speak.get(tag, 0) + 2) - plates.get(tag, 0))),
         ]))
 
 # Where two locked shots of the same person butt together — a jump cut waiting to happen.
@@ -184,6 +288,14 @@ doc = O([
    ("what", "The cheap material that makes the cuts work: editorial fixes that need no render, "
             "six reusable elements, and two people-free textures per beat."),
    ("elements", len(elements)), ("textures", len(textures)),
+   ("required", sum(1 for t in textures if t['required'])),
+   ("spares", sum(1 for t in textures if not t['required'])),
+   ("dialogueClips", sum(speak.values())),
+   ("platesInSheet", sum(plates.values())),
+   ("brollTotal", sum(plates.values()) + sum(1 for t in textures if t['required'])),
+   ("brollRatio", round((sum(plates.values()) + sum(1 for t in textures if t['required']))
+                        / max(1, sum(speak.values())), 2)),
+   ("quota", O((tag, max(3, speak.get(tag, 0) + 2)) for tag in TEXTURES)),
    ("joins", len(joins)),
    ("seamless", sum(1 for j in joins if j['seamless'])),
    ("needHelp", sum(1 for j in joins if not j['seamless'])),
@@ -196,8 +308,11 @@ doc = O([
    "Then generate the six elements. They are people-free, so no character reference, no continuity "
    "risk and nothing for a content filter to object to — and one flare pass tinted four ways "
    "covers every crew in the film.",
-   "Then textures, only for the beats you have actually cut. Two per beat is plenty; you will find "
-   "you reuse three or four of them across the whole film.",
+   "Generate a beat's b-roll in the same session as its characters, not months later. You are "
+   "already in that set with that look locked, and the first two beats proved the b-roll is not "
+   "optional — it is roughly one clip for every clip with dialogue in it, and usually more.",
+   "The quota per beat is its dialogue clips plus two, counting the plates already in the shot "
+   "sheet. Anything past the quota is a spare — generate those only when the cut asks for them.",
  ]),
  ("elementList", elements),
  ("textureList", textures),

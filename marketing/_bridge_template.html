@@ -70,8 +70,18 @@
   .cbtn.alt{border-color:var(--line);color:var(--mut);}
   .cbtn.done{border-color:rgba(125,255,178,.5);color:var(--go);}
 
-  .beatline{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;
-    color:var(--dim);margin:26px 0 2px;}
+  .beatline{display:flex;align-items:baseline;gap:12px;font-family:var(--mono);font-size:10px;
+    letter-spacing:.15em;text-transform:uppercase;color:var(--dim);margin:26px 0 2px;}
+  .beatline b{color:var(--ink);font-weight:400;}
+  .beatline span{margin-left:auto;}
+  .req{display:inline-block;font-family:var(--mono);font-size:8px;letter-spacing:.14em;
+    text-transform:uppercase;border-radius:4px;padding:2px 6px;border:1px solid currentColor;
+    margin-left:10px;vertical-align:2px;}
+  .req.yes{color:var(--go);} .req.no{color:var(--dim);}
+  .ratio{border:1px solid var(--go);border-radius:12px;padding:15px 18px;margin:20px 0 0;
+    background:rgba(125,255,178,.045);}
+  .ratio b{color:var(--ink);}
+  .ratio p{margin:0;font-size:15px;color:var(--mut);line-height:1.6;max-width:82ch;}
 
   table{width:100%;border-collapse:collapse;margin:18px 0 0;font-size:14px;}
   th{font-family:var(--mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);
@@ -103,9 +113,11 @@
   <p class="lead" id="elLead"></p>
   <div id="elements"></div>
 
-  <h2 class="sec"><span class="n">3</span>Textures, two per beat</h2>
+  <h2 class="sec"><span class="n">3</span>Textures — on a quota, not as garnish</h2>
   <p class="lead">No people in frame — so no character reference, no continuity risk, and nothing
-    for a content filter to catch. Generate these for the beats you have actually cut.</p>
+    for a content filter to catch. Generate a beat's b-roll in the same session as its characters,
+    while you are already in that set.</p>
+  <div class="ratio" id="ratio"></div>
   <div id="textures"></div>
 
   <h2 class="sec"><span class="n">4</span>Every join that butts two locked shots together</h2>
@@ -144,10 +156,11 @@
   }
   function paint(){
     $('nums').innerHTML = '';
-    [[D.meta.elements, 'elements, reused everywhere'],
-     [D.meta.textures, 'textures, two per beat'],
-     [D.meta.extraSeconds + 's', 'total extra to generate'],
-     [count() + ' / ' + (D.meta.elements + D.meta.textures), 'generated so far'],
+    [[D.meta.brollRatio + '×', 'b-roll per dialogue clip'],
+     [D.meta.required, 'textures required'],
+     [D.meta.spares, 'spares in the pool'],
+     [D.meta.elements, 'elements, reused everywhere'],
+     [count() + ' / ' + (D.meta.elements + D.meta.required), 'generated so far'],
      [D.meta.needHelp, 'joins that want help']].forEach(function(p){
       var d = el('div'); d.appendChild(el('b', null, p[0]));
       d.appendChild(el('span', null, p[1])); $('nums').appendChild(d);
@@ -173,6 +186,10 @@
     s.appendChild(tick);
     s.appendChild(el('div','cid', c.id));
     var nm = el('div','nm', c.name);
+    // the badge belongs beside the name — as a grid child it would claim its own column
+    if (c.required !== undefined)
+      nm.appendChild(el('span','req ' + (c.required ? 'yes' : 'no'),
+        c.required ? 'Required' : 'Spare'));
     if (extra) nm.appendChild(el('small', null, extra));
     s.appendChild(nm);
     s.appendChild(el('div','secs', c.seconds + 's'));
@@ -207,11 +224,12 @@
     return d;
   }
 
-  $('stand').innerHTML = 'Abrupt cuts are usually a shot-size problem, not a missing-footage '
-    + 'problem. This page goes in cost order: the fixes that need no render, then <b>'
-    + D.meta.elements + ' people-free elements</b> you generate once and use at every join, then '
-    + '<b>' + D.meta.textures + ' textures</b> — and last, the list of joins in the film that '
-    + 'actually need one.';
+  $('stand').innerHTML = 'B-roll is not garnish — the first two beats proved you need about one '
+    + 'people-free clip for every clip with dialogue in it, and usually more. This page goes in '
+    + 'cost order: the fixes that need no render, then <b>' + D.meta.elements + ' elements</b> you '
+    + 'generate once and reuse at every join, then <b>' + D.meta.required + ' required textures</b> '
+    + 'on a per-beat quota (with ' + D.meta.spares + ' spares behind them) — and last, the joins '
+    + 'that actually need one.';
   paint();
 
   D.free.forEach(function(f){
@@ -224,13 +242,27 @@
   $('elLead').textContent = D.order[1];
   D.elementList.forEach(function(c){ $('elements').appendChild(card(c, '#f5c542')); });
 
+  $('ratio').innerHTML = '<p><b>' + D.meta.dialogueClips + ' clips carry dialogue. '
+    + D.meta.brollTotal + ' clips of b-roll cover them</b> — ' + D.meta.platesInSheet
+    + ' plates already in the shot sheet plus ' + D.meta.required + ' required textures, a <b>'
+    + D.meta.brollRatio + '×</b> ratio. Each beat\'s quota is its dialogue count plus two. The '
+    + 'other ' + D.meta.spares + ' textures are <b>spares</b> — generate one when a cut asks for '
+    + 'it, not before.</p>';
+
   var beat = null;
   D.textureList.forEach(function(c){
     if (c.beat !== beat){
       beat = c.beat;
-      $('textures').appendChild(el('p','beatline', beat));
+      var mine = D.textureList.filter(function(x){ return x.beat === beat; });
+      var need = mine.filter(function(x){ return x.required; }).length;
+      var line = el('p','beatline');
+      line.appendChild(el('b', null, beat));
+      line.appendChild(document.createTextNode('quota ' + (D.meta.quota[beat] || 0)
+        + ' · ' + need + ' to generate here'));
+      line.appendChild(el('span', null, (mine.length - need) + ' spare'));
+      $('textures').appendChild(line);
     }
-    $('textures').appendChild(card(c, '#ff2d9b', c.beat));
+    $('textures').appendChild(card(c, c.required ? '#ff2d9b' : '#5c5c72', c.beat));
   });
 
   $('joinLead').innerHTML = '<b>' + D.meta.joins + ' joins</b> put the same person on two locked '

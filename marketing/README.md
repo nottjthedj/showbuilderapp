@@ -20,7 +20,7 @@ listening to that voice for a month.
 | [`shot-sheet.json`](shot-sheet.json) | **The master prompt sheet** — the whole film in 135 clips of ≤15s, each with a ready-to-paste prompt (spoken line and delivery included), its negative, the camera move and the cue under it. Built for a 15-second generation limit. |
 | [`voice-script.json`](voice-script.json) | **The recording script** — all 99 spoken lines grouped by voice, with delivery, direction, target length and the picture each one lands on. Under six minutes of audio for the whole cast. |
 | [`edit-list.json`](edit-list.json) · [`edit-list.csv`](edit-list.csv) | **The assembly** — the same clips in cut order with a target length and a running timecode, plus the beat markers, music cues and card drops. 10m 53s finished, shooting 2.41× what gets used. `_build_edit_page.py` renders it. |
-| [`bridge-shots.json`](bridge-shots.json) | **Bridges** — free editorial fixes, 6 people-free transition elements to generate once and reuse, 28 textures (two per beat), and every join in the film that puts the same person on two locked shots in a row. |
+| [`bridge-shots.json`](bridge-shots.json) | **B-roll and bridges** — free editorial fixes, 6 people-free elements to generate once and reuse, 84 textures on a per-beat quota (47 required, 37 spare), and every join in the film that puts the same person on two locked shots in a row. |
 | [`shot-list.json`](shot-list.json) | **The same 135 clips regrouped for generation** — 122 single-subject clips batched by character (seed + continuity lock + prompts), and the 13 two-or-more-subject clips split out and re-prompted with frame positions and per-subject lighting. |
 
 ## Generating the film — the turn needs three clips
@@ -103,6 +103,30 @@ the model handed you.
 so Rico starts at S3-03 in the mansion and ends at FIN-04 in the vault. Sorting on the beat tag
 instead sorts alphabetically, which puts the FINALE first and sends you to four sets in the wrong
 order — that bug is fixed, but it is worth knowing why the order matters.
+
+## B-roll is not garnish — budget it like dialogue
+
+The first two beats through production landed on the same finding: **you need about as many
+people-free clips as you have clips with dialogue in them, and usually more.** Cutaways are what
+let a cut breathe, hide a join, and cover a take that only half worked.
+
+So b-roll now has a quota rather than a token two per beat:
+
+| | |
+|---|---|
+| Clips carrying dialogue | **65** |
+| Plates already in the shot sheet | **51** |
+| Required textures on top | **47** |
+| **Total b-roll** | **98 — a 1.5× ratio** |
+| Spares in the pool | 37, generate on demand |
+
+Each beat's quota is **its dialogue count plus two**, counting the plates the shot sheet already
+has. Scene 8 carries seven speaking clips and only two plates, so it needs six more; the Intro
+already has six plates for one line, so it needs none. The hub shows each beat's b-roll number in
+its header, and the bridges page badges every texture **Required** or **Spare**.
+
+**Generate a beat's b-roll in the same session as its characters** — you are already in that set
+with the look locked, and coming back for it later means re-establishing a set you have left.
 
 ## When a cut is abrupt
 

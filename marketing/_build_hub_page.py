@@ -12,6 +12,11 @@ SHOW = json.load(open(ROOT / 'brands/gtad.show.json'))
 SHEET = json.load(open(ROOT / 'marketing/shot-sheet.json'))
 GAMES = {g['n']: g for g in SHOW['games']}
 LIST = json.load(open(ROOT / 'marketing/shot-list.json'))
+BRIDGE = json.load(open(ROOT / 'marketing/bridge-shots.json'))
+BROLL = {}
+for t in BRIDGE['textureList']:
+    if t['required']:
+        BROLL[t['beat']] = BROLL.get(t['beat'], 0) + 1
 OUT = HERE / 'production-hub.html'
 
 by_beat = {}
@@ -34,6 +39,8 @@ for b in SHOW['film']:
         'gameCard': b.get('gameCard'),
         'game': {k: game[k] for k in ('howItPlays', 'win', 'time')} if game else None,
         'seconds': sum(c['seconds'] for c in clips),
+        'broll': BROLL.get(b['tag'], 0),
+        'plates': sum(1 for c in clips if c['subject'] == '—'),
         'clips': clips,
     })
 

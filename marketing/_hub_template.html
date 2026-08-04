@@ -396,7 +396,7 @@
     var h = el('div','bhead');
     h.appendChild(el('h2', null, b.tag + ' · ' + b.title));
     h.appendChild(el('span','meta', b.clips.length + ' clips · ' + b.seconds + 's to generate · '
-      + b.dur + ' on screen'));
+      + b.dur + ' on screen' + (b.broll ? ' · + ' + b.broll + ' b-roll' : '')));
     sec.appendChild(h);
 
     var det = el('details','script');
