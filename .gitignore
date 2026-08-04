@@ -5,3 +5,6 @@ build/
 dist/
 __pycache__/
 *.pyc
+marketing/production-hub.html
+marketing/assembly.html
+marketing/bridges.html

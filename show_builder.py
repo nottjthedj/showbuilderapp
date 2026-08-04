@@ -123,7 +123,7 @@ class ShowBuilder(tk.Tk):
         ttk.Button(row, text="Clear", command=lambda: self.logo_path.set("")).pack(side="left", padx=4)
 
         self._section(body, "Show (crew card + handler console)")
-        for val, label in [("gtad", "Use the Grand Theft After-Dark show (24 chapters, 11 missions)"),
+        for val, label in [("gtad", "Use the Grand Theft After-Dark show — “The Score” (14 beats, 12 games)"),
                            ("none", "Booth only — no crew card / handler"),
                            ("custom", "Custom show file…")]:
             ttk.Radiobutton(body, text=label, value=val, variable=self.show_mode,
@@ -301,7 +301,7 @@ class ShowBuilder(tk.Tk):
         except Exception:
             messagebox.showerror("Couldn't generate", traceback.format_exc()); return
         mods = ", ".join(r["modules"])
-        extra = f"\n{r['chapters']} chapters · {r['missions']} missions" if r["has_show"] else ""
+        extra = f"\n{r['chapters']} beats · {r['missions']} games" if r["has_show"] else ""
         self.status.configure(text=f"Generated {r['brand_name']} → {out_dir}")
         if messagebox.askyesno("Site generated ✓",
                                f"{r['brand_name']} — {r['count']} files\nModules: {mods}{extra}\n\n"

@@ -5,9 +5,11 @@ of config files. Fill in the blanks, drop in your logo + show data, run one comm
 and get a complete, deployable multi-module site — the same proven formula every time.
 
 > **What GTAD is:** a live, lore-driven interactive game-show. Guests scan a QR on
-> arrival, get "made" into the crew, and play through a night of missions run by the
-> host ("the Handler"). This tool stamps out that whole experience — booth, crew card,
-> and host console — re-skinned for a new brand.
+> arrival, get "made" into the crew, and play a night of games run by the host
+> ("the Handler"). The current show is **"The Score"** — a cutaway film in 14 beats
+> (Intro + 12 scenes + Finale) cut with 12 games the whole room plays on their phones.
+> This tool stamps out that whole experience — booth, crew card, and host console —
+> re-skinned for a new brand.
 
 ---
 
@@ -15,12 +17,12 @@ and get a complete, deployable multi-module site — the same proven formula eve
 
 | Module | File(s) | Who uses it | What it does |
 |--------|---------|-------------|--------------|
-| **Crew Card** *(player, front door)* | `index.html` / `crew.html` | guests | The **front door** — one scan of the domain lands here: scan-to-get-made card with member number, **tonight's Job** + Handler transmission, live **Wanted Level**, **missions**, live **votes**, and a button into the booth. |
+| **Crew Card** *(player, front door)* | `index.html` / `crew.html` | guests | The **front door** — one scan of the domain lands here: scan-to-get-made card with member number, **what's on screen now** + the live **game card**, live **Wanted Level**, tonight's 12-game run, live **votes**, and a button into the booth. |
 | **Photo Booth** | `booth.html`, `gallery.html`, `setup.html`, `netlify/` | guests + operator | Branded camera → photo/video with your overlay → save/share/opt-in. Includes the **gallery admin** (approve/delete) and the secure **Backblaze-B2 → NAS** pipeline. |
-| **Handler Console** *(admin)* | `handler.html` | the host | Chapter picker (your whole season), the opening-transmission **teleprompter**, a **mission picker** (pick 3, with props/how-to/VO), Wanted-Level control, and a **QR generator** that hands guests a crew card pre-loaded with tonight's setup. Links to the gallery. |
+| **Handler Console** *(admin)* | `handler.html` | the host | The **run-of-show**: step the 14 beats in locked order and each one gives you the Handler VO, the **◆ turn** teleprompter, the **▮ game card**, the OPEN→OUT assembly and the music cue. Plus the 12-game reference, Wanted-Level control, and a **QR generator** that hands guests a crew card pre-loaded with what's live. Links to the gallery. |
 
 The Booth ships for every brand. The **Crew Card + Handler Console** are generated only
-when the config includes a **`show`** (your chapters + missions) — see below.
+when the config includes a **`show`** (your film beats + games) — see below.
 
 ---
 
@@ -66,11 +68,11 @@ then follow the generated `SETUP.md`. No dependencies — just Python 3.10+.
 | File | Controls |
 |------|----------|
 | `brands/<brand>.json` | Branding (name, logo lockup, kicker, hashtag, CTA, **legal line**), the **colour scheme**, socials, web/deploy info, and a pointer to the show file. |
-| `brands/<brand>.show.json` | The **show**: your season of chapters (codename, act, the job, the Handler transmission) and your missions (props, how-it-runs, win, Handler VO, variation) + vocabulary and Wanted-Level labels. |
+| `brands/<brand>.show.json` | The **show**: the film (beats, owners, VO, the **◆ turn**, the **▮ game card**, assembly, music), the **games**, the **characters** who own the turns, the **stations** (the room's radio dial), the energy arc and the locked run order + vocabulary and Wanted-Level labels. |
 | your logo image | White-on-transparent PNG, embedded + burned into captures. Optional (text lockup fallback). |
 
 Everything the formula keeps fixed — the camera flow, the three photo frames, the
-crew-card mechanics, the console's teleprompter/mission-picker/QR tooling — stays put.
+crew-card mechanics, the console's run-of-show/teleprompter/QR tooling — stays put.
 
 ---
 
@@ -126,27 +128,108 @@ crew-card mechanics, the console's teleprompter/mission-picker/QR tooling — st
 
 ```jsonc
 {
-  "meta":     { "name": "…", "tagline": "…", "legal": "…" },
-  "vocabulary": { "crew": "the attendees", "handler": "the host character", … },
+  "meta":     { "name": "…", "show": "The Score", "filmEra": "1977–1983", "legal": "…" },
+  "vocabulary": { "crew": "the attendees", "handler": "…", "turn": "the ◆ line", … },
   "wantedLevels": [ { "stars": 1, "label": "ON THE RADAR" }, … 5 ],
-  "crewCard": { "madeHeadline": "YOU'RE MADE", "memberLabel": "MADE MEMBER", … },
-  "chapters": [
-    { "n": 1, "codename": "THE RECRUITMENT", "act": "Act I — Assembly the Crew",
-      "job": "The crew gets made…", "endsOn": "…", "transmission": "Listen up…" }
-    // …one per night of your season
+  "crewCard": { "madeHeadline": "YOU'RE MADE", "appCta": "PHONE UP", … },
+  "stations": [   // the room's radio dial — one sound-world per gang, plus Law + State
+    { "id": "gold", "gang": "The Corvettis", "station": "GOLD STANDARD RADIO",
+      "era": "…", "genre": "…", "tempo": "…", "bumper": "…", "use": "…" }  // … 6
   ],
-  "missions": [
-    { "n": 1, "name": "THE LINEUP", "category": "Stage Theatrical", "gtaRef": "Police lineup",
-      "props": "…", "howItRuns": "…", "win": "…", "time": "3–4 min",
-      "handlerVO": "Line 'em up…", "variation": "…" }
-    // …your mission playbook
+  "characters": [ // who owns which turn; casting notes travel with the character
+    { "id": "rico", "name": "Rico “El Halcón” Delgado", "station": "pink",
+      "look": "…", "casting": "…", "sidekick": "…", "owns": ["s3","s6","s8","s10"] }  // … 7
   ],
-  "rotation": { "firstNight": [1,6,4], "returning": [10,7,9], "smallRoom": [8,11,5] }
+  "film": [       // the locked run — Intro + 12 scenes + Finale
+    { "n": 4, "tag": "SCENE 3", "title": "Crossfire", "owner": "rico",
+      "station": "pink", "energy": "High, hot", "game": 3,
+      "vo": "…",                      // the Handler's narration over the scene
+      "dialogue": [ { "who": "RICO", "line": "…" }, { "action": "…" } ],
+      "turn": "…",                    // ◆ the fourth-wall line that hands over the game
+      "gameCard": "…",                // ▮ the card that lands and opens every phone
+      "assembly": [ ["OPEN","…"], ["BUILD","…"], ["TURN","…"], ["CARD","…"], ["OUT","…"] ],
+      "music": { "station": "…", "bed": "…", "duck": "…", "slam": "…", "cuts": "…", "tip": "…" } }
+  ],
+  "games": [      // the 12 app games, one per scene
+    { "n": 3, "name": "CROSSFIRE", "scene": "SCENE 3", "station": "pink",
+      "launchedBy": "rico", "howItPlays": "…", "win": "…", "time": "~3 min" }
+  ],
+  "energyArc": [ { "beat": "S12", "level": 100 } ],
+  "runOfShow": { "locked": true, "order": ["INTRO","SCENE 1"], "note": "…" }
 }
 ```
 
-`brands/gtad.show.json` is the real GTAD bible — **24 chapters** (a full 3-act season)
-and **11 missions** — extracted from the production docs. Copy it to start a new show.
+`brands/gtad.show.json` is the real GTAD bible — **"The Score"**: 14 film beats,
+12 app games, 7 characters and 6 stations, extracted from the production bibles.
+Copy it to start a new show.
+
+> **`brands/gtad.show.json` — "The Score" — is the only show in use.** Everything else
+> is archived: the 24-night season it replaced is kept restorable in
+> [`capsule/`](capsule/README.md), and a draft lore campaign built from that season's
+> writing sits in [`campaign/`](campaign/README.md). Neither is current work and neither
+> is part of the generated site — they're on the shelf if they're ever wanted back.
+
+### How a beat works
+
+All 14 beats run the same five-step shape, and the console reads it straight off the
+show file:
+
+| Step | | |
+|---|---|---|
+| **OPEN** | establisher | the world, a vehicle, atmos — music ducks −8/−12 dB, Handler VO in |
+| **BUILD** | the scene | the character, the comedy, the action inserts |
+| **TURN ◆** | *the money frame* | the character stops, looks **down the lens** and hands the room its game |
+| **CARD ▮** | the game card | lands on a stinger; the game opens on every phone |
+| **OUT** | release | music slams back in on that gang's station |
+
+**The ◆ turn is the one thing the live show cannot run without.** Shoot those first —
+if a production window collapses you can generate everything else and still have a
+night. The console renders the turn as the largest, brightest block on the beat for
+exactly that reason.
+
+**Turns belong to characters, not to the host.** McGraw owns Scene 1, Marcus owns
+2/9/11, Rico owns 3/8, the Don owns 4, Preston owns 5/7; the Handler takes the Intro,
+Scene 12 and the Finale. `characters[].owns` is the index and `film[].owner` points
+back at it.
+
+### The dial
+
+The room is a **radio dial**: four gangs, four stations, each locked to its own era.
+The Handler is the pirate signal cutting across all of them — his transmission ducks
+the room into story, then the game slams back in on that gang's station. `stations[]`
+carries the era, genre, texture, tempo and bumper voice for each; `film[].music` gives
+the per-beat bed → duck → slam. Note the deliberate split: the **film** is period-locked
+(1977–1983), the **music** is not — the screen is 1980, the floor is tonight.
+
+### The run is locked
+
+There is no per-night picking in The Score: one night, one film, twelve games, in order.
+Stepping the beat in the console sets the live game and pushes it to every crew card, so
+guests always see what's on screen now. Acts run I Setup (Intro–S4) · II The Jobs
+(S5–S11) · III The Vault (S12→Finale) — and the dips at S5, S8 and S11 are what make the
+S12 peak land.
+
+### Two voices
+
+A show has two distinct speaking layers, and the console keeps them apart:
+
+| | Where | What it is |
+|---|---|---|
+| **Transmission** *(cinematic)* | `chapters[].transmission` | The story beat that opens the night. In-fiction, no winking — the host is the character. One per night; each opens on the previous night's `endsOn` so the season reads as one arc. |
+| **Scene** *(4th wall → the game)* | `missions[].scene` | The bridge from story to gameplay. The host steps **out** of the fiction, names the real room, then hands the crowd the rules — which is what gives them permission to commit. |
+
+Scene beats run in order and are read straight off the console:
+
+`cue` (stage direction, not spoken) → `fourthWall` (the step-out) → `driver`
+(why this game, *tonight*) → `rules` → `callUp` (get bodies up) → `underscore`
+(ad-libs while it runs) → `win` → `out` (hand back to the story).
+
+`driver` is keyed by act — `actI` / `actII` / `actIII` — because the same game
+carries different stakes while you're recruiting a crew than it does after the
+score has gone down. The console reads the act off tonight's chapter and shows
+the matching driver automatically, so a mission can be re-run across the season
+without the story going stale. **Copy** lifts the whole scene, act-correct, as a
+plain-text script.
 
 ---
 
@@ -158,9 +241,24 @@ and **11 missions** — extracted from the production docs. Copy it to start a n
 ├─ show-builder.spec           PyInstaller build (Windows/macOS/Linux)
 ├─ make_booth.py               the generator (stdlib only)
 ├─ booth_config.schema.json    machine-readable brand-config schema
+├─ documents/                  the script files — read these, don't edit them
+│  ├─ the-film-script.md       the screenplay: 14 beats, dialogue, turns, game cards
+│  ├─ voice-over-script.md     99 lines grouped by voice, ~5.7 min to record
+│  ├─ shooting-script.md       the same film in 135 generatable clips, in order
+│  ├─ the-story.md             the story told straight, no format
+│  └─ _build_documents.py      regenerates all of the above from the show file
+├─ marketing/                  the campaign + the prompt sheets for the film
+│  ├─ _build_all.py            show file → prompts → voices → documents
+│  ├─ shot-sheet.json          135 clips of ≤15s with prompts, negatives, dialogue
+│  ├─ shot-list.json           the same clips batched by subject for generation
+│  ├─ voice-script.json        the recording script as data
+│  └─ daily-transmissions.json 122 dated posts to the first show
+├─ campaign/                   the retired 24-night lore campaign (archived draft)
+│  ├─ gtad-lore-season.json    the 24 written transmissions (the source)
+│  └─ gtad-social-campaign.json  24 social + web-video drops
 ├─ brands/
 │  ├─ gtad.json                the show — reproduces every module
-│  ├─ gtad.show.json           24 chapters + 11 missions (the GTAD bible)
+│  ├─ gtad.show.json           “The Score” — 14 film beats + 12 games (the GTAD bible)
 │  ├─ gtad-logo.png            the GTAD logo
 │  └─ example-midnight-arcade.json   a booth-only rebrand (no show)
 └─ templates/                  the tokenized masters (source of truth)

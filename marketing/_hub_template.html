@@ -1,0 +1,536 @@
+<title>The Score — production hub</title>
+<style>
+  :root{
+    color-scheme: dark;
+    --ground:#08080b; --panel:#0e0e14; --panel2:#12121a;
+    --line:rgba(255,255,255,.10); --ink:#f4f4f8; --mut:#8f8fa6; --dim:#5c5c72;
+    --cyan:#00e5ff; --pink:#ff2d9b; --gold:#f5c542; --warn:#ff5a6e; --go:#7dffb2;
+    --display:"Haettenschweiler","Arial Narrow Bold",Impact,"Franklin Gothic Bold",sans-serif;
+    --body:ui-sans-serif,system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Courier New",monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:radial-gradient(120% 60% at 50% -10%,#16121c 0%,var(--ground) 60%) no-repeat,var(--ground);
+    color:var(--ink);font-family:var(--body);line-height:1.6;padding:0 0 100px;}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.045;
+    background:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 3px);}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px;position:relative;z-index:1;}
+
+  header{padding:44px 0 6px;}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);margin:0 0 12px;}
+  h1{font-family:var(--display);font-weight:400;text-transform:uppercase;
+    font-size:clamp(38px,8vw,80px);line-height:.88;margin:0;letter-spacing:.02em;}
+  h1 .a{color:transparent;-webkit-text-stroke:1.5px var(--pink);text-shadow:0 0 18px rgba(255,45,155,.5);}
+  h1 .b{color:transparent;-webkit-text-stroke:1.5px var(--cyan);text-shadow:0 0 18px rgba(0,229,255,.45);}
+  .standfirst{color:var(--mut);font-size:16px;max-width:70ch;margin:18px 0 0;}
+  .standfirst b{color:var(--ink);font-weight:600;}
+
+  /* progress */
+  .prog{margin:26px 0 0;padding:18px 20px;border:1px solid var(--line);border-radius:14px;
+    background:rgba(255,255,255,.022);}
+  .bar{height:10px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden;margin:0 0 14px;}
+  .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--cyan));
+    transition:width .25s;}
+  .nums{display:flex;gap:30px;flex-wrap:wrap;}
+  .nums div{min-width:96px;}
+  .nums b{display:block;font-family:var(--display);font-weight:400;font-size:32px;line-height:1;}
+  .nums span{font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);}
+  .ctrls{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px;align-items:center;}
+  .sw{display:inline-flex;align-items:center;gap:9px;cursor:pointer;font-size:13.5px;color:var(--mut);
+    border:1px solid var(--line);border-radius:99px;padding:7px 14px 7px 10px;}
+  .sw input{position:absolute;opacity:0;width:0;height:0;}
+  .sw i{width:32px;height:18px;border-radius:99px;border:1px solid var(--line);background:rgba(255,255,255,.05);
+    position:relative;transition:.16s;flex:0 0 32px;}
+  .sw i::after{content:'';position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;
+    background:var(--mut);transition:.16s;}
+  .sw input:checked + i{border-color:var(--cyan);background:rgba(0,229,255,.16);}
+  .sw input:checked + i::after{left:17px;background:var(--cyan);}
+  .sw input:checked ~ span{color:var(--ink);}
+  .lnk{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;
+    border:1px solid var(--line);color:var(--mut);border-radius:99px;padding:8px 13px;text-decoration:none;}
+  .lnk:hover{color:var(--ink);border-color:var(--ink);}
+
+  /* the brief — story + cast, for anyone opening this cold */
+  .brief{display:grid;gap:11px;margin:26px 0 0;}
+  .fold{border:1px solid var(--line);border-radius:13px;background:var(--panel);overflow:hidden;}
+  .fold > summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;
+    padding:15px 18px;font-family:var(--display);font-weight:400;text-transform:uppercase;
+    font-size:clamp(19px,2.6vw,26px);letter-spacing:.02em;color:var(--ink);}
+  .fold > summary::-webkit-details-marker{display:none;}
+  .fold > summary b{margin-left:auto;font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;
+    color:var(--dim);font-weight:400;}
+  .fold[open] > summary{border-bottom:1px solid var(--line);}
+  .foldb{padding:18px;}
+  .st{margin:0 0 20px;max-width:82ch;}
+  .st:last-child{margin-bottom:0;}
+  .st h4{font-family:var(--mono);font-size:9.5px;letter-spacing:.17em;text-transform:uppercase;
+    color:var(--cyan);margin:0 0 7px;}
+  .st p{margin:0;font-size:15.5px;line-height:1.65;color:#dfe3ea;}
+  .st.spoil{border-left:2px solid var(--warn);padding-left:15px;}
+  .st.spoil h4{color:var(--warn);}
+  .st.spoil h4::after{content:' — never in marketing';color:var(--dim);letter-spacing:.1em;}
+
+  .cast{display:grid;gap:11px;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));}
+  .who{border:1px solid var(--line);border-left:3px solid var(--pc);border-radius:11px;
+    background:var(--panel2);padding:14px 16px;}
+  .who h5{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:21px;
+    margin:0;color:var(--pc);letter-spacing:.02em;line-height:1.05;}
+  .who .crew{font-family:var(--mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;
+    color:var(--dim);margin:5px 0 9px;}
+  .who .bio{font-size:14.5px;color:#dfe3ea;margin:0 0 9px;line-height:1.5;}
+  .who dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 10px;}
+  .who dt{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--dim);padding-top:3px;}
+  .who dd{margin:0;font-size:13px;color:var(--mut);line-height:1.5;}
+  .who .warn{margin:9px 0 0;font-size:13px;color:var(--warn);line-height:1.5;}
+
+  /* beat nav */
+  .jump{position:sticky;top:0;z-index:60;display:flex;gap:6px;flex-wrap:wrap;align-items:center;
+    padding:12px 0;background:linear-gradient(180deg,rgba(8,8,11,.97) 74%,rgba(8,8,11,0));margin-top:24px;}
+  .jump a{font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+    border:1px solid var(--jc);color:var(--jc);border-radius:99px;padding:7px 11px;text-decoration:none;}
+  .jump a b{color:var(--ink);font-weight:400;margin-left:5px;}
+  .jump a.done{opacity:.42;}
+
+  section.beat{scroll-margin-top:62px;margin:36px 0 0;border-top:2px solid var(--bc);padding-top:20px;}
+  .bhead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;}
+  .bhead h2{font-family:var(--display);font-weight:400;text-transform:uppercase;
+    font-size:clamp(24px,4.4vw,44px);margin:0;color:var(--bc);letter-spacing:.02em;}
+  .bhead .meta{font-family:var(--mono);font-size:10.5px;color:var(--dim);letter-spacing:.12em;
+    text-transform:uppercase;margin-left:auto;}
+
+  /* the script panel */
+  .script{border:1px solid var(--line);border-left:3px solid var(--bc);border-radius:12px;
+    background:var(--panel);padding:0;margin:16px 0 0;overflow:hidden;}
+  .script summary{list-style:none;cursor:pointer;padding:12px 16px;display:flex;align-items:center;gap:12px;
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--bc);}
+  .script summary::-webkit-details-marker{display:none;}
+  .script summary::after{content:'READ';margin-left:auto;color:var(--dim);}
+  .script[open] summary::after{content:'HIDE';}
+  .sbody{padding:4px 18px 18px;border-top:1px solid var(--line);}
+  .sp{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--dim);margin:16px 0 6px;}
+  .sl{margin:0 0 10px;font-size:15.5px;color:#dfe3ea;line-height:1.6;border-left:2px solid var(--line);
+    padding-left:13px;}
+  .sl.turn{border-left-color:var(--pink);color:var(--ink);}
+  .act{font-size:14px;color:var(--mut);font-style:italic;margin:0 0 10px;}
+  .gcard{border:1px dashed var(--bc);border-radius:9px;padding:11px 13px;margin:12px 0 0;
+    font-family:var(--mono);font-size:12px;color:var(--bc);line-height:1.55;}
+  .gcard b{display:block;color:var(--ink);font-family:var(--body);font-size:14px;margin-top:6px;font-weight:400;}
+
+  .brollhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:22px 0 0;
+    font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim);}
+  .brollhead b{color:var(--go);font-weight:400;font-size:11px;letter-spacing:.16em;}
+  .brollhead2{margin:12px 0 0;font-size:14.5px;color:var(--mut);max-width:78ch;}
+
+  /* clips */
+  .clips{margin:14px 0 0;display:flex;flex-direction:column;gap:9px;}
+  .clip{border:1px solid var(--line);border-radius:11px;background:var(--panel2);overflow:hidden;
+    border-left:3px solid var(--rc);}
+  .clip.done{opacity:.4;}
+  .ch{display:flex;align-items:center;gap:12px;padding:11px 14px;cursor:pointer;}
+  .ch::-webkit-details-marker{display:none;}
+  .ch{list-style:none;}
+  .tick{flex:0 0 22px;height:22px;border-radius:6px;border:1px solid var(--line);background:rgba(255,255,255,.04);
+    display:grid;place-items:center;cursor:pointer;font-size:13px;color:transparent;}
+  .tick.on{border-color:var(--go);color:var(--go);background:rgba(125,255,178,.12);}
+  .cid{font-family:var(--mono);font-size:14px;color:var(--ink);letter-spacing:.05em;flex:0 0 82px;}
+  .role{font-family:var(--mono);font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;
+    color:#08080b;background:var(--rc);border-radius:4px;padding:2px 6px;font-weight:800;}
+  .cam{font-size:13.5px;color:var(--mut);margin:0;flex:1 1 200px;}
+  .say{font-family:var(--mono);font-size:8.5px;letter-spacing:.13em;text-transform:uppercase;
+    border:1px solid currentColor;border-radius:4px;padding:2px 6px;}
+  .say.line{color:var(--go);} .say.vo{color:var(--dim);} .say.sil{color:var(--dim);}
+  .secs{font-family:var(--display);font-size:19px;color:var(--ink);}
+  .cbody{padding:0 15px 15px;}
+  .lbl{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin:12px 0 6px;}
+  .ptext{font-family:var(--mono);font-size:12.5px;line-height:1.62;color:#c6d2da;white-space:pre-wrap;
+    border:1px solid var(--line);border-radius:8px;padding:11px 12px;margin:0;}
+  .ntext{font-family:var(--mono);font-size:11.5px;line-height:1.6;color:#9aa4ad;white-space:pre-wrap;
+    border:1px dashed var(--line);border-radius:8px;padding:10px 12px;margin:0;}
+  .quote{border-left:2px solid var(--go);padding:2px 0 2px 13px;margin:0;}
+  .quote q{font-family:var(--display);font-weight:400;font-size:clamp(17px,2.1vw,21px);line-height:1.34;
+    color:var(--ink);quotes:'“' '”';}
+  .quote .how{display:block;font-size:13px;color:var(--mut);margin-top:6px;}
+  .quote.off{border-left-color:var(--dim);}
+  .acts{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px;}
+  .cbtn{font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;
+    border:1px solid var(--cyan);background:transparent;color:var(--cyan);border-radius:7px;padding:8px 12px;cursor:pointer;}
+  .cbtn:hover{background:rgba(0,229,255,.12);}
+  .cbtn.alt{border-color:var(--line);color:var(--mut);}
+  .cbtn.go{border-color:var(--go);color:var(--go);}
+
+  footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--dim);line-height:1.9;}
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Grand Theft After-Dark · “The Score” · production hub</p>
+    <h1><span class="a">Make</span><br><span class="b">The Movie</span></h1>
+    <p class="standfirst" id="stand"></p>
+
+    <div class="prog">
+      <div class="bar"><i id="fill"></i></div>
+      <div class="nums" id="nums"></div>
+      <div class="ctrls" id="ctrls"></div>
+    </div>
+  </header>
+
+  <div class="brief">
+    <details class="fold" id="storyFold">
+      <summary><span>The story</span><b>Read this first</b></summary>
+      <div class="foldb" id="story"></div>
+    </details>
+    <details class="fold" id="castFold">
+      <summary><span>The cast</span><b id="castCount"></b></summary>
+      <div class="foldb"><div class="cast" id="cast"></div></div>
+    </details>
+  </div>
+
+  <div class="jump" id="jump"></div>
+  <div id="main"></div>
+
+  <footer>
+    GRAND THEFT AFTER-DARK · “THE SCORE” · brands/gtad.show.json + marketing/shot-sheet.json<br>
+    Progress is stored in this browser only. Independent fan tribute event. Not affiliated with,
+    endorsed by, or sponsored by Rockstar Games, Take-Two Interactive, or any related entity.
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var D = /*__DATA__*/null;
+  var $ = function(id){ return document.getElementById(id); };
+  function el(t,c,x){ var n=document.createElement(t); if(c)n.className=c; if(x!=null)n.textContent=x; return n; }
+  function copyBtn(label, text, cls){
+    var b = el('button','cbtn'+(cls?' '+cls:''), label); b.type='button';
+    b.addEventListener('click', function(e){
+      e.stopPropagation();
+      if (navigator.clipboard) navigator.clipboard.writeText(
+        typeof text === 'function' ? text() : text);
+      var o=b.textContent; b.textContent='Copied';
+      setTimeout(function(){ b.textContent=o; }, 1200);
+    });
+    return b;
+  }
+  var ROLE_C = { ESTABLISH:'#8f8fa6', BUILD:'#00e5ff', INSERT:'#f5c542', APPROACH:'#ff8ac4',
+                 TURN:'#ff2d9b', HOLD:'#ff2d9b', OUT:'#a06bff', 'POST-CREDIT':'#ff5a6e' };
+
+  var DONE = {}, HIDE = false;
+  try {
+    DONE = JSON.parse(localStorage.getItem('gtad.done') || '{}');
+    HIDE = localStorage.getItem('gtad.hideDone') === '1';
+  } catch(e){}
+  function save(){
+    try {
+      localStorage.setItem('gtad.done', JSON.stringify(DONE));
+      localStorage.setItem('gtad.hideDone', HIDE ? '1' : '0');
+    } catch(e){}
+  }
+
+  // The shoot is the clips plus the b-roll each beat needs plus the shared elements.
+  // B-roll is not garnish — one people-free clip per clip with dialogue, roughly.
+  var ALL = [], BY_ID = {};
+  D.beats.forEach(function(b){
+    b.clips.forEach(function(c){ ALL.push(c); BY_ID[c.id] = c; });
+    (b.broll || []).forEach(function(t){ if (t.required) ALL.push(t); });
+  });
+  (D.elements || []).forEach(function(e){ ALL.push(e); });
+  var WORDING = 'full';
+  try { WORDING = localStorage.getItem('gtad.wording') || 'full'; } catch(e){}
+
+  function paintProgress(){
+    var done = ALL.filter(function(c){ return DONE[c.id]; });
+    var secs = done.reduce(function(a,c){ return a + c.seconds; }, 0);
+    var pct = Math.round(done.length / ALL.length * 100);
+    $('fill').style.width = pct + '%';
+    $('nums').innerHTML = '';
+    [[done.length + ' / ' + ALL.length, 'clips generated'],
+     [pct + '%', 'of the shoot'],
+     [Math.floor(secs/60) + 'm ' + (secs%60) + 's', 'in the can'],
+     [ALL.length - done.length, 'still to go']].forEach(function(p){
+      var d = el('div'); d.appendChild(el('b', null, p[0]));
+      d.appendChild(el('span', null, p[1])); $('nums').appendChild(d);
+    });
+    D.beats.forEach(function(b){
+      var link = document.querySelector('a[href="#b-' + b.slug + '"]');
+      if (!link) return;
+      var left = b.clips.filter(function(c){ return !DONE[c.id]; }).length;
+      link.classList.toggle('done', left === 0);
+      link.querySelector('b').textContent = left === 0 ? '✓' : left;
+    });
+  }
+
+  function setDone(id, on){
+    if (on) DONE[id] = 1; else delete DONE[id];
+    save();
+    var card = document.getElementById('c-' + id);
+    if (card){
+      card.classList.toggle('done', !!on);
+      card.querySelector('.tick').classList.toggle('on', !!on);
+      if (HIDE) card.style.display = on ? 'none' : '';
+    }
+    paintProgress();
+  }
+
+  function clipCard(c){
+    var d = el('details','clip' + (DONE[c.id] ? ' done' : ''));
+    d.id = 'c-' + c.id;
+    d.style.setProperty('--rc', ROLE_C[c.role] || '#8f8fa6');
+    var s = el('summary','ch');
+    var tick = el('div','tick' + (DONE[c.id] ? ' on' : ''), '✓');
+    tick.title = 'Mark this clip generated';
+    tick.addEventListener('click', function(e){
+      e.preventDefault(); e.stopPropagation();
+      setDone(c.id, !DONE[c.id]);
+    });
+    s.appendChild(tick);
+    s.appendChild(el('div','cid', c.id));
+    s.appendChild(el('span','role', c.role));
+    s.appendChild(el('p','cam', c.camera));
+    var k = c.dialogue.kind;
+    s.appendChild(el('span','say ' + (k==='speaks'?'line':(k==='voice-over'?'vo':'sil')),
+      k==='speaks' ? 'Line' : (k==='voice-over' ? 'VO' : 'Silent')));
+    s.appendChild(el('div','secs', c.seconds + 's'));
+    d.appendChild(s);
+
+    var b = el('div','cbody');
+    c.dialogue.lines.forEach(function(l){
+      b.appendChild(el('div','lbl', l.placement === 'on' ? 'The line — it is in the prompt'
+        : (l.placement === 'vo' ? 'Voice-over — no lip to match' : 'Off-screen line')));
+      var q = el('p','quote' + (l.placement === 'on' ? '' : ' off'));
+      var qq = document.createElement('q'); qq.textContent = l.line; q.appendChild(qq);
+      if (l.delivery && l.placement === 'on') q.appendChild(el('span','how', l.delivery));
+      b.appendChild(q);
+    });
+    b.appendChild(el('div','lbl','Prompt'));
+    b.appendChild(el('p','ptext', c[WORDING] || c.full));
+    b.appendChild(el('div','lbl','Negative'));
+    b.appendChild(el('p','ntext', c.negative));
+    var a = el('div','acts');
+    a.appendChild(copyBtn('Copy prompt', function(){ return c[WORDING] || c.full; }));
+    a.appendChild(copyBtn('Copy negative', c.negative, 'alt'));
+    a.appendChild(copyBtn('Copy both — one box',
+      function(){ return (c[WORDING] || c.full) + ' Avoid: ' + c.negative + '.'; }, 'alt'));
+    var mk = el('button','cbtn go', DONE[c.id] ? 'Not done after all' : 'Mark generated');
+    mk.type = 'button';
+    mk.addEventListener('click', function(){
+      setDone(c.id, !DONE[c.id]);
+      mk.textContent = DONE[c.id] ? 'Not done after all' : 'Mark generated';
+    });
+    a.appendChild(mk);
+    b.appendChild(a);
+    d.appendChild(b);
+    return d;
+  }
+
+  function plainCard(c, colour, extra){
+    var d = el('details','clip' + (DONE[c.id] ? ' done' : ''));
+    d.id = 'c-' + c.id;
+    d.style.setProperty('--rc', colour);
+    var s = el('summary','ch');
+    var tick = el('div','tick' + (DONE[c.id] ? ' on' : ''), '✓');
+    tick.addEventListener('click', function(e){
+      e.preventDefault(); e.stopPropagation(); setDone(c.id, !DONE[c.id]);
+    });
+    s.appendChild(tick);
+    s.appendChild(el('div','cid', c.id));
+    if (c.required !== undefined)
+      s.appendChild(el('span','say ' + (c.required ? 'line' : 'sil'),
+        c.required ? 'Required' : 'Spare'));
+    s.appendChild(el('p','cam', c.name));
+    if (extra) s.appendChild(el('span','say vo', extra));
+    s.appendChild(el('div','secs', c.seconds + 's'));
+    d.appendChild(s);
+    var b = el('div','cbody');
+    if (c.use){ b.appendChild(el('div','lbl','Where it goes')); b.appendChild(el('p','ptext', c.use)); }
+    b.appendChild(el('div','lbl','Prompt'));
+    b.appendChild(el('p','ptext', c.prompt));
+    b.appendChild(el('div','lbl','Negative'));
+    b.appendChild(el('p','ntext', c.negative));
+    var a = el('div','acts');
+    a.appendChild(copyBtn('Copy prompt', c.prompt));
+    a.appendChild(copyBtn('Copy negative', c.negative, 'alt'));
+    a.appendChild(copyBtn('Copy both — one box', c.prompt + ' Avoid: ' + c.negative + '.', 'alt'));
+    var mk = el('button','cbtn go', DONE[c.id] ? 'Not done after all' : 'Mark generated');
+    mk.type='button';
+    mk.addEventListener('click', function(){
+      setDone(c.id, !DONE[c.id]);
+      mk.textContent = DONE[c.id] ? 'Not done after all' : 'Mark generated';
+    });
+    a.appendChild(mk);
+    b.appendChild(a);
+    d.appendChild(b);
+    return d;
+  }
+
+  $('stand').innerHTML = 'The script and the prompts in one place, in film order. Read the beat, '
+    + 'generate its clips, tick them off. <b>' + ALL.length + ' clips, ' + D.meta.beats
+    + ' beats, ' + D.meta.minutes + ' minutes of material</b> for a film that cuts to about nine. '
+    + 'Nothing here is a limit on takes — generate a clip as many times as you need and tick it '
+    + 'when you have one you would put in the edit. <b>New here?</b> Read the story and the cast '
+    + 'below first. Ticks are stored per browser, so everyone opening this link keeps their own.';
+
+  // controls
+  var lab = el('label','sw');
+  var cb = document.createElement('input'); cb.type = 'checkbox'; cb.checked = HIDE;
+  lab.appendChild(cb); lab.appendChild(el('i'));
+  lab.appendChild(el('span', null, 'Hide what I have already generated'));
+  cb.addEventListener('change', function(){
+    HIDE = cb.checked; save();
+    ALL.forEach(function(c){
+      var card = document.getElementById('c-' + c.id);
+      if (card) card.style.display = (HIDE && DONE[c.id]) ? 'none' : '';
+    });
+  });
+  $('ctrls').appendChild(lab);
+  var wl = el('label','sw'); wl.appendChild(el('span', null, 'Wording'));
+  var sel = document.createElement('select');
+  [['full','As written'],['fullSafe','Filter-safe'],['fullSafest','Filter-safe, maximum']]
+    .forEach(function(o){
+      var op = document.createElement('option'); op.value = o[0]; op.textContent = o[1];
+      sel.appendChild(op);
+    });
+  sel.value = WORDING;
+  sel.addEventListener('change', function(){
+    WORDING = sel.value;
+    try { localStorage.setItem('gtad.wording', WORDING); } catch(e){}
+    document.querySelectorAll('details.clip').forEach(function(d){
+      var c = BY_ID[d.id.slice(2)];
+      if (!c) return;
+      d.querySelector('.ptext').textContent = c[WORDING] || c.full;
+    });
+  });
+  wl.appendChild(sel); $('ctrls').appendChild(wl);
+  var reset = el('button','cbtn alt','Reset progress'); reset.type='button';
+  reset.addEventListener('click', function(){
+    if (!confirm('Clear every tick? The prompts are untouched.')) return;
+    DONE = {}; save();
+    ALL.forEach(function(c){ setDone(c.id, false); });
+  });
+  $('ctrls').appendChild(reset);
+
+  D.story.forEach(function(s){
+    var d = el('div','st' + (s.spoiler ? ' spoil' : ''));
+    d.appendChild(el('h4', null, s.h));
+    d.appendChild(el('p', null, s.p));
+    $('story').appendChild(d);
+  });
+
+  $('castCount').textContent = D.cast.length + ' people (and one tiger)';
+  D.cast.forEach(function(c){
+    var w = el('div','who'); w.style.setProperty('--pc', c.colour);
+    w.appendChild(el('h5', null, c.name));
+    w.appendChild(el('p','crew', [c.crew, c.clips + ' clips', c.beats.join(', ')]
+      .filter(Boolean).join(' · ')));
+    if (c.role) w.appendChild(el('p','bio', c.role));
+    var dl = document.createElement('dl');
+    if (c.voice){ dl.appendChild(el('dt', null, 'Voice')); dl.appendChild(el('dd', null, c.voice)); }
+    if (c.look){ dl.appendChild(el('dt', null, 'Never changes')); dl.appendChild(el('dd', null, c.look)); }
+    w.appendChild(dl);
+    if (c.note) w.appendChild(el('p','warn', c.note));
+    $('cast').appendChild(w);
+  });
+
+  var ea = el('a', null, 'Elements'); ea.href = '#b-elements';
+  ea.style.setProperty('--jc', '#f5c542');
+  ea.appendChild(el('b', null, (D.elements || []).length));
+  $('jump').appendChild(ea);
+
+  D.beats.forEach(function(b){
+    var a = el('a', null, b.tag);
+    a.href = '#b-' + b.slug; a.style.setProperty('--jc', b.colour);
+    a.appendChild(el('b', null, b.clips.length));
+    $('jump').appendChild(a);
+  });
+
+  if ((D.elements || []).length){
+    var esec = el('section','beat'); esec.id = 'b-elements';
+    esec.style.setProperty('--bc', '#f5c542');
+    var eh = el('div','bhead');
+    eh.appendChild(el('h2', null, 'The element library'));
+    eh.appendChild(el('span','meta', D.elements.length + ' clips · generate once · used at every join'));
+    esec.appendChild(eh);
+    esec.appendChild(el('p','brollhead2', 'People-free, location-free. Tint the flare pass gold, '
+      + 'pink, cyan or violet on the colour page — one render covers all four crews.'));
+    var ew = el('div','clips');
+    D.elements.forEach(function(c){
+      var card = plainCard(c, '#f5c542');
+      if (HIDE && DONE[c.id]) card.style.display = 'none';
+      ew.appendChild(card);
+    });
+    esec.appendChild(ew);
+    $('main').appendChild(esec);
+  }
+
+  D.beats.forEach(function(b){
+    var sec = el('section','beat'); sec.id = 'b-' + b.slug;
+    sec.style.setProperty('--bc', b.colour);
+    var h = el('div','bhead');
+    h.appendChild(el('h2', null, b.tag + ' · ' + b.title));
+    h.appendChild(el('span','meta', b.clips.length + ' clips · ' + b.seconds + 's to generate · '
+      + b.dur + ' on screen' + (b.brollNeeded ? ' · + ' + b.brollNeeded + ' b-roll' : '')));
+    sec.appendChild(h);
+
+    var det = el('details','script');
+    var sm = el('summary'); sm.appendChild(el('span', null, 'The script for this beat'));
+    det.appendChild(sm);
+    var sb = el('div','sbody');
+    if (b.vo){
+      sb.appendChild(el('div','sp','Handler (V.O.)'));
+      b.vo.split('\n').forEach(function(p){ sb.appendChild(el('p','sl', p)); });
+    }
+    if (b.dialogue && b.dialogue.length){
+      sb.appendChild(el('div','sp','In scene'));
+      b.dialogue.forEach(function(l){
+        if (l.action){ sb.appendChild(el('p','act', l.action)); return; }
+        sb.appendChild(el('div','sp', l.who));
+        sb.appendChild(el('p','sl', l.line));
+      });
+    }
+    if (b.turn){
+      sb.appendChild(el('div','sp','◆ The turn — to camera'));
+      b.turn.split('\n').forEach(function(p){ sb.appendChild(el('p','sl turn', p)); });
+    }
+    if (b.gameCard){
+      var g = el('div','gcard'); g.appendChild(document.createTextNode('▮ ' + b.gameCard));
+      if (b.game) g.appendChild(el('b', null, b.game.howItPlays + ' ' + b.game.win
+        + ' (' + b.game.time + ')'));
+      sb.appendChild(g);
+    }
+    det.appendChild(sb);
+    sec.appendChild(det);
+
+    var w = el('div','clips');
+    b.clips.forEach(function(c){
+      var card = clipCard(c);
+      if (HIDE && DONE[c.id]) card.style.display = 'none';
+      w.appendChild(card);
+    });
+    sec.appendChild(w);
+
+    if ((b.broll || []).length){
+      var need = b.broll.filter(function(t){ return t.required; }).length;
+      var bh = el('p','brollhead');
+      bh.appendChild(el('b', null, 'B-roll for this beat'));
+      bh.appendChild(document.createTextNode(need
+        ? need + ' required · ' + (b.broll.length - need) + ' spare · shoot these in the same '
+          + 'session, while the set is locked'
+        : 'nothing required — this beat is already plate-heavy. All ' + b.broll.length + ' are spares.'));
+      sec.appendChild(bh);
+      var bw = el('div','clips');
+      b.broll.forEach(function(t){
+        var card = plainCard(t, t.required ? '#7dffb2' : '#5c5c72');
+        if (HIDE && DONE[t.id]) card.style.display = 'none';
+        bw.appendChild(card);
+      });
+      sec.appendChild(bw);
+    }
+    $('main').appendChild(sec);
+  });
+
+  paintProgress();
+})();
+</script>

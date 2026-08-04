@@ -149,8 +149,6 @@
   .mcard .nm{font-family:"Bebas Neue",Oswald,Impact,sans-serif;font-size:19px;letter-spacing:.5px;
     line-height:1;}
   .mcard .cat{font-size:10px;color:var(--dim);letter-spacing:.06em;margin-top:3px;text-transform:uppercase;}
-  .mcard.on{border-color:var(--primary);background:rgba({{colors.primaryRgb}},.10);}
-  .mcard.on .cat{color:var(--primary);font-weight:800;}
 
   .socials{display:flex;gap:9px;justify-content:center;margin-top:8px;flex-wrap:wrap;}
   .soc{flex:1;min-width:84px;text-align:center;padding:11px;border-radius:11px;text-decoration:none;
@@ -197,7 +195,7 @@
 
     <div id="pollBox" class="pollbox" style="display:none;"></div>
 
-    <div class="h">On Screen Now</div>
+    <div class="h">Tonight's Job</div>
     <div class="job">
       <div class="act" id="jobAct">—</div>
       <div class="code" id="jobCode">—</div>
@@ -205,7 +203,7 @@
     </div>
 
     <div class="trans">
-      <div class="bar"><span class="dot"></span> Your Game — phone up</div>
+      <div class="bar"><span class="dot"></span> Incoming Transmission — The Handler</div>
       <div class="body" id="transBody"></div>
     </div>
 
@@ -217,7 +215,7 @@
       <div class="stars" id="wantedStars"></div>
     </div>
 
-    <div class="h">Tonight's Run — 12 Games</div>
+    <div class="h">Tonight's Jobs</div>
     <div class="mgrid" id="missions"></div>
 
     <div class="btnrow">
@@ -247,13 +245,10 @@
   var chapterNo=parseInt(qs.get('ch'),10)||1;
   var heat=Math.max(1,Math.min(5,parseInt(qs.get('heat'),10)||1));
   var missionIds=(qs.get('m')||'').split(',').map(function(s){return parseInt(s,10);}).filter(Boolean);
+  if(!missionIds.length && SHOW.rotation && SHOW.rotation.firstNight) missionIds=SHOW.rotation.firstNight;
 
-  // The Score runs a locked film: chapterNo is the beat (1..14), and the beat names
-  // its own game — so the guest card never needs a mission list pushed to it.
-  function chapter(n){ return (SHOW.film||[]).filter(function(c){return c.n===n;})[0]||(SHOW.film||[])[0]||{}; }
-  function mission(n){ return (SHOW.games||[]).filter(function(m){return m.n===n;})[0]; }
-  function character(id){ return (SHOW.characters||[]).filter(function(c){return c.id===id;})[0]||{}; }
-  function beatGame(){ var g=chapter(chapterNo).game; return g?mission(g):null; }
+  function chapter(n){ return (SHOW.chapters||[]).filter(function(c){return c.n===n;})[0]||(SHOW.chapters||[])[0]||{}; }
+  function mission(n){ return (SHOW.missions||[]).filter(function(m){return m.n===n;})[0]; }
 
   // ---------- persistent Made Member identity ----------
   function makeId(){
@@ -298,28 +293,21 @@
   }
   var lastChapter=null;
   function renderJob(){
-    var c=chapter(chapterNo), who=character(c.owner);
-    $('jobAct').textContent=(c.tag||'')+(who.name?' · '+who.name:'');
-    $('jobCode').textContent=c.title||'';
-    var g=beatGame();
-    $('jobBrief').innerHTML=g?('<b>'+g.name+':</b> '+(g.howItPlays||'')):('<b>'+(c.satire||'')+'</b>');
-    // The guest card carries the game card — the rules they need — not the film's
-    // narration or the ◆ turn: those land from the screen, in the room, on cue.
-    if(chapterNo!==lastChapter){
-      var card=c.gameCard||'';
-      if(card) typeOut($('transBody'), card);
-    }
+    var c=chapter(chapterNo);
+    $('jobAct').textContent=c.act||'';
+    $('jobCode').textContent=c.codename||'';
+    $('jobBrief').innerHTML='<b>The job:</b> '+(c.job||'');
+    // only (re)play the transmission when the chapter actually changes
+    if(c.transmission && chapterNo!==lastChapter) typeOut($('transBody'), c.transmission);
     lastChapter=chapterNo;
   }
   function renderMissions(){
     var wrap=$('missions'); wrap.innerHTML='';
-    // Show tonight's game run in order, marking the one that's live right now.
-    var live=chapter(chapterNo).game||0;
-    (SHOW.games||[]).forEach(function(m){
-      var el=document.createElement('div'); el.className='mcard'+(m.n===live?' on':'');
+    missionIds.forEach(function(id){
+      var m=mission(id); if(!m) return;
+      var el=document.createElement('div'); el.className='mcard';
       el.innerHTML='<div class="no">'+(m.n<10?'0':'')+m.n+'</div>'+
-        '<div><div class="nm">'+m.name+'</div><div class="cat">'+(m.scene||'')+
-        (m.n===live?' · NOW':'')+'</div></div>';
+        '<div><div class="nm">'+m.name+'</div><div class="cat">'+(m.category||'')+' · '+(m.gtaRef||'')+'</div></div>';
       wrap.appendChild(el);
     });
   }

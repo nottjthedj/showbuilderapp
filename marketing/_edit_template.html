@@ -1,0 +1,226 @@
+<title>The Score — the assembly</title>
+<style>
+  :root{
+    color-scheme: dark;
+    --ground:#08080b; --panel:#0e0e14; --panel2:#12121a;
+    --line:rgba(255,255,255,.10); --ink:#f4f4f8; --mut:#8f8fa6; --dim:#5c5c72;
+    --cyan:#00e5ff; --pink:#ff2d9b; --gold:#f5c542; --warn:#ff5a6e; --go:#7dffb2;
+    --display:"Haettenschweiler","Arial Narrow Bold",Impact,"Franklin Gothic Bold",sans-serif;
+    --body:ui-sans-serif,system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Courier New",monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:radial-gradient(120% 60% at 50% -10%,#16121c 0%,var(--ground) 60%) no-repeat,var(--ground);
+    color:var(--ink);font-family:var(--body);line-height:1.6;padding:0 0 100px;}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.045;
+    background:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 3px);}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px;position:relative;z-index:1;}
+
+  header{padding:44px 0 6px;}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);margin:0 0 12px;}
+  h1{font-family:var(--display);font-weight:400;text-transform:uppercase;
+    font-size:clamp(38px,8vw,80px);line-height:.88;margin:0;letter-spacing:.02em;}
+  h1 .a{color:transparent;-webkit-text-stroke:1.5px var(--gold);text-shadow:0 0 18px rgba(245,197,66,.4);}
+  h1 .b{color:transparent;-webkit-text-stroke:1.5px var(--cyan);text-shadow:0 0 18px rgba(0,229,255,.45);}
+  .standfirst{color:var(--mut);font-size:16px;max-width:70ch;margin:18px 0 0;}
+  .standfirst b{color:var(--ink);font-weight:600;}
+
+  .nums{display:flex;gap:28px;flex-wrap:wrap;margin:26px 0 0;padding:17px 20px;
+    border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.022);}
+  .nums div{min-width:100px;}
+  .nums b{display:block;font-family:var(--display);font-weight:400;font-size:32px;line-height:1;}
+  .nums span{font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);}
+
+  h2.sec{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(22px,3.2vw,30px);
+    margin:44px 0 4px;letter-spacing:.02em;}
+  ol.how{margin:14px 0 0;padding-left:20px;color:var(--mut);font-size:15px;max-width:80ch;}
+  ol.how li{margin:0 0 9px;}
+  ol.how b{color:var(--ink);}
+
+  .jump{position:sticky;top:0;z-index:60;display:flex;gap:6px;flex-wrap:wrap;align-items:center;
+    padding:12px 0;background:linear-gradient(180deg,rgba(8,8,11,.97) 74%,rgba(8,8,11,0));margin-top:24px;}
+  .jump a{font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+    border:1px solid var(--jc);color:var(--jc);border-radius:99px;padding:7px 11px;text-decoration:none;}
+  .jump a b{color:var(--ink);font-weight:400;margin-left:5px;}
+
+  section.beat{scroll-margin-top:62px;margin:34px 0 0;border-top:2px solid var(--bc);padding-top:18px;}
+  .bhead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;}
+  .bhead h3{font-family:var(--display);font-weight:400;text-transform:uppercase;
+    font-size:clamp(22px,4vw,38px);margin:0;color:var(--bc);letter-spacing:.02em;}
+  .bhead .meta{font-family:var(--mono);font-size:10.5px;color:var(--dim);letter-spacing:.12em;
+    text-transform:uppercase;margin-left:auto;}
+
+  .rows{margin:14px 0 0;border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .row{display:grid;grid-template-columns:74px 84px 1fr 92px;gap:14px;align-items:start;
+    padding:11px 14px;border-bottom:1px solid var(--line);background:var(--panel2);}
+  .row:last-child{border-bottom:none;}
+  .row.ready{background:linear-gradient(90deg,rgba(125,255,178,.07),transparent 40%);}
+  .tc{font-family:var(--mono);font-size:12.5px;color:var(--dim);letter-spacing:.03em;padding-top:2px;}
+  .idc{font-family:var(--mono);font-size:13px;color:var(--ink);letter-spacing:.04em;padding-top:1px;}
+  .idc small{display:block;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--rc);margin-top:3px;}
+  .mid p{margin:0;}
+  .aud{font-size:14.5px;color:#dfe3ea;line-height:1.45;}
+  .aud.vo{color:var(--mut);font-style:italic;}
+  .note{font-size:12.5px;color:var(--dim);margin-top:5px;line-height:1.45;}
+  .len{text-align:right;font-family:var(--mono);font-size:12px;color:var(--ink);padding-top:2px;}
+  .len small{display:block;color:var(--dim);font-size:10.5px;margin-top:3px;}
+  .flag{display:inline-block;font-family:var(--mono);font-size:8px;letter-spacing:.13em;
+    text-transform:uppercase;border:1px solid var(--go);color:var(--go);border-radius:4px;
+    padding:1px 5px;margin-left:8px;vertical-align:1px;}
+
+  .mark{padding:13px 15px;background:var(--panel);border-top:1px solid var(--bc);}
+  .mark .card{font-family:var(--mono);font-size:12.5px;color:var(--bc);line-height:1.55;}
+  .mark .mus{font-size:13px;color:var(--mut);margin-top:8px;line-height:1.55;}
+  .mark .mus b{color:var(--ink);font-weight:600;}
+  .mark .tot{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--dim);margin-top:8px;}
+
+  .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;}
+  .cbtn{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;
+    border:1px solid var(--cyan);background:transparent;color:var(--cyan);border-radius:7px;padding:9px 14px;cursor:pointer;}
+  .cbtn:hover{background:rgba(0,229,255,.12);}
+  .cbtn.alt{border-color:var(--line);color:var(--mut);}
+
+  footer{margin-top:60px;padding-top:22px;border-top:1px solid var(--line);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--dim);line-height:1.9;}
+  @media (max-width:700px){ .row{grid-template-columns:64px 1fr;} .len{grid-column:2;text-align:left;} }
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Grand Theft After-Dark · “The Score” · cut order</p>
+    <h1><span class="a">The</span><br><span class="b">Assembly</span></h1>
+    <p class="standfirst" id="stand"></p>
+    <div class="nums" id="nums"></div>
+    <div class="acts" id="acts"></div>
+  </header>
+
+  <h2 class="sec">How to assemble it</h2>
+  <ol class="how" id="how"></ol>
+
+  <div class="jump" id="jump"></div>
+  <div id="main"></div>
+
+  <footer>
+    GRAND THEFT AFTER-DARK · “THE SCORE” · marketing/edit-list.json<br>
+    Independent fan tribute event. Not affiliated with, endorsed by, or sponsored by Rockstar Games,
+    Take-Two Interactive, or any related entity.
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var D = /*__DATA__*/null;
+  var $ = function(id){ return document.getElementById(id); };
+  function el(t,c,x){ var n=document.createElement(t); if(c)n.className=c; if(x!=null)n.textContent=x; return n; }
+  function copyBtn(label, text, cls){
+    var b = el('button','cbtn'+(cls?' '+cls:''), label); b.type='button';
+    b.addEventListener('click', function(){
+      if (navigator.clipboard) navigator.clipboard.writeText(text);
+      var o=b.textContent; b.textContent='Copied';
+      setTimeout(function(){ b.textContent=o; }, 1200);
+    });
+    return b;
+  }
+  var ROLE_C = { ESTABLISH:'#8f8fa6', BUILD:'#00e5ff', INSERT:'#f5c542', APPROACH:'#ff8ac4',
+                 TURN:'#ff2d9b', HOLD:'#ff2d9b', OUT:'#a06bff', 'POST-CREDIT':'#ff5a6e' };
+
+  // The hub stores which clips are generated; same browser, so the assembly can show it.
+  var DONE = {};
+  try { DONE = JSON.parse(localStorage.getItem('gtad.done') || '{}'); } catch(e){}
+  var ready = D.timeline.filter(function(r){ return !r.marker && DONE[r.id]; }).length;
+
+  $('stand').innerHTML = 'The same clips in <b>cut order</b>, with a target length and a running '
+    + 'clock. The order is the film\'s and it is locked — the app fires the games in this sequence, '
+    + 'so a beat moved here is a beat moved in the room. The lengths are a first pass: each beat\'s '
+    + 'on-screen duration shared across its clips. <b>The edit decides.</b>';
+
+  [[D.meta.runtimeText, 'finished runtime'], [D.meta.clips, 'clips in the cut'],
+   [D.meta.shootRatio + '×', 'shot vs used'],
+   [ready + ' / ' + D.meta.clips, 'generated so far']].forEach(function(p){
+    var d = el('div'); d.appendChild(el('b', null, p[0]));
+    d.appendChild(el('span', null, p[1])); $('nums').appendChild(d);
+  });
+
+  D.howToAssemble.forEach(function(t){
+    var li = el('li'), i = t.indexOf('.');
+    li.appendChild(el('b', null, t.slice(0, i+1)));
+    li.appendChild(document.createTextNode(' ' + t.slice(i+1).trim()));
+    $('how').appendChild(li);
+  });
+
+  var plain = D.timeline.map(function(r){
+    if (r.marker) return '--- ' + r.tc + '  ▮ ' + (r.card || 'end of ' + r.beat)
+      + '  [' + r.beat + ' ran ' + r.length + 's of ' + r.target + 's] ---';
+    return r.tc + '\t' + r.id + '\t' + r.role + '\t' + r.cut + 's (of ' + r.generated + 's)\t'
+      + r.audio;
+  }).join('\n');
+  $('acts').appendChild(copyBtn('Copy the whole assembly', plain));
+
+  var beats = [];
+  D.timeline.forEach(function(r){ if (beats.indexOf(r.beat) < 0) beats.push(r.beat); });
+  var COL = {};
+  beats.forEach(function(b, i){
+    COL[b] = ['#9a9ab0','#ff5a6e','#00e5ff','#ff2d9b','#f5c542','#a06bff','#f5c542','#a06bff',
+              '#ff2d9b','#00e5ff','#f5c542','#00e5ff','#ffd36b','#ff2d9b'][i] || '#8f8fa6';
+    var a = el('a', null, b); a.href = '#e-' + b.replace(/\s+/g,'');
+    a.style.setProperty('--jc', COL[b]);
+    $('jump').appendChild(a);
+  });
+
+  beats.forEach(function(bt){
+    var mine = D.timeline.filter(function(r){ return r.beat === bt; });
+    var marker = mine.filter(function(r){ return r.marker; })[0];
+    var clips = mine.filter(function(r){ return !r.marker; });
+    var sec = el('section','beat'); sec.id = 'e-' + bt.replace(/\s+/g,'');
+    sec.style.setProperty('--bc', COL[bt]);
+    var h = el('div','bhead');
+    h.appendChild(el('h3', null, bt + ' · ' + clips[0].beatTitle));
+    h.appendChild(el('span','meta', 'starts ' + clips[0].tc + ' · ' + clips.length + ' cuts · '
+      + (marker ? marker.length + 's' : '')));
+    sec.appendChild(h);
+
+    var box = el('div','rows');
+    clips.forEach(function(r){
+      var row = el('div','row' + (DONE[r.id] ? ' ready' : ''));
+      row.style.setProperty('--rc', ROLE_C[r.role] || '#8f8fa6');
+      row.appendChild(el('div','tc', r.tc));
+      var idc = el('div','idc', r.id); idc.appendChild(el('small', null, r.role));
+      row.appendChild(idc);
+      var mid = el('div','mid');
+      var isVO = r.audio.indexOf('V.O.:') === 0;
+      var p = el('p','aud' + (isVO ? ' vo' : ''), r.audio);
+      if (DONE[r.id]) p.appendChild(el('span','flag','generated'));
+      mid.appendChild(p);
+      if (r.note) mid.appendChild(el('p','note', r.note));
+      row.appendChild(mid);
+      var len = el('div','len', r.cut + 's');
+      len.appendChild(el('small', null, 'of ' + r.generated + 's — trim ' + r.trim + 's'));
+      row.appendChild(len);
+      box.appendChild(row);
+    });
+    if (marker){
+      var mk = el('div','mark');
+      if (marker.card) mk.appendChild(el('p','card', '▮ ' + marker.card + '  — add in post'));
+      var m = marker.music || {};
+      if (m.bed || m.duck || m.drop){
+        var mus = el('p','mus');
+        [['Bed', m.bed], ['Duck', m.duck], ['Drop', m.drop], ['Station', m.station]]
+          .forEach(function(pair){
+            if (!pair[1]) return;
+            mus.appendChild(el('b', null, pair[0] + ': '));
+            mus.appendChild(document.createTextNode(pair[1] + '  '));
+          });
+        mk.appendChild(mus);
+      }
+      mk.appendChild(el('p','tot', bt + ' runs ' + marker.length + 's against a ' + marker.target
+        + 's target · clock now ' + marker.tc));
+      box.appendChild(mk);
+    }
+    sec.appendChild(box);
+    $('main').appendChild(sec);
+  });
+})();
+</script>

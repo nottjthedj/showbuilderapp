@@ -1,0 +1,673 @@
+{
+  "meta": {
+    "name": "Grand Theft After-Dark — the daily transmissions",
+    "what": "A 30-day daily lore series narrated by TJ (the Handler), the show's marketing face. One post a day, 30–60 seconds, shot to camera. Each one teaches exactly one thing and ends with one ask.",
+    "arc": [
+      "Week 1 — the world (what is this, why should I care)",
+      "Week 2 — the crews (pick a side)",
+      "Week 3 — the people (fall in love with them)",
+      "Week 4 — the games and the ask (now buy a ticket)"
+    ],
+    "ladders": "Every post seeds something the room meets on the night — see brands/gtad.show.json"
+  },
+  "format": {
+    "shape": [
+      "0:00–0:03  HOOK — TJ already mid-thought. One line that opens a question.",
+      "0:03–0:20  THE LORE — exactly one fact about the world. Never two.",
+      "0:20–0:45  THE TURN — tie it to the room, the night, or the viewer.",
+      "0:45–0:60  THE ASK — one action. Never two."
+    ],
+    "hookRules": [
+      "Start mid-sentence. Never 'hey guys', never 'welcome to', never say the format's name.",
+      "Lead with a number, a name, or a contradiction.",
+      "Say the thing that sounds like it shouldn't be said out loud.",
+      "The on-screen text is NOT the spoken line — it's the punch under it.",
+      "If the first frame needs context to make sense, it's not a hook."
+    ],
+    "craft": [
+      "Shot to camera, TJ lit hard against black with one neon rim in the crew's colour.",
+      "Hard cut in — no logo sting at the front. Brand at the END or nowhere.",
+      "Burned-in captions always: most of this is watched on mute.",
+      "9:16, one idea per post. If it needs two, it's two posts.",
+      "Period film look for the world b-roll (1977–1983); TJ himself is present-day."
+    ]
+  },
+  "shareEngine": {
+    "principle": "Nobody shares an advert for a party. They share a thing that says something about them, a thing that settles an argument, or a thing they can't believe.",
+    "mechanisms": [
+      {
+        "name": "Identity — pick a colour",
+        "why": "Choosing a faction is a self-description, and self-descriptions get posted. Four crews means four tribes recruiting for you, for free.",
+        "posts": [
+          3,
+          8,
+          10,
+          12,
+          14,
+          29
+        ]
+      },
+      {
+        "name": "Argument — my crew beats your crew",
+        "why": "Rivalry is the cheapest engagement there is. Every crew post is written to bait the other three.",
+        "posts": [
+          10,
+          12,
+          14,
+          26,
+          29
+        ]
+      },
+      {
+        "name": "Secret — never explain the myth",
+        "why": "Sharing a mystery signals you're on the inside. The moment it's explained, it stops moving.",
+        "posts": [
+          7,
+          22
+        ]
+      },
+      {
+        "name": "Tag-a-friend — the characters are people they know",
+        "why": "Vinnie, Problem and Kayleigh exist to be someone's mate, someone's cousin, someone's colleague. This is the format that escapes your own audience.",
+        "posts": [
+          9,
+          16,
+          17,
+          19
+        ]
+      },
+      {
+        "name": "Disbelief — the tiger",
+        "why": "An animal outsmarting two crime families is the single most forwardable thing in this world. Do not overthink it, do not over-explain it.",
+        "posts": [
+          11,
+          18
+        ]
+      },
+      {
+        "name": "Flex — you're made now",
+        "why": "The crew card, the member number and the leaderboard are post-event proof. The audience makes the recap content for you.",
+        "posts": [
+          23,
+          28,
+          30
+        ]
+      }
+    ],
+    "cadence": "One post a day for 30 days, timed to land on the event. Day 15 and day 28 are the two to put money behind — 15 because the crews are all established by then, 28 because it's the payoff.",
+    "reply": "TJ replies in character, always. Never break it. A comment answered by the Handler is worth more than a hundred impressions, and people screenshot it.",
+    "ugc": "After the night: repost the room's own footage under the same voice. The crowd becomes the cast, which is the whole thesis of the show anyway."
+  },
+  "posts": [
+    {
+      "day": 1,
+      "phase": "The World",
+      "title": "What After-Dark Is",
+      "colour": "#9a9ab0",
+      "hook": "There's a vault in this city with eight figures in it, and in fifty years nobody's opened it.",
+      "onScreenText": "8 FIGURES. 50 YEARS. STILL LOCKED.",
+      "script": "There's a vault in this city with eight figures in it, and in fifty years nobody has opened it.\nNot because they can't find it. Everybody knows where it is.\nBecause of how it locks — and I'll get to that.\nMy name's TJ. Four gangs run this city and all four of them want what's in that room. On the night, they're all going to be in the same building trying to take it.\nSo are you.\nThat's Grand Theft After-Dark. Follow this, because from here I'm telling you the whole thing — who they are, how it works, and how you end up in the middle of it.",
+      "runtimeSec": 44,
+      "words": 110,
+      "shots": [
+        "gloved hand on wet glass, neon",
+        "aerial over four glowing districts",
+        "a vault door, one hard light"
+      ],
+      "caption": "Fifty years. Nobody's opened it. That changes on one night. #GrandTheftAfterDark",
+      "cta": "Follow — the whole story drops daily.",
+      "shareTrigger": "Curiosity gap: a locked thing with a reason nobody's guessed yet."
+    },
+    {
+      "day": 2,
+      "phase": "The World",
+      "title": "The Vault",
+      "colour": "#e0e0ea",
+      "hook": "Everybody asks me what's actually in the vault. Wrong question.",
+      "onScreenText": "WRONG QUESTION.",
+      "script": "Everybody asks me what's actually in the vault. That's the wrong question.\nThe right question is why nobody's ever got it out.\nIt's eight figures. It's been eight figures the whole time. It sits under a building downtown that nobody photographs, and the men who put it there are fifty years dead.\nThey didn't trust each other. Not one of them, not for a second. So they didn't build a safe — they built an argument, and they made it out of steel.\nTomorrow I'll show you what that means.",
+      "runtimeSec": 36,
+      "words": 90,
+      "shots": [
+        "macro: steel vault door seams",
+        "dust in a hard overhead beam",
+        "an empty concrete chamber, distant"
+      ],
+      "caption": "It's not a safe. It's an argument made out of steel.",
+      "cta": "Come back tomorrow.",
+      "shareTrigger": "Cliffhanger — a promise with a date on it."
+    },
+    {
+      "day": 3,
+      "phase": "The World",
+      "title": "Four Keys",
+      "colour": "#ffd36b",
+      "hook": "The vault takes four keys. That's the whole problem.",
+      "onScreenText": "FOUR KEYS. ONE MINUTE.",
+      "script": "The vault takes four keys.\nFour colours, four turns, and every one of them has to happen inside the same minute. Miss the window and the whole thing re-locks for another day.\nOne key each went to the four families that built this city. Gold. Pink. Cyan. Violet.\nWhich means no crew in this city can open that vault alone. Not the oldest one, not the richest one, not the one with the tiger.\nThey need each other.\nThey have never hated anything more in their lives.",
+      "runtimeSec": 35,
+      "words": 87,
+      "shots": [
+        "four coloured key-turns, macro, no faces",
+        "four lit windows in four districts",
+        "a four-colour lock ring glowing"
+      ],
+      "caption": "Four keys. Four crews. Nobody gets it alone. Which one are you? #GTAD",
+      "cta": "Gold, pink, cyan or violet — comment your colour.",
+      "shareTrigger": "Identity + argument: people pick a side and defend it."
+    },
+    {
+      "day": 4,
+      "phase": "The World",
+      "title": "Why Tonight",
+      "colour": "#ffd36b",
+      "hook": "The President is throwing a party in the same building as the vault. Nobody thinks that's an accident.",
+      "onScreenText": "ONE ROOM. FOUR KEYS.",
+      "script": "The President is throwing a gala. He's calling it a night of unity — a city standing together against crime. There'll be a podium, a banner, and a man in a navy suit telling a room full of criminals how tough he is on criminals.\nThe gala is in the building. The vault is in that building.\nEvery crew got an invitation. And every crew knows the other three got one too.\nOne night. One room. All four keys in the same place for the first time in fifty years.\nNobody thinks that's an accident. Nobody can prove it isn't.",
+      "runtimeSec": 40,
+      "words": 100,
+      "shots": [
+        "WAR ON CRIME banner over a podium",
+        "four-colour ballroom, distant blurred crowd",
+        "a motorcade gliding past, distant"
+      ],
+      "caption": "A night of unity, he's calling it. In the same building as the vault. Sure.",
+      "cta": "Tickets in bio.",
+      "shareTrigger": "Conspiracy hook — invites the audience to spot the setup."
+    },
+    {
+      "day": 5,
+      "phase": "The World",
+      "title": "Why You",
+      "colour": "#00e5ff",
+      "hook": "Four crews are recruiting off the floor that night. That's not a metaphor.",
+      "onScreenText": "THEY'RE SHORT ON HANDS.",
+      "script": "Here's the part the four of them don't advertise.\nA key gets you a turn. It doesn't get you the room.\nFour crews, one night, and not one of them has enough hands — not enough people to hold a floor, run a job, move a package, or crack a four-colour code while three other crews are doing the same thing.\nSo all four of them are recruiting. In that building. Off that floor. From whoever shows up.\nThat's you. You pick a colour at the door and you're theirs for the night.\nYou're not watching this one. You're in it.",
+      "runtimeSec": 40,
+      "words": 101,
+      "shots": [
+        "a crowded neon floor, faces out of focus",
+        "a hand taking a coloured wristband",
+        "four colour-lit crowd pockets"
+      ],
+      "caption": "You don't watch this one. You get recruited.",
+      "cta": "Pick your colour at the door.",
+      "shareTrigger": "Participation promise — the reason to bring people."
+    },
+    {
+      "day": 6,
+      "phase": "The World",
+      "title": "The Two Rules",
+      "colour": "#ff2d9b",
+      "hook": "There are two rules that night and I'm only saying them once.",
+      "onScreenText": "TWO RULES.",
+      "script": "There are two rules that night. I'm only saying them once.\nDon't get wasted.\nDon't get busted.\nThat's it. That's the list.\nAnd I know how simple that sounds. Every single night, somebody in that building manages to break both of them before midnight, and every single night it's the one who told me they wouldn't.\nEverything else — the crews, the keys, the vault, the games — all of that is going to be explained to you by people who are lying to you.\nThe only voice in that room you can trust is coming out of the booth.\nThat's me.",
+      "runtimeSec": 41,
+      "words": 102,
+      "shots": [
+        "TJ to camera, hard key, black three-piece",
+        "booth silhouette, magenta rim light",
+        "crowd, hands up, motion blur"
+      ],
+      "caption": "Don't get wasted. Don't get busted. That's the whole list.",
+      "cta": "Say it back to me.",
+      "shareTrigger": "A chantable catchphrase — the room repeats it, the comments repeat it."
+    },
+    {
+      "day": 7,
+      "phase": "The World",
+      "title": "The Man With No Face",
+      "colour": "#8f8fa6",
+      "hook": "Ask any of the four who really runs this city and watch what happens to their face.",
+      "onScreenText": "THEY GO QUIET.",
+      "script": "Ask any of the four crews who really runs this city. Watch what happens.\nThey go quiet.\nThen, if they like you, they'll tell you about a man in a black three-piece suit who has never been photographed. Black gloves. Always turned away.\nThe Corvettis are certain he takes a cut. Rico swears he's been inside the house. The Firm has a file on him with nothing in it.\nFour crews. Four keys. And every one of them looking over their shoulder at a man none of them can name.\nI'd tell you what I know.\nYou should probably hear that part in person.",
+      "runtimeSec": 42,
+      "words": 104,
+      "shots": [
+        "black-gloved hand, extreme close, wet neon",
+        "CCTV static over a dark lobby",
+        "a lit penthouse window from far below"
+      ],
+      "caption": "Four crews. Not one of them will say his name out loud.",
+      "cta": "Who do you think he is?",
+      "shareTrigger": "Secret-keeping — sharing signals you're in on something."
+    },
+    {
+      "day": 8,
+      "phase": "The Crews",
+      "title": "The Corvettis",
+      "colour": "#f5c542",
+      "hook": "The oldest crew in this city has never raised its voice. Not once.",
+      "onScreenText": "GOLD. THE CORVETTIS.",
+      "script": "The Corvettis got here first. Off the boats, onto the docks, into the restaurants, and eventually into everything — quietly, over three generations, one favour at a time.\nDon Salvatore Corvetti runs them the way his father did. Nothing written down. Nothing said twice. A back room behind a restaurant where the light is always warm and the conversation is always short.\nTheir whole economy is respect. The money is just how they keep score.\nThey hold the gold key. They've held it for fifty years.\nAnd they have never once had to ask for anything twice.",
+      "runtimeSec": 39,
+      "words": 97,
+      "shots": [
+        "gold-lit waterfront, wet cobbles, fog",
+        "warm gold back room, checkered cloth",
+        "a gold pinky ring, macro"
+      ],
+      "caption": "Three generations. Nothing written down. GOLD — the Corvettis. #GTAD",
+      "cta": "Gold crew, say something.",
+      "shareTrigger": "Faction recruitment — the first of four; people start claiming."
+    },
+    {
+      "day": 9,
+      "phase": "The Crews",
+      "title": "The Don",
+      "colour": "#f5c542",
+      "hook": "He was asked what the drop was. He ate a cannoli and thought about it for a full ten seconds.",
+      "onScreenText": "\"…RESPECT. AND ALSO THE DROP.\"",
+      "script": "Don Salvatore Corvetti. Sally Cufflinks. Past seventy-five, and he has never once raised his voice, because he has never had to.\nHis son Vinnie sweats through every shirt he owns and asks questions the Don finds exhausting.\nSo the Don tells him: take the product. Don't look at the product. Don't talk about the product. Move it, and make the drop.\nAnd Vinnie — God help him — asks what the drop is.\nThe old man eats a cannoli. Thinks about it. Long enough that it gets uncomfortable.\nAnd he says: respect. And also the drop.",
+      "runtimeSec": 38,
+      "words": 96,
+      "shots": [
+        "elderly don at a table, gold light, quiet menace",
+        "a cannoli, macro, warm",
+        "a sweating man in an open collar"
+      ],
+      "caption": "\"Pop… what's the drop?\" — a question you only ask once.",
+      "cta": "Tag the Vinnie in your crew.",
+      "shareTrigger": "Tag-a-friend: the character is a person everyone knows."
+    },
+    {
+      "day": 10,
+      "phase": "The Crews",
+      "title": "Los Halcóns",
+      "colour": "#ff2d9b",
+      "hook": "This crew has never hidden anything in their lives and they're not going to start now.",
+      "onScreenText": "PINK. LOS HALCÓNS.",
+      "script": "Los Halcóns came up through the marina in the eighties, and they did not come up quietly.\nWhere the Corvettis hide, the Halcóns announce. White suits. Neon on the water. A mansion you can see from the bridge and a tiger in the front room.\nRico Delgado believes the loudest crew wins, and for twenty years he's been proven right often enough to never seriously consider the alternative.\nIf you have to ask whether something in this city is theirs — it isn't.\nThey hold the pink key.\nThey'd like everyone to know that.",
+      "runtimeSec": 38,
+      "words": 94,
+      "shots": [
+        "hot-pink neon marina, black yachts, palms",
+        "mirrored mansion glowing through rain",
+        "a gold falcon medallion, macro"
+      ],
+      "caption": "If you have to ask whether it's theirs, it isn't. PINK — Los Halcóns.",
+      "cta": "Pink crew — make some noise.",
+      "shareTrigger": "Faction rivalry: directly baits the gold crew."
+    },
+    {
+      "day": 11,
+      "phase": "The Crews",
+      "title": "Rico",
+      "colour": "#ff2d9b",
+      "hook": "Somebody shot at Rico Delgado in his own house and he did not blink. He was insulted.",
+      "onScreenText": "NOT SCARED. INSULTED.",
+      "script": "Rico Delgado. El Halcón. What happens when confidence stops asking permission.\nWhite linen suit open to the middle of his chest. A gold falcon on a chain. A scar over one eyebrow. And a full-grown Bengal tiger named Sugar who lies on the white couch and does not care about any of this.\nSomebody sent targets to his house. A round went past his cheek — close enough to feel it — and he did not blink.\nHe wasn't frightened. He was insulted.\nHe turned to the tiger and said: you believe this? After everything I do for this city?",
+      "runtimeSec": 40,
+      "words": 100,
+      "shots": [
+        "white suit inside a storm of neon tracer fire",
+        "tiger on a white couch, unbothered",
+        "mirrors and muzzle-flash, no faces"
+      ],
+      "caption": "\"You believe this, Sugar? After everything I do for this city?\"",
+      "cta": "Which crew would you actually survive in?",
+      "shareTrigger": "Disbelief + humour — the tiger does the sharing."
+    },
+    {
+      "day": 12,
+      "phase": "The Crews",
+      "title": "The Street Kings",
+      "colour": "#00e5ff",
+      "hook": "Everyone gets this crew wrong. They never wanted the city.",
+      "onScreenText": "CYAN. THE STREET KINGS.",
+      "script": "Everybody gets the Street Kings wrong.\nThey never wanted the city. That's the part the other three can't process.\nMarcus Wells wanted the block — and the block is what he has. Every corner of it. Loyal. And nobody had to be frightened into it.\nThey're the only crew in this whole story that people join because they actually want to.\nCars, corners, hydraulics and the coolest three minutes of music in any room they walk into.\nThey hold the cyan key.\nAnd if this whole thing goes wrong, they're the crew you want standing next to you.",
+      "runtimeSec": 39,
+      "words": 98,
+      "shots": [
+        "cyan-lit block, chrome lowrider on hydraulics",
+        "murals, corner-store glow, wet asphalt",
+        "a convoy pulling into neon night"
+      ],
+      "caption": "The only crew people join because they want to. CYAN.",
+      "cta": "Cyan crew — where you at?",
+      "shareTrigger": "Underdog identity: the sympathetic pick, easy to champion."
+    },
+    {
+      "day": 13,
+      "phase": "The Crews",
+      "title": "Marcus",
+      "colour": "#00e5ff",
+      "hook": "Four cop cars in the mirror and this man's only problem is his passenger.",
+      "onScreenText": "\"PROBLEM. PUT THE TACO DOWN.\"",
+      "script": "Marcus Wells. Big Deal. The calmest man in this entire story.\nFresh fade. One gold chain. A chrome-and-cyan lowrider sitting on hydraulics. Marcus has never needed to prove anything to anybody, which is exactly why nobody tries him.\nOne cop in the mirror. Then four. Then a helicopter.\nAnd riding shotgun is Lil' Problem, who has not noticed any of this, because he is deep into a plan for a taco empire funded entirely by money nobody has stolen yet.\nMarcus doesn't raise his voice either. He just says: Problem. Put the taco down and drive.",
+      "runtimeSec": 38,
+      "words": 96,
+      "shots": [
+        "POV windshield, neon rushing, police lights behind",
+        "lowrider peeling out, low tracking",
+        "rear-view mirror full of red-blue"
+      ],
+      "caption": "One cop. Then four. Then a helicopter. And Problem's still talking about tacos.",
+      "cta": "Tag your Lil' Problem.",
+      "shareTrigger": "Relatable duo — the comedy travels further than the lore."
+    },
+    {
+      "day": 14,
+      "phase": "The Crews",
+      "title": "The Firm",
+      "colour": "#a06bff",
+      "hook": "The newest crew in this city bought their way in, and nobody has forgiven them for it.",
+      "onScreenText": "VIOLET. THE FIRM.",
+      "script": "The Firm bought their way in.\nNo history. No neighbourhood. No bodies. Just a glass tower, a great deal of other people's money, and a founder who will tell you at length that he has reinvented theft.\nThey're the newest crew, the richest crew, and by a considerable margin the least liked.\nThe other three call them tourists. The Firm calls the other three legacy infrastructure.\nThey hold the violet key. They also have a slide deck about the violet key.\nAnd here's the uncomfortable part: they're not wrong about very much.",
+      "runtimeSec": 37,
+      "words": 92,
+      "shots": [
+        "cold violet glass towers, one lit floor high up",
+        "a wall of surveillance monitors, screen glow",
+        "a business card straightened, macro"
+      ],
+      "caption": "The other three call them tourists. They call the other three legacy infrastructure.",
+      "cta": "Violet crew — defend yourselves.",
+      "shareTrigger": "Villain faction: people love picking the hated one."
+    },
+    {
+      "day": 15,
+      "phase": "The Crews",
+      "title": "Preston",
+      "colour": "#a06bff",
+      "hook": "He's reinvented theft. No masks, no guns. He calls it a proprietary infiltration solution.",
+      "onScreenText": "IT'S IN PRIVATE BETA.",
+      "script": "Preston Ashford Sterling the Third has reinvented theft.\nNo masks. No guns. Just — his words — a proprietary infiltration solution. He calls it Breach. It is currently in private beta.\nHe demoed it once. It shrieked in his hands, the room went emergency red, and his analyst Kayleigh — standing on the other side of the bench already holding a defused one — did not look up.\nHe called it a soft launch.\nAnd when he asked her who in this city was leaking, she said: it's you, Preston. You post everything.\nHe took that as engagement.",
+      "runtimeSec": 39,
+      "words": 98,
+      "shots": [
+        "black turtleneck fumbling a wired device",
+        "violet room flipping emergency red",
+        "an analyst with a tablet, bored, unbothered"
+      ],
+      "caption": "\"That was a soft launch.\" #GTAD",
+      "cta": "Every office has one. Name them.",
+      "shareTrigger": "Recognition humour — everyone has worked for this man."
+    },
+    {
+      "day": 16,
+      "phase": "The People",
+      "title": "Vinnie the Veal",
+      "colour": "#f5c542",
+      "hook": "This man has one job and he has already asked three questions about it.",
+      "onScreenText": "ONE JOB. THREE QUESTIONS.",
+      "script": "Vinnie the Veal. The Don's son. Slicked hair, open collar, gold chain, and a shirt he is sweating through in real time.\nVinnie has one job on the night: move the product, make the drop, don't ask what it is.\nSo far Vinnie has asked what it is three times.\nHis father has explained it to him twice, and the second explanation was worse than the first.\nI want to be clear that the Corvettis are the most feared crew in this city, and their succession plan is this guy.",
+      "runtimeSec": 36,
+      "words": 90,
+      "shots": [
+        "a sweating man in an open collar, gold light",
+        "a briefcase on a checkered tablecloth",
+        "the don's hand, dismissive, macro"
+      ],
+      "caption": "The most feared crew in the city. This is the succession plan.",
+      "cta": "Every family's got a Vinnie.",
+      "shareTrigger": "Family-tag humour — the most re-shareable format there is."
+    },
+    {
+      "day": 17,
+      "phase": "The People",
+      "title": "Lil' Problem",
+      "colour": "#00e5ff",
+      "hook": "He's already spent the vault money. In his head. On tacos.",
+      "onScreenText": "A TACO *EMPIRE*.",
+      "script": "Lil' Problem. Cyan tracksuit, gold rope, permanently mid-sentence, permanently eating.\nProblem has already spent the vault money. In his head. On tacos.\nNot a taco truck — he wants that on record. A fleet. A taco empire.\nHe has done no maths on this. He has, however, already picked the name and thought about the logo.\nAnd when someone suggested he might boost the getaway car himself — that it might be his origin story — Marcus had to explain to him, gently, that it's a Honda.\nProblem's response: a legendary Honda.",
+      "runtimeSec": 37,
+      "words": 92,
+      "shots": [
+        "cyan corner, a man mid-laugh holding food",
+        "a beat-up Honda under neon, hero angle",
+        "hands gesturing a plan, no face"
+      ],
+      "caption": "\"…A *legendary* Honda.\"",
+      "cta": "Tag whoever's already spending it.",
+      "shareTrigger": "Pure comedy clip — the one that escapes the fanbase."
+    },
+    {
+      "day": 18,
+      "phase": "The People",
+      "title": "Sugar",
+      "colour": "#ff2d9b",
+      "hook": "During a fifty-fifty handshake between two crime families, the tiger robbed both of them.",
+      "onScreenText": "NOBODY NOTICED.",
+      "script": "Two crews. One table. A fifty-fifty split, agreed like brothers, with a handshake neither man was willing to let go of first.\nThe Don is watching Rico. Rico is watching the Don. Both of them are absolutely certain they're the one doing the outsmarting.\nAnd behind them — completely unnoticed, in no hurry whatsoever — Sugar picks up a bag of money off the table and walks out of the building with it.\nA tiger.\nRobbed a summit of the two most dangerous men in this city.\nNeither of them has noticed yet. I'm not going to be the one to tell them.",
+      "runtimeSec": 41,
+      "words": 103,
+      "shots": [
+        "two bosses shaking hands, gold vs pink light",
+        "a tiger padding out of frame with a gold bag",
+        "an empty spot on a table where a bag was"
+      ],
+      "caption": "The tiger robbed both crime families and nobody has noticed yet.",
+      "cta": "Send this to someone who'd get away with it.",
+      "shareTrigger": "The single most shareable image in the world — an animal outsmarting everyone."
+    },
+    {
+      "day": 19,
+      "phase": "The People",
+      "title": "Kayleigh",
+      "colour": "#a06bff",
+      "hook": "She ended her boss's entire investigation in one sentence and went back to her tablet.",
+      "onScreenText": "\"THE RAT IS YOU, PRESTON.\"",
+      "script": "Kayleigh works for The Firm. Sleek low bun, wireless headset, tablet, entirely unbothered.\nPreston decided somebody in this city was leaking, and ordered a full loyalty audit. Every crew. Cross-referenced. He wanted to know — and I want to be accurate here — whether they could gamify it. Whether the rat could be a subscription.\nKayleigh looked up exactly once and said: the rat is you, Preston. You post everything.\nThen went back to her tablet.\nShe is paid a fraction of what he is.\nShe is the only reason that tower is still standing.",
+      "runtimeSec": 38,
+      "words": 95,
+      "shots": [
+        "analyst at a monitor wall, violet glow",
+        "a red target box snapping onto a blurred face",
+        "a tablet, one raised eyebrow, no full face"
+      ],
+      "caption": "Ended the whole investigation in one sentence. Went back to work.",
+      "cta": "Tag the Kayleigh holding your workplace together.",
+      "shareTrigger": "Workplace recognition — huge crossover outside the nightlife audience."
+    },
+    {
+      "day": 20,
+      "phase": "The People",
+      "title": "McGraw",
+      "colour": "#ff5a6e",
+      "hook": "Twenty years chasing one man, and he has been wrong every single time.",
+      "onScreenText": "20 YEARS. 0 ARRESTS.",
+      "script": "Detective Dutch McGraw. Twenty years, one trench coat, a toothpick, and a wall of faces.\nHe's hunting a man with no face and a vault with no bottom, and every single year he almost has him.\nHe'll put five people in a lineup — one from each crew, and one civilian who wandered in off the dance floor holding his booking number upside down — and he will point, with total confidence, at the wrong one.\nHe always points at the wrong one.\nHere's the thing about McGraw, though.\nHe's the only honest man in this entire story. And it's cost him everything.",
+      "runtimeSec": 41,
+      "words": 103,
+      "shots": [
+        "venetian blinds, red-blue siren light",
+        "a lineup wall in silhouette",
+        "a toothpick, a tired face, hard key"
+      ],
+      "caption": "Twenty years. Every year he almost has him. #GTAD",
+      "cta": "Is he ever going to get it right?",
+      "shareTrigger": "Sympathy + prediction — people theorise in the comments."
+    },
+    {
+      "day": 21,
+      "phase": "The People",
+      "title": "President Diamante",
+      "colour": "#ffd36b",
+      "hook": "He says he knows all the criminals personally. That's not a slip. He means it as a boast.",
+      "onScreenText": "\"GREAT PEOPLE. TOTAL WINNERS.\"",
+      "script": "President Maximillian Diamante will tell you this city is safer than it has ever been.\nBelieve him. He'll say it under a banner that reads WAR ON CRIME, in a room where every single crew in this story is holding a drink.\nHe says nobody's tougher on crime than him, because he knows all the criminals personally. Great people. Total winners.\nThat's not a slip of the tongue. He means it as a boast.\nAnd while he's saying it, four envelopes — one gold, one pink, one cyan, one violet — go into his jacket at the same time.\nHe has never, ever taken a dollar from any of these fine… patrons.",
+      "runtimeSec": 45,
+      "words": 112,
+      "shots": [
+        "podium under a WAR ON CRIME banner",
+        "four coloured envelopes into a jacket, neck-down",
+        "a grid of storefront TVs on a wet street"
+      ],
+      "caption": "\"I know all the criminals personally. Great people.\"",
+      "cta": "Four more years?",
+      "shareTrigger": "Satire — political comedy travels beyond the event audience."
+    },
+    {
+      "day": 22,
+      "phase": "The People",
+      "title": "The Myth, Again",
+      "colour": "#8f8fa6",
+      "hook": "The Firm has a file on him. I've seen it. There's nothing in it.",
+      "onScreenText": "THE FILE IS EMPTY.",
+      "script": "I told you about the man with no face. Here's what I've learned since.\nThe Corvettis are certain he takes a cut of everything — they've been paying something to somebody for three generations and the Don won't say to who.\nRico swears he's been inside the house. Rico has changed the locks four times.\nAnd The Firm has a file on him. I've seen the file.\nThere is nothing in it.\nNo photograph. No name. No record of a man who four crews will not make a move without thinking about.\nFour keys. Four crews. And all of them frightened of the same empty folder.",
+      "runtimeSec": 42,
+      "words": 106,
+      "shots": [
+        "a manila file opening on nothing",
+        "a black-gloved hand tipping a glass off a podium",
+        "a single lit window, rain, very high up"
+      ],
+      "caption": "An empty file. Four terrified crime families. Explain that one.",
+      "cta": "Theories below. I'll read them.",
+      "shareTrigger": "Mystery participation — comments become the content."
+    },
+    {
+      "day": 23,
+      "phase": "The Games",
+      "title": "How It Actually Works",
+      "colour": "#00e5ff",
+      "hook": "You don't watch this. Your phone is the controller and you're playing for a gang.",
+      "onScreenText": "PHONE UP. PICK A COLOUR.",
+      "script": "Let me tell you how the night actually runs, because people keep asking.\nYou get in. You pick a colour at the door — gold, pink, cyan or violet. That's your crew now.\nThrough the night, the story plays on the screens. It stops. Somebody looks straight down the lens and hands you a job.\nAnd then everybody's phone lights up at once and you play it. Right there. On the floor. Against every other crew in the building.\nThere's nothing to download at the door and nothing to carry. No props, no lines, no getting picked on stage.\nTwelve games. One night. Your colour's on the board the whole time.",
+      "runtimeSec": 44,
+      "words": 111,
+      "shots": [
+        "a floor of raised phones glowing four colours",
+        "a game card hitting the screens",
+        "a leaderboard flipping over"
+      ],
+      "caption": "Phone up. Pick a colour. Twelve games. #GTAD",
+      "cta": "Full how-to-play in bio.",
+      "shareTrigger": "Removes the #1 objection: 'do I have to get on stage?'"
+    },
+    {
+      "day": 24,
+      "phase": "The Games",
+      "title": "The Interrogation",
+      "colour": "#ff5a6e",
+      "hook": "The first game of the night is eight questions and a detective who can tell when you're lying.",
+      "onScreenText": "DON'T CRACK.",
+      "script": "First game of the night. McGraw's got five of you in a lineup and the whole room watching.\nEight questions. Fast. On your phone.\nAnswer straight, answer quick, and do not crack — because he's been doing this twenty years and the whole city sees your answer.\nIt's the easiest game of the night and it's the one people lose, because they get clever.\nTop score talks first.\nAnd whoever talks first sets the tone for their crew for the rest of the night.",
+      "runtimeSec": 34,
+      "words": 84,
+      "shots": [
+        "five suspects in silhouette at a height marker",
+        "phones lighting up in the dark",
+        "a toothpick jabbed at the lens"
+      ],
+      "caption": "Eight questions. Don't get clever. #GTAD",
+      "cta": "How fast are you under pressure?",
+      "shareTrigger": "Low-stakes challenge — invites a self-assessment reply."
+    },
+    {
+      "day": 25,
+      "phase": "The Games",
+      "title": "The Joyride",
+      "colour": "#00e5ff",
+      "hook": "Your phone is a getaway car and this city has dogs in it.",
+      "onScreenText": "COPS. PEOPLE. DOGS.",
+      "script": "The Joyride.\nYour phone is the getaway car. Grab the cash, keep it on the road, and dodge everything this city throws at you — cops, people, dogs.\nEvery hit you take is a wanted star. Rack up too many and you're done, and your crew feels it.\nThe whole room is driving at once. You can hear it happen — the noise the floor makes when everybody loses at the same corner is genuinely one of my favourite sounds.\nFurthest run takes it.\nAnd Problem, if you're watching — put the taco down and drive.",
+      "runtimeSec": 38,
+      "words": 96,
+      "shots": [
+        "POV windshield, wet neon, speed",
+        "a wall of police lights flooding a street",
+        "a floor of phones tilting in unison"
+      ],
+      "caption": "Cops, people, dogs. Every hit is a star.",
+      "cta": "Who's driving? Tag your wheelman.",
+      "shareTrigger": "Callback to day 13 — rewards followers who've been there."
+    },
+    {
+      "day": 26,
+      "phase": "The Games",
+      "title": "Crossfire",
+      "colour": "#ff2d9b",
+      "hook": "The whole city is shooting at you and you get three lives.",
+      "onScreenText": "THREE LIVES. THAT'S ALL.",
+      "script": "Crossfire.\nRico's house. Somebody sent targets and now the whole city is shooting at you.\nThree lives, that's all you get. Drag, weave, don't get hit. Last one standing in the crossfire owns the night.\nThis is the loudest the room gets all evening — it's the pink station, it's the hottest music we play, and there is always a moment where four hundred people all flinch at the same time.\nLast one standing.\nSay goodnight to the bad guy.",
+      "runtimeSec": 32,
+      "words": 80,
+      "shots": [
+        "neon tracer streaks through pink haze",
+        "a white suit unflinching in the storm",
+        "a crowd flinching in unison, wide"
+      ],
+      "caption": "Three lives. Last one standing owns the night.",
+      "cta": "Are you surviving this one?",
+      "shareTrigger": "Competitive callout — people tag whoever they'd beat."
+    },
+    {
+      "day": 27,
+      "phase": "The Games",
+      "title": "The Blueprint",
+      "colour": "#c07ad0",
+      "hook": "You get ten seconds to memorise the vault. Then it's gone.",
+      "onScreenText": "TEN SECONDS. ONE LOOK.",
+      "script": "The Blueprint.\nTwo plans go up on the screens. Ten seconds each. Burn every icon into your head — and then they're gone, and you have to call them back.\nMiss one and the whole job's blown for your crew.\nNow — Rico doesn't need the paper. Rico remembers every face that ever crossed him. Rico has told us all repeatedly that his memory is perfect.\nRico cannot remember the first icon.\nIt's always the falcon. It has been the falcon every single time.\nTen. Nine.",
+      "runtimeSec": 34,
+      "words": 86,
+      "shots": [
+        "glowing blueprint icons on frosted glass",
+        "a falcon icon tapped, macro",
+        "phones held up in a dark room"
+      ],
+      "caption": "It's always the falcon. Every time. #GTAD",
+      "cta": "How many can you hold for 10 seconds?",
+      "shareTrigger": "Testable skill — people want to prove they'd win."
+    },
+    {
+      "day": 28,
+      "phase": "The Games",
+      "title": "The Combination",
+      "colour": "#ffd36b",
+      "hook": "Everything all night has been building to one code, and it takes all four colours.",
+      "onScreenText": "ONE CODE. FOUR COLOURS.",
+      "script": "This is what the whole night has been for.\nThe Combination. The vault, in the middle of the room, and one four-colour code that opens it.\nPick your colour. Pick your corner. Black dot means right colour, right spot. White dot means right colour, wrong spot. Crack it before the other three crews do.\nIt is the loudest, fastest, most unhinged five minutes of the night, and the whole building is screaming numbers at each other.\nA glass goes off the podium in slow motion.\nAnd when it hits the floor — every phone in that building starts cracking.",
+      "runtimeSec": 40,
+      "words": 99,
+      "shots": [
+        "a giant four-colour lock ring glowing",
+        "a champagne glass falling, extreme slow-mo",
+        "four-colour ballroom, everyone lit up"
+      ],
+      "caption": "One code. Four colours. Whoever cracks it first takes the whole thing.",
+      "cta": "What colour are you cracking for?",
+      "shareTrigger": "The payoff post — the one to boost paid."
+    },
+    {
+      "day": 29,
+      "phase": "The Games",
+      "title": "Pick Your Colour",
+      "colour": "#ff2d9b",
+      "hook": "There are four crews and you're going to be in one of them. Choose now.",
+      "onScreenText": "GOLD. PINK. CYAN. VIOLET.",
+      "script": "Four crews. You're going to be in one of them.\nGold — the Corvettis. Old money, quiet rooms, nothing written down. You join gold if you think power should be polite.\nPink — Los Halcóns. Loudest crew wins. You join pink if you've never once been the quietest person in a room.\nCyan — the Street Kings. The block, the beat, the bounce. You join cyan if your friends actually like you.\nViolet — The Firm. You join violet if you've read the terms and conditions and found a way through them.\nChoose now. Because at the door, it's final.",
+      "runtimeSec": 40,
+      "words": 100,
+      "shots": [
+        "four colour-lit crowd pockets, wide",
+        "four wristbands on four wrists",
+        "a door, four coloured lights above it"
+      ],
+      "caption": "Gold, pink, cyan or violet. At the door it's final. Which one? #GTAD",
+      "cta": "Comment your colour. I'm counting.",
+      "shareTrigger": "THE identity post — the single most shareable format on any platform."
+    },
+    {
+      "day": 30,
+      "phase": "The Games",
+      "title": "Doors",
+      "colour": "#ff2d9b",
+      "hook": "Fifty years that vault's been shut. Tonight all four keys are in the same building.",
+      "onScreenText": "TONIGHT.",
+      "script": "Fifty years that vault has been shut.\nTonight, for the first time, all four keys are in the same building — and so are all four crews, and so are you.\nYou know the crews now. You know the vault. You know what it takes to open it.\nSo here's the last thing I'll say before the doors.\nDon't get wasted. Don't get busted. Pick your colour and hold it all night.\nAnd when this city starts lying to you — and it will, from the moment you walk in — the only voice in that room you can trust is coming out of the booth.\nThat's me. See you tonight.",
+      "runtimeSec": 44,
+      "words": 111,
+      "shots": [
+        "doors opening onto a neon floor",
+        "TJ to camera, hard key, black three-piece",
+        "a crowd surging, motion blur"
+      ],
+      "caption": "Tonight. All four keys, one building. Don't be late.",
+      "cta": "Doors at [TIME]. Last tickets in bio.",
+      "shareTrigger": "Urgency + the catchphrase the audience already knows."
+    }
+  ]
+}

@@ -1,0 +1,289 @@
+<title>The Score — bridges &amp; transitions</title>
+<style>
+  :root{
+    color-scheme: dark;
+    --ground:#08080b; --panel:#0e0e14; --panel2:#12121a;
+    --line:rgba(255,255,255,.10); --ink:#f4f4f8; --mut:#8f8fa6; --dim:#5c5c72;
+    --cyan:#00e5ff; --pink:#ff2d9b; --gold:#f5c542; --warn:#ff5a6e; --go:#7dffb2;
+    --display:"Haettenschweiler","Arial Narrow Bold",Impact,"Franklin Gothic Bold",sans-serif;
+    --body:ui-sans-serif,system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Courier New",monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:radial-gradient(120% 60% at 50% -10%,#16121c 0%,var(--ground) 60%) no-repeat,var(--ground);
+    color:var(--ink);font-family:var(--body);line-height:1.6;padding:0 0 100px;}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.045;
+    background:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 3px);}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px;position:relative;z-index:1;}
+
+  header{padding:44px 0 6px;}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);margin:0 0 12px;}
+  h1{font-family:var(--display);font-weight:400;text-transform:uppercase;
+    font-size:clamp(38px,8vw,80px);line-height:.88;margin:0;letter-spacing:.02em;}
+  h1 .a{color:transparent;-webkit-text-stroke:1.5px var(--gold);text-shadow:0 0 18px rgba(245,197,66,.4);}
+  h1 .b{color:transparent;-webkit-text-stroke:1.5px var(--pink);text-shadow:0 0 18px rgba(255,45,155,.45);}
+  .standfirst{color:var(--mut);font-size:16px;max-width:70ch;margin:18px 0 0;}
+  .standfirst b{color:var(--ink);font-weight:600;}
+
+  .nums{display:flex;gap:28px;flex-wrap:wrap;margin:26px 0 0;padding:17px 20px;
+    border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.022);}
+  .nums div{min-width:104px;}
+  .nums b{display:block;font-family:var(--display);font-weight:400;font-size:32px;line-height:1;}
+  .nums span{font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);}
+
+  h2.sec{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(24px,3.6vw,36px);
+    margin:52px 0 6px;letter-spacing:.02em;}
+  h2.sec .n{color:var(--dim);margin-right:12px;}
+  .lead{color:var(--mut);font-size:15.5px;max-width:80ch;margin:0 0 6px;}
+
+  .free{display:grid;gap:11px;margin:18px 0 0;}
+  .fr{border:1px solid var(--line);border-left:3px solid var(--go);border-radius:10px;
+    background:var(--panel2);padding:14px 16px;}
+  .fr b{display:block;font-size:16px;color:var(--ink);margin-bottom:5px;}
+  .fr span{font-size:14px;color:var(--mut);line-height:1.55;}
+
+  .card{border:1px solid var(--line);border-radius:11px;margin:11px 0 0;background:var(--panel2);
+    overflow:hidden;border-left:3px solid var(--cc);}
+  .card.isdone{opacity:.42;}
+  .ch{list-style:none;display:grid;grid-template-columns:22px 78px 1fr auto;gap:13px;align-items:center;
+    padding:12px 15px;cursor:pointer;}
+  .ch::-webkit-details-marker{display:none;}
+  .tick{width:22px;height:22px;border-radius:6px;border:1px solid var(--line);background:rgba(255,255,255,.04);
+    display:grid;place-items:center;cursor:pointer;font-size:13px;color:transparent;}
+  .tick.on{border-color:var(--go);color:var(--go);background:rgba(125,255,178,.13);}
+  .cid{font-family:var(--mono);font-size:13px;color:var(--cc);letter-spacing:.04em;}
+  .nm{font-size:16px;color:var(--ink);}
+  .nm small{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--dim);margin-top:3px;}
+  .secs{font-family:var(--display);font-size:19px;color:var(--ink);}
+  .cbody{padding:0 15px 15px;}
+  .lbl{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin:12px 0 6px;}
+  .use{font-size:14.5px;color:#dfe3ea;line-height:1.55;margin:0;border-left:2px solid var(--cc);padding-left:13px;}
+  .ptext{font-family:var(--mono);font-size:12.5px;line-height:1.62;color:#c6d2da;white-space:pre-wrap;
+    border:1px solid var(--line);border-radius:8px;padding:11px 12px;margin:0;}
+  .ntext{font-family:var(--mono);font-size:11.5px;line-height:1.6;color:#9aa4ad;white-space:pre-wrap;
+    border:1px dashed var(--line);border-radius:8px;padding:10px 12px;margin:0;}
+  .acts{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px;}
+  .cbtn{font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;
+    border:1px solid var(--cyan);background:transparent;color:var(--cyan);border-radius:7px;padding:8px 12px;cursor:pointer;}
+  .cbtn:hover{background:rgba(0,229,255,.12);}
+  .cbtn.alt{border-color:var(--line);color:var(--mut);}
+  .cbtn.done{border-color:rgba(125,255,178,.5);color:var(--go);}
+
+  .beatline{display:flex;align-items:baseline;gap:12px;font-family:var(--mono);font-size:10px;
+    letter-spacing:.15em;text-transform:uppercase;color:var(--dim);margin:26px 0 2px;}
+  .beatline b{color:var(--ink);font-weight:400;}
+  .beatline span{margin-left:auto;}
+  .req{display:inline-block;font-family:var(--mono);font-size:8px;letter-spacing:.14em;
+    text-transform:uppercase;border-radius:4px;padding:2px 6px;border:1px solid currentColor;
+    margin-left:10px;vertical-align:2px;}
+  .req.yes{color:var(--go);} .req.no{color:var(--dim);}
+  .ratio{border:1px solid var(--go);border-radius:12px;padding:15px 18px;margin:20px 0 0;
+    background:rgba(125,255,178,.045);}
+  .ratio b{color:var(--ink);}
+  .ratio p{margin:0;font-size:15px;color:var(--mut);line-height:1.6;max-width:82ch;}
+
+  table{width:100%;border-collapse:collapse;margin:18px 0 0;font-size:14px;}
+  th{font-family:var(--mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);
+    text-align:left;padding:0 10px 8px;border-bottom:1px solid var(--line);}
+  td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top;color:#dfe3ea;}
+  td.j{font-family:var(--mono);font-size:12.5px;color:var(--ink);white-space:nowrap;}
+  tr.seam td{color:var(--go);}
+  tr.seam td.j{color:var(--go);}
+  .scroll{overflow-x:auto;}
+
+  footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--dim);line-height:1.9;}
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Grand Theft After-Dark · “The Score” · making the cuts work</p>
+    <h1><span class="a">Bridges</span><br><span class="b">&amp; Textures</span></h1>
+    <p class="standfirst" id="stand"></p>
+    <div class="nums" id="nums"></div>
+  </header>
+
+  <h2 class="sec"><span class="n">1</span>Free fixes — try these first</h2>
+  <p class="lead">A render you don't make is a render you don't pay for. Most abrupt joins in this
+    film are a punch-in away from working.</p>
+  <div class="free" id="free"></div>
+
+  <h2 class="sec"><span class="n">2</span>The element library</h2>
+  <p class="lead" id="elLead"></p>
+  <div id="elements"></div>
+
+  <h2 class="sec"><span class="n">3</span>Textures — on a quota, not as garnish</h2>
+  <p class="lead">No people in frame — so no character reference, no continuity risk, and nothing
+    for a content filter to catch. Generate a beat's b-roll in the same session as its characters,
+    while you are already in that set.</p>
+  <div class="ratio" id="ratio"></div>
+  <div id="textures"></div>
+
+  <h2 class="sec"><span class="n">4</span>Every join that butts two locked shots together</h2>
+  <p class="lead" id="joinLead"></p>
+  <div class="scroll"><table id="joins"></table></div>
+
+  <footer>
+    GRAND THEFT AFTER-DARK · “THE SCORE” · marketing/bridge-shots.json<br>
+    Independent fan tribute event. Not affiliated with, endorsed by, or sponsored by Rockstar Games,
+    Take-Two Interactive, or any related entity.
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var D = /*__DATA__*/null;
+  var $ = function(id){ return document.getElementById(id); };
+  function el(t,c,x){ var n=document.createElement(t); if(c)n.className=c; if(x!=null)n.textContent=x; return n; }
+  var DONE = {};
+  try { DONE = JSON.parse(localStorage.getItem('gtad.done') || '{}'); } catch(e){}
+  function saveDone(){ try { localStorage.setItem('gtad.done', JSON.stringify(DONE)); } catch(e){} }
+  function copyBtn(label, text, cls){
+    var b = el('button','cbtn'+(cls?' '+cls:''), label); b.type='button';
+    b.addEventListener('click', function(e){
+      e.stopPropagation();
+      if (navigator.clipboard) navigator.clipboard.writeText(text);
+      var o=b.textContent; b.textContent='Copied';
+      setTimeout(function(){ b.textContent=o; }, 1200);
+    });
+    return b;
+  }
+  function count(){
+    var ids = D.elementList.concat(D.textureList).map(function(c){ return c.id; });
+    return ids.filter(function(i){ return DONE[i]; }).length;
+  }
+  function paint(){
+    $('nums').innerHTML = '';
+    [[D.meta.brollRatio + '×', 'b-roll per dialogue clip'],
+     [D.meta.required, 'textures required'],
+     [D.meta.spares, 'spares in the pool'],
+     [D.meta.elements, 'elements, reused everywhere'],
+     [count() + ' / ' + (D.meta.elements + D.meta.required), 'generated so far'],
+     [D.meta.needHelp, 'joins that want help']].forEach(function(p){
+      var d = el('div'); d.appendChild(el('b', null, p[0]));
+      d.appendChild(el('span', null, p[1])); $('nums').appendChild(d);
+    });
+  }
+
+  function card(c, colour, extra){
+    var d = el('details','card' + (DONE[c.id] ? ' isdone' : ''));
+    d.id = 'k-' + c.id;
+    d.style.setProperty('--cc', colour);
+    var s = el('summary','ch');
+    var tick = el('div','tick' + (DONE[c.id] ? ' on' : ''), '✓');
+    tick.addEventListener('click', function(e){
+      e.preventDefault(); e.stopPropagation();
+      if (DONE[c.id]) delete DONE[c.id]; else DONE[c.id] = 1;
+      saveDone();
+      d.classList.toggle('isdone', !!DONE[c.id]);
+      tick.classList.toggle('on', !!DONE[c.id]);
+      var m = d.querySelector('.cbtn.done');
+      if (m) m.textContent = DONE[c.id] ? 'Not done after all' : 'Mark generated';
+      paint();
+    });
+    s.appendChild(tick);
+    s.appendChild(el('div','cid', c.id));
+    var nm = el('div','nm', c.name);
+    // the badge belongs beside the name — as a grid child it would claim its own column
+    if (c.required !== undefined)
+      nm.appendChild(el('span','req ' + (c.required ? 'yes' : 'no'),
+        c.required ? 'Required' : 'Spare'));
+    if (extra) nm.appendChild(el('small', null, extra));
+    s.appendChild(nm);
+    s.appendChild(el('div','secs', c.seconds + 's'));
+    d.appendChild(s);
+
+    var b = el('div','cbody');
+    if (c.use){
+      b.appendChild(el('div','lbl','Where it goes'));
+      b.appendChild(el('p','use', c.use));
+    }
+    b.appendChild(el('div','lbl','Prompt'));
+    b.appendChild(el('p','ptext', c.prompt));
+    b.appendChild(el('div','lbl','Negative'));
+    b.appendChild(el('p','ntext', c.negative));
+    var a = el('div','acts');
+    a.appendChild(copyBtn('Copy prompt', c.prompt));
+    a.appendChild(copyBtn('Copy negative', c.negative, 'alt'));
+    a.appendChild(copyBtn('Copy both — one box', c.prompt + ' Avoid: ' + c.negative + '.', 'alt'));
+    var mk = el('button','cbtn done', DONE[c.id] ? 'Not done after all' : 'Mark generated');
+    mk.type = 'button';
+    mk.addEventListener('click', function(){
+      if (DONE[c.id]) delete DONE[c.id]; else DONE[c.id] = 1;
+      saveDone();
+      d.classList.toggle('isdone', !!DONE[c.id]);
+      d.querySelector('.tick').classList.toggle('on', !!DONE[c.id]);
+      mk.textContent = DONE[c.id] ? 'Not done after all' : 'Mark generated';
+      paint();
+    });
+    a.appendChild(mk);
+    b.appendChild(a);
+    d.appendChild(b);
+    return d;
+  }
+
+  $('stand').innerHTML = 'B-roll is not garnish — the first two beats proved you need about one '
+    + 'people-free clip for every clip with dialogue in it, and usually more. This page goes in '
+    + 'cost order: the fixes that need no render, then <b>' + D.meta.elements + ' elements</b> you '
+    + 'generate once and reuse at every join, then <b>' + D.meta.required + ' required textures</b> '
+    + 'on a per-beat quota (with ' + D.meta.spares + ' spares behind them) — and last, the joins '
+    + 'that actually need one.';
+  paint();
+
+  D.free.forEach(function(f){
+    var d = el('div','fr');
+    d.appendChild(el('b', null, f.rule));
+    d.appendChild(el('span', null, f.why));
+    $('free').appendChild(d);
+  });
+
+  $('elLead').textContent = D.order[1];
+  D.elementList.forEach(function(c){ $('elements').appendChild(card(c, '#f5c542')); });
+
+  $('ratio').innerHTML = '<p><b>' + D.meta.dialogueClips + ' clips carry dialogue. '
+    + D.meta.brollTotal + ' clips of b-roll cover them</b> — ' + D.meta.platesInSheet
+    + ' plates already in the shot sheet plus ' + D.meta.required + ' required textures, a <b>'
+    + D.meta.brollRatio + '×</b> ratio. Each beat\'s quota is its dialogue count plus two. The '
+    + 'other ' + D.meta.spares + ' textures are <b>spares</b> — generate one when a cut asks for '
+    + 'it, not before.</p>';
+
+  var beat = null;
+  D.textureList.forEach(function(c){
+    if (c.beat !== beat){
+      beat = c.beat;
+      var mine = D.textureList.filter(function(x){ return x.beat === beat; });
+      var need = mine.filter(function(x){ return x.required; }).length;
+      var line = el('p','beatline');
+      line.appendChild(el('b', null, beat));
+      line.appendChild(document.createTextNode('quota ' + (D.meta.quota[beat] || 0)
+        + ' · ' + need + ' to generate here'));
+      line.appendChild(el('span', null, (mine.length - need) + ' spare'));
+      $('textures').appendChild(line);
+    }
+    $('textures').appendChild(card(c, c.required ? '#ff2d9b' : '#5c5c72', c.beat));
+  });
+
+  $('joinLead').innerHTML = '<b>' + D.meta.joins + ' joins</b> put the same person on two locked '
+    + 'shots in a row. <b>' + D.meta.seamless + '</b> of those are APPROACH → TURN and must be '
+    + 'left completely alone — bridging one destroys the fourth-wall move. The other <b>'
+    + D.meta.needHelp + '</b> are where a punch-in or an element earns its keep.';
+
+  var t = $('joins');
+  var hr = document.createElement('tr');
+  ['Beat','Join','Roles','What to do'].forEach(function(h){
+    hr.appendChild(el('th', null, h));
+  });
+  t.appendChild(hr);
+  D.joinList.forEach(function(j){
+    var r = document.createElement('tr');
+    if (j.seamless) r.className = 'seam';
+    r.appendChild(el('td','j', j.beat));
+    r.appendChild(el('td','j', j.from + ' → ' + j.to));
+    r.appendChild(el('td','j', j.roles));
+    r.appendChild(el('td', null, j.fix));
+    t.appendChild(r);
+  });
+})();
+</script>
