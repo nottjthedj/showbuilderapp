@@ -50,6 +50,40 @@
     border:1px solid var(--line);color:var(--mut);border-radius:99px;padding:8px 13px;text-decoration:none;}
   .lnk:hover{color:var(--ink);border-color:var(--ink);}
 
+  /* the brief — story + cast, for anyone opening this cold */
+  .brief{display:grid;gap:11px;margin:26px 0 0;}
+  .fold{border:1px solid var(--line);border-radius:13px;background:var(--panel);overflow:hidden;}
+  .fold > summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;
+    padding:15px 18px;font-family:var(--display);font-weight:400;text-transform:uppercase;
+    font-size:clamp(19px,2.6vw,26px);letter-spacing:.02em;color:var(--ink);}
+  .fold > summary::-webkit-details-marker{display:none;}
+  .fold > summary b{margin-left:auto;font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;
+    color:var(--dim);font-weight:400;}
+  .fold[open] > summary{border-bottom:1px solid var(--line);}
+  .foldb{padding:18px;}
+  .st{margin:0 0 20px;max-width:82ch;}
+  .st:last-child{margin-bottom:0;}
+  .st h4{font-family:var(--mono);font-size:9.5px;letter-spacing:.17em;text-transform:uppercase;
+    color:var(--cyan);margin:0 0 7px;}
+  .st p{margin:0;font-size:15.5px;line-height:1.65;color:#dfe3ea;}
+  .st.spoil{border-left:2px solid var(--warn);padding-left:15px;}
+  .st.spoil h4{color:var(--warn);}
+  .st.spoil h4::after{content:' — never in marketing';color:var(--dim);letter-spacing:.1em;}
+
+  .cast{display:grid;gap:11px;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));}
+  .who{border:1px solid var(--line);border-left:3px solid var(--pc);border-radius:11px;
+    background:var(--panel2);padding:14px 16px;}
+  .who h5{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:21px;
+    margin:0;color:var(--pc);letter-spacing:.02em;line-height:1.05;}
+  .who .crew{font-family:var(--mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;
+    color:var(--dim);margin:5px 0 9px;}
+  .who .bio{font-size:14.5px;color:#dfe3ea;margin:0 0 9px;line-height:1.5;}
+  .who dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 10px;}
+  .who dt{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--dim);padding-top:3px;}
+  .who dd{margin:0;font-size:13px;color:var(--mut);line-height:1.5;}
+  .who .warn{margin:9px 0 0;font-size:13px;color:var(--warn);line-height:1.5;}
+
   /* beat nav */
   .jump{position:sticky;top:0;z-index:60;display:flex;gap:6px;flex-wrap:wrap;align-items:center;
     padding:12px 0;background:linear-gradient(180deg,rgba(8,8,11,.97) 74%,rgba(8,8,11,0));margin-top:24px;}
@@ -137,6 +171,17 @@
       <div class="ctrls" id="ctrls"></div>
     </div>
   </header>
+
+  <div class="brief">
+    <details class="fold" id="storyFold">
+      <summary><span>The story</span><b>Read this first</b></summary>
+      <div class="foldb" id="story"></div>
+    </details>
+    <details class="fold" id="castFold">
+      <summary><span>The cast</span><b id="castCount"></b></summary>
+      <div class="foldb"><div class="cast" id="cast"></div></div>
+    </details>
+  </div>
 
   <div class="jump" id="jump"></div>
   <div id="main"></div>
@@ -274,7 +319,8 @@
     + 'generate its clips, tick them off. <b>' + ALL.length + ' clips, ' + D.meta.beats
     + ' beats, ' + D.meta.minutes + ' minutes of material</b> for a film that cuts to about nine. '
     + 'Nothing here is a limit on takes — generate a clip as many times as you need and tick it '
-    + 'when you have one you would put in the edit.';
+    + 'when you have one you would put in the edit. <b>New here?</b> Read the story and the cast '
+    + 'below first. Ticks are stored per browser, so everyone opening this link keeps their own.';
 
   // controls
   var lab = el('label','sw');
@@ -314,6 +360,28 @@
     ALL.forEach(function(c){ setDone(c.id, false); });
   });
   $('ctrls').appendChild(reset);
+
+  D.story.forEach(function(s){
+    var d = el('div','st' + (s.spoiler ? ' spoil' : ''));
+    d.appendChild(el('h4', null, s.h));
+    d.appendChild(el('p', null, s.p));
+    $('story').appendChild(d);
+  });
+
+  $('castCount').textContent = D.cast.length + ' people (and one tiger)';
+  D.cast.forEach(function(c){
+    var w = el('div','who'); w.style.setProperty('--pc', c.colour);
+    w.appendChild(el('h5', null, c.name));
+    w.appendChild(el('p','crew', [c.crew, c.clips + ' clips', c.beats.join(', ')]
+      .filter(Boolean).join(' · ')));
+    if (c.role) w.appendChild(el('p','bio', c.role));
+    var dl = document.createElement('dl');
+    if (c.voice){ dl.appendChild(el('dt', null, 'Voice')); dl.appendChild(el('dd', null, c.voice)); }
+    if (c.look){ dl.appendChild(el('dt', null, 'Never changes')); dl.appendChild(el('dd', null, c.look)); }
+    w.appendChild(dl);
+    if (c.note) w.appendChild(el('p','warn', c.note));
+    $('cast').appendChild(w);
+  });
 
   D.beats.forEach(function(b){
     var a = el('a', null, b.tag);
