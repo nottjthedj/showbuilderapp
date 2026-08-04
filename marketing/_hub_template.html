@@ -118,6 +118,11 @@
     font-family:var(--mono);font-size:12px;color:var(--bc);line-height:1.55;}
   .gcard b{display:block;color:var(--ink);font-family:var(--body);font-size:14px;margin-top:6px;font-weight:400;}
 
+  .brollhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:22px 0 0;
+    font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim);}
+  .brollhead b{color:var(--go);font-weight:400;font-size:11px;letter-spacing:.16em;}
+  .brollhead2{margin:12px 0 0;font-size:14.5px;color:var(--mut);max-width:78ch;}
+
   /* clips */
   .clips{margin:14px 0 0;display:flex;flex-direction:column;gap:9px;}
   .clip{border:1px solid var(--line);border-radius:11px;background:var(--panel2);overflow:hidden;
@@ -225,8 +230,14 @@
     } catch(e){}
   }
 
+  // The shoot is the clips plus the b-roll each beat needs plus the shared elements.
+  // B-roll is not garnish — one people-free clip per clip with dialogue, roughly.
   var ALL = [], BY_ID = {};
-  D.beats.forEach(function(b){ b.clips.forEach(function(c){ ALL.push(c); BY_ID[c.id] = c; }); });
+  D.beats.forEach(function(b){
+    b.clips.forEach(function(c){ ALL.push(c); BY_ID[c.id] = c; });
+    (b.broll || []).forEach(function(t){ if (t.required) ALL.push(t); });
+  });
+  (D.elements || []).forEach(function(e){ ALL.push(e); });
   var WORDING = 'full';
   try { WORDING = localStorage.getItem('gtad.wording') || 'full'; } catch(e){}
 
@@ -315,6 +326,46 @@
     return d;
   }
 
+  function plainCard(c, colour, extra){
+    var d = el('details','clip' + (DONE[c.id] ? ' done' : ''));
+    d.id = 'c-' + c.id;
+    d.style.setProperty('--rc', colour);
+    var s = el('summary','ch');
+    var tick = el('div','tick' + (DONE[c.id] ? ' on' : ''), '✓');
+    tick.addEventListener('click', function(e){
+      e.preventDefault(); e.stopPropagation(); setDone(c.id, !DONE[c.id]);
+    });
+    s.appendChild(tick);
+    s.appendChild(el('div','cid', c.id));
+    if (c.required !== undefined)
+      s.appendChild(el('span','say ' + (c.required ? 'line' : 'sil'),
+        c.required ? 'Required' : 'Spare'));
+    s.appendChild(el('p','cam', c.name));
+    if (extra) s.appendChild(el('span','say vo', extra));
+    s.appendChild(el('div','secs', c.seconds + 's'));
+    d.appendChild(s);
+    var b = el('div','cbody');
+    if (c.use){ b.appendChild(el('div','lbl','Where it goes')); b.appendChild(el('p','ptext', c.use)); }
+    b.appendChild(el('div','lbl','Prompt'));
+    b.appendChild(el('p','ptext', c.prompt));
+    b.appendChild(el('div','lbl','Negative'));
+    b.appendChild(el('p','ntext', c.negative));
+    var a = el('div','acts');
+    a.appendChild(copyBtn('Copy prompt', c.prompt));
+    a.appendChild(copyBtn('Copy negative', c.negative, 'alt'));
+    a.appendChild(copyBtn('Copy both — one box', c.prompt + ' Avoid: ' + c.negative + '.', 'alt'));
+    var mk = el('button','cbtn go', DONE[c.id] ? 'Not done after all' : 'Mark generated');
+    mk.type='button';
+    mk.addEventListener('click', function(){
+      setDone(c.id, !DONE[c.id]);
+      mk.textContent = DONE[c.id] ? 'Not done after all' : 'Mark generated';
+    });
+    a.appendChild(mk);
+    b.appendChild(a);
+    d.appendChild(b);
+    return d;
+  }
+
   $('stand').innerHTML = 'The script and the prompts in one place, in film order. Read the beat, '
     + 'generate its clips, tick them off. <b>' + ALL.length + ' clips, ' + D.meta.beats
     + ' beats, ' + D.meta.minutes + ' minutes of material</b> for a film that cuts to about nine. '
@@ -383,6 +434,11 @@
     $('cast').appendChild(w);
   });
 
+  var ea = el('a', null, 'Elements'); ea.href = '#b-elements';
+  ea.style.setProperty('--jc', '#f5c542');
+  ea.appendChild(el('b', null, (D.elements || []).length));
+  $('jump').appendChild(ea);
+
   D.beats.forEach(function(b){
     var a = el('a', null, b.tag);
     a.href = '#b-' + b.slug; a.style.setProperty('--jc', b.colour);
@@ -390,13 +446,32 @@
     $('jump').appendChild(a);
   });
 
+  if ((D.elements || []).length){
+    var esec = el('section','beat'); esec.id = 'b-elements';
+    esec.style.setProperty('--bc', '#f5c542');
+    var eh = el('div','bhead');
+    eh.appendChild(el('h2', null, 'The element library'));
+    eh.appendChild(el('span','meta', D.elements.length + ' clips · generate once · used at every join'));
+    esec.appendChild(eh);
+    esec.appendChild(el('p','brollhead2', 'People-free, location-free. Tint the flare pass gold, '
+      + 'pink, cyan or violet on the colour page — one render covers all four crews.'));
+    var ew = el('div','clips');
+    D.elements.forEach(function(c){
+      var card = plainCard(c, '#f5c542');
+      if (HIDE && DONE[c.id]) card.style.display = 'none';
+      ew.appendChild(card);
+    });
+    esec.appendChild(ew);
+    $('main').appendChild(esec);
+  }
+
   D.beats.forEach(function(b){
     var sec = el('section','beat'); sec.id = 'b-' + b.slug;
     sec.style.setProperty('--bc', b.colour);
     var h = el('div','bhead');
     h.appendChild(el('h2', null, b.tag + ' · ' + b.title));
     h.appendChild(el('span','meta', b.clips.length + ' clips · ' + b.seconds + 's to generate · '
-      + b.dur + ' on screen' + (b.broll ? ' · + ' + b.broll + ' b-roll' : '')));
+      + b.dur + ' on screen' + (b.brollNeeded ? ' · + ' + b.brollNeeded + ' b-roll' : '')));
     sec.appendChild(h);
 
     var det = el('details','script');
@@ -435,6 +510,24 @@
       w.appendChild(card);
     });
     sec.appendChild(w);
+
+    if ((b.broll || []).length){
+      var need = b.broll.filter(function(t){ return t.required; }).length;
+      var bh = el('p','brollhead');
+      bh.appendChild(el('b', null, 'B-roll for this beat'));
+      bh.appendChild(document.createTextNode(need
+        ? need + ' required · ' + (b.broll.length - need) + ' spare · shoot these in the same '
+          + 'session, while the set is locked'
+        : 'nothing required — this beat is already plate-heavy. All ' + b.broll.length + ' are spares.'));
+      sec.appendChild(bh);
+      var bw = el('div','clips');
+      b.broll.forEach(function(t){
+        var card = plainCard(t, t.required ? '#7dffb2' : '#5c5c72');
+        if (HIDE && DONE[t.id]) card.style.display = 'none';
+        bw.appendChild(card);
+      });
+      sec.appendChild(bw);
+    }
     $('main').appendChild(sec);
   });
 

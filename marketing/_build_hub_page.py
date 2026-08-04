@@ -15,8 +15,10 @@ LIST = json.load(open(ROOT / 'marketing/shot-list.json'))
 BRIDGE = json.load(open(ROOT / 'marketing/bridge-shots.json'))
 BROLL = {}
 for t in BRIDGE['textureList']:
-    if t['required']:
-        BROLL[t['beat']] = BROLL.get(t['beat'], 0) + 1
+    BROLL.setdefault(t['beat'], []).append({
+        'id': t['id'], 'name': t['name'], 'seconds': t['seconds'],
+        'prompt': t['prompt'], 'negative': t['negative'], 'required': t['required'],
+    })
 OUT = HERE / 'production-hub.html'
 
 by_beat = {}
@@ -39,7 +41,8 @@ for b in SHOW['film']:
         'gameCard': b.get('gameCard'),
         'game': {k: game[k] for k in ('howItPlays', 'win', 'time')} if game else None,
         'seconds': sum(c['seconds'] for c in clips),
-        'broll': BROLL.get(b['tag'], 0),
+        'broll': BROLL.get(b['tag'], []),
+        'brollNeeded': sum(1 for t in BROLL.get(b['tag'], []) if t['required']),
         'plates': sum(1 for c in clips if c['subject'] == '—'),
         'clips': clips,
     })
@@ -115,6 +118,8 @@ for ch in LIST['characters']:
 
 data = {
     'story': [{'h': h, 'p': t, 'spoiler': sp} for h, t, sp in STORY],
+    'elements': BRIDGE['elementList'],
+    'freeFixes': BRIDGE['free'],
     'cast': cast,
     'meta': {
         'beats': len(beats),
@@ -125,6 +130,10 @@ data = {
         'format': SHOW['meta']['format'],
         'games': len(SHOW['games']),
         'cast': len(cast),
+        'brollRequired': BRIDGE['meta']['required'],
+        'brollRatio': BRIDGE['meta']['brollRatio'],
+        'elementCount': BRIDGE['meta']['elements'],
+        'toGenerate': counted + BRIDGE['meta']['required'] + BRIDGE['meta']['elements'],
     },
     'beats': beats,
 }
